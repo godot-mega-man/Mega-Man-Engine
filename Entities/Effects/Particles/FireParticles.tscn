@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="Curve" id=1]
+min_value = -100.0
+max_value = 100.0
+bake_resolution = 50
+_data = [ Vector2( 0, 0 ), 0.0, 304.85, 0, 1, Vector2( 0.12124, 36.96 ), 0.0, 0.0, 0, 0, Vector2( 0.250083, -1.75999 ), 0.0, 0.0, 0, 0, Vector2( 0.385455, -38.72 ), 0.0, 0.0, 0, 0, Vector2( 0.496529, -1.75999 ), 0.0, 0.0, 0, 0, Vector2( 0.633813, 54.56 ), 0.0, 0.0, 0, 0, Vector2( 0.760331, -3.51999 ), 0.0, 0.0, 0, 0, Vector2( 0.864463, -40.48 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 298.663, 0.0, 1, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 0, 240, 1 )
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 60.0
+initial_velocity_random = 0.4
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+tangential_accel = -5.0
+tangential_accel_random = 1.0
+tangential_accel_curve = SubResource( 2 )
+scale = 2.0
+scale_random = 1.0
+color = Color( 1, 0.588235, 0.368627, 1 )
+hue_variation = 0.19
+hue_variation_random = 0.39
+
+[node name="FireParticles" type="Particles2D"]
+position = Vector2( 240, 240 )
+rotation = -1.5708
+amount = 200
+lifetime = 10.0
+preprocess = 10.0
+visibility_rect = Rect2( 0, -240, 240, 480 )
+process_material = SubResource( 3 )
+

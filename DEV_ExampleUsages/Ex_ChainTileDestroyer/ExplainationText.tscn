@@ -1,0 +1,51 @@
+[gd_scene format=2]
+
+[node name="ExplainationAbout" type="RichTextLabel"]
+margin_right = 720.0
+margin_bottom = 1312.0
+bbcode_enabled = true
+bbcode_text = "[color=#0FFFFF]Chain Destroyer?[/color]
+
+Chain Destroyer is a controller that create/destroy blocks in a sequence. It can be activated by various events, such as: Player touching event zone, boss is killed and removed from the scene, etc.
+
+This scene demostrates how to properly use chain destroy controller with a defined area to create/destroy blocks, including an area notifier to trigger the controller.
+
+[color=#0FFFFF]How do I use that?[/color]
+To use a chain destroyer controller, you need at least 3 instanced nodes. One is an area notifier, two is a chain destroyer controller, and as many [color=#aaaaff] chain destroy area[/color] as you want.
+  [color=#00cf00]-AreaNotifier[/color] : Sends a signal to a node when a player enters the area.
+  [color=#00cf00]-ChainDestroyerArea[/color] : Used in [color=#aaaaff]ChainDestroyerController[/color]. Defines an area in rectangle shape where to create/destroy blocks.
+  [color=#00cf00]-ChainDestroyerController[/color] : Controls and destroys blocks. Contains [color=#aaaaff]ChainDestroyerArea[/color] node(s).
+
+[color=#0FFFFF]How the controller work?[/color]
+  The [color=#00ff00]ChainDestroyerController[/color] is just a controller that holds [color=#aaaaff]ChainDestroyerArea[/color] node(s). Upon activation, it reads the data of the first [color=#aaaaff]ChainDestroyerArea[/color] node where to create/destroy blocks, delay in seconds before reading next [color=#aaaaff]ChainDestroyerArea[/color] node, and many more. When it finishes reading the first node and is used, next one will be used, and so on.
+
+[color=#0FFFFF]Setting up the controller[/color]
+  -Instance the following child scenes:
+    1. [color=#ef40ef]AreaNotifier[/color] from res://Entities/PlayerAreaNotifier/
+    2. [color=#ef40ef]ChainDestroyerController[/color] from res://Entities/BlockChainDestroyer/ChainDestroyController.tscn
+	3. [color=#ef40ef]ChainDestroyerArea[/color] from res://Entities/BlockChainDestroyer/AreaChainDestroyer.tscn and put it inside [color=#aaaaff]ChainDestroyerController[/color] node.
+  -To make the controller works upon player enters area. Right click on an AreaNotifier node in scene tab and click \"Connect\". In the connect menu, select a controller node and then click connect.
+  -Finish. Try it out!"
+text = "Chain Destroyer?
+
+Chain Destroyer is a controller that create/destroy blocks in a sequence. It can be activated by various events, such as: Player touching event zone, boss is killed and removed from the scene, etc.
+
+This scene demostrates how to properly use chain destroy controller with a defined area to create/destroy blocks, including an area notifier to trigger the controller.
+
+How do I use that?
+To use a chain destroyer controller, you need at least 3 instanced nodes. One is an area notifier, two is a chain destroyer controller, and as many  chain destroy area as you want.
+  -AreaNotifier : Sends a signal to a node when a player enters the area.
+  -ChainDestroyerArea : Used in ChainDestroyerController. Defines an area in rectangle shape where to create/destroy blocks.
+  -ChainDestroyerController : Controls and destroys blocks. Contains ChainDestroyerArea node(s).
+
+How the controller work?
+  The ChainDestroyerController is just a controller that holds ChainDestroyerArea node(s). Upon activation, it reads the data of the first ChainDestroyerArea node where to create/destroy blocks, delay in seconds before reading next ChainDestroyerArea node, and many more. When it finishes reading the first node and is used, next one will be used, and so on.
+
+Setting up the controller
+  -Instance the following child scenes:
+    1. AreaNotifier from res://Entities/PlayerAreaNotifier/
+    2. ChainDestroyerController from res://Entities/BlockChainDestroyer/ChainDestroyController.tscn
+	3. ChainDestroyerArea from res://Entities/BlockChainDestroyer/AreaChainDestroyer.tscn and put it inside ChainDestroyerController node.
+  -To make the controller works upon player enters area. Right click on an AreaNotifier node in scene tab and click \"Connect\". In the connect menu, select a controller node and then click connect.
+  -Finish. Try it out!"
+scroll_active = false

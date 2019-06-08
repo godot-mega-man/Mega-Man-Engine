@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Levels/Lv_Core.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/PlayerAreaNotifier/PlayerAreaNotifier.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/BlockChainDestroyer/ChainDestroyController.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/BlockChainDestroyer/AreaChainDestroyer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Fonts/Font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://DEV_ExampleUsages/Ex_ChainTileDestroyer/ExplainationText.tscn" type="PackedScene" id=6]
+
+[node name="Level" index="0" instance=ExtResource( 1 )]
+CAMERA_LIMIT_RIGHT = 528
+CAMERA_LIMIT_BOTTOM = 256
+
+[node name="TileMap" parent="." index="0"]
+tile_data = PoolIntArray( -65519, 2, 0, -65518, 2, 1, -65517, 2, 1, -65516, 2, 1, -65515, 2, 1, -65514, 2, 1, -65513, 2, 2, 17, 2, 65536, 18, 2, 131080, 19, 2, 131079, 20, 2, 65537, 21, 2, 65537, 22, 2, 8, 23, 2, 65538, 65553, 2, 65536, 65554, 2, 65537, 65555, 2, 65537, 65556, 2, 9, 65557, 2, 65537, 65558, 2, 65537, 65559, 2, 65538, 131089, 2, 65536, 131090, 2, 65537, 131091, 2, 65537, 131092, 2, 65537, 131093, 2, 65537, 131094, 2, 65543, 131095, 2, 65538, 196625, 2, 131072, 196626, 2, 65541, 196627, 2, 65537, 196628, 2, 65537, 196629, 2, 65537, 196630, 2, 65540, 196631, 2, 131074, 262162, 2, 65536, 262163, 2, 65537, 262164, 2, 65537, 262165, 2, 65537, 262166, 2, 65538, 327698, 2, 65536, 327699, 2, 131081, 327700, 2, 65537, 327701, 2, 65537, 327702, 2, 65538, 393234, 2, 65536, 393235, 2, 65537, 393236, 2, 65537, 393237, 2, 65537, 393238, 2, 65538, 458770, 2, 65536, 458771, 2, 65537, 458772, 2, 65537, 458773, 2, 65537, 458774, 2, 65538, 524306, 2, 65536, 524307, 2, 65537, 524308, 2, 65537, 524309, 2, 65537, 524310, 2, 65538, 589842, 2, 65536, 589843, 2, 65537, 589844, 2, 65537, 589845, 2, 65537, 589846, 2, 65538, 655378, 2, 65536, 655379, 2, 65537, 655380, 2, 65537, 655381, 2, 65537, 655382, 2, 65538, 786431, 2, 0, 720896, 2, 1, 720897, 2, 1, 720898, 2, 1, 720899, 2, 1, 720900, 2, 1, 720901, 2, 1, 720902, 2, 1, 720903, 2, 1, 720904, 2, 1, 720905, 2, 1, 720906, 2, 1, 720907, 2, 1, 720908, 2, 1, 720909, 2, 1, 720910, 2, 1, 720911, 2, 1, 720912, 2, 1, 720913, 2, 1, 720914, 2, 131077, 720915, 2, 65537, 720916, 2, 65537, 720917, 2, 65537, 720918, 2, 131076, 720919, 2, 196617, 720920, 2, 1, 720921, 2, 1, 720922, 2, 1, 720923, 2, 1, 720924, 2, 1, 720925, 2, 196617, 720926, 2, 1, 720927, 2, 196617, 720928, 2, 1, 720929, 2, 2, 851967, 2, 131072, 786432, 2, 131073, 786433, 2, 65541, 786434, 2, 65537, 786435, 2, 65537, 786436, 2, 65540, 786437, 2, 131073, 786438, 2, 131073, 786439, 2, 65541, 786440, 2, 65540, 786441, 2, 131073, 786442, 2, 131073, 786443, 2, 65541, 786444, 2, 65537, 786445, 2, 65537, 786446, 2, 65537, 786447, 2, 65537, 786448, 2, 65537, 786449, 2, 65537, 786450, 2, 65537, 786451, 2, 65537, 786452, 2, 65537, 786453, 2, 65537, 786454, 2, 65537, 786455, 2, 65537, 786456, 2, 65537, 786457, 2, 65537, 786458, 2, 65537, 786459, 2, 65537, 786460, 2, 65540, 786461, 2, 262154, 786462, 2, 131073, 786463, 2, 131073, 786464, 2, 131073, 786465, 2, 262152, 851969, 2, 262153, 851970, 2, 65537, 851971, 2, 65537, 851972, 2, 65538, 851975, 2, 65536, 851976, 2, 65538, 851979, 2, 65536, 851980, 2, 65540, 851981, 2, 131073, 851982, 2, 131073, 851983, 2, 65541, 851984, 2, 65537, 851985, 2, 65540, 851986, 2, 262154, 851987, 2, 131073, 851988, 2, 65541, 851989, 2, 65537, 851990, 2, 65540, 851991, 2, 131073, 851992, 2, 131073, 851993, 2, 131073, 851994, 2, 65541, 851995, 2, 65537, 851996, 2, 65538, 917505, 2, 65536, 917506, 2, 65540, 917507, 2, 262154, 917508, 2, 131074, 917511, 2, 65536, 917512, 2, 65538, 917515, 2, 65536, 917516, 2, 65538, 917519, 2, 65536, 917520, 2, 65537, 917521, 2, 65538, 917524, 2, 65536, 917525, 2, 65537, 917526, 2, 65538, 917530, 2, 65536, 917531, 2, 65537, 917532, 2, 65538, 983041, 2, 65536, 983042, 2, 65538, 983047, 2, 65536, 983048, 2, 65538, 983051, 2, 65536, 983052, 2, 65538, 983055, 2, 65536, 983056, 2, 65537, 983057, 2, 65538, 983060, 2, 65536, 983061, 2, 65537, 983062, 2, 65538, 983066, 2, 65536, 983067, 2, 9, 983068, 2, 65538, 1048577, 2, 131072, 1048578, 2, 262152, 1048583, 2, 262151, 1048584, 2, 262152, 1048587, 2, 131072, 1048588, 2, 131074, 1048591, 2, 131072, 1048592, 2, 262154, 1048593, 2, 131074, 1048596, 2, 131072, 1048597, 2, 131073, 1048598, 2, 131074, 1048602, 2, 131072, 1048603, 2, 131073, 1048604, 2, 131074 )
+
+[node name="Player" parent="Iterable" index="1"]
+position = Vector2( 104, 164 )
+
+[node name="AreaNotifier" parent="Iterable" index="2" instance=ExtResource( 2 )]
+margin_left = 208.0
+margin_top = 80.0
+margin_right = 240.0
+margin_bottom = 176.0
+
+[node name="ChainDestroyController" parent="Iterable" index="3" instance=ExtResource( 3 )]
+
+[node name="AreaChainDestroyer" parent="Iterable/ChainDestroyController" index="1" instance=ExtResource( 4 )]
+margin_left = 288.0
+margin_top = 96.0
+margin_right = 368.0
+margin_bottom = 176.0
+
+[node name="DeathScreenMain" parent="." index="11"]
+editor/display_folded = true
+
+[node name="Explaination" type="Control" parent="." index="12"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Header" type="Label" parent="Explaination" index="0"]
+margin_left = 8.0
+margin_top = -16.0
+margin_right = 216.0
+margin_bottom = -5.0
+custom_fonts/font = ExtResource( 5 )
+text = "ChainTileDestroyer Example"
+
+[node name="ExplainInGame" type="Label" parent="Explaination" index="1"]
+margin_left = 8.0
+margin_top = 48.0
+margin_right = 216.0
+margin_bottom = 144.0
+custom_fonts/font = ExtResource( 5 )
+text = "We uses AreaNotifier to send a signal to a ChainDestroyController to start destroying blocks. 
+
+Try moving to the wall!"
+autowrap = true
+
+[node name="ExplainationAbout" parent="Explaination" index="2" instance=ExtResource( 6 )]
+margin_left = 16.0
+margin_top = 288.0
+margin_right = 736.0
+margin_bottom = 1456.0
+[connection signal="entered_area" from="Iterable/AreaNotifier" to="Iterable/ChainDestroyController" method="_on_AreaNotifier_entered_area"]
+
+[editable path="PlayerMenuMain"]
+
+[editable path="DeathScreenMain"]

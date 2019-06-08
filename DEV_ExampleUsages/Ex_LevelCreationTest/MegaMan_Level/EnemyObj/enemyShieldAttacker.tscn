@@ -1,0 +1,154 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Entities/Enemy/Obj/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/enemyShieldAttacker.gd" type="Script" id=2]
+[ext_resource path="res://Behaviours/Platformer/PlatformerBehavior.tscn" type="PackedScene" id=3]
+[ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/Mm4shieldattackersprite.png" type="Texture" id=4]
+[ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=5]
+
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 4 )
+region = Rect2( 102, 0, 24, 32 )
+
+[sub_resource type="Animation" id=2]
+length = 0.12
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.04, 0.09 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 1, 0, 1, 2 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("./..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "flip"
+}, {
+"args": [  ],
+"method": "start_moving"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShieldArea2D/ProjectileReflector:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 2, 15 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 2, 15 )
+
+[node name="ShieldAttacker" index="0" instance=ExtResource( 1 )]
+collision_mask = 1
+script = ExtResource( 2 )
+damage_area_nodes = [ NodePath("FlipWholeThingInHere/DamageArea2D"), NodePath("FlipWholeThingInHere/ShieldArea2D") ]
+HP = 25
+DROP_COIN_AMOUNT = 2
+DROP_COIN_COUNT = 2
+EXP_REWARD = 4
+
+[node name="PlatformerBehavior" parent="." index="0" instance=ExtResource( 3 )]
+move_type = 1
+GRAVITY_VEC = Vector2( -2, 0 )
+IS_PREVENT_OUTSIDE_SCREEN = false
+
+[node name="SpritePreview" type="Sprite" parent="." index="1"]
+visible = false
+texture = SubResource( 1 )
+
+[node name="FlipWholeThingInHere" type="Node2D" parent="." index="2"]
+
+[node name="Sprite" type="Sprite" parent="FlipWholeThingInHere" index="0"]
+texture = ExtResource( 4 )
+offset = Vector2( 0, -1 )
+hframes = 5
+frame = 3
+
+[node name="ShieldAni" type="AnimationPlayer" parent="FlipWholeThingInHere/Sprite" index="0"]
+root_node = NodePath("../..")
+autoplay = "Moving"
+anims/Moving = SubResource( 2 )
+anims/Turning = SubResource( 3 )
+
+[node name="ShieldArea2D" type="Area2D" parent="FlipWholeThingInHere" index="1"]
+position = Vector2( -8, -1 )
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipWholeThingInHere/ShieldArea2D" index="0"]
+shape = SubResource( 4 )
+
+[node name="ProjectileReflector" parent="FlipWholeThingInHere/ShieldArea2D" index="1" instance=ExtResource( 5 )]
+
+[node name="DamageArea2D" type="Area2D" parent="FlipWholeThingInHere" index="2"]
+position = Vector2( 8, -1 )
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipWholeThingInHere/DamageArea2D" index="0"]
+shape = SubResource( 5 )
+
+[node name="PlatformCollisionShape2D" parent="." index="4"]
+visible = true
+position = Vector2( 0, -1 )
+disabled = false
+
+[node name="HpBar" parent="." index="9"]
+margin_left = -10.0
+margin_top = 17.0
+margin_right = 10.0
+margin_bottom = 23.0
+[connection signal="move_and_collided" from="PlatformerBehavior" to="." method="_on_PlatformerBehavior_move_and_collided"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 0, 240, 1 )
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 120.0
+initial_velocity_random = 0.4
+angular_velocity = 200.0
+angular_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_random = 1.0
+color = Color( 0.882353, 0.815686, 1, 1 )
+hue_variation = 0.19
+hue_variation_random = 0.39
+
+[node name="MagicFieldParticles" type="Particles2D"]
+position = Vector2( 240, 240 )
+rotation = -1.5708
+amount = 300
+lifetime = 5.0
+preprocess = 10.0
+visibility_rect = Rect2( 0, -240, 240, 480 )
+process_material = SubResource( 1 )
+

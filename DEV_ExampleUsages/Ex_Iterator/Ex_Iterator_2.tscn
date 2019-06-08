@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Misc/IterableSwapper/IterableSwapper.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[node name="Node" type="Node"]
+
+[node name="Explaination" type="Label" parent="."]
+margin_top = 264.0
+margin_right = 392.0
+margin_bottom = 328.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.345098, 1, 0.968627, 1 )
+text = "Usually, any nodes that are inherited by Control node are not affected by IterableSwapper. This technique represents how to correctly fix things that's incompatible by using Node2D as a replacement."
+autowrap = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="IterableSwapper" parent="Node2D" instance=ExtResource( 2 )]
+
+[node name="SmallSprite" type="Sprite" parent="Node2D"]
+position = Vector2( 192, 56 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="Label_Overlap" type="Label" parent="Node2D"]
+margin_left = 56.0
+margin_top = 40.0
+margin_right = 216.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 1 )
+text = "Non-overlapping Text"
+
+[node name="Label_Overlap2" type="Label" parent="Node2D"]
+margin_left = 168.0
+margin_top = 56.0
+margin_right = 328.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 1 )
+text = "Non-overlapping Text"
+
+[node name="SmallSprite2" type="Sprite" parent="Node2D"]
+position = Vector2( 184, 168 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="Node2D" type="Node2D" parent="Node2D"]
+editor/display_folded = true
+
+[node name="Label_Overlap2" type="Label" parent="Node2D/Node2D"]
+margin_left = 168.0
+margin_top = 144.0
+margin_right = 328.0
+margin_bottom = 169.0
+custom_fonts/font = ExtResource( 1 )
+text = "Overlapping Text"
+
+[node name="Label_Overlap3" type="Label" parent="Node2D/Node2D"]
+margin_left = 80.0
+margin_top = 168.0
+margin_right = 240.0
+margin_bottom = 193.0
+custom_fonts/font = ExtResource( 1 )
+text = "Overlapping Text"

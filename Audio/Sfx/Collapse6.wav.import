@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Collapse6.wav-df1cb57215a6e24b37454852a283e3f4.sample"
+
+[deps]
+
+source_file="res://Audio/Sfx/Collapse6.wav"
+dest_files=[ "res://.import/Collapse6.wav-df1cb57215a6e24b37454852a283e3f4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

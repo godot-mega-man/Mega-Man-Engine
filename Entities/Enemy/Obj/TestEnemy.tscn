@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Entities/Enemy/Obj/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemy/Obj/TestEnemy.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Enemy/Obj/Enemy_TestEnemy.png" type="Texture" id=3]
+
+[node name="TestEnemy" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )

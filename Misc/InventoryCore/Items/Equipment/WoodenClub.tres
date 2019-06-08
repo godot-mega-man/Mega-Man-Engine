@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Misc/InventoryCore/Items/Equipment.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+category = 3
+name = "Wooden Club"
+description = ""
+value = 30
+can_sell = true
+slot = 0
+power = 3
+attack_cooldown = 0.5
+armor = 0
+enchantable = true
+upgradable = true
+

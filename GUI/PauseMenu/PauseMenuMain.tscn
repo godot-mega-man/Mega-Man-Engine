@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GUI/PauseMenu/PauseMenuMain.gd" type="Script" id=1]
+[ext_resource path="res://GUI/PauseMenu/PauseMenus.tscn" type="PackedScene" id=2]
+
+[node name="PauseMenuMain" type="CanvasLayer"]
+pause_mode = 2
+layer = 2
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="PauseMenuContainer" parent="Control" instance=ExtResource( 2 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -128.0
+margin_right = 72.0
+margin_bottom = 128.0
+[connection signal="pause_menu_closed" from="Control/PauseMenuContainer" to="." method="_on_PauseMenuContainer_pause_menu_closed"]
+[connection signal="resume_btn_pressed" from="Control/PauseMenuContainer" to="." method="_on_PauseMenuContainer_resume_btn_pressed"]

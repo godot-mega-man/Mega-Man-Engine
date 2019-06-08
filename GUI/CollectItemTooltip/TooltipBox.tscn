@@ -1,0 +1,144 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://GUI/CollectItemTooltip/TooltipBox.gd" type="Script" id=1]
+[ext_resource path="res://GUI/NinePatchPanel/NinePatchPanel_ZInner_Basic_Disabled.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Coin/Coin1.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/Font.tres" type="DynamicFont" id=4]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Disappear"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_min_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.4, 0.8 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 16 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "slide_out"
+}, {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TooltipBox:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="TooltipBox" type="Control"]
+margin_right = 144.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TooltipBox" type="NinePatchRect" parent="."]
+editor/display_folded = true
+self_modulate = Color( 1, 1, 1, 0.423529 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 32, 16 )
+texture = ExtResource( 2 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TooltipBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+
+[node name="EmptyBox" type="ReferenceRect" parent="TooltipBox/HBoxContainer"]
+margin_right = 4.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 4, 0 )
+
+[node name="TooltipIcon" type="TextureRect" parent="TooltipBox/HBoxContainer"]
+margin_left = 4.0
+margin_right = 20.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="EmptyBox2" type="ReferenceRect" parent="TooltipBox/HBoxContainer"]
+margin_left = 20.0
+margin_right = 24.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 4, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TooltipBox/HBoxContainer"]
+margin_left = 24.0
+margin_right = 132.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 24, 12 )
+custom_constants/separation = 0
+
+[node name="EmptyBox" type="ReferenceRect" parent="TooltipBox/HBoxContainer/VBoxContainer"]
+margin_right = 108.0
+margin_bottom = 2.0
+rect_min_size = Vector2( 0, 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TooltipBox/HBoxContainer/VBoxContainer"]
+margin_top = 2.0
+margin_right = 108.0
+margin_bottom = 13.0
+custom_constants/separation = 0
+
+[node name="HeaderLabel" type="Label" parent="TooltipBox/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 4 )
+text = "$Item.name"
+
+[node name="EmptyBox" type="ReferenceRect" parent="TooltipBox/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 80.0
+margin_right = 84.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 4, 2 )
+
+[node name="QuantityLabel" type="Label" parent="TooltipBox/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 84.0
+margin_right = 108.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 4 )
+text = "(1)"
+
+[node name="PopOutTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Disappear = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="timeout" from="PopOutTimer" to="." method="_on_PopOutTimer_timeout"]

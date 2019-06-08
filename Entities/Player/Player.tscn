@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Behaviours/Platformer/PlatformerBehavior.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Camera/Camera.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7, 10 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Invincible"
+length = 0.06
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlatformerSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
+collision_layer = 2
+collision_mask = 65
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PlatformerBehavior" parent="." instance=ExtResource( 2 )]
+WALK_SPEED = 108.0
+JUMP_SPEED = 320.0
+VELOCITY_X_DAMPING = 0.2
+
+[node name="PlatformerSprite" parent="." instance=ExtResource( 3 )]
+path_to_platformer_behavior = NodePath("../PlatformerBehavior")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 3 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+limit_smoothed = true
+smoothing_speed = 8.0
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+editor_draw_screen = false
+script = ExtResource( 4 )
+
+[node name="Pivots" type="Node2D" parent="."]
+
+[node name="Shoot" type="Position2D" parent="Pivots"]
+position = Vector2( 23, 0 )
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"Player",
+]]
+visible = false
+position = Vector2( 0, 3 )
+collision_layer = 2
+collision_mask = 60
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
+anims/Invincible = SubResource( 3 )
+
+[node name="TimescaleTimer" type="Timer" parent="."]
+pause_mode = 2
+wait_time = 0.5
+one_shot = true
+[connection signal="input_event" from="." to="." method="_on_Player_input_event"]
+[connection signal="launched_attack" from="." to="PlatformerSprite" method="start_normal_attack_animation"]
+[connection signal="landed" from="PlatformerBehavior" to="." method="_on_PlatformerBehavior_landed"]

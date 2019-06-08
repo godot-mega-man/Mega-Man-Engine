@@ -1,0 +1,439 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Levels/Lv_Core.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/BlockChainDestroyer/ChainDestroyController.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/BlockChainDestroyer/AreaChainDestroyer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/PlayerAreaNotifier/PlayerAreaNotifier.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Fonts/Font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://DEV_ExampleUsages/Ex_ChainTileDestroyer/ExplainationText.tscn" type="PackedScene" id=6]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+onready var restart_timer = $RestartTimer
+
+func _on_Player_player_die() -> void:
+	restart_timer.start()
+
+func re():
+	get_node(\"/root/Level/FadeScreen\").reload_scene()
+
+func _on_RestartTimer_timeout():
+	re()
+"
+
+[node name="Level" index="0" instance=ExtResource( 1 )]
+CAMERA_LIMIT_RIGHT = 912
+CAMERA_LIMIT_BOTTOM = 256
+
+[node name="TileMap" parent="." index="0"]
+tile_data = PoolIntArray( -65485, 2, 196615, -65484, 2, 1, -65483, 2, 1, -65482, 2, 1, -65481, 2, 1, -65480, 2, 1, -65479, 2, 2, 51, 2, 262151, 52, 2, 65541, 53, 2, 65537, 54, 2, 131081, 55, 2, 65537, 56, 2, 65537, 57, 2, 65538, 65588, 2, 65536, 65589, 2, 65537, 65590, 2, 65543, 65591, 2, 65537, 65592, 2, 65537, 65593, 2, 65538, 131124, 2, 131072, 131125, 2, 65541, 131126, 2, 65537, 131127, 2, 65537, 131128, 2, 65537, 131129, 2, 196618, 196661, 2, 65536, 196662, 2, 65537, 196663, 2, 65537, 196664, 2, 131080, 196665, 2, 65538, 262197, 2, 131072, 262198, 2, 65541, 262199, 2, 65537, 262200, 2, 65537, 262201, 2, 65538, 327734, 2, 262153, 327735, 2, 65537, 327736, 2, 65537, 327737, 2, 65538, 393270, 2, 131072, 393271, 2, 131073, 393272, 2, 65541, 393273, 2, 65538, 458808, 2, 65536, 458809, 2, 196618, 524344, 2, 65536, 524345, 2, 65538, 589880, 2, 262153, 589881, 2, 65538, 655401, 2, 0, 655402, 2, 1, 655403, 2, 196617, 655404, 2, 1, 655405, 2, 2, 655416, 2, 65536, 655417, 2, 65538, 786431, 2, 0, 720896, 2, 1, 720897, 2, 1, 720898, 2, 1, 720899, 2, 1, 720900, 2, 1, 720901, 2, 1, 720902, 2, 1, 720903, 2, 1, 720904, 2, 1, 720905, 2, 1, 720906, 2, 1, 720907, 2, 1, 720908, 2, 1, 720909, 2, 1, 720910, 2, 1, 720911, 2, 1, 720912, 2, 1, 720913, 2, 1, 720914, 2, 2, 720921, 2, 0, 720922, 2, 1, 720923, 2, 1, 720924, 2, 2, 720937, 2, 65536, 720938, 2, 65537, 720939, 2, 65537, 720940, 2, 65537, 720941, 2, 65538, 720950, 2, 0, 720951, 2, 196617, 720952, 2, 131077, 720953, 2, 65538, 851967, 2, 262153, 786432, 2, 65537, 786433, 2, 65537, 786434, 2, 65537, 786435, 2, 65537, 786436, 2, 8, 786437, 2, 65537, 786438, 2, 65544, 786439, 2, 65537, 786440, 2, 65537, 786441, 2, 65537, 786442, 2, 65537, 786443, 2, 65537, 786444, 2, 65545, 786445, 2, 65537, 786446, 2, 65537, 786447, 2, 65537, 786448, 2, 65537, 786449, 2, 65537, 786450, 2, 196618, 786457, 2, 262153, 786458, 2, 65537, 786459, 2, 65544, 786460, 2, 65538, 786464, 2, 0, 786465, 2, 196617, 786466, 2, 2, 786473, 2, 65536, 786474, 2, 65537, 786475, 2, 65537, 786476, 2, 65537, 786477, 2, 65538, 786479, 2, 0, 786480, 2, 2, 786486, 2, 65536, 786487, 2, 65537, 786488, 2, 65537, 786489, 2, 65538, 917503, 2, 65536, 851968, 2, 8, 851969, 2, 65537, 851970, 2, 65537, 851971, 2, 65537, 851972, 2, 131079, 851973, 2, 65537, 851974, 2, 65537, 851975, 2, 65537, 851976, 2, 65537, 851977, 2, 65537, 851978, 2, 65537, 851979, 2, 65537, 851980, 2, 65537, 851981, 2, 65537, 851982, 2, 65537, 851983, 2, 65537, 851984, 2, 65537, 851985, 2, 65537, 851986, 2, 65538, 851993, 2, 65536, 851994, 2, 65537, 851995, 2, 65537, 851996, 2, 65538, 852000, 2, 65536, 852001, 2, 131081, 852002, 2, 65538, 852009, 2, 65536, 852010, 2, 8, 852011, 2, 65537, 852012, 2, 65537, 852013, 2, 65538, 852015, 2, 65536, 852016, 2, 65538, 852022, 2, 65536, 852023, 2, 65537, 852024, 2, 65537, 852025, 2, 65538, 983039, 2, 65536, 917504, 2, 65537, 917505, 2, 65537, 917506, 2, 65537, 917507, 2, 65537, 917508, 2, 65537, 917509, 2, 65537, 917510, 2, 65537, 917511, 2, 65537, 917512, 2, 65537, 917513, 2, 65537, 917514, 2, 65537, 917515, 2, 65537, 917516, 2, 65537, 917517, 2, 9, 917518, 2, 65537, 917519, 2, 65537, 917520, 2, 65537, 917521, 2, 65537, 917522, 2, 65538, 917529, 2, 65536, 917530, 2, 9, 917531, 2, 65537, 917532, 2, 65538, 917536, 2, 65536, 917537, 2, 65537, 917538, 2, 65538, 917545, 2, 65536, 917546, 2, 65537, 917547, 2, 65537, 917548, 2, 65543, 917549, 2, 65538, 917551, 2, 65536, 917552, 2, 65538, 917558, 2, 65536, 917559, 2, 65537, 917560, 2, 65537, 917561, 2, 65538, 1048575, 2, 65536, 983040, 2, 65537, 983041, 2, 131079, 983042, 2, 65537, 983043, 2, 65537, 983044, 2, 65537, 983045, 2, 65537, 983046, 2, 65544, 983047, 2, 65537, 983048, 2, 65537, 983049, 2, 65537, 983050, 2, 65537, 983051, 2, 65537, 983052, 2, 65537, 983053, 2, 65537, 983054, 2, 65537, 983055, 2, 65537, 983056, 2, 65537, 983057, 2, 65537, 983058, 2, 65538, 983065, 2, 262153, 983066, 2, 65537, 983067, 2, 65537, 983068, 2, 65538, 983072, 2, 65536, 983073, 2, 65537, 983074, 2, 65538, 983081, 2, 65536, 983082, 2, 65537, 983083, 2, 8, 983084, 2, 65537, 983085, 2, 65538, 983087, 2, 65536, 983088, 2, 65538, 983094, 2, 262153, 983095, 2, 65537, 983096, 2, 65537, 983097, 2, 65538, 1114111, 2, 131072, 1048576, 2, 131073, 1048577, 2, 131073, 1048578, 2, 131073, 1048579, 2, 131073, 1048580, 2, 131073, 1048581, 2, 131073, 1048582, 2, 131073, 1048583, 2, 262154, 1048584, 2, 131073, 1048585, 2, 131073, 1048586, 2, 131073, 1048587, 2, 262154, 1048588, 2, 131073, 1048589, 2, 131073, 1048590, 2, 131073, 1048591, 2, 131073, 1048592, 2, 262154, 1048593, 2, 131073, 1048594, 2, 131074, 1048601, 2, 131072, 1048602, 2, 131073, 1048603, 2, 131073, 1048604, 2, 131074, 1048608, 2, 131072, 1048609, 2, 131073, 1048610, 2, 131074, 1048617, 2, 262151, 1048618, 2, 131073, 1048619, 2, 131073, 1048620, 2, 131073, 1048621, 2, 131074, 1048623, 2, 131072, 1048624, 2, 131074, 1048630, 2, 131072, 1048631, 2, 262154, 1048632, 2, 131073, 1048633, 2, 131074 )
+
+[node name="Player" parent="Iterable" index="1"]
+position = Vector2( 104, 164 )
+
+[node name="MyChainTile" type="Node" parent="Iterable" index="2"]
+
+[node name="MyDestroyers" type="Node" parent="Iterable/MyChainTile" index="0"]
+editor/display_folded = true
+
+[node name="ChainDestroyController" parent="Iterable/MyChainTile/MyDestroyers" index="0" instance=ExtResource( 2 )]
+editor/display_folded = true
+
+[node name="AreaChainDestroyer" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController" index="1" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 336.0
+margin_top = 240.0
+margin_right = 368.0
+margin_bottom = 272.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer2" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController" index="2" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 336.0
+margin_top = 224.0
+margin_right = 368.0
+margin_bottom = 240.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer3" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController" index="3" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 336.0
+margin_top = 208.0
+margin_right = 368.0
+margin_bottom = 224.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer4" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController" index="4" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 336.0
+margin_top = 192.0
+margin_right = 368.0
+margin_bottom = 208.0
+set_tile_id = 2
+
+[node name="ChainDestroyController2" parent="Iterable/MyChainTile/MyDestroyers" index="1" instance=ExtResource( 2 )]
+editor/display_folded = true
+
+[node name="AreaChainDestroyer" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController2" index="1" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 400.0
+margin_top = 176.0
+margin_right = 464.0
+margin_bottom = 192.0
+
+[node name="AreaChainDestroyer2" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController2" index="2" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 400.0
+margin_top = 192.0
+margin_right = 464.0
+margin_bottom = 208.0
+
+[node name="AreaChainDestroyer3" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController2" index="3" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 400.0
+margin_top = 208.0
+margin_right = 464.0
+margin_bottom = 224.0
+
+[node name="ChainDestroyController3" parent="Iterable/MyChainTile/MyDestroyers" index="2" instance=ExtResource( 2 )]
+editor/display_folded = true
+
+[node name="AreaChainDestroyer5" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController3" index="1" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 512.0
+margin_top = 176.0
+margin_right = 560.0
+margin_bottom = 192.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer6" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController3" index="2" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 512.0
+margin_top = 160.0
+margin_right = 560.0
+margin_bottom = 176.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer7" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController3" index="3" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 592.0
+margin_top = 240.0
+margin_right = 624.0
+margin_bottom = 272.0
+destroy_delay = 0.5
+set_tile_id = 2
+
+[node name="AreaChainDestroyer8" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController3" index="4" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 592.0
+margin_top = 224.0
+margin_right = 624.0
+margin_bottom = 240.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer9" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController3" index="5" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 592.0
+margin_top = 208.0
+margin_right = 624.0
+margin_bottom = 224.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer10" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController3" index="6" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 592.0
+margin_top = 192.0
+margin_right = 624.0
+margin_bottom = 208.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer11" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController3" index="7" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 592.0
+margin_top = 176.0
+margin_right = 624.0
+margin_bottom = 192.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer12" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController3" index="8" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 592.0
+margin_top = 160.0
+margin_right = 624.0
+margin_bottom = 176.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer13" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController3" index="9" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 592.0
+margin_top = 144.0
+margin_right = 624.0
+margin_bottom = 160.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer14" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController3" index="10" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 592.0
+margin_top = 128.0
+margin_right = 624.0
+margin_bottom = 144.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer15" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController3" index="11" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 592.0
+margin_top = 112.0
+margin_right = 624.0
+margin_bottom = 128.0
+set_tile_id = 2
+
+[node name="ChainDestroyController4" parent="Iterable/MyChainTile/MyDestroyers" index="3" instance=ExtResource( 2 )]
+editor/display_folded = true
+
+[node name="AreaChainDestroyer4" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" index="1" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 656.0
+margin_top = 160.0
+margin_right = 672.0
+margin_bottom = 176.0
+
+[node name="AreaChainDestroyer5" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" index="2" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 672.0
+margin_top = 160.0
+margin_right = 688.0
+margin_bottom = 176.0
+destroy_delay = 0.0
+
+[node name="AreaChainDestroyer6" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" index="3" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 656.0
+margin_top = 176.0
+margin_right = 672.0
+margin_bottom = 192.0
+
+[node name="AreaChainDestroyer7" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" index="4" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 688.0
+margin_top = 160.0
+margin_right = 704.0
+margin_bottom = 176.0
+destroy_delay = 0.0
+
+[node name="AreaChainDestroyer8" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" index="5" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 672.0
+margin_top = 176.0
+margin_right = 688.0
+margin_bottom = 192.0
+destroy_delay = 0.0
+
+[node name="AreaChainDestroyer9" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" index="6" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 656.0
+margin_top = 192.0
+margin_right = 672.0
+margin_bottom = 208.0
+
+[node name="AreaChainDestroyer10" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" index="7" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 704.0
+margin_top = 160.0
+margin_right = 736.0
+margin_bottom = 176.0
+destroy_delay = 0.0
+
+[node name="AreaChainDestroyer11" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" index="8" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 688.0
+margin_top = 176.0
+margin_right = 704.0
+margin_bottom = 192.0
+destroy_delay = 0.0
+
+[node name="AreaChainDestroyer12" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" index="9" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 672.0
+margin_top = 192.0
+margin_right = 688.0
+margin_bottom = 208.0
+destroy_delay = 0.0
+
+[node name="AreaChainDestroyer13" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" index="10" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 656.0
+margin_top = 208.0
+margin_right = 672.0
+margin_bottom = 224.0
+
+[node name="AreaChainDestroyer14" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" index="11" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 704.0
+margin_top = 176.0
+margin_right = 736.0
+margin_bottom = 192.0
+destroy_delay = 0.0
+
+[node name="AreaChainDestroyer15" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" index="12" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 688.0
+margin_top = 192.0
+margin_right = 736.0
+margin_bottom = 208.0
+destroy_delay = 0.0
+
+[node name="AreaChainDestroyer16" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" index="13" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 672.0
+margin_top = 208.0
+margin_right = 736.0
+margin_bottom = 224.0
+
+[node name="ChainDestroyController5" parent="Iterable/MyChainTile/MyDestroyers" index="4" instance=ExtResource( 2 )]
+editor/display_folded = true
+
+[node name="AreaChainDestroyer4" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController5" index="1" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 752.0
+margin_top = 192.0
+margin_right = 784.0
+margin_bottom = 208.0
+
+[node name="AreaChainDestroyer16" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController5" index="2" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 848.0
+margin_top = 224.0
+margin_right = 864.0
+margin_bottom = 272.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer5" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController5" index="3" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 752.0
+margin_top = 208.0
+margin_right = 784.0
+margin_bottom = 224.0
+
+[node name="AreaChainDestroyer17" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController5" index="4" instance=ExtResource( 3 )]
+modulate = Color( 0.207843, 1, 0, 1 )
+margin_left = 832.0
+margin_top = 224.0
+margin_right = 848.0
+margin_bottom = 272.0
+set_tile_id = 2
+
+[node name="AreaChainDestroyer6" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController5" index="5" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 752.0
+margin_top = 224.0
+margin_right = 784.0
+margin_bottom = 240.0
+
+[node name="AreaChainDestroyer7" parent="Iterable/MyChainTile/MyDestroyers/ChainDestroyController5" index="6" instance=ExtResource( 3 )]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 752.0
+margin_top = 240.0
+margin_right = 784.0
+margin_bottom = 272.0
+
+[node name="MyAreaNotifiers" type="Node" parent="Iterable/MyChainTile" index="1"]
+editor/display_folded = true
+
+[node name="AreaNotifier" parent="Iterable/MyChainTile/MyAreaNotifiers" index="0" instance=ExtResource( 4 )]
+margin_left = 248.0
+margin_top = 80.0
+margin_right = 264.0
+margin_bottom = 176.0
+
+[node name="AreaNotifier2" parent="Iterable/MyChainTile/MyAreaNotifiers" index="1" instance=ExtResource( 4 )]
+margin_left = 352.0
+margin_top = 96.0
+margin_right = 368.0
+margin_bottom = 192.0
+
+[node name="AreaNotifier3" parent="Iterable/MyChainTile/MyAreaNotifiers" index="2" instance=ExtResource( 4 )]
+margin_left = 416.0
+margin_top = 128.0
+margin_right = 432.0
+margin_bottom = 224.0
+
+[node name="AreaNotifier4" parent="Iterable/MyChainTile/MyAreaNotifiers" index="3" instance=ExtResource( 4 )]
+margin_left = 592.0
+margin_top = 16.0
+margin_right = 608.0
+margin_bottom = 112.0
+
+[node name="AreaNotifier5" parent="Iterable/MyChainTile/MyAreaNotifiers" index="4" instance=ExtResource( 4 )]
+margin_left = 704.0
+margin_top = 112.0
+margin_right = 720.0
+margin_bottom = 224.0
+
+[node name="DeathScreenMain" parent="." index="11"]
+editor/display_folded = true
+
+[node name="Explaination" type="Control" parent="." index="12"]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Header" type="Label" parent="Explaination" index="0"]
+margin_left = 8.0
+margin_top = -16.0
+margin_right = 216.0
+margin_bottom = -5.0
+custom_fonts/font = ExtResource( 5 )
+text = "ChainTileDestroyer Example"
+
+[node name="ExplainInGame" type="Label" parent="Explaination" index="1"]
+margin_left = 8.0
+margin_top = 48.0
+margin_right = 232.0
+margin_bottom = 144.0
+custom_fonts/font = ExtResource( 5 )
+text = "More advanced features.
+
+Try playing around the map!"
+autowrap = true
+
+[node name="ExplainationAbout" parent="Explaination" index="2" instance=ExtResource( 6 )]
+margin_left = 16.0
+margin_top = 288.0
+margin_right = 736.0
+margin_bottom = 1456.0
+
+[node name="ExplainationTech" type="RichTextLabel" parent="Explaination" index="3"]
+margin_left = 912.0
+margin_top = 8.0
+margin_right = 1632.0
+margin_bottom = 1176.0
+bbcode_enabled = true
+bbcode_text = "[color=#0FFFFF]Development Techniques[/color]
+
+-Try chainging modulate color on each ChainDestroyerArea to easily manage the sequences, identifying its behaviour. Ex: Red color is for destroying, and green color is for creating.
+
+-Try adding your own categories like Control nodes or a regular node (as demonstrated in this scene) for simpler and cleaner to manage."
+text = "Development Techniques
+
+-Try chainging modulate color on each ChainDestroyerArea to easily manage the sequences, identifying its behaviour. Ex: Red color is for destroying, and green color is for creating.
+
+-Try adding your own categories like Control nodes or a regular node (as demonstrated in this scene) for simpler and cleaner to manage."
+scroll_active = false
+
+[node name="AutoRestart" type="Node" parent="." index="13"]
+editor/display_folded = true
+script = SubResource( 1 )
+
+[node name="RestartTimer" type="Timer" parent="AutoRestart" index="0"]
+[connection signal="player_die" from="Iterable/Player" to="AutoRestart" method="_on_Player_player_die"]
+[connection signal="entered_area" from="Iterable/MyChainTile/MyAreaNotifiers/AreaNotifier" to="Iterable/MyChainTile/MyDestroyers/ChainDestroyController" method="_on_AreaNotifier_entered_area"]
+[connection signal="entered_area" from="Iterable/MyChainTile/MyAreaNotifiers/AreaNotifier2" to="Iterable/MyChainTile/MyDestroyers/ChainDestroyController2" method="_on_AreaNotifier_entered_area"]
+[connection signal="entered_area" from="Iterable/MyChainTile/MyAreaNotifiers/AreaNotifier3" to="Iterable/MyChainTile/MyDestroyers/ChainDestroyController3" method="_on_AreaNotifier_entered_area"]
+[connection signal="entered_area" from="Iterable/MyChainTile/MyAreaNotifiers/AreaNotifier4" to="Iterable/MyChainTile/MyDestroyers/ChainDestroyController4" method="_on_AreaNotifier_entered_area"]
+[connection signal="entered_area" from="Iterable/MyChainTile/MyAreaNotifiers/AreaNotifier5" to="Iterable/MyChainTile/MyDestroyers/ChainDestroyController5" method="_on_AreaNotifier_entered_area"]
+[connection signal="timeout" from="AutoRestart/RestartTimer" to="AutoRestart" method="_on_RestartTimer_timeout"]
+
+[editable path="PlayerMenuMain"]
+
+[editable path="DeathScreenMain"]

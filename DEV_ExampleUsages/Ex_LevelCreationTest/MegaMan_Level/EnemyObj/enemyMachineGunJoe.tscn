@@ -1,0 +1,199 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Entities/Enemy/Obj/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/enemyMachineGunJoe.gd" type="Script" id=2]
+[ext_resource path="res://Behaviours/Platformer/PlatformerBehavior.tscn" type="PackedScene" id=3]
+[ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/MM9machinegunjoe.png" type="Texture" id=4]
+[ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Audio/Sfx/Shot.wav" type="AudioStream" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Jump"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Flip/ShieldArea2D/ProjectileReflector:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 1, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire"
+}, {
+"args": [  ],
+"method": "fire"
+}, {
+"args": [  ],
+"method": "fire"
+}, {
+"args": [  ],
+"method": "fire"
+}, {
+"args": [  ],
+"method": "fire"
+}, {
+"args": [  ],
+"method": "fire"
+}, {
+"args": [  ],
+"method": "attack_done"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Flip/ShieldArea2D/ProjectileReflector:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.99 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 4, 10 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 8, 11 )
+
+[node name="MachineGunJoe" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+damage_area_nodes = [ NodePath("Flip/DamageArea2D"), NodePath("Flip/ShieldArea2D") ]
+HP = 20
+STRENGTH = 4
+DROP_COIN_AMOUNT = 2
+DROP_COIN_COUNT = 3
+EXP_REWARD = 5
+
+[node name="PlatformerBehavior" parent="." index="0" instance=ExtResource( 3 )]
+CONTROL_ENABLE = false
+IS_PREVENT_OUTSIDE_SCREEN = false
+
+[node name="JoeAnimation" type="AnimationPlayer" parent="." index="1"]
+anims/Idle = SubResource( 1 )
+anims/Jump = SubResource( 2 )
+anims/Shoot = SubResource( 3 )
+
+[node name="SpritePreview" type="Sprite" parent="." index="2"]
+visible = false
+texture = SubResource( 4 )
+
+[node name="Flip" type="Node2D" parent="." index="3"]
+
+[node name="FireBullet" type="Position2D" parent="Flip" index="0"]
+position = Vector2( -14, 0 )
+
+[node name="Sprite" type="Sprite" parent="Flip" index="1"]
+texture = ExtResource( 4 )
+hframes = 4
+
+[node name="DamageArea2D" type="Area2D" parent="Flip" index="2"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/DamageArea2D" index="0"]
+shape = SubResource( 5 )
+
+[node name="ShieldArea2D" type="Area2D" parent="Flip" index="3"]
+position = Vector2( -8, 1 )
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/ShieldArea2D" index="0"]
+shape = SubResource( 6 )
+
+[node name="ProjectileReflector" parent="Flip/ShieldArea2D" index="1" instance=ExtResource( 5 )]
+
+[node name="PlatformCollisionShape2D" parent="." index="5"]
+visible = true
+shape = SubResource( 7 )
+disabled = false
+
+[node name="HpBar" parent="." index="10"]
+margin_left = -10.0
+margin_top = 12.0
+margin_right = 10.0
+margin_bottom = 18.0
+
+[node name="AttackCooldownTimer" type="Timer" parent="." index="12"]
+wait_time = 0.8
+one_shot = true
+autostart = true
+
+[node name="PointTowardPlayerInterval" type="Timer" parent="." index="13"]
+wait_time = 0.5
+autostart = true
+
+[node name="GunSound" type="AudioStreamPlayer2D" parent="." index="15"]
+stream = ExtResource( 6 )
+volume_db = -5.0
+[connection signal="landed" from="PlatformerBehavior" to="." method="_on_PlatformerBehavior_landed"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_AttackedCooldownTimer_timeout"]
+[connection signal="timeout" from="PointTowardPlayerInterval" to="." method="_on_PointTowardPlayerInterval_timeout"]
