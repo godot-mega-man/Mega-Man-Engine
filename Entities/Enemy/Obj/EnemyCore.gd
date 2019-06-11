@@ -279,11 +279,9 @@ func heal(amount_of_hp_to_restore : float):
 func check_for_death():
 	if !IS_IMMUNE_TO_DEATH && current_hp <= 0:
 		audio_manager.sfx_enemy_collapse.play()
-		audio_manager.sfx_enemy_damage.stop()
 		die()
 	else:
 		audio_manager.sfx_enemy_damage.play()
-	audio_manager.sfx_shot.stop()
 
 func die():
 	#Create death animation effect
