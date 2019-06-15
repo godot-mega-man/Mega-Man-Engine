@@ -125,7 +125,7 @@ func hit_by_player_projectile(var damage : int, var damage_variance : float, var
 	if can_apply_damage:
 		var damage_output = calculate_damage_output(damage, damage_variance)
 		apply_damage(damage_output)
-		emit_signal("taken_damage", damage_output, self as EnemyCore, player_proj_source)
+		emit_signal("taken_damage", damage_output, self, player_proj_source)
 		
 		#Play animation "Blink". Blinking sprite indicates that
 		#the enemy is taking damage or being invincible.
