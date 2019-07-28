@@ -3,6 +3,7 @@ class_name Player
 
 signal player_die
 signal launched_attack
+signal player_die_normally
 
 #Starting location:
 #  -Auto: Uses current location as a starting point. If a player
@@ -19,38 +20,47 @@ export(NodePath) var game_gui_path
 export(NodePath) var tilemap_path
 
 #Player's stats
-const HP_BASE : int = 30
+const HP_BASE : int = 28
 const MP_BASE : int = 20
-const DAMAGE_BASE = 3
-const DEFAULT_INVIS_TIME : float = 1.0
+const DAMAGE_BASE = 2
+const DEFAULT_INVIS_TIME : float = 1.5
 const ATTACK_HOTKEY = 'game_action'
 const ATTACK_HOTKEY_1 = 'game_hotkey1'
+const TAKING_DAMAGE_SLIDE_LEFT := -20
+const TAKING_DAMAGE_SLIDE_RIGHT := 20
 
 #Current stats.
 var current_hp = HP_BASE
 var current_mp = MP_BASE
-var max_hp = 30
+var max_hp = 28
 var max_mp = 20
 var attack_power = DAMAGE_BASE
 var is_invincible = false
 var is_attack_ready = true
-var attack_cooldown_apply_time = 0.15
-var attack_type = 1 #0:By Pressing action button, 1:Holding action button
+var attack_cooldown_apply_time = 0.01
+var attack_type = 0 #0:By Pressing action button, 1:Holding action button
 var is_cutscene_mode = false #When true, player won't take damage while in cutscene
+var is_cancel_holding_jump_allowed = true
+var is_taking_damage = false
+var taking_damage_slide_pos := 0 #Use only x-axis!
 
 #Player's child nodes
-onready var platformer_behavior = $PlatformerBehavior
+onready var pf_bhv := $PlatformBehavior as FJ_PlatformBehavior2D
 onready var area = $Area2D
-onready var area_collision = $Area2D/CollisionShape2D
-onready var camera = $Camera2D
-onready var collision_shape = $CollisionShape2D
+onready var area_collision := $Area2D/CollisionShape2D as CollisionShape2D
+onready var collision_shape := $CollisionShape2D as CollisionShape2D
 onready var platformer_sprite = $PlatformerSprite
 onready var animation_player = $AnimationPlayer
 onready var pivot_shoot = $Pivots/Shoot
 onready var attack_cooldown_timer = $AttackCooldownTimer
 onready var invis_timer = $InvincibleTimer
+onready var taking_damage_timer = $TakingDamageTimer
+onready var transition_tween := $TransitionTween as Tween
+onready var damage_sprite = $DamageSprite
+onready var damage_sprite_ani = $DamageSprite/Ani
 
-onready var audio_manager = get_node("/root/AudioManager")
+onready var level_camera := get_node_or_null("/root/Level/Camera2D") as Camera2D
+
 onready var global_var = get_node("/root/GlobalVariables")
 onready var tile_map = get_node("/root/Level/TileMap")
 onready var checkpoint_manager = get_node("/root/CheckpointManager")
@@ -62,7 +72,7 @@ var proj_classicBullet = preload("res://Entities/PlayerProjectile/PlayerProjecti
 var dmg_counter = preload("res://GUI/DamageCounter.tscn")
 var explosion_effect = preload("res://Entities/Effects/Explosion/Explosion.tscn")
 var coin_particles = preload("res://Entities/Effects/Particles/CoinParticles.tscn")
-
+var vulnerable_effect = preload("res://Assets_ReleaseExcluded/Sprites/Effects/VulnerableEffect.tscn")
 '''---------------------------------------------------------------------------------'''
 
 func _ready():
@@ -84,20 +94,27 @@ func _process(delta):
 	"""
 	--------Movement--------
 	"""
-	check_falling_into_pit()
 	set_vflip_by_keypress()
 	press_attack_check()
 	check_for_area_collisions()
-	suicide_check()
-	check_warping_around_left_right() #Warps player around left-right. Defined in the level settings.
 	crush_check() #Check if player is crushed
+	check_holding_jump_key()
+	check_taking_damage()
+
+#Check if jump key is holding while in the air.
+#Otherwise, resets velocity y
+func check_holding_jump_key():
+	if is_cancel_holding_jump_allowed:
+		if !Input.is_action_pressed("game_jump") and pf_bhv.velocity.y < 0 and pf_bhv.on_air_time > 0:
+			pf_bhv.velocity.y = 0
+			is_cancel_holding_jump_allowed = false
 
 func set_starting_location():
 	#First, get data from checkpoint manager.
 	var is_default_location = checkpoint_manager.saved_player_position == Vector2(0, 0)
 	#Update checkpoint's position if not set.
 	if !checkpoint_manager.has_checkpoint():
-		checkpoint_manager.update_checkpoint_position(global_position, get_tree().get_current_scene().get_filename())
+		checkpoint_manager.update_checkpoint_position(global_position, get_tree().get_current_scene().get_filename(), global_var.current_view)
 		print(self.name, ': No checkpoint available. Automatically updated.')
 	
 	if STARTING_LOCATION == 0: #Auto
@@ -122,29 +139,17 @@ func set_starting_stats():
 	else:
 		current_hp = player_stats.current_hp
 
-func check_falling_into_pit():
-	#If player falls below the edge of the bottom.
-	# -May normally die
-	# -May wrap upside down
-	var WARP_OFFSET = 32
-	var limit_bottom = (camera as Camera2D).limit_bottom + WARP_OFFSET
-	var limit_top = (camera as Camera2D).limit_top - WARP_OFFSET
-	
-	if (self as KinematicBody2D).position.y > limit_bottom:
-		if get_owner().WARPS_PLAYER_AROUND_UP_DOWN: #If the level allows warping up-down
-			(self as KinematicBody2D).position.y = limit_top
-		else:
-			#Spawn damage counter.
-			spawn_damage_counter(current_hp, Vector2(0,-40))
-			current_hp = 0
-			#Update GUI
-			get_owner().update_game_gui_health()
-			player_death()
+func _on_PlatformerBehavior_fell_into_pit() -> void:
+	#Spawn damage counter.
+	current_hp = 0
+	#Update GUI
+	get_owner().update_game_gui_health()
+	player_death()
 
 func set_vflip_by_keypress():
-	if platformer_behavior.walk_left:
+	if pf_bhv.walk_left:
 		platformer_sprite.flip_h = true
-	if platformer_behavior.walk_right:
+	if pf_bhv.walk_right:
 		platformer_sprite.flip_h = false
 
 func press_attack_check():
@@ -166,15 +171,11 @@ func press_attack_check():
 				is_attack_ready = false
 				start_launching_attack_skill()
 
-func suicide_check():
-	if Input.is_action_just_pressed("game_hotkey2"):
-		if current_hp > 0:
-			current_hp = 0
-			update_gui("update_gui_bar")
-			player_death()
-
 func start_launching_attack() -> void:
-	if !platformer_behavior.CONTROL_ENABLE:
+	if get_total_projectile_on_screen_count() > 2:
+		return
+	
+	if !pf_bhv.CONTROL_ENABLE:
 		return
 	
 	var bullet = proj_classicBullet.instance()
@@ -190,15 +191,18 @@ func start_launching_attack() -> void:
 	
 	#Calculate damage
 	var total_damage = 0
-	total_damage = DAMAGE_BASE + bullet.DAMAGE_POWER
+	total_damage = DAMAGE_BASE + bullet.DAMAGE_POWER + (player_stats.current_level - 1)
 	bullet.DAMAGE_POWER = total_damage #Final damage output
 	
 	
 	#Play sound
-	audio_manager.sfx_shot.play()
+	FJ_AudioManager.sfx_combat_buster.play()
 	
 	#Emit signal
 	emit_signal("launched_attack")
+
+func get_total_projectile_on_screen_count() -> int:
+	return get_tree().get_nodes_in_group("PlayerProjectile").size()
 
 #OBSOLETED! Will be removed and rewritten to a better one.
 func start_launching_attack_skill() -> void:
@@ -236,11 +240,29 @@ func _on_area_entered(body):
 	pass #CURRENTLY DOING NOTHING
 
 func player_take_damage(damage_amount : int, repel_player : bool = false, repel_position : Vector2 = Vector2(0, 0), repel_power : int = 300, apply_new_invis : bool = false, apply_new_invis_time : float = 0.1):
+	if is_invincible or is_cutscene_mode:
+		return
+	
+	#TODO: Shock guard item..
+	#Remove these if you don't want HP stops at 1.
+	#(Reference from 'Shock Guard' item)
+	if current_hp > 1:
+		if current_hp - damage_amount < 1:
+			damage_amount = current_hp - 1
+			FJ_AudioManager.sfx_ui_game_start.play()
+	
 	#Subtracting health from damage taken.
 	current_hp -= damage_amount
-	#Repel player away from the enemy.
+	#Repel player to the opposite direction the player is facing.
 	if repel_player:
-		repel_player(repel_position, repel_power)
+		repel_player()
+	
+	#Platformer Sprite plays damage animation.
+	platformer_sprite.is_taking_damage = true
+	
+	#Disables movement and controls.
+	pf_bhv.CONTROL_ENABLE = false
+	taking_damage_timer.start()
 	
 	#Player become invincible after taking damage.
 	#While invincible, player won't be able to take damage,
@@ -254,18 +276,32 @@ func player_take_damage(damage_amount : int, repel_player : bool = false, repel_
 	is_invincible = true
 	invis_timer.start(new_invis_time)
 	
+	#Plays flashing animation
+	damage_sprite_ani.play("Flashing")
+	
 	#Spawn damage counter
 	spawn_damage_counter(damage_amount)
+	
+	#Spawn vulnerable effect
+	spawn_vulnerable_effect()
 	
 	#Check for death
 	if current_hp <= 0:
 		player_death()
+		emit_signal('player_die_normally')
+		
 	else:
-		audio_manager.sfx_player_damage.play()
+		FJ_AudioManager.sfx_character_player_damage.play()
 		animation_player.play("Invincible")
 	
 	#Update GUI
 	update_gui("update_gui_bar")
+	
+	is_taking_damage = true
+
+func check_taking_damage():
+	if is_taking_damage:
+		pf_bhv.velocity.x = taking_damage_slide_pos
 
 func change_player_current_hp(var amount):
 	current_hp += amount
@@ -288,15 +324,18 @@ func _on_invis_timer_timeout():
 	animation_player.stop()
 	platformer_sprite.visible = true #Due to animation glitch, this will surely fix it.
 
-func repel_player(var from : Vector2, var repel_strength : float):
-	if from.x < position.x:
-		platformer_behavior.velocity.x = repel_strength
+func repel_player():
+	pf_bhv.velocity.x = 0
+	pf_bhv.velocity.y = -50
+	if platformer_sprite.flip_h:
+		taking_damage_slide_pos = TAKING_DAMAGE_SLIDE_RIGHT
 	else:
-		platformer_behavior.velocity.x = -repel_strength
-	
-	platformer_behavior.velocity.y = -repel_strength / 2 #Divide is not really environmental friendly! Come on...
+		taking_damage_slide_pos = TAKING_DAMAGE_SLIDE_LEFT
 
 func spawn_damage_counter(damage, var spawn_offset : Vector2 = Vector2(0,0)):
+	if !GameSettings.gameplay.damage_popup_player:
+		return
+	
 	var dmg_text = dmg_counter.instance() #Instance DamageCounter
 	get_parent().add_child(dmg_text) #Spawn
 	dmg_text.set_float_as_text(damage) #Set child node's text
@@ -304,16 +343,31 @@ func spawn_damage_counter(damage, var spawn_offset : Vector2 = Vector2(0,0)):
 	dmg_text.global_position += spawn_offset #Spawn offset
 	dmg_text.get_node('Label').add_color_override("font_color", Color(1,0,0,1))
 
+func spawn_vulnerable_effect():
+	var eff = vulnerable_effect.instance()
+	get_parent().add_child(eff)
+	eff.global_position = self.global_position
+
 #When the player's health drops below zero, player won't be able to
 #continue their journey.
 #Why? The character can die... but that won't affect
 #the main story. You may get a game over screen or lost 1UP.
 func player_death():
-	emit_signal('player_die') #Tell the scene that the player has died
+	current_hp = 0
+	#Tell the scene that the player has died
+	emit_signal('player_die')
 	
-	#Stop BGM
-	audio_manager.stop_bgm()
+	#Create Explosion effect
+	var effect = explosion_effect.instance()
+	effect.position = self.global_position
+	get_parent().add_child(effect)
 	
+	#Play death sound
+	FJ_AudioManager.sfx_character_player_die.play()
+	
+	#Shake the camera (if exists)
+	if level_camera != null:
+		level_camera.shake_camera(0.5, 100, 30)
 	
 	#Restore hp on scene load. Because we wanted player to restore health
 	#after the player is respawned.
@@ -321,12 +375,12 @@ func player_death():
 	
 	player_stats.is_died = true #PLAYER IS DEAD!
 	
-	audio_manager.set_all_sfx_volume(-80)
-	
 	#Stop everything
 	#Hide player from view and disable process
-	get_node("TimescaleTimer").start()
-	get_tree().paused = true
+	set_player_disappear(true)
+	
+	#Loses one up!
+	get_node("/root/GlobalVariables").one_up -= 1
 
 #Spawn coins particle 
 #Called by Level.
@@ -341,25 +395,14 @@ func spawn_death_coins(var lost_amount):
 	
 	print("Player(Spawn_death_coins): Coin lost: ", + currency_manager.coin_lost, ", Exp lost: ", player_stats.exp_lost)
 
-func check_warping_around_left_right():
-	var WARP_OFFSET = 8
-	
-	if get_owner().WARPS_PLAYER_LEFT_RIGHT_SIDE:
-		#If player is at the edge of the screen at either side,
-		#force player to warp around left-right.
-		if position.x < camera.limit_left - WARP_OFFSET:
-			position.x = camera.limit_right + WARP_OFFSET
-		if position.x > camera.limit_right + WARP_OFFSET:
-			position.x = camera.limit_left - WARP_OFFSET
-
 func _on_tree_exiting():
 	player_stats.current_hp = current_hp
 
 func set_control_enable(enabled : bool):
-	self.CONTROL_ENABLE = enabled
+	pf_bhv.CONTROL_ENABLE = enabled
 	
 func set_control_enable_from_cutscene(enabled : bool):
-	self.CONTROL_ENABLE = enabled
+	pf_bhv.CONTROL_ENABLE = enabled
 	self.is_cutscene_mode = enabled
 
 #For check if player is stuck (suffocated) in the wall.
@@ -379,7 +422,7 @@ func _on_leveled_up():
 #Collision detections, kinematic behaviours.
 func set_player_disappear(var set : bool) -> void:
 	set_process(!set)
-	platformer_behavior.INITIAL_STATE = !set #Platformer's Behaviour.
+	pf_bhv.INITIAL_STATE = !set #Platformer's Behaviour.
 	invis_timer.paused = set
 	visible = !set
 	collision_shape.call_deferred("set_disabled", set)
@@ -403,5 +446,77 @@ func update_gui(var method_name : String) -> bool:
 	
 	return false
 
-func _on_PlatformerBehavior_landed() -> void:
-	audio_manager.sfx_landing.play()
+#Start transition between screens. This is done by event.
+func start_screen_transition(normalized_direction : Vector2, duration : float, reset_vel_x : bool, reset_vel_y : bool, start_delay : float, transit_distance : float):
+	var transit_add_pos : Vector2
+	
+	if normalized_direction == Vector2.RIGHT:
+		transit_add_pos.x = transit_distance
+	if normalized_direction == Vector2.LEFT:
+		transit_add_pos.x = -transit_distance
+	if normalized_direction == Vector2.UP:
+		transit_add_pos.y = -transit_distance
+		pf_bhv.jump_start(false) #Force jump up without checking conditions.
+	if normalized_direction == Vector2.DOWN:
+		transit_add_pos.y = transit_distance
+	
+	transition_tween.interpolate_property(
+		self,
+		'position',
+		self.position,
+		self.position + transit_add_pos,
+		duration,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_IN,
+		start_delay
+	)
+	transition_tween.start()
+	
+	pf_bhv.INITIAL_STATE = false
+	collision_shape.call_deferred("set_disabled", true)
+	area_collision.call_deferred("set_disabled", true)
+	platformer_sprite.animation_paused = true
+	
+	if reset_vel_x:
+		pf_bhv.velocity.x = 0
+	if reset_vel_y:
+		pf_bhv.velocity.y = 0
+	
+	invis_timer.paused = true
+	taking_damage_timer.paused = true
+
+#After screen transiting has completed
+func _on_TransitionTween_tween_all_completed() -> void:
+	collision_shape.call_deferred("set_disabled", false)
+	area_collision.call_deferred("set_disabled", false)
+	platformer_sprite.animation_paused = false
+	pf_bhv.INITIAL_STATE = true
+	invis_timer.paused = false
+	taking_damage_timer.paused = false
+
+#Collision checks goes here.
+func _on_PlatformerBehavior_collided(kinematic_collision_2d : KinematicCollision2D) -> void:
+	var collider = kinematic_collision_2d.collider
+	
+	if collider is DeathSpike:
+		player_take_damage(collider.contact_damage)
+
+#Plays jumping sound
+func _on_PlatformBehavior_jumped_by_keypress() -> void:
+#	FJ_AudioManager.sfx_character_jump.play()
+	pass
+
+
+func _on_PlatformBehavior_landed() -> void:
+	FJ_AudioManager.sfx_character_land.play()
+	is_cancel_holding_jump_allowed = true
+
+#Regains control when timer of being knocked back is out.
+func _on_TakingDamageTimer_timeout() -> void:
+	pf_bhv.CONTROL_ENABLE = true
+	platformer_sprite.is_taking_damage = false
+	taking_damage_slide_pos = 0 #Reset
+	is_taking_damage = false
+	
+	#Stops flashing animation.
+	damage_sprite_ani.play("StopFlashin")

@@ -1,0 +1,130 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Entities/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/Dompan.gd" type="Script" id=2]
+[ext_resource path="res://Assets_ReleaseExcluded/Database/Enemy/Dompan.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Enemies/Mm4Dompan.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11, 12 )
+
+[sub_resource type="Animation" id=3]
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "jump"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.48
+loop = true
+step = 0.12
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[node name="Dompan" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+_database = ExtResource( 3 )
+damage_area_nodes = [ NodePath("FlipX/DamageArea") ]
+
+[node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 4 )]
+WALK_SPEED = 60.0
+JUMP_SPEED = 320.0
+VELOCITY_X_DAMPING = 1.0
+CONTROL_ENABLE = false
+IS_PREVENT_OUTSIDE_SCREEN = false
+
+[node name="WalkTowardPlayerTimer" type="Timer" parent="." index="1"]
+process_mode = 0
+wait_time = 1.5
+autostart = true
+
+[node name="SpritePreview" type="Sprite" parent="." index="2"]
+visible = false
+texture = SubResource( 1 )
+
+[node name="FlipX" type="Node2D" parent="." index="3"]
+
+[node name="DamageArea" type="Area2D" parent="FlipX" index="0"]
+visible = false
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipX/DamageArea" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+texture = ExtResource( 5 )
+hframes = 5
+
+[node name="SpriteAnimation" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
+autoplay = "Walking"
+anims/Hopping = SubResource( 3 )
+anims/Jumping = SubResource( 4 )
+anims/Walking = SubResource( 5 )
+
+[node name="PlatformCollisionShape2D" parent="." index="5"]
+position = Vector2( 0, 4 )
+disabled = false
+
+[node name="HpBar" parent="." index="6"]
+margin_left = -12.0
+margin_top = 16.0
+margin_right = 12.0
+margin_bottom = 22.0
+[connection signal="slain" from="." to="." method="_on_Dompan_slain"]
+[connection signal="by_wall" from="PlatformBehavior" to="." method="_on_PlatformerBehavior_by_wall"]
+[connection signal="landed" from="PlatformBehavior" to="." method="_on_PlatformerBehavior_landed"]
+[connection signal="timeout" from="WalkTowardPlayerTimer" to="." method="_on_WalkTowardPlayerTimer_timeout"]

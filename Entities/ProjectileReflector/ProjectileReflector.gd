@@ -15,12 +15,17 @@ extends Node
 
 class_name ProjectileReflector
 
+signal reflected
+
 export(bool) var enabled = true
 export(float, 0, 1) var reflect_chance = 1
-export(bool) var reflect_player_projectile = false
-export(bool) var reflect_enemy_projectile = false
 
 #Return true if it's reflectable.
 #False if not reflectable.
 func do_reflect() -> bool:
-	return rand_range(0.0, 1.0) < reflect_chance and enabled
+	var is_success = rand_range(0.0, 1.0) < reflect_chance and enabled
+	
+	if is_success:
+		emit_signal("reflected")
+	
+	return is_success

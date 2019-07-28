@@ -6,10 +6,7 @@ signal fading_finished
 signal fading_started
 
 #Child nodes
-onready var black_rect = $Control/BlackRect
-onready var fade_player = black_rect.get_node("FadePlayer")
-onready var color_rect = $Control/ColorRect
-onready var dim_player = color_rect.get_node("DimPlayer")
+onready var fade_player = $Control/FadePlayer
 
 var scene_to_go : String
 var is_reload_scene_call = false
@@ -47,9 +44,3 @@ func _on_AnimationPlayer_animation_started(anim_name : String):
 		get_tree().paused = true
 	
 	emit_signal("fading_started")
-
-func dim_screen(set : bool):
-	if set:
-		dim_player.play("DimOn")
-	else:
-		dim_player.play("DimOff")

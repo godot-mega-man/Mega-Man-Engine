@@ -19,6 +19,7 @@
 extends Sprite
 
 export(NodePath) var path_to_platformer_behavior
+export(bool) var animation_paused = false #For screen transition purposes
 
 #--Child nodes--
 onready var character_platformer_animation = $CharacterPlatformerAnimation
@@ -28,16 +29,16 @@ onready var character_platformer_animation = $CharacterPlatformerAnimation
 onready var normal_attack_cooldown = $NormalAttackCooldown
 
 
-
 #Temp
 var is_path_to_platformer_behavior_valid : bool = false
-var casted_plat_bhv : PlatformerBehavior #Casted Platformer Behavior. For use in _process().
+var casted_plat_bhv : FJ_PlatformBehavior2D #Casted Platformer Behavior. For use in _process().
 var is_launching_normal_attack : bool = false
+var is_taking_damage : bool = false
 
 func _ready() -> void:
 	if path_to_platformer_behavior != null:
 		var plat_bhv_node = get_node(path_to_platformer_behavior)
-		if plat_bhv_node is PlatformerBehavior:
+		if plat_bhv_node is FJ_PlatformBehavior2D:
 			is_path_to_platformer_behavior_valid = true
 			casted_plat_bhv = plat_bhv_node
 			return
@@ -56,8 +57,12 @@ func _process(delta: float) -> void:
 		return
 	if casted_plat_bhv == null:
 		return
+	if animation_paused:
+		return
 	
-	if casted_plat_bhv.on_floor:
+	if is_taking_damage:
+		character_platformer_animation.play("Damage")
+	elif casted_plat_bhv.on_floor:
 		if is_launching_normal_attack:
 			if casted_plat_bhv.walk_left or casted_plat_bhv.walk_right:
 				character_platformer_animation.play("Shooting Walk")
@@ -70,9 +75,15 @@ func _process(delta: float) -> void:
 				character_platformer_animation.play("Idle")
 	else:
 		if is_launching_normal_attack:
-			character_platformer_animation.play("Shooting Jump")
+			if casted_plat_bhv.velocity.y < 0:
+				character_platformer_animation.play("Shooting Jump Up")
+			else:
+				character_platformer_animation.play("Shooting Jump Falling")
 		else:
-			character_platformer_animation.play("Jump")
+			if casted_plat_bhv.velocity.y < 0:
+				character_platformer_animation.play("Jump Up")
+			else:
+				character_platformer_animation.play("Jump Falling")
 
 func start_normal_attack_animation():
 	normal_attack_cooldown.start()
@@ -83,3 +94,4 @@ func start_normal_attack_animation():
 #to non-attacking state.
 func _on_NormalAttackCooldown_timeout() -> void:
 	is_launching_normal_attack = false
+

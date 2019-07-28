@@ -59,7 +59,7 @@ func initiate(new_header_label : String, new_quan_label : int = 1, new_icon_text
 	set_rarity_text_color(new_rarity)
 
 func set_rarity_text_color(new_rarity):
-	var rarity_color = Items.ITEM_RARITY_COLOR.get(new_rarity)
+	var rarity_color = FJ_Res_Item.ITEM_RARITY_COLOR.get(new_rarity)
 	header_label.add_color_override("font_color", rarity_color)
 
 #Refresh time, allowing a new stack to be added here.

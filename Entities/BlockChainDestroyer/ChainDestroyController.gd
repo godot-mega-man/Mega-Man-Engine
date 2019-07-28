@@ -54,7 +54,7 @@ func _on_DestoryDelayTimer_timeout() -> void:
 #When manually connected, 
 #this will automatically start active chaining.
 func _on_AreaNotifier_entered_area() -> void:
-	activate_chain()
+	activate_chain() 
 func _on_Enemy_dead() -> void:
 	activate_chain() 
 

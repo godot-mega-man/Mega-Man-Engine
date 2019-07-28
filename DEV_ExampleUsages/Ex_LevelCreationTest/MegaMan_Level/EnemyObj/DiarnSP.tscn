@@ -1,0 +1,183 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Entities/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/DiarnSP.gd" type="Script" id=2]
+[ext_resource path="res://Assets_ReleaseExcluded/Database/Enemy/DiarnSP.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Enemies/MM9_DiarnSP.png" type="Texture" id=4]
+[ext_resource path="res://Entities/Effects/LargeExplosion/LargeExplosion.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Lib/FJ_LibHelper/BulletBehavior2D/BulletBehavior2D.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=7]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 8, 9 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_attack_loop"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../DamageArea/ProjectileReflector:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "AttackLoop"
+length = 0.2
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 9, 10, 8 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire_ballade_crackers"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Hide"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../DamageArea/ProjectileReflector:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 8, 12 )
+
+[node name="DiarnSP" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+_database = ExtResource( 3 )
+sprite_preview_texture = SubResource( 1 )
+damage_area_nodes = [ NodePath("DamageArea") ]
+explosion_effect = ExtResource( 5 )
+death_sound = 1
+
+[node name="BulletBehavior" parent="." index="0" instance=ExtResource( 6 )]
+active = false
+speed = 60.0
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+texture = ExtResource( 4 )
+hframes = 11
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
+anims/Attack = SubResource( 2 )
+anims/AttackLoop = SubResource( 3 )
+anims/Hide = SubResource( 7 )
+anims/Reflected = SubResource( 5 )
+
+[node name="HpBar" parent="." index="3"]
+margin_top = 16.0
+margin_bottom = 22.0
+
+[node name="StartMoveDelayTimer" type="Timer" parent="." index="7"]
+wait_time = 1.2
+one_shot = true
+autostart = true
+
+[node name="MoveTimer" type="Timer" parent="." index="8"]
+one_shot = true
+
+[node name="AttackDurationTimer" type="Timer" parent="." index="9"]
+wait_time = 1.5
+one_shot = true
+
+[node name="DamageArea" type="Area2D" parent="." index="10"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="ProjectileReflector" parent="DamageArea" index="0" instance=ExtResource( 7 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" index="1"]
+shape = SubResource( 6 )
+[connection signal="timeout" from="StartMoveDelayTimer" to="." method="_on_StartMoveDelayTimer_timeout"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]
+[connection signal="timeout" from="AttackDurationTimer" to="." method="_on_AttackDurationTimer_timeout"]
+[connection signal="reflected" from="DamageArea/ProjectileReflector" to="." method="_on_ProjectileReflector_reflected"]

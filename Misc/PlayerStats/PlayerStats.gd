@@ -2,9 +2,6 @@ extends Node
 
 signal leveled_up
 
-#Lookup nodes
-onready var audio_manager = get_node("/root/AudioManager")
-
 #Player
 var current_hp
 var restore_hp_on_load = true
@@ -38,9 +35,9 @@ func update_exp_next():
 
 func get_experience_targets_data() -> Array:
 	var total_level = 100
-	var exp_base = 100
+	var exp_base = 120
 	var exp_increment = 100
-	var multiplier = 1.07
+	var multiplier = 1.1
 	var multiplier_increment = 0.5
 	
 	var result = []
@@ -72,7 +69,7 @@ func level_up(free_level_up : bool = false):
 	update_exp_next()
 	
 	#Play level up sound
-	audio_manager.sfx_level_up.play()
+	FJ_AudioManager.sfx_ui_level_up.play()
 	
 	emit_signal("leveled_up")
 

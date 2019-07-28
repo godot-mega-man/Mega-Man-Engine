@@ -1,0 +1,2 @@
+extends FJ_Res_Item
+class_name FJ_Res_ItemMaterial

@@ -36,6 +36,7 @@ extends ReferenceRect
 
 export (int) var checkpoint_priority = 0
 export (bool) var ignore_priority = false
+export (NodePath) var target_view
 
 #Child nodes
 onready var label = $Label
@@ -43,7 +44,9 @@ onready var checkpoint_spawn_position = $CheckpointSpawnPositon
 onready var spawn_point_label = $CheckpointSpawnPositon/SpawnPointLabel
 
 #lookup nodes
-onready var checkpoint_manager = $"/root/CheckpointManager"
+onready var checkpoint_manager := $"/root/CheckpointManager" as CheckpointManager
+
+var spawn_offset := Vector2(0, -1)
 
 func _ready():
 	label.queue_free()
@@ -56,6 +59,9 @@ func update_checkpoint():
 	var update_position
 	var current_scene = get_tree().get_current_scene().get_filename()
 	
-	update_position = checkpoint_spawn_position.get_global_position() + checkpoint_spawn_position.rect_pivot_offset
+	update_position = checkpoint_spawn_position.get_global_position() + checkpoint_spawn_position.rect_pivot_offset + spawn_offset
 	
-	checkpoint_manager.update_checkpoint_position(update_position, current_scene, ignore_priority, checkpoint_priority)
+	checkpoint_manager.update_checkpoint_position(update_position, current_scene, get_node(target_view).name, ignore_priority, checkpoint_priority)
+	
+	if target_view == null:
+		push_warning(str(self.get_path(), ": Target new is not specified. Default value will be used."))

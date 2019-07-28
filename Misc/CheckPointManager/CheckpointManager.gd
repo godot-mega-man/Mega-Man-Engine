@@ -1,8 +1,11 @@
 extends Node
 
+class_name CheckpointManager
+
 #Persistent variables
-var saved_player_position : Vector2 = Vector2(0, 0)
-var current_checkpoint_position : Vector2 = Vector2(0, 0)
+var saved_player_position : Vector2
+var saved_view_name : String
+var current_checkpoint_position : Vector2
 var current_checkpoint_target_scene : String setget set_current_checkpoint_target_scene, get_current_checkpoint_target_scene
 var current_checkpoint_priority : int = 0
 
@@ -13,7 +16,7 @@ func set_current_checkpoint_target_scene(var new_value : String) -> void:
 	current_checkpoint_target_scene = new_value
 
 #Update player's checkpoint posiition
-func update_checkpoint_position(var new_position : Vector2, var scene : String, var ignore_priority : bool = false, var new_priority_value : int = 0) -> void:
+func update_checkpoint_position(var new_position : Vector2, var scene : String, var new_view : String, var ignore_priority : bool = false, var new_priority_value : int = 0) -> void:
 	var is_updated : bool = false #Identify that checkpoint will be updated or not.
 	
 	#Start update checkpoint.
@@ -26,6 +29,7 @@ func update_checkpoint_position(var new_position : Vector2, var scene : String, 
 		current_checkpoint_position = new_position
 		current_checkpoint_target_scene = scene
 		current_checkpoint_priority = new_priority_value
+		saved_view_name = new_view
 		is_updated = true
 	
 	if is_updated:
@@ -41,6 +45,7 @@ func has_checkpoint() -> bool:
 	return current_checkpoint_position != Vector2(0, 0)
 
 func clear_checkpoint() -> void:
+	saved_view_name = ""
 	current_checkpoint_position = Vector2(0, 0)
 	current_checkpoint_target_scene = ""
 	current_checkpoint_priority = 0

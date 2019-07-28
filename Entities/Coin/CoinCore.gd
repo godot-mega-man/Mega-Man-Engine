@@ -8,16 +8,28 @@ extends KinematicBody2D
 class_name CoinCore
 
 enum preset_item_type {
-	COIN
+	COIN,
+	ITEM,
+	DIAMOND
 }
 
 enum preset_landing_sfxes {
-	COIN
+	COIN,
+	DIAMOND,
+	IRON,
+	NONE
 }
 
 enum preset_collect_sfxes {
-	COIN
+	COIN,
+	ITEM,
+	DIAMOND
 }
+
+export var coin_land_effect = preload("res://Entities/Effects/CoinLandEffect/CoinLandEffect.tscn")
+export var text_counter = preload("res://Entities/Effects/AddCoinCounter/CoinCounter1.tscn")
+export var coin_sparkling_effect = preload("res://Entities/Effects/CoinSparklingEffect/CoinSparklingEffect.tscn")
+export (Texture) var collect_icon
 
 export (preset_item_type) var ITEM_TYPE
 export (int) var COIN_VALUE = 1
@@ -57,8 +69,9 @@ onready var coin_area_collision_shape = coin_area.get_node("CollisionShape2D")
 onready var visible_notify = $VisibilityNotifier2D
 onready var shrink_and_queue_free_player = $ShrinkAndQueueFreePlayer
 
-onready var audio_manager = get_node("/root/AudioManager")
+onready var inventory_manager = get_node("/root/InventoryManager")
 onready var level = get_node("/root/Level")
+onready var level_view_container = get_node_or_null("/root/Level/ViewContainer") as LevelViewContainer
 
 #Temp variables
 var velocity
@@ -67,14 +80,9 @@ var is_ready_to_be_collected = false
 var item_data_file # From res://Misc/InventoryCore/Items/*.tres
 var loaded_item_data_file #From loaded item data file 
 
-onready var is_level_upside_down = level.WARPS_PLAYER_AROUND_UP_DOWN
-onready var level_limit_top = level.CAMERA_LIMIT_TOP - WARP_OFFSET
-onready var level_limit_bottom = level.CAMERA_LIMIT_BOTTOM + WARP_OFFSET
+onready var level_limit_bottom = level_view_container.CAMERA_LIMIT_BOTTOM + WARP_OFFSET
 
 #Preload
-var coin_land_effect = preload("res://Entities/Effects/CoinLandEffect/CoinLandEffect.tscn")
-var coin_counter = preload("res://Entities/Effects/AddCoinCounter/CoinCounter1.tscn")
-var coin_sparkling_effect = preload("res://Entities/Effects/CoinSparklingEffect/CoinSparklingEffect.tscn")
 
 func _ready():
 	add_collision_exception_with(player)
@@ -93,6 +101,12 @@ func _ready():
 	
 	#Set velocity
 	velocity = Vector2(rand_range(-SWAY_X_RANGE, SWAY_X_RANGE), rand_range(GEYSER_Y_RANGE_MIN, GEYSER_Y_RANGE_MAX))
+	
+	#Load current item data from item_data variable.
+	load_current_item_data()
+	#If this object is item, set image.
+	if is_item():
+		set_item_image()
 
 func _physics_process(delta: float) -> void:
 	#Apply gravity
@@ -138,14 +152,6 @@ func _physics_process(delta: float) -> void:
 	#Bounce if on wall
 	if is_on_wall():
 		velocity.x = -velocity.x
-	
-	#Warps coin upside down
-	if APPLY_WARP_AROUND_UPSIDE_DOWN:
-		#Warps upside down if the level is allowed
-		if is_level_upside_down:
-			
-			if self.global_position.y > level_limit_bottom:
-				self.global_position.y = level_limit_top
 
 #When delayed and on time, start timer
 func _on_destroy_delay_timer_timeout():
@@ -171,7 +177,7 @@ func player_collected_coin():
 	#Check whether it is coin or item.
 	if is_coin():
 		#Create coin counter effect
-		var counter = coin_counter.instance()
+		var counter = text_counter.instance()
 		counter.global_position = self.global_position
 		get_parent().add_child(counter)
 		counter.get_node("Label").text = "+" + str(COIN_VALUE) #Set text
@@ -181,8 +187,42 @@ func player_collected_coin():
 		counter.animation_player.play("CoinCounter")
 		
 		#Call Game-GUI to create collected item tooltip.
-		level.game_gui.tooltip_controller.add_collected_item_tooltip("Coin", COIN_VALUE, load('res://Entities/Coin/AnimatedTexture_Coin.tres'))
+		level.game_gui.tooltip_controller.add_collected_item_tooltip("Coin", COIN_VALUE, collect_icon)
 		level.game_gui.update_coin()
+		
+		if get_node_or_null("/root/Level/Iterable/Player") != null:
+			var player = get_node("/root/Level/Iterable/Player")
+			player.change_player_current_hp(1)
+	elif is_item():
+		#Unused
+#		#Create item counter effect.
+#		#Label displays item name and text color depends on rarity.
+#		var counter = coin_counter.instance()
+#		counter.global_position = self.global_position
+#		get_parent().add_child(counter)
+#		counter.get_node("Label").text = str(loaded_item_data_file.name) #Set text
+#		#Set text color that depends on rarity.
+#		counter.get_node("Label").add_color_override("font_color", loaded_item_data_file.ITEM_RARITY_COLOR.get(loaded_item_data_file.rarity))
+#		#Play floating text animation
+#		counter.animation_player.play("ItemCounter")
+		
+		#Call inventory manager to add item to inventory
+		inventory_manager.add_item(loaded_item_data_file)
+		
+		#Call Game-GUI to create collected item tooltip.
+		level.game_gui.tooltip_controller.add_collected_item_tooltip(loaded_item_data_file.name, 1, loaded_item_data_file.item_image)
+	elif is_diamond():
+		#Create diamond counter effect
+		var counter = text_counter.instance()
+		counter.global_position = self.global_position
+		get_parent().add_child(counter)
+		counter.get_node("Label").text = "+" + str(COIN_VALUE) #Set text
+		#Play floating text animation
+		counter.animation_player.play("DiamondCounter")
+		
+		#Call Game-GUI to create collected item tooltip.
+		level.game_gui.tooltip_controller.add_collected_item_tooltip("Diamond", COIN_VALUE, collect_icon)
+		level.game_gui.update_diamond()
 	
 	#Create coin counter effect
 	var sparkling = coin_sparkling_effect.instance()
@@ -202,10 +242,30 @@ func _on_leaving_screen():
 func is_coin():
 	return ITEM_TYPE == preset_item_type.COIN
 
+func is_item():
+	return ITEM_TYPE == preset_item_type.ITEM
+
+func is_diamond():
+	return ITEM_TYPE == preset_item_type.DIAMOND
+
 func play_landing_sfx(var what):
 	if what == preset_landing_sfxes.COIN:
-		audio_manager.sfx_coin_landing.play()
+		FJ_AudioManager.sfx_env_coin_landing.play()
+	if what == preset_landing_sfxes.DIAMOND:
+		FJ_AudioManager.sfx_env_diamond_landing.play()
 
 func play_collect_sfx(var what):
 	if what == preset_collect_sfxes.COIN:
-		audio_manager.sfx_coin.play()
+		FJ_AudioManager.sfx_collectibles_coin.play()
+	if what == preset_collect_sfxes.ITEM:
+		FJ_AudioManager.sfx_collectibles_item.play()
+	if what == preset_collect_sfxes.DIAMOND:
+		FJ_AudioManager.sfx_collectibles_diamond.play()
+
+func set_item_image():
+	sprite.texture = loaded_item_data_file.item_image
+
+func load_current_item_data():
+	#First, check whether it can be loaded
+	if item_data_file != null and !item_data_file.empty():
+		loaded_item_data_file = load(item_data_file)

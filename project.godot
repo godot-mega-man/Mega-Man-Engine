@@ -12,7 +12,22 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "BitFlagsComparator",
 "language": "GDScript",
-"path": "res://Misc/BitFlagsComparator/BitFlagsComparator.gd"
+"path": "res://Misc/Libraries/Utils/BitFlagsComparator/BitFlagsComparator.gd"
+}, {
+"base": "EnemyCore",
+"class": "BossCore",
+"language": "GDScript",
+"path": "res://Entities/Enemy/Core/BossCore.gd"
+}, {
+"base": "CanvasLayer",
+"class": "BossHealthBar",
+"language": "GDScript",
+"path": "res://GUI/BossHealthBar/BossHealthBar.gd"
+}, {
+"base": "Button",
+"class": "ButtonPlus",
+"language": "GDScript",
+"path": "res://Lib/FJ_NodeExtensions/ButtonPlus/ButtonPlus.gd"
 }, {
 "base": "Node",
 "class": "ChainDestroyController",
@@ -24,35 +39,255 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/BlockChainDestroyer/AreaChainDestroyer.gd"
 }, {
+"base": "Node",
+"class": "CheckpointManager",
+"language": "GDScript",
+"path": "res://Misc/CheckPointManager/CheckpointManager.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "CoinCore",
 "language": "GDScript",
 "path": "res://Entities/Coin/CoinCore.gd"
 }, {
-"base": "Resource",
-"class": "Consumable",
+"base": "Curve",
+"class": "CurvePlus",
 "language": "GDScript",
-"path": "res://Misc/InventoryCore/Items/Consumable.gd"
+"path": "res://Lib/FJ_ResExtensions/CurvePlus/CurvePlus.gd"
 }, {
 "base": "CanvasLayer",
-"class": "ControlInterface",
+"class": "CutScene",
 "language": "GDScript",
-"path": "res://GUI/ControlInterface/ControlInterface.gd"
+"path": "res://GUI/Cutscene/Cutscene.gd"
+}, {
+"base": "Resource",
+"class": "DeadEnemyInfo",
+"language": "GDScript",
+"path": "res://Misc/Libraries/InfoClasses/DeadEnemyInfo.gd"
+}, {
+"base": "StaticBody2D",
+"class": "DeathSpike",
+"language": "GDScript",
+"path": "res://Entities/DeathSpike/DeathSpike.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "EnemyCore",
 "language": "GDScript",
-"path": "res://Entities/Enemy/Obj/EnemyCore.gd"
+"path": "res://Entities/Enemy/Core/EnemyCore.gd"
+}, {
+"base": "Node",
+"class": "EnemyDatabase",
+"language": "GDScript",
+"path": "res://DatabaseCore/Enemy/Core/Database.gd"
+}, {
+"base": "Node",
+"class": "EnemyDatabaseGeneral",
+"language": "GDScript",
+"path": "res://DatabaseCore/Enemy/Core/DatabaseGeneral.gd"
+}, {
+"base": "Node",
+"class": "EnemyDatabaseGeneralCombat",
+"language": "GDScript",
+"path": "res://DatabaseCore/Enemy/Core/DatabaseGeneralCombat.gd"
+}, {
+"base": "Node",
+"class": "EnemyDatabaseGeneralStats",
+"language": "GDScript",
+"path": "res://DatabaseCore/Enemy/Core/DatabaseGeneralStats.gd"
+}, {
+"base": "Node",
+"class": "EnemyDatabaseLoots",
+"language": "GDScript",
+"path": "res://DatabaseCore/Enemy/Core/DatabaseLoots.gd"
+}, {
+"base": "Node",
+"class": "EnemyDatabaseLootsCoin",
+"language": "GDScript",
+"path": "res://DatabaseCore/Enemy/Core/DatabaseLootsCoin.gd"
+}, {
+"base": "Node",
+"class": "EnemyDatabaseLootsDiamond",
+"language": "GDScript",
+"path": "res://DatabaseCore/Enemy/Core/DatabaseLootsDiamond.gd"
+}, {
+"base": "Node",
+"class": "EnemyDatabaseLootsExperience",
+"language": "GDScript",
+"path": "res://DatabaseCore/Enemy/Core/DatabaseLootsExperience.gd"
 }, {
 "base": "EnemyCore",
 "class": "EnemyProjectile",
 "language": "GDScript",
-"path": "res://Entities/Enemy/Obj/EnemyProjectileCore.gd"
+"path": "res://Entities/Enemy/Core/EnemyProjectileCore.gd"
+}, {
+"base": "Node",
+"class": "FJ_AnchorBehavior",
+"language": "GDScript",
+"path": "res://Lib/FJ_LibHelper/AnchorBehavior2D/AnchorBehavior2D.gd"
+}, {
+"base": "Node",
+"class": "FJ_AutoQueueFree",
+"language": "GDScript",
+"path": "res://Lib/FJ_LibHelper/AutoQueueFree/AutoQueueFree.gd"
+}, {
+"base": "Node",
+"class": "FJ_BulletBehavior",
+"language": "GDScript",
+"path": "res://Lib/FJ_LibHelper/BulletBehavior2D/BulletBehavior2D.gd"
+}, {
+"base": "Control",
+"class": "FJ_ButtonEffect",
+"language": "GDScript",
+"path": "res://Lib/FJ_LibHelper/ButtonEffect/ButtonEffect.gd"
+}, {
+"base": "Node",
+"class": "FJ_ButtonEffectCreator1",
+"language": "GDScript",
+"path": "res://Lib/FJ_LibHelper/ButtonEffect/ButtonEffectCreator.gd"
+}, {
+"base": "Node",
+"class": "FJ_Enum_DamageType",
+"language": "GDScript",
+"path": "res://DatabaseCore/Utils/Enumerations/DamageType.gd"
+}, {
+"base": "Node",
+"class": "FJ_Enum_Gender",
+"language": "GDScript",
+"path": "res://DatabaseCore/Utils/Enumerations/Gender.gd"
+}, {
+"base": "Node",
+"class": "FJ_Enum_ItemCooldownGroup",
+"language": "GDScript",
+"path": "res://DatabaseCore/Utils/Enumerations/ItemCooldownGroup.gd"
+}, {
+"base": "Node",
+"class": "FJ_GameConst_Character",
+"language": "GDScript",
+"path": "res://DatabaseCore/Utils/GameplayConstants/Character.gd"
+}, {
+"base": "Node",
+"class": "FJ_Game_Character",
+"language": "GDScript",
+"path": "res://DatabaseCore/Character/Core/Character.gd"
+}, {
+"base": "Node",
+"class": "FJ_Game_CharacterGeneral",
+"language": "GDScript",
+"path": "res://DatabaseCore/Character/Core/CharacterGeneral.gd"
+}, {
+"base": "Node",
+"class": "FJ_Game_CharacterInitialEquipment",
+"language": "GDScript",
+"path": "res://DatabaseCore/Character/Core/CharacterInitialEquipment.gd"
+}, {
+"base": "Node",
+"class": "FJ_Game_CharacterPersonal",
+"language": "GDScript",
+"path": "res://DatabaseCore/Character/Core/CharacterPersonal.gd"
+}, {
+"base": "Node",
+"class": "FJ_Game_Class",
+"language": "GDScript",
+"path": "res://DatabaseCore/Classes/Core/Class.gd"
+}, {
+"base": "Node",
+"class": "FJ_Game_ClassGeneral",
+"language": "GDScript",
+"path": "res://DatabaseCore/Classes/Core/ClassGeneral.gd"
+}, {
+"base": "Node",
+"class": "FJ_Game_ClassParameterCurves",
+"language": "GDScript",
+"path": "res://DatabaseCore/Classes/Core/ClassParameterCurves.gd"
+}, {
+"base": "Node",
+"class": "FJ_Game_ClassSkillsToLearn",
+"language": "GDScript",
+"path": "res://DatabaseCore/Classes/Core/ClassSkillsToLearn.gd"
 }, {
 "base": "Resource",
-"class": "Equipment",
+"class": "FJ_Game_ClassSkillsToLearnPacks",
 "language": "GDScript",
-"path": "res://Misc/InventoryCore/Items/Equipment.gd"
+"path": "res://DatabaseCore/Classes/Res/SkillsToLearnPack.gd"
+}, {
+"base": "Node",
+"class": "FJ_Game_General",
+"language": "GDScript",
+"path": "res://DatabaseCore/Skills/Core/SkillGeneral.gd"
+}, {
+"base": "Node",
+"class": "FJ_Game_Skill",
+"language": "GDScript",
+"path": "res://DatabaseCore/Skills/Core/Skill.gd"
+}, {
+"base": "Node",
+"class": "FJ_Game_SkillsDamage",
+"language": "GDScript",
+"path": "res://DatabaseCore/Skills/Core/SkillDamage.gd"
+}, {
+"base": "Node",
+"class": "FJ_Game_SkillsInvocation",
+"language": "GDScript",
+"path": "res://DatabaseCore/Skills/Core/SkillsInvocation.gd"
+}, {
+"base": "Node",
+"class": "FJ_PlatformBehavior2D",
+"language": "GDScript",
+"path": "res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.gd"
+}, {
+"base": "Resource",
+"class": "FJ_Res_Item",
+"language": "GDScript",
+"path": "res://DatabaseCore/Items/Res/ItemCore.gd"
+}, {
+"base": "FJ_Res_Item",
+"class": "FJ_Res_ItemConsumable",
+"language": "GDScript",
+"path": "res://DatabaseCore/Items/Res/ItemConsumable.gd"
+}, {
+"base": "FJ_Res_Item",
+"class": "FJ_Res_ItemEquipable",
+"language": "GDScript",
+"path": "res://DatabaseCore/Items/Res/ItemEquipable.gd"
+}, {
+"base": "FJ_Res_ItemEquipable",
+"class": "FJ_Res_ItemEquipableAccessories",
+"language": "GDScript",
+"path": "res://DatabaseCore/Items/Res/ItemEquipableAccessories.gd"
+}, {
+"base": "FJ_Res_ItemEquipable",
+"class": "FJ_Res_ItemEquipableCloth",
+"language": "GDScript",
+"path": "res://DatabaseCore/Items/Res/ItemEquipableCloth.gd"
+}, {
+"base": "FJ_Res_ItemEquipable",
+"class": "FJ_Res_ItemEquipableFeet",
+"language": "GDScript",
+"path": "res://DatabaseCore/Items/Res/ItemEquipableFeet.gd"
+}, {
+"base": "FJ_Res_ItemEquipable",
+"class": "FJ_Res_ItemEquipableHead",
+"language": "GDScript",
+"path": "res://DatabaseCore/Items/Res/ItemEquipableHead.gd"
+}, {
+"base": "FJ_Res_ItemEquipable",
+"class": "FJ_Res_ItemEquipableWeapon",
+"language": "GDScript",
+"path": "res://DatabaseCore/Items/Res/ItemEquipableWeapon.gd"
+}, {
+"base": "FJ_Res_Item",
+"class": "FJ_Res_ItemKeyItem",
+"language": "GDScript",
+"path": "res://DatabaseCore/Items/Res/ItemKeyItem.gd"
+}, {
+"base": "FJ_Res_Item",
+"class": "FJ_Res_ItemMaterial",
+"language": "GDScript",
+"path": "res://DatabaseCore/Items/Res/ItemMaterial.gd"
+}, {
+"base": "Node",
+"class": "FJ_SineBehavior2D",
+"language": "GDScript",
+"path": "res://Lib/FJ_LibHelper/SineBehavior2D/SineBehavior2D.gd"
 }, {
 "base": "CanvasLayer",
 "class": "FadeScreen",
@@ -60,34 +295,74 @@ _global_script_classes=[ {
 "path": "res://GUI/FadeScreen/FadeScreen.gd"
 }, {
 "base": "Node",
+"class": "GameSettingsAudio",
+"language": "GDScript",
+"path": "res://Misc/GameSettings/Audio.gd"
+}, {
+"base": "Node",
+"class": "GameSettingsGameplay",
+"language": "GDScript",
+"path": "res://Misc/GameSettings/Gameplay.gd"
+}, {
+"base": "Node",
 "class": "GlobalVariables",
 "language": "GDScript",
-"path": "res://GlobalVariables.gd"
+"path": "res://Misc/GlobalVariables/GlobalVariables.gd"
 }, {
 "base": "Node",
 "class": "ItemData",
 "language": "GDScript",
-"path": "res://Misc/InventoryCore/Items/ItemData.gd"
+"path": "res://DatabaseCore/Items/Core/ItemData.gd"
+}, {
+"base": "Node",
+"class": "ItemSet",
+"language": "GDScript",
+"path": "res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSet.gd"
 }, {
 "base": "Resource",
-"class": "Items",
+"class": "ItemSetData",
 "language": "GDScript",
-"path": "res://Misc/InventoryCore/Items/Items.gd"
+"path": "res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSetData/ItemSetData.gd"
+}, {
+"base": "Node",
+"class": "ItemTable",
+"language": "GDScript",
+"path": "res://Lib/FJ_LibHelper/ItemTable/ItemTable.gd"
 }, {
 "base": "Node",
 "class": "Iterable",
 "language": "GDScript",
-"path": "res://Misc/Iterable.gd"
+"path": "res://Lib/FJ_LibHelper/SpriteCycling2D/SpriteCycling2D.gd"
 }, {
 "base": "Node",
 "class": "Level",
 "language": "GDScript",
-"path": "res://Levels/Level.gd"
+"path": "res://Levels/Core/Level.gd"
 }, {
 "base": "Node",
-"class": "PlatformerBehavior",
+"class": "LevelBrightness",
 "language": "GDScript",
-"path": "res://Behaviours/Platformer/PlatformerBehavior.gd"
+"path": "res://Misc/LevelBrightnessModifier/LevelBrightness.gd"
+}, {
+"base": "Node",
+"class": "LevelBrightnessModifier",
+"language": "GDScript",
+"path": "res://Misc/LevelBrightnessModifier/LevelBrightnessModifier.gd"
+}, {
+"base": "ReferenceRect",
+"class": "LevelView",
+"language": "GDScript",
+"path": "res://Levels/Views/View.gd"
+}, {
+"base": "Control",
+"class": "LevelViewContainer",
+"language": "GDScript",
+"path": "res://Levels/Views/ViewContainer.gd"
+}, {
+"base": "Node",
+"class": "NESColorPalette",
+"language": "GDScript",
+"path": "res://Misc/Libraries/Utils/NESColorPalette/NESColorPalette.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -107,49 +382,114 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "RectCentralizer",
 "language": "GDScript",
-"path": "res://Misc/RectCentralizer/RectCentralizer.gd"
+"path": "res://Misc/Libraries/Utils/RectCentralizer/RectCentralizer.gd"
+}, {
+"base": "ReferenceRect",
+"class": "ScreenTransitor",
+"language": "GDScript",
+"path": "res://Entities/ScreenTransitor/ScreenTransitor.gd"
 } ]
 _global_script_class_icons={
 "BitFlagsComparator": "",
+"BossCore": "",
+"BossHealthBar": "",
+"ButtonPlus": "",
 "ChainDestroyController": "",
 "ChainDestroyerArea": "",
+"CheckpointManager": "",
 "CoinCore": "",
-"Consumable": "",
-"ControlInterface": "",
+"CurvePlus": "",
+"CutScene": "",
+"DeadEnemyInfo": "",
+"DeathSpike": "",
 "EnemyCore": "",
+"EnemyDatabase": "",
+"EnemyDatabaseGeneral": "",
+"EnemyDatabaseGeneralCombat": "",
+"EnemyDatabaseGeneralStats": "",
+"EnemyDatabaseLoots": "",
+"EnemyDatabaseLootsCoin": "",
+"EnemyDatabaseLootsDiamond": "",
+"EnemyDatabaseLootsExperience": "",
 "EnemyProjectile": "",
-"Equipment": "",
+"FJ_AnchorBehavior": "",
+"FJ_AutoQueueFree": "",
+"FJ_BulletBehavior": "",
+"FJ_ButtonEffect": "",
+"FJ_ButtonEffectCreator1": "",
+"FJ_Enum_DamageType": "",
+"FJ_Enum_Gender": "",
+"FJ_Enum_ItemCooldownGroup": "",
+"FJ_GameConst_Character": "",
+"FJ_Game_Character": "",
+"FJ_Game_CharacterGeneral": "",
+"FJ_Game_CharacterInitialEquipment": "",
+"FJ_Game_CharacterPersonal": "",
+"FJ_Game_Class": "",
+"FJ_Game_ClassGeneral": "",
+"FJ_Game_ClassParameterCurves": "",
+"FJ_Game_ClassSkillsToLearn": "",
+"FJ_Game_ClassSkillsToLearnPacks": "",
+"FJ_Game_General": "",
+"FJ_Game_Skill": "",
+"FJ_Game_SkillsDamage": "",
+"FJ_Game_SkillsInvocation": "",
+"FJ_PlatformBehavior2D": "",
+"FJ_Res_Item": "",
+"FJ_Res_ItemConsumable": "",
+"FJ_Res_ItemEquipable": "",
+"FJ_Res_ItemEquipableAccessories": "",
+"FJ_Res_ItemEquipableCloth": "",
+"FJ_Res_ItemEquipableFeet": "",
+"FJ_Res_ItemEquipableHead": "",
+"FJ_Res_ItemEquipableWeapon": "",
+"FJ_Res_ItemKeyItem": "",
+"FJ_Res_ItemMaterial": "",
+"FJ_SineBehavior2D": "",
 "FadeScreen": "",
+"GameSettingsAudio": "",
+"GameSettingsGameplay": "",
 "GlobalVariables": "",
 "ItemData": "",
-"Items": "",
+"ItemSet": "",
+"ItemSetData": "",
+"ItemTable": "",
 "Iterable": "",
 "Level": "",
-"PlatformerBehavior": "",
+"LevelBrightness": "",
+"LevelBrightnessModifier": "",
+"LevelView": "",
+"LevelViewContainer": "",
+"NESColorPalette": "",
 "Player": "",
 "PlayerProjectile": "",
 "ProjectileReflector": "",
-"RectCentralizer": ""
+"RectCentralizer": "",
+"ScreenTransitor": ""
 }
 
 [application]
 
-config/name="YEAH! Retro!"
+config/name="Not Megamix Engine!"
 run/main_scene="res://Splash/SplashScreen.tscn"
-boot_splash/image="res://Splash/SplashBlack.png"
+boot_splash/image="res://Assets/Sprites/SplashScreen/SplashBlack.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://icon.png"
+config/icon="res://Assets/Sprites/GUI/Icons/MiniMega.png"
 config/quit_on_go_back=false
 
 [autoload]
 
+GlobalVariables="*res://Misc/GlobalVariables/GlobalVariables.tscn"
 Debug="*res://Misc/Debug.gd"
-AudioManager="*res://Audio/AudioManager.tscn"
+FJ_AudioManager="*res://Lib/FJ_LibHelper/AudioManager/AudioManager.tscn"
+InventoryManager="*res://Misc/InventoryCore/InventoryManager.gd"
 CheckpointManager="res://Misc/CheckPointManager/CheckpointManager.gd"
 CurrencyManager="res://Misc/CurrencyManager/CurrencyManager.gd"
 PlayerStats="res://Misc/PlayerStats/PlayerStats.gd"
-NumberSimplifier="*res://Misc/NumberSimplifier/NumberSimplifier.gd"
-GlobalVariables="*res://GlobalVariables.gd"
+NumberSimplifier="*res://Misc/Libraries/Utils/NumberSimplifier/NumberSimplifier.gd"
+LevelBrightness="*res://Misc/LevelBrightnessModifier/LevelBrightness.gd"
+BitFlagsComparator="*res://Misc/Libraries/Utils/BitFlagsComparator/BitFlagsComparator.gd"
+GameSettings="*res://Misc/GameSettings/GameSettings.tscn"
 
 [debug]
 
@@ -164,16 +504,12 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
-window/size/width=384
-window/size/height=256
+window/size/width=256
+window/size/height=240
 window/energy_saving/keep_screen_on=false
 window/handheld/orientation="sensor_landscape"
-window/stretch/mode="2d"
-window/stretch/aspect="keep_height"
-
-[gui]
-
-theme/use_hidpi=true
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [importer_defaults]
 
@@ -214,11 +550,13 @@ game_jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"unicode":0,"echo":false,"script":null)
  ]
 }
 game_action={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"unicode":0,"echo":false,"script":null)
  ]
 }
 game_cancel={
@@ -273,11 +611,13 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_3="Player Projectiles"
 2d_physics/layer_4="Enemies"
 2d_physics/layer_5="Enemy Projectile (Unused)"
-2d_physics/layer_6="Coins"
+2d_physics/layer_6="Collectibles"
 2d_physics/layer_7="Solid Entity Objects"
 
 [physics]
 
+2d/sleep_threshold_linear=0.0
+2d/sleep_threshold_angular=0.0
 2d/bp_hash_table_size=2048
 2d/cell_size=64
 2d/large_object_surface_threshold_in_cells=256
@@ -285,6 +625,7 @@ common/enable_object_picking=false
 
 [rendering]
 
+quality/2d/gles2_use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 quality/2d/use_pixel_snap=true

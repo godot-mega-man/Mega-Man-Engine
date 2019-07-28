@@ -1,0 +1,3 @@
+extends Node
+class_name FJ_Game_CharacterInitialEquipment
+

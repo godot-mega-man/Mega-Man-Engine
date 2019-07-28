@@ -1,0 +1,2 @@
+extends FJ_Res_ItemEquipable
+class_name FJ_Res_ItemEquipableAccessories

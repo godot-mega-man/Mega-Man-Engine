@@ -24,8 +24,11 @@ func _physics_process(delta) -> void:
 	
 	for i in travel_area.get_overlapping_bodies():
 		if i is KinematicBody2D:
-			if i.is_on_floor():
-				i.move_and_slide(travel_speed_per_second, Vector2(0, -1))
+			var pf_bhv = i.get_node_or_null("PlatformBehavior")
+			if pf_bhv != null:
+				if pf_bhv is FJ_PlatformBehavior2D:
+					if pf_bhv.on_floor:
+						pf_bhv.custom_move_and_slide(travel_speed_per_second, Vector2(0, -1))
 
 func _update_conveyor_size():
 	if(size == 1):

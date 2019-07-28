@@ -1,5 +1,7 @@
 extends TextureProgress
 
+export (bool) var affects_game_settings = true
+
 onready var hp_bar = $HpBar
 
 var previous_value_primary_bar = 0 #Actual Health Bar
@@ -24,7 +26,7 @@ func update_min_max(var min_hp, var max_hp):
 	min_value = min_hp
 	max_value = max_hp
 
-func update_hp_bar(new_value):
+func update_hp_bar(new_value, main_duration : float = 0.25, sub_increasing_duration : float = 0.01):
 	if hp_bar.value < new_value:
 		self.primary_is_decreasing = false
 	else:
@@ -36,11 +38,11 @@ func update_hp_bar(new_value):
 	previous_value_primary_bar = hp_bar.value
 	previous_value_secondary_bar = self.value
 	#Tween health smoothly
-	$Tween.interpolate_property(hp_bar, 'value', previous_value_primary_bar, clamp(new_value, 0, INF), 0.25, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property(hp_bar, 'value', previous_value_primary_bar, clamp(new_value, 0, INF), main_duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	#Slowly tween secondary bar.
 	if self.secondary_is_decreasing:
 		$Tween.interpolate_property(self, 'value', previous_value_secondary_bar, clamp(new_value, 0, INF), 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	else:
-		$Tween.interpolate_property(self, 'value', previous_value_secondary_bar, clamp(new_value, 0, INF), 0.01, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Tween.interpolate_property(self, 'value', previous_value_secondary_bar, clamp(new_value, 0, INF), sub_increasing_duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	
 	$Tween.start()

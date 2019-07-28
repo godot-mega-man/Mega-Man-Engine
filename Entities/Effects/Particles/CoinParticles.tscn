@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Entities/Coin/AnimatedTexture_Coin.tres" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Collectibles/Coin/AnimatedTexture_Coin.tres" type="Texture" id=1]
+
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 1

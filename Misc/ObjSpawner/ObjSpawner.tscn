@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Misc/ObjSpawner/ObjSpawner.gd" type="Script" id=1]
+[ext_resource path="res://Lib/FJ_LibHelper/AutoQueueFree/AutoQueueFree.tscn" type="PackedScene" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Highlight"
@@ -18,10 +19,20 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="ObjSpawner" type="Node2D"]
+[node name="ObjSpawner" type="Node2D" groups=[
+"ObjSpawner",
+]]
 script = ExtResource( 1 )
+spawn_on = 2
+obj_exist_limit = 1
+custom_parameters = {
+
+}
 
 [node name="SpritePreview" type="Sprite" parent="."]
+
+[node name="AutoQueueFree" parent="SpritePreview" instance=ExtResource( 2 )]
+allow_signal_connect_call = false
 
 [node name="DebugVisualHighlighter" type="AnimationPlayer" parent="."]
 anims/Highlight = SubResource( 1 )

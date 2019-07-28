@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://DatabaseCore/Skills/Core/Skill.gd" type="Script" id=1]
+[ext_resource path="res://DatabaseCore/Skills/Core/SkillGeneral.gd" type="Script" id=2]
+[ext_resource path="res://DatabaseCore/Skills/Core/SkillDamage.gd" type="Script" id=3]
+[ext_resource path="res://DatabaseCore/Skills/Core/SkillsInvocation.gd" type="Script" id=4]
+
+[node name="Skill" type="Node"]
+script = ExtResource( 1 )
+
+[node name="General" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Damage" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Invocation" type="Node" parent="."]
+script = ExtResource( 4 )

@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Entities/Coin/CoinCore.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Coin/Coin1.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Collectibles/Coin/AnimatedTexture_Coin.tres" type="Texture" id=3]
 
 [node name="Coin1" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-
+collect_icon = ExtResource( 3 )

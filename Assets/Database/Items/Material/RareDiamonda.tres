@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Sprites/Collectibles/Diamond/AnimatedTexture_Diamond.tres" type="Texture" id=1]
+[ext_resource path="res://DatabaseCore/Items/Res/ItemCore.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = ""
+description = ""
+can_be_sold = true
+buy_cost = 100
+sell_cost = 0.1
+rarity = 0
+item_image = ExtResource( 1 )

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Splash/SplashScreen.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Fonts/Font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Sprites/Icons/Icon_128.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://GUI/FadeScreen/FadeScreen.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -64,6 +64,7 @@ __meta__ = {
 }
 
 [node name="Part" type="Control" parent="."]
+editor/display_folded = true
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0

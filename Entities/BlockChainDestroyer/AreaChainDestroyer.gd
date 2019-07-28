@@ -2,14 +2,13 @@ extends ReferenceRect
 class_name ChainDestroyerArea
 
 #Lookup node (preload)
-onready var audio_manager = get_node("/root/AudioManager")
 enum SFX{
 	NONE,
 	ENEMY_COLLAPSE
 }
 onready var sfx_preset = {
 	SFX.NONE : null,
-	SFX.ENEMY_COLLAPSE : audio_manager.sfx_enemy_collapse
+	SFX.ENEMY_COLLAPSE : FJ_AudioManager.sfx_character_enemy_collapse
 }
 
 export(float, 0, 60, 0.001) var destroy_delay = 0.1
@@ -24,17 +23,19 @@ export(PackedScene) var destroy_effect = preload("res://Entities/Effects/Explosi
 export(SFX) var sfx = 1
 
 #Child nodes
+onready var preview_texture = $PreviewTexture
 
 #Lookup node
 onready var tile_map
 onready var level_iterable = get_node("/root/Level/Iterable")
 onready var player = get_node("/root/Level/Iterable/Player")
-onready var player_camera = get_node("/root/Level/Iterable/Player/Camera2D")
+onready var player_camera = get_node("/root/Level/Camera2D")
 
 #Temp variables
 var is_any_effect_on_screen : bool = false #True when any of effect is visible on screen.
 
 func _ready():
+	preview_texture.queue_free() #Used in editor only
 	assign_tile_map_to_modify()
 
 #This will let destroyer know which tilemap to destroy
@@ -96,6 +97,8 @@ func _destroy_blocks():
 			player_camera.shake_camera(shake_duration, shake_frequency, shake_strength)
 
 func is_position_visible_within_camera(var pos : Vector2, var current_camera : Camera2D) -> bool:
+	return true
+	
 	var p_cam_pos = current_camera.get_camera_position()
 	var vp_rect = get_viewport_rect().size
 	var vp_rect_half_size_x = int(vp_rect.x) >> 1

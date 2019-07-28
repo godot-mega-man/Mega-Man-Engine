@@ -1,0 +1,140 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Levels/Core/Level.gd" type="Script" id=1]
+[ext_resource path="res://GUI/GameGui/VitalBar.png" type="Texture" id=2]
+[ext_resource path="res://Levels/Core/Sprite.gd" type="Script" id=3]
+[ext_resource path="res://Lib/FJ_LibHelper/AnchorBehavior2D/AnchorBehavior2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Lib/FJ_LibHelper/SpriteCycling2D/SpriteCycling2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/Reimu_Template_II.png" type="Texture" id=7]
+[ext_resource path="res://GUI/BossHealthBar/BossHealthBar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://GUI/GameGui/GameGui.tscn" type="PackedScene" id=9]
+[ext_resource path="res://GUI/FadeScreen/FadeScreen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Fonts/Mega Man 10.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Camera/Camera2D.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/Sprites/Icons/Icon_128.png" type="Texture" id=13]
+[ext_resource path="res://Levels/Views/ViewContainer.gd" type="Script" id=14]
+[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 11 )
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false ]
+}
+
+[node name="Level" type="Node"]
+script = ExtResource( 1 )
+BG_COLOR = Color( 0.231373, 0.741176, 1, 1 )
+
+[node name="TileMap" type="TileMap" parent="." groups=[
+"Tile",
+]]
+light_mask = 0
+z_as_relative = false
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 4
+collision_friction = 0.0
+collision_mask = 6
+occluder_light_mask = 0
+format = 1
+
+[node name="AddDeathSpikeHere" type="Node2D" parent="TileMap"]
+
+[node name="Iterable" type="Node2D" parent="."]
+z_index = 999
+z_as_relative = false
+
+[node name="Sprite" type="Sprite" parent="Iterable"]
+pause_mode = 2
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( 20, 17 )
+hframes = 29
+script = ExtResource( 3 )
+
+[node name="AnchorBehavior" parent="Iterable/Sprite" instance=ExtResource( 4 )]
+
+[node name="SpriteCycling" parent="Iterable" instance=ExtResource( 5 )]
+frames_per_iterate = [ 0, 1 ]
+
+[node name="Player" parent="Iterable" instance=ExtResource( 6 )]
+editor/display_folded = true
+position = Vector2( 166.438, 80.0763 )
+level_path = NodePath("../..")
+game_gui_path = NodePath("../../GameGui")
+tilemap_path = NodePath("../../TileMap")
+
+[node name="PlatformerSprite" parent="Iterable/Player" index="1"]
+texture = ExtResource( 7 )
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="BossHealthBar" parent="." instance=ExtResource( 8 )]
+
+[node name="GameGui" parent="." instance=ExtResource( 9 )]
+
+[node name="FadeScreen" parent="." instance=ExtResource( 10 )]
+
+[node name="ReadyGUI" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="ReadyGUI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -5.5
+margin_right = 24.0
+margin_bottom = 5.5
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "READY"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ReadyGUI/Label"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 2 )
+
+[node name="Camera2D" parent="." instance=ExtResource( 12 )]
+editor/display_folded = true
+
+[node name="Sprite" type="Sprite" parent="Camera2D"]
+visible = false
+scale = Vector2( 0.375, 0.375 )
+texture = ExtResource( 13 )
+
+[node name="ViewContainer" type="Control" parent="."]
+script = ExtResource( 14 )
+default_view = NodePath("View")
+
+[node name="View" parent="ViewContainer" instance=ExtResource( 15 )]
+margin_right = 0.0
+margin_bottom = 0.0
+[connection signal="player_die" from="Iterable/Player" to="GameGui" method="_on_Player_player_die"]
+[connection signal="inventory_btn_pressed" from="GameGui" to="." method="_on_GameGui_inventory_btn_pressed"]
+[connection signal="pause_btn_pressed" from="GameGui" to="." method="_on_GameGui_pause_btn_pressed"]
+[connection signal="fading_finished" from="FadeScreen" to="GameGui" method="_on_FadeScreen_fading_finished"]
+[connection signal="fading_started" from="FadeScreen" to="GameGui" method="_on_FadeScreen_fading_started"]
+[connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="." method="_on_TransitionTween_tween_all_completed"]
+[connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="Iterable/Player" method="_on_TransitionTween_tween_all_completed"]
+
+[editable path="Iterable/Player"]
+
+[editable path="Camera2D"]

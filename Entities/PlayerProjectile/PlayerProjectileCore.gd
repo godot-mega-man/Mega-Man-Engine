@@ -7,13 +7,12 @@ signal life_timeout
 
 enum REFLECT_TYPE_PRESET {
 	CANNOT_BE_STOPPED,
-	CAN_BRE_REFLECTED,
+	CAN_BE_REFLECTED,
 	IS_DESTROYED
 }
 
 export(int) var DAMAGE_POWER = 16
 export(bool) var apply_damage = true
-export(float, 0, 1, 0.01) var DAMAGE_VARIANCE = 0.2
 export(int, FLAGS, "DISTANCE", "TIME") var PROJECTILE_LIFETIME_TYPE = 1
 export(float) var BULLET_MAX_TRAVEL_DISTANCE = 150
 export(float, 0.01, 1000) var BULLET_LIFE_TIME = 1.0
@@ -22,7 +21,7 @@ export(int, FLAGS, "ENEMY", "TILE") var DESTROY_ON_COLLIDE_TYPE = 3
 export(bool) var DESTROY_OUTSIDE_SCREEN = true
 export(bool) var HIT_ONCE_PER_FRAME = true #If true, bullet can hit multiple enemies at the same time.
 
-export(REFLECT_TYPE_PRESET) var reflect_type = 0
+export(REFLECT_TYPE_PRESET) var reflect_type = 1
 
 #Child nodes
 onready var sprite = $Sprite
@@ -38,25 +37,24 @@ var life_time : float = 0
 var is_reflected : bool = false #If true, it will become unusable.
 
 func _ready():
-	connect('body_entered', self, '_on_body_entered') #Used for collision with tiles or vice versa
-	connect('area_entered', self, '_on_body_entered') #Used for collision with Area2D
-	
 	#Used for exiting screen check
 	if DESTROY_OUTSIDE_SCREEN:
 		visible_notify.connect('screen_exited', self, '_on_leaving_screen')
 
-func _process(delta):
-	#Bullet hit once per frame. Reset every frame.
+func _physics_process(delta: float) -> void:
+	#Bullet hit once per frame. Reset every physics frame.
 	is_hitted = false
-
-func _on_body_entered(body) -> void: #On bullet collides with anything
+	
+	var bodies = get_overlapping_bodies()
+	var areas = get_overlapping_areas()
+	
+	for i in bodies:
 	#If the bullet detects that it collides with Tilemap
-	if body is TileMap:
-		#We destroy the player bullet if allowed.
-		var bit_flag_comparator = BitFlagsComparator.new()
-		if bit_flag_comparator.is_bit_enabled(DESTROY_ON_COLLIDE_TYPE, 1):
-			emit_signal("hit_tile", body)
-			queue_free_start()
+		if i is TileMap:
+			#We destroy the player bullet if allowed.
+			if get_node("/root/BitFlagsComparator").is_bit_enabled(DESTROY_ON_COLLIDE_TYPE, 1):
+				emit_signal("hit_tile", i)
+				queue_free_start()
 
 func reflected():
 	if is_reflected:
@@ -73,7 +71,7 @@ func reflected():
 	bullet_behavior.current_distance_traveled = 0.0
 	bullet_behavior.current_gravity = 0.0
 	
-	get_node("/root/AudioManager").sfx_reflect.play()
+	FJ_AudioManager.sfx_combat_reflect.play()
 	reflect_animation.play("Reflected")
 	reflected_destroy_timer.start()
 	
@@ -86,3 +84,5 @@ func queue_free_start(var play_destroy_effect : bool = true):
 func _on_leaving_screen():
 	if DESTROY_OUTSIDE_SCREEN:
 		queue_free_start(false)
+
+

@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Debug/RectHelper/RectHelper.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=2]
+
 
 [node name="RectHelper" type="ReferenceRect"]
 margin_left = 89.0

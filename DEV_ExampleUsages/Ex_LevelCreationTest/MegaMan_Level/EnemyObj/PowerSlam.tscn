@@ -1,0 +1,173 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Entities/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/PowerSlam.gd" type="Script" id=2]
+[ext_resource path="res://Assets_ReleaseExcluded/Database/Enemy/PowerSlam.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Enemies/MM6_PowerSlam.png" type="Texture" id=4]
+[ext_resource path="res://Entities/Effects/LargeExplosion/LargeExplosion.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=6]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="Animation" id=2]
+length = 0.1
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Landing"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 0, 2, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finish_landing"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 2 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "turn_toward_player"
+}, {
+"args": [  ],
+"method": "hover_forward"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stomp"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 16, 24 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 19, 24 )
+
+[node name="PowerSlam" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+_database = ExtResource( 3 )
+sprite_preview_texture = SubResource( 1 )
+damage_area_nodes = [ NodePath("DamageArea2D") ]
+explosion_effect = ExtResource( 5 )
+death_sound = 1
+RANGE_CHECKING_MODE = 1
+
+[node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 6 )]
+GRAVITY_VEC = Vector2( 0, 0 )
+WALK_SPEED = 120.0
+VELOCITY_X_DAMPING = 1.0
+MAX_FALL_SPEED = 360.0
+CONTROL_ENABLE = false
+IS_PREVENT_OUTSIDE_SCREEN = false
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+texture = ExtResource( 4 )
+hframes = 3
+
+[node name="Ani" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
+autoplay = "Launch"
+anims/Hovering = SubResource( 2 )
+anims/Landing = SubResource( 3 )
+anims/Launch = SubResource( 4 )
+anims/Stomping = SubResource( 5 )
+
+[node name="PlatformCollisionShape2D" parent="." index="2"]
+visible = true
+shape = SubResource( 6 )
+disabled = false
+
+[node name="HpBar" parent="." index="3"]
+margin_left = -16.0
+margin_top = 26.0
+margin_right = 16.0
+margin_bottom = 32.0
+
+[node name="DamageArea2D" type="Area2D" parent="." index="7"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D" index="0"]
+shape = SubResource( 7 )
+[connection signal="hit_ceiling" from="PlatformBehavior" to="." method="_on_PlatformBehavior_hit_ceiling"]
+[connection signal="landed" from="PlatformBehavior" to="." method="_on_PlatformBehavior_landed"]

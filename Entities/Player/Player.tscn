@@ -1,15 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Behaviours/Platformer/PlatformerBehavior.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Camera/Camera.gd" type="Script" id=4]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Effects/Damage.png" type="Texture" id=4]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/CharacterTeleport.png" type="Texture" id=5]
+[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportIn.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportOut.wav" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 7, 10 )
+extents = Vector2( 6.99, 9.5 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Invincible"
@@ -29,6 +32,197 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "Flashing"
+length = 0.06
+loop = true
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "StopFlashin"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "New Anim"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.05, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -512 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("TelIn")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../PlatformBehavior:INITIAL_STATE")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../PlatformerSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "TelOut"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 0, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15, 0.6 ),
+"transitions": PoolRealArray( 1.6245, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -512 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("TelOut")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../PlatformBehavior:INITIAL_STATE")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../PlatformerSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
@@ -39,38 +233,32 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="PlatformerBehavior" parent="." instance=ExtResource( 2 )]
-WALK_SPEED = 108.0
+[node name="PlatformBehavior" parent="." instance=ExtResource( 2 )]
+WALK_SPEED = 78.0
 JUMP_SPEED = 320.0
-VELOCITY_X_DAMPING = 0.2
+VELOCITY_X_DAMPING = 1.0
+MAX_FALL_SPEED = 360.0
+INITIAL_STATE = false
 
 [node name="PlatformerSprite" parent="." instance=ExtResource( 3 )]
-path_to_platformer_behavior = NodePath("../PlatformerBehavior")
+visible = false
+path_to_platformer_behavior = NodePath("../PlatformBehavior")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 3 )
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-limit_left = 0
-limit_top = 0
-limit_smoothed = true
-smoothing_speed = 8.0
-drag_margin_left = 0.0
-drag_margin_top = 0.0
-drag_margin_right = 0.0
-drag_margin_bottom = 0.0
-editor_draw_screen = false
-script = ExtResource( 4 )
-
 [node name="Pivots" type="Node2D" parent="."]
 
 [node name="Shoot" type="Position2D" parent="Pivots"]
-position = Vector2( 23, 0 )
+position = Vector2( 15, 0 )
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TakingDamageTimer" type="Timer" parent="."]
+wait_time = 0.4
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." groups=[
@@ -85,16 +273,46 @@ collision_mask = 60
 shape = SubResource( 2 )
 
 [node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
 anims/Invincible = SubResource( 3 )
 
-[node name="TimescaleTimer" type="Timer" parent="."]
-pause_mode = 2
-wait_time = 0.5
-one_shot = true
+[node name="TransitionTween" type="Tween" parent="."]
+
+[node name="DamageSprite" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+texture = ExtResource( 4 )
+
+[node name="Ani" type="AnimationPlayer" parent="DamageSprite"]
+anims/Flashing = SubResource( 4 )
+anims/StopFlashin = SubResource( 5 )
+
+[node name="TeleportSprite" type="Sprite" parent="."]
+position = Vector2( 0, -512 )
+texture = ExtResource( 5 )
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TeleportSprite"]
+autoplay = "New Anim"
+playback_speed = 0.8
+"anims/New Anim" = SubResource( 6 )
+anims/TelOut = SubResource( 7 )
+
+[node name="TelIn" type="AudioStreamPlayer2D" parent="TeleportSprite"]
+stream = ExtResource( 6 )
+volume_db = -6.0
+
+[node name="TelOut" type="AudioStreamPlayer2D" parent="TeleportSprite"]
+stream = ExtResource( 7 )
+volume_db = -2.0
 [connection signal="input_event" from="." to="." method="_on_Player_input_event"]
 [connection signal="launched_attack" from="." to="PlatformerSprite" method="start_normal_attack_animation"]
-[connection signal="landed" from="PlatformerBehavior" to="." method="_on_PlatformerBehavior_landed"]
+[connection signal="collided" from="PlatformBehavior" to="." method="_on_PlatformerBehavior_collided"]
+[connection signal="fell_into_pit" from="PlatformBehavior" to="." method="_on_PlatformerBehavior_fell_into_pit"]
+[connection signal="jumped_by_keypress" from="PlatformBehavior" to="." method="_on_PlatformBehavior_jumped_by_keypress"]
+[connection signal="landed" from="PlatformBehavior" to="." method="_on_PlatformBehavior_landed"]
+[connection signal="timeout" from="TakingDamageTimer" to="." method="_on_TakingDamageTimer_timeout"]

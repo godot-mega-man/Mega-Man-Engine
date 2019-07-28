@@ -22,7 +22,7 @@ func _on_hide_timer_timeout():
 	animation_player.play("Fade")
 
 #This will be called at the start of the scene.
-func update_hp_bar(new_value):
+func update_hp_bar(new_value, main_duration : float = 2, sub_increasing_duration : float = 0.2):
 	#Hide at initial? 
 	if hide_at_initial:
 		hide_at_initial = false
@@ -32,9 +32,9 @@ func update_hp_bar(new_value):
 	previous_value_primary_bar = hp_bar.value
 	previous_value_secondary_bar = self.value
 	#Tween health smoothly
-	$Tween.interpolate_property(hp_bar, 'value', previous_value_primary_bar, clamp(new_value, 0, INF), 2, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$Tween.interpolate_property(hp_bar, 'value', previous_value_primary_bar, clamp(new_value, 0, INF), main_duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	#Slowly tween secondary bar.
-	$Tween.interpolate_property(self, 'value', previous_value_secondary_bar, clamp(new_value, 0, INF), 0.2, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.interpolate_property(self, 'value', previous_value_secondary_bar, clamp(new_value, 0, INF), sub_increasing_duration, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.start()
 	
 	#Start to hide after some time.

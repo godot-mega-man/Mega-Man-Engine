@@ -29,12 +29,15 @@ func _process(delta):
 	y_geyser -= GRAVITY * delta
 	
 	#Limits how high this text can float.
-	var height_limit = level.CAMERA_LIMIT_TOP + LIMIT_TOP_OFFSET
-	if self.global_position.y < height_limit:
-		self.global_position.y = height_limit
+#	var height_limit = level.CAMERA_LIMIT_TOP + LIMIT_TOP_OFFSET
+#	if self.global_position.y < height_limit:
+#		self.global_position.y = height_limit
 
 func set_float_as_text(var number : float = 0):
-	label.text = NumberSimplifier.get_simplified_number(number)
+	if GameSettings.gameplay.simplified_damage_number:
+		label.text = NumberSimplifier.get_simplified_number(number)
+	else:
+		label.text = str(number)
 
 func _on_delete_timer_timeout():
 	queue_free()

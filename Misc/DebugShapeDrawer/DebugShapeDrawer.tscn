@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Misc/DebugShapeDrawer/DebugShapeDrawer.gd" type="Script" id=1]
-[ext_resource path="res://Misc/AutoQueueFree/AutoQueueFree.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Lib/FJ_LibHelper/AutoQueueFree/AutoQueueFree.tscn" type="PackedScene" id=2]
 
 [node name="DebugShapeDrawer" type="Node2D"]
 script = ExtResource( 1 )

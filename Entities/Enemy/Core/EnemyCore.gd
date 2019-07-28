@@ -1,0 +1,488 @@
+extends KinematicBody2D
+
+class_name EnemyCore
+
+signal taken_damage(value, target, player_proj_source)
+signal dropped_coin(value, count)
+signal dropped_item(item_data, quantity)
+signal dropped_diamond
+signal damage_counter_released(value, target)
+signal slain(target)
+signal despawned(by_dying)
+
+enum preset_range_checking_mode {
+	Radius, Horizontal, Vertical
+}
+
+#Dead sound effect
+enum dead_sfx {
+	COLLAPSE,
+	LARGE_EXPLOSION
+}
+
+export (PackedScene) var _database
+export (Texture) var sprite_preview_texture
+export (Array, NodePath) onready var damage_area_nodes
+export var explosion_effect = preload('res://Entities/Effects/Explosion/Explosion.tscn')
+export (dead_sfx) var death_sound = dead_sfx.COLLAPSE
+
+export var DEATH_SHAKE_STRENGTH = 3
+export var CAN_GAIN_WEAPON_EXP = true #Applying damage to enemy also increase player weapon's experience
+export var GAIN_WEAPON_EXP_RATIO = 1.0 #Ratio of weapon's experience gains.
+
+#Range checking mode. Used when calling method within_player_range()
+export (preset_range_checking_mode) var RANGE_CHECKING_MODE
+
+export var ACTIVE_ON_SCREEN = Vector2(32, 32) #Active/inactive when the enemy is visible on screen by pixels offset
+export var PERMA_DEATH_SCENE = true #Die permanently WITHIN SCENE ONLY instead of respawning everytime enemy dies
+export var PERMA_DEATH_LEVEL = false #Die permanently within current level. Useful with bosses and mini-bosses
+export var IS_A_CLONE = false
+
+#Child nodes:
+onready var flicker_anim = $SpriteMain/FlickerAnimationPlayer
+onready var sprite_main = $SpriteMain
+onready var sprite = $SpriteMain/Sprite
+onready var platform_collision_shape = $PlatformCollisionShape2D as CollisionShape2D
+onready var hp_bar = $HpBar
+onready var active_vis_notifier = $ActiveVisNotifier
+onready var level_camera = get_node("/root/Level/Camera2D")
+onready var stackable_dmg_counter_timer = $StackableDmgCounterTimer
+
+onready var player = $"/root/Level/Iterable/Player"
+
+onready var global_var = $"/root/GlobalVariables"
+onready var fade_screen = $"/root/Level/FadeScreen"
+onready var level := get_node_or_null("/root/Level") as Level
+onready var player_stats = get_node("/root/PlayerStats")
+
+onready var database : EnemyDatabase
+
+#Temp variables
+var current_hp
+var initialy_inactive = false
+var is_fresh_respawn = false
+var is_reset_state_called = false #Call once
+var is_coin_dropped = false
+var total_stacked_damage = 0 #Used in damage counter. Stacking damage for a short brief when constantly taking damage.
+
+#Preloaded scenes
+var dmg_counter = preload("res://GUI/DamageCounter.tscn")
+var exp_counter = preload("res://GUI/ExpCounter.tscn")
+var coin = preload("res://Entities/Coin/Coin1.tscn")
+var item = preload("res://Entities/Coin/Item.tscn")
+var diamond = preload("res://Entities/Coin/Diamond1.tscn")
+var explosion_particles = preload("res://Entities/Effects/Particles/ExplosionParticles.tscn")
+var database_preload = preload("res://DatabaseCore/Enemy/Core/Database.tscn")
+
+func _ready():
+	init_database()
+	
+	#Wait... Am I permanently died?
+	if is_perma_dead():
+		queue_free()
+	
+	#Connect to GameSettings to set hp bar visible/invisible on updated.
+	GameSettings.gameplay.connect("show_enemy_hp_bars_changed", self, "_on_setting_show_enemy_hp_bars_changed")
+	_on_setting_show_enemy_hp_bars_changed(GameSettings.gameplay.show_enemy_hp_bars)
+	
+	init_temp_variables()
+	hp_bar.init_health_bar(0, database.general.stats.hit_points_base, current_hp)
+
+func init_database():
+	if _database != null:
+		database = _database.instance()
+		add_child(database)
+	else:
+		database = database_preload.instance()
+		add_child(database)
+
+func init_temp_variables():
+	current_hp = database.general.stats.hit_points_base
+
+func _process(delta):
+	_check_for_area_collisions()
+
+func _physics_process(delta: float) -> void:
+	#Check for my collision that overlapping areas
+	_check_for_area_collisions()
+
+func hit_by_player_projectile(var damage : float, var player_proj_source : PlayerProjectile) -> bool:
+	var condition : bool #Init a return value
+	
+	#Check whether damage can be taken.
+	var can_apply_damage : bool = true
+	if not database.general.combat.can_hit:
+		can_apply_damage = false
+	
+	#Start apply damage if all conditions are met.
+	if can_apply_damage:
+		var damage_output = calculate_damage_output(damage)
+		apply_damage(damage_output)
+		emit_signal("taken_damage", damage_output, self, player_proj_source)
+		
+		#Play animation "Blink". Blinking sprite indicates that
+		#the enemy is taking damage or being invincible.
+		flicker_anim.play("Damage")
+		
+		check_for_death()
+		
+		#Damage is applied. Set value to true.
+		condition = true
+	else:
+		condition = false
+	
+	return condition
+
+func _check_for_area_collisions():
+	for i in damage_area_nodes:
+		var node = get_node(i)
+		if node == null:
+			return
+		
+		var areas = node.get_overlapping_areas()
+		
+		for j in areas:
+			#When player collides with enemy,
+			#The character will take damage and will become invincible
+			#for a short amount of time.
+			#When invincible time is out, the player will be able to
+			#take damage again.
+			var player = j.get_owner()
+			if player != null && player is Player:
+				if database.general.combat.can_damage:
+					#Define call method
+					var call_method = "player_take_damage"
+					
+					#Get necessary information of enemy.
+					var enemy_parameters = [
+						database.general.combat.contact_damage,
+						database.general.stats.repel_player_enabled,
+						get_global_position(),
+						database.general.stats.repel_power,
+						database.general.combat.damage_custom_invis_enabled,
+						database.general.combat.damage_custom_invis_timer
+					]
+					
+					if player.has_method(call_method):
+						player.callv(call_method, enemy_parameters)
+			
+			#If the bullet is detected
+			var projectile = j
+			if projectile != null && projectile is PlayerProjectile:
+				#Check if bullet is capable of being destroyed at the end
+				#Bullet may not get destroyed if enemy is being invincible.
+				var destroy_bullet_at_the_end = get_node("/root/BitFlagsComparator").is_bit_enabled(projectile.DESTROY_ON_COLLIDE_TYPE, 0) && database.general.combat.eat_player_projectile
+				var can_bullet_hit = true #Init
+				
+				#Check if bullet is unable to hit (ignore)
+				if (projectile.HIT_ONCE_PER_FRAME and projectile.is_hitted) or (!self.can_be_damaged()):
+					can_bullet_hit = false
+				elif projectile.is_reflected:
+					can_bullet_hit = false
+				elif get_node(i).has_node("ProjectileReflector"):
+					var proj_reflector = get_node(i).get_node("ProjectileReflector") as ProjectileReflector
+					var reflected = proj_reflector.do_reflect()
+					
+					#Start telling player's projectile that its bullet has been reflected.
+					if reflected:
+						projectile.reflected()
+						can_bullet_hit = false
+						destroy_bullet_at_the_end = false
+				
+				if can_bullet_hit:
+					if projectile.apply_damage:
+						hit_by_player_projectile(projectile.DAMAGE_POWER, projectile)
+					projectile.emit_signal("hit_enemy", projectile)
+					projectile.is_hitted = true
+				
+				#Destroy projectile if hit an enemy.
+				if destroy_bullet_at_the_end:
+					projectile.queue_free_start()
+
+#Calculates damage, return the damage output value.
+func calculate_damage_output(var raw_damage : float) -> float:
+	var damage_result = 0
+	
+	damage_result += raw_damage
+
+	#Damage can't go below minimum.
+	#Ex: If damage is -25, it's finalized as 1 by default.
+	if damage_result < database.general.combat.damage_taken_minimum:
+		damage_result = database._general.combat.damage_taken_minimum
+	
+	return damage_result
+
+#Use calculated damage value to apply damage to enemy.
+#Ignores invisibility time.
+func apply_damage(var calculated_damage, var update_hp_bar = true, var spawn_damage_counter = true):
+	#Subtracting HP.
+	current_hp -= calculated_damage
+	
+	#Spawn damage counter on the screen.
+	if spawn_damage_counter:
+		start_stackable_damage_counter(calculated_damage)
+	#Update health bar
+	if update_hp_bar:
+		hp_bar.update_hp_bar(current_hp)
+
+func can_be_damaged() -> bool:
+	if (
+		(current_hp <= 0 and !database.general.combat.death_immunity) or
+		!database.general.combat.eat_player_projectile
+	):
+		return false
+	
+	return true
+
+#Check if hit points exceeds limit, normalize it.
+#Optional to cut decimal hp value.
+func normalize_hp(cut_float_value : bool = false) -> void:
+	if current_hp > database.general.stats.hit_points_base: #Normalize hp
+		current_hp = database.general.stats.hit_points_base
+	if current_hp < 0: #Can't drop below zero. In case enemy is immune to death
+		current_hp = 0
+	if cut_float_value: #Round down hp (Optional)
+		floor(current_hp)
+
+#Restores hit points
+func heal(amount_of_hp_to_restore : float):
+	current_hp += amount_of_hp_to_restore
+	normalize_hp()
+
+#Check whether this enemy can die.
+#If its hit points drop below zero, DIE!~
+func check_for_death():
+	FJ_AudioManager.sfx_combat_buster.call_deferred("stop")
+	
+	if !database.general.combat.death_immunity && current_hp <= 0:
+		FJ_AudioManager.sfx_character_enemy_damage.call_deferred("stop")
+		play_death_sfx()
+		die()
+	else:
+		FJ_AudioManager.sfx_character_enemy_damage.play()
+
+func die():
+	#Create death animation effect
+	var effect = explosion_effect.instance()
+	effect.position = self.global_position
+	get_parent().add_child(effect)
+	
+	#Drop coin when dies
+	drop_coin_start()
+	drop_item_start()
+	drop_diamond_start()
+	#Awards player experience points.
+	earn_exp()
+	
+	#Shake Camera
+	if level_camera != null:
+		level_camera.shake_camera(0.3, 50, DEATH_SHAKE_STRENGTH)
+	
+	#Start queue freeing, tell the method that this obj is slain.
+	call_deferred('queue_free_start', true)
+	
+	#Emit signal
+	emit_signal("slain", self)
+
+#Start queue freeing.
+func queue_free_start(by_dying : bool):
+	if !is_reset_state_called: #Called once
+		is_reset_state_called = true
+		
+		#If dying, saves dying state to global variables.
+		if by_dying:
+			save_death_state()
+		
+		emit_signal("despawned", by_dying)
+		
+		queue_free()
+
+#Play death sound defined in export variable.
+func play_death_sfx():
+	match death_sound:
+		dead_sfx.COLLAPSE:
+			FJ_AudioManager.sfx_character_enemy_collapse.play()
+		dead_sfx.LARGE_EXPLOSION:
+			FJ_AudioManager.sfx_combat_large_explosion.play()
+	
+
+#Start stacking damage counter to an enemy before spawning the text.
+#When the enemy is constantly taking damage in a short brief,
+#the damage value are added up.
+#After a while enemy not taking damage, damage counter will then pop out.
+func start_stackable_damage_counter(value_add : float):
+	#Stack!
+	total_stacked_damage += value_add
+	#Check whether enemy is dead.
+	#If that so, spawn damage counter immediately.
+	if current_hp <= 0 and !database.general.combat.death_immunity:
+		spawn_damage_counter(total_stacked_damage)
+	else:
+		stackable_dmg_counter_timer.start()
+func _on_StackableDmgCounterTimer_timeout():
+	#Spawn damage counter.
+	spawn_damage_counter(total_stacked_damage)
+
+func spawn_damage_counter(damage, offset : Vector2 = Vector2(0, 0)):
+	if !GameSettings.gameplay.damage_popup_enemy:
+		return
+	
+	var dmg_text = dmg_counter.instance() #Instance DamageCounter
+	dmg_text.global_position = self.global_position #Set position to enemy
+	dmg_text.position += offset #Offset
+	get_parent().add_child(dmg_text) #Spawn
+	dmg_text.set_float_as_text(damage) #Set child node's text
+	
+	#Reset total stacked damage value to zero.
+	total_stacked_damage = 0
+	
+	emit_signal("damage_counter_released", damage, self)
+
+func spawn_exp_counter(damage, offset : Vector2 = Vector2(0, 0)):
+	if !GameSettings.gameplay.exp_popup:
+		return
+	
+	var dmg_text = exp_counter.instance() #Instance DamageCounter
+	dmg_text.get_node('Label').text = str(damage) #Set child node's text
+	dmg_text.global_position = self.global_position #Set position to enemy
+	dmg_text.position += offset #Offset
+	dmg_text.get_node('Label').add_color_override("font_color", Color(0, 0.7, 1)) #Set text color to cyan
+	#Make the text float up
+	dmg_text.GRAVITY = 60
+	dmg_text.RANDOM_X_SWAY = 0
+	dmg_text.RANDOM_Y_GEYSER_MAX = 90
+	dmg_text.RANDOM_Y_GEYSER_MIN = 90
+	dmg_text.stay_time = 1.5
+	get_parent().add_child(dmg_text) #Spawn
+
+func drop_coin_start():
+	#If this enemy do not drop coin upon death... Do nothing.
+	if !database.loots.coin.drop_coin:
+		return
+	
+	call_deferred("spawn_coins_by_amount", database.loots.coin.coin_value, database.loots.coin.spawn_count)
+
+func drop_item_start():
+	var drop_items : Array = database.loots.item_table.get_items()
+	
+	#Iterate through available item pool.
+	for i in drop_items:
+		if i is ItemSetData:
+			call_deferred("spawn_items_by_amount", i.item, i.quantity)
+
+func drop_diamond_start():
+	#If this enemy do not drop diamond upon death... Do nothing.
+	if !database.loots.diamond.drop_diamond:
+		return
+	
+	var chance = rand_range(0, 1) #Chance to drop diamond
+	#Check for drop chance
+	if chance < database.loots.diamond.DIAMOND_DROP_CHANCE:
+		call_deferred("spawn_a_diamond")
+
+func earn_exp(value : int = database.loots.experience.exp_awarded):
+	#If exp value is below zero, do nothing.
+	if value <= 0:
+		return
+	
+	#Earn exp.
+	player_stats.experience_point += value
+	#Update GUI
+	level.update_game_gui_exp()
+	
+	#Spawn exp counter
+	spawn_exp_counter(value, Vector2(0, -16))
+
+func spawn_coins_by_amount(var coin_value : int = 1, var coin_drop_count : int = 1):
+	for i in coin_drop_count:
+		var coin_inst = coin.instance()
+		get_parent().call_deferred("add_child", coin_inst)
+		coin_inst.ITEM_TYPE = 0 #Coin
+		coin_inst.global_position = self.global_position
+		coin_inst.COIN_VALUE = coin_value
+	
+	emit_signal("dropped_coin", coin_value, coin_drop_count)
+
+func spawn_items_by_amount(var item_path : String, var quantity : int = 1):
+	if item_path.empty():
+		return
+	
+	for i in quantity:
+		var item_inst = item.instance()
+		get_parent().call_deferred("add_child", item_inst)
+		item_inst.item_data_file = item_path #File
+		item_inst.ITEM_TYPE = 1 #Item
+		item_inst.global_position = self.global_position
+	
+	emit_signal("dropped_item", item_path, quantity)
+
+func spawn_a_diamond():
+	var diamond_inst = diamond.instance()
+	get_parent().call_deferred("add_child", diamond_inst)
+	diamond_inst.ITEM_TYPE = 2 #Diamond
+	diamond_inst.global_position = self.global_position
+	
+	emit_signal("dropped_diamond")
+
+func is_at_full_health():
+	return current_hp >= database.general.stats.hit_points_base
+
+#When enemy leaves the screen, the enemy disappear.
+func _on_ActiveVisNotifier_screen_exited():
+	#Reset to initial state for respawning
+	queue_free_start(false)
+
+func _on_setting_show_enemy_hp_bars_changed(enable):
+	if hp_bar.affects_game_settings:
+		hp_bar.visible = enable
+
+func save_death_state():
+	var dead_info = DeadEnemyInfo.new()
+	dead_info.scene_file_name = get_tree().get_current_scene().filename
+	dead_info.file_name = self.filename
+	dead_info.global_pos = self.global_position
+	
+	global_var.add_to_dead_enemies(dead_info)
+
+func is_perma_dead() -> bool:
+	return false
+
+#Turn towards player. Flips SpriteMain so it'll
+#have its scale.x fliped to either value of 1 or -1
+func turn_toward_player():
+	if player != null:
+		var actual_player = player as Player
+		if self.global_position.x > actual_player.global_position.x:
+			sprite_main.scale.x = 1
+		else:
+			sprite_main.scale.x = -1
+
+#Check whether player is within enemy's radius.
+#Distance value is calculated by pixels.
+#Range check mode, please see: const RANGE_CHECK_*.
+func within_player_range(var rang : float) -> bool:
+	if player != null:
+		var actual_player = player as Player
+		
+		if get_player_distance() < rang:
+			return true
+	
+	return false
+
+#Get distance between player by pixels.
+func get_player_distance() -> float:
+	assert(player != null)
+	var actual_player = player as Player
+	
+	match RANGE_CHECKING_MODE:
+		preset_range_checking_mode.Radius:
+			return self.global_position.distance_to(actual_player.global_position)
+		preset_range_checking_mode.Horizontal:
+			return abs(self.global_position.x - actual_player.global_position.x)
+		preset_range_checking_mode.Vertical:
+			return abs(self.global_position.y - actual_player.global_position.y)
+	
+	assert(false) #Mode error!
+
+func get_sprite_main_direction() -> float:
+	return sprite_main.scale.x

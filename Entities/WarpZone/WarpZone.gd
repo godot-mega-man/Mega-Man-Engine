@@ -9,21 +9,18 @@
 
 extends ReferenceRect
 
-#Lookup nodes
-onready var audio_manager = $"/root/AudioManager"
-onready var sfx_enter_door = audio_manager.sfx_enter_door
-
 #Transition sound effect preset
 enum TRANSITION_SFX {NONE, SFX_1}
 onready var PRESET_TRANSITION_SFX = {
 	TRANSITION_SFX.NONE : null,
-	TRANSITION_SFX.SFX_1 : sfx_enter_door
+	TRANSITION_SFX.SFX_1 : FJ_AudioManager.sfx_env_enter_door
 }
 
 export(String, FILE, "*.tscn") var TARGET_SCENE = 'res://Levels/'
 export(Vector2) var DESTINATION = Vector2(0, 0)
 export(int, "FORCED", "PLAYER INTERACTION", "DISABLED") var TELEPORT_TYPE = 0
 export(bool) var PLAYER_ON_FLOOR_ONLY = false
+export(String) var TRANSIT_TARGET_VIEW = "View"
 export(int, "NONE", "SFX_1") var TRANSIT_SOUND_EFFECT = TRANSITION_SFX.SFX_1
 
 #Child nodes
@@ -68,11 +65,13 @@ func warp_player():
 	
 	#Set destination
 	checkpoint_manager.saved_player_position = DESTINATION
+	#Set view target for the next scene.
+	global_var.current_view = TRANSIT_TARGET_VIEW
 	#Play sound
 	if TRANSIT_SOUND_EFFECT != TRANSITION_SFX.NONE:
 		PRESET_TRANSITION_SFX.get(TRANSIT_SOUND_EFFECT).play()
 	
-	(get_owner() as Level).go_to_scene(TARGET_SCENE)
+	get_node("/root/Level").go_to_scene(TARGET_SCENE)
 
 func _on_AreaNotifier_entered_area() -> void:
 	warp_player()

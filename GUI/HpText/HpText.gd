@@ -7,7 +7,7 @@ var current_value = 0
 var tweening_val = 0
 var is_updated = false
 
-const TWEEN_DURATION = 0.3
+export var tween_duration = 0.3
 
 #Child nodes
 onready var tween = $Tween
@@ -27,4 +27,4 @@ func init_and_tween(new_val):
 	is_updated = true
 
 func tween_action():
-	tween.interpolate_property(self, 'tweening_val', previous_value, current_value, TWEEN_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(self, 'tweening_val', previous_value, current_value, tween_duration, Tween.TRANS_QUAD, Tween.EASE_OUT)

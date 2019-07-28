@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Entities/PlayerProjectile/PlayerProjectileCore.gd" type="Script" id=1]
-[ext_resource path="res://Behaviours/BulletBehavior/BulletBehavior.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Lib/FJ_LibHelper/BulletBehavior2D/BulletBehavior2D.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )

@@ -14,7 +14,6 @@ export(bool) var PLAYER_ON_FLOOR_ONLY = false
 #Child nodes
 onready var tap_texture = $TapTexture
 onready var player = $"/root/Level/Iterable/Player"
-onready var control_interface = $"/root/Level/ControlInterface"
 
 onready var global_var = $"/root/GlobalVariables"
 onready var player_stats = get_node("/root/PlayerStats")
@@ -78,7 +77,6 @@ func entered_area():
 
 func update_tap_gui_button():
 	tap_texture.visible = is_player_in_area
-	(control_interface as ControlInterface).set_visible_interact_button(is_player_in_area)
 
 func show_hide_tap_button(var what : bool):
 	tap_texture.visible = what

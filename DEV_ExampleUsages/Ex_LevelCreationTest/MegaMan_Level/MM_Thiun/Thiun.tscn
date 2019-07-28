@@ -1,7 +1,11 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/MM_Thiun/Thiun.png" type="Texture" id=1]
-[ext_resource path="res://Behaviours/BulletBehavior/BulletBehavior.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Effects/Thiun.png" type="Texture" id=1]
+[ext_resource path="res://Lib/FJ_LibHelper/BulletBehavior2D/BulletBehavior2D.tscn" type="PackedScene" id=2]
+
+
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "New Anim"
