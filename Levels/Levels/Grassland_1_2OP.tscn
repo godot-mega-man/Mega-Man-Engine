@@ -2240,9 +2240,9 @@ target_view = NodePath("../../View8")
 active_view = NodePath("..")
 
 [node name="BossDoor" parent="ViewContainer/View9" index="3" instance=ExtResource( 28 )]
-margin_left = 1772.0
+margin_left = 1776.0
 margin_top = 96.0
-margin_right = 1812.0
+margin_right = 1808.0
 margin_bottom = 160.0
 target_view = NodePath("../../View10")
 active_view = NodePath("..")
@@ -2256,9 +2256,9 @@ margin_right = 5504.0
 margin_bottom = 1440.0
 
 [node name="BossDoor2" parent="ViewContainer/View10" index="2" instance=ExtResource( 28 )]
-margin_left = 236.0
+margin_left = 240.0
 margin_top = 96.0
-margin_right = 276.0
+margin_right = 272.0
 margin_bottom = 160.0
 target_view = NodePath("../../View11")
 active_view = NodePath("..")
@@ -2302,8 +2302,8 @@ position = Vector2( 0, -120 )
 texture = ExtResource( 31 )
 centered = false
 [connection signal="player_die_normally" from="Iterable/Player" to="Iterable/Player/ThiunEffectCreator" method="create"]
-[connection signal="entered_area" from="AreaNotifier" to="ChainDestroyController" method="_on_AreaNotifier_entered_area"]
 [connection signal="entered_area" from="AreaNotifier" to="ChainDestroyController2" method="_on_AreaNotifier_entered_area"]
+[connection signal="entered_area" from="AreaNotifier" to="ChainDestroyController" method="_on_AreaNotifier_entered_area"]
 [connection signal="transition_activated" from="ViewContainer/View8/ScreenTransitor10" to="ParallaxBackground" method="_on_ScreenTransitor10_transition_activated"]
 [connection signal="transition_activated" from="ViewContainer/View9/ScreenTransitor11" to="ParallaxBackground" method="_on_ScreenTransitor10_transition_activated"]
 [connection signal="transition_activated" from="ViewContainer/View9/BossDoor" to="ParallaxBackground" method="_on_BossDoor_transition_activated"]

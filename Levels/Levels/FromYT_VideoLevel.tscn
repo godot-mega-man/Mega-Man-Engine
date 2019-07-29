@@ -302,9 +302,9 @@ margin_right = 512.0
 margin_bottom = 240.0
 
 [node name="BossDoor" parent="ViewContainer/View2" index="2" instance=ExtResource( 12 )]
-margin_left = 237.0
+margin_left = 240.0
 margin_top = 64.0
-margin_right = 277.0
+margin_right = 272.0
 margin_bottom = 128.0
 target_view = NodePath("../../View3")
 active_view = NodePath("..")
@@ -339,9 +339,9 @@ target_view = NodePath("../../View3")
 active_view = NodePath("..")
 
 [node name="BossDoor2" parent="ViewContainer/View4" index="3" instance=ExtResource( 12 )]
-margin_left = 396.0
+margin_left = 400.0
 margin_top = 144.0
-margin_right = 436.0
+margin_right = 432.0
 margin_bottom = 208.0
 target_view = NodePath("../../View5")
 active_view = NodePath("..")

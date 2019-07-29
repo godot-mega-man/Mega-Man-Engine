@@ -39,10 +39,10 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 16, 32 )
+extents = Vector2( 8, 32 )
 
 [node name="BossDoor" index="0" instance=ExtResource( 1 )]
-margin_right = 40.0
+margin_right = 32.0
 margin_bottom = 64.0
 script = ExtResource( 2 )
 direction = 1
@@ -53,6 +53,7 @@ start_delay = 0.5
 finish_delay = 0.5
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
+position = Vector2( -4, 0 )
 texture = ExtResource( 3 )
 centered = false
 offset = Vector2( 4, 0 )
@@ -68,7 +69,7 @@ one_shot = true
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
-position = Vector2( 20, 32 )
+position = Vector2( 24, 32 )
 shape = SubResource( 3 )
 [connection signal="transition_activated" from="." to="." method="_on_ScreenTransitor_transition_activated"]
 [connection signal="timeout" from="DoorCloseTimer" to="." method="_on_DoorCloseTimer_timeout"]
