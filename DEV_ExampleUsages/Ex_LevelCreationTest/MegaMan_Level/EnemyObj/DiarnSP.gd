@@ -1,6 +1,7 @@
 extends EnemyCore
 
 const SHOT_DEGREES_INCREASE = 32
+const MOVE_RANDOM_ADD_DEGREES = 45
 
 onready var blt_bhv := $BulletBehavior
 onready var sprite_ani = $SpriteMain/Sprite/AnimationPlayer
@@ -19,7 +20,7 @@ func _ready() -> void:
 func blt_point_toward_player():
 	if player != null:
 		var ag = self.global_position.angle_to_point(player.global_position)
-		blt_bhv.angle_in_degrees = rad2deg(ag) - 180
+		blt_bhv.angle_in_degrees = rad2deg(ag) - 180 + rand_range(-MOVE_RANDOM_ADD_DEGREES, MOVE_RANDOM_ADD_DEGREES)
 		turn_toward_player()
 
 func start_attack_loop():
