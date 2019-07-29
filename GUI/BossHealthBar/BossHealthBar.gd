@@ -53,8 +53,9 @@ func update_health_bar(curr_value) -> void:
 	update_percentage_text(0.3)
 
 func hide_health_bar():
-	show_hide_player.play("Hide")
-	emit_signal("hiding_bar")
+	if get_tree().get_nodes_in_group("Boss").size() <= 1:
+		show_hide_player.play("Hide")
+		emit_signal("hiding_bar")
 
 func update_percentage_text(var duration : float):
 	hp_text.tween_duration = duration

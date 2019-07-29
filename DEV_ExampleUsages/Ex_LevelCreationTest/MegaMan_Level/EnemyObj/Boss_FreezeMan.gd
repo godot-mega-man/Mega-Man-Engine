@@ -40,6 +40,8 @@ func spawn_ice_shard_on_self():
 		get_parent().add_child(effect)
 		effect.position = self.position
 		effect.bullet_bhv.angle_in_degrees = i
+	
+	FJ_AudioManager.sfx_combat_ice_break.play()
 
 func _process(delta: float) -> void:
 	if is_posing:

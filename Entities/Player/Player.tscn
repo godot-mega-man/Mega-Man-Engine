@@ -241,7 +241,6 @@ MAX_FALL_SPEED = 360.0
 INITIAL_STATE = false
 
 [node name="PlatformerSprite" parent="." instance=ExtResource( 3 )]
-visible = false
 path_to_platformer_behavior = NodePath("../PlatformBehavior")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

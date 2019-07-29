@@ -408,7 +408,7 @@ margin_left = 24.0
 margin_top = 16.2942
 margin_right = 120.0
 margin_bottom = 32.2942
-border_color = Color( 0.156863, 1, 0, 1 )
+border_color = Color( 0.156863, 1, 0, 0 )
 
 [node name="HpBar" parent="Control/ReferenceGui" instance=ExtResource( 4 )]
 visible = false

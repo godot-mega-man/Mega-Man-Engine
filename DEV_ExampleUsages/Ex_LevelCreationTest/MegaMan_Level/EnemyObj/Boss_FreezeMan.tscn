@@ -3,23 +3,25 @@
 [ext_resource path="res://Entities/Enemy/Core/BossCore.tscn" type="PackedScene" id=1]
 [ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/Boss_FreezeMan.gd" type="Script" id=2]
 [ext_resource path="res://Assets_ReleaseExcluded/Database/Enemy/Boss_FreezeMan.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Enemies/MM7_freezeman.png" type="Texture" id=5]
-[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Combat/MM6_IceBreak.wav" type="AudioStream" id=6]
-[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Combat/MM1_IceSlasher.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Enemies/MM7_freezeman.png" type="Texture" id=4]
+[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Combat/MM1_IceSlasher.wav" type="AudioStream" id=6]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 5 )
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 4 )
 region = Rect2( 0, 96, 48, 48 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 96, 48, 48 )
+
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 10, 16 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 10, 16 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "BossPose"
+[sub_resource type="Animation" id=19]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Flip/Sprite:frame")
@@ -34,26 +36,12 @@ tracks/0/keys = {
 "values": [ 5, 6, 8, 7, 9, 10, 11, 12, 13, 14, 10 ]
 }
 tracks/1/type = "method"
-tracks/1/path = NodePath("Sfx_IceBreak")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ 0.0 ],
-"method": "play"
-} ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0.3, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
@@ -65,7 +53,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=20]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Flip/Sprite:frame")
@@ -108,8 +96,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "FloodFloor"
+[sub_resource type="Animation" id=21]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Flip/Sprite:frame")
 tracks/0/interp = 1
@@ -151,7 +138,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=22]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Flip/Sprite:frame")
 tracks/0/interp = 1
@@ -165,8 +152,7 @@ tracks/0/keys = {
 "values": [ 16 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "JumpHigh"
+[sub_resource type="Animation" id=23]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Flip/Sprite:frame")
 tracks/0/interp = 1
@@ -206,8 +192,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "PrepareFreezeCracker"
+[sub_resource type="Animation" id=24]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Flip/Sprite:frame")
 tracks/0/interp = 1
@@ -221,8 +206,7 @@ tracks/0/keys = {
 "values": [ 24 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "ShootFreezeCracker"
+[sub_resource type="Animation" id=25]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Flip/Sprite:frame")
@@ -265,8 +249,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "ThrowIcicle"
+[sub_resource type="Animation" id=26]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Flip/Sprite:frame")
@@ -309,8 +292,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "ThrowIcicle v2"
+[sub_resource type="Animation" id=27]
 length = 3.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Flip/Sprite:frame")
@@ -383,7 +365,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 0.48
 loop = true
 step = 0.12
@@ -403,10 +385,11 @@ tracks/0/keys = {
 [node name="Freeze Man" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 _database = ExtResource( 3 )
+sprite_preview_texture = SubResource( 15 )
 damage_area_nodes = [ NodePath("DamageArea") ]
 stop_music_after_death = true
 
-[node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 4 )]
+[node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 5 )]
 WALK_SPEED = 120.0
 JUMP_SPEED = 300.0
 VELOCITY_X_DAMPING = 1.0
@@ -416,7 +399,7 @@ CONTROL_ENABLE = false
 [node name="Flip" type="Node2D" parent="." index="1"]
 
 [node name="Sprite" type="Sprite" parent="Flip" index="0"]
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 vframes = 4
 hframes = 8
 frame = 30
@@ -432,7 +415,7 @@ position = Vector2( -5, -3 )
 
 [node name="SpritePreview" type="Sprite" parent="." index="2"]
 visible = false
-texture = SubResource( 1 )
+texture = SubResource( 16 )
 
 [node name="SpriteMain" parent="." index="3"]
 visible = false
@@ -443,7 +426,7 @@ root_node = NodePath("../../Flip")
 [node name="PlatformCollisionShape2D" parent="." index="4"]
 visible = true
 position = Vector2( 0, 8 )
-shape = SubResource( 2 )
+shape = SubResource( 17 )
 disabled = false
 
 [node name="DamageArea" type="Area2D" parent="." index="8"]
@@ -453,27 +436,24 @@ collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" index="0"]
 position = Vector2( 0, 8 )
-shape = SubResource( 3 )
+shape = SubResource( 18 )
 
 [node name="FreezeManAni" type="AnimationPlayer" parent="." index="9"]
 autoplay = "Emerge"
-anims/BossPose = SubResource( 4 )
-anims/Emerge = SubResource( 5 )
-anims/FloodFloor = SubResource( 6 )
-anims/Idle = SubResource( 7 )
-anims/JumpHigh = SubResource( 8 )
-anims/Jumping = SubResource( 8 )
-anims/PrepareFreezeCracker = SubResource( 9 )
-anims/ShootFreezeCracker = SubResource( 10 )
-anims/ThrowIcicle = SubResource( 11 )
-"anims/ThrowIcicle v2" = SubResource( 12 )
-anims/Walking = SubResource( 13 )
+anims/BossPose = SubResource( 19 )
+anims/Emerge = SubResource( 20 )
+anims/FloodFloor = SubResource( 21 )
+anims/Idle = SubResource( 22 )
+anims/JumpHigh = SubResource( 23 )
+anims/Jumping = SubResource( 23 )
+anims/PrepareFreezeCracker = SubResource( 24 )
+anims/ShootFreezeCracker = SubResource( 25 )
+anims/ThrowIcicle = SubResource( 26 )
+"anims/ThrowIcicle v2" = SubResource( 27 )
+anims/Walking = SubResource( 14 )
 
-[node name="Sfx_IceBreak" type="AudioStreamPlayer2D" parent="." index="10"]
+[node name="Sfx_IceSlasher" type="AudioStreamPlayer2D" parent="." index="10"]
 stream = ExtResource( 6 )
-
-[node name="Sfx_IceSlasher" type="AudioStreamPlayer2D" parent="." index="11"]
-stream = ExtResource( 7 )
 [connection signal="boss_done_posing" from="." to="." method="_on_Freeze_Man_boss_done_posing"]
 [connection signal="slain" from="." to="." method="_on_Freeze_Man_slain"]
 [connection signal="animation_finished" from="FreezeManAni" to="." method="_on_FreezeManAni_animation_finished"]

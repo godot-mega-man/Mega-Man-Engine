@@ -106,12 +106,12 @@ __meta__ = {
 [node name="HpText" parent="Control/SecondaryBar/HBoxContainer" instance=ExtResource( 5 )]
 margin_left = 23.0
 margin_right = 31.0
-margin_bottom = 10.0
+margin_bottom = 11.0
 
 [node name="PercentageLabel" type="Label" parent="Control/SecondaryBar/HBoxContainer"]
 margin_left = 32.0
 margin_right = 40.0
-margin_bottom = 10.0
+margin_bottom = 11.0
 custom_fonts/font = ExtResource( 4 )
 text = "%"
 align = 2

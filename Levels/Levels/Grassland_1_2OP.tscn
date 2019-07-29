@@ -2098,6 +2098,14 @@ target_view = NodePath("../../View2")
 active_view = NodePath("..")
 direction = 3
 
+[node name="ScreenTransitor3" parent="ViewContainer/View12" index="3" instance=ExtResource( 26 )]
+margin_left = -16.0
+margin_top = 328.0
+margin_right = 0.0
+margin_bottom = 448.0
+target_view = NodePath("../../View")
+active_view = NodePath("..")
+
 [node name="View2" parent="ViewContainer" index="2" instance=ExtResource( 27 )]
 margin_left = 800.0
 margin_top = 480.0
@@ -2223,7 +2231,15 @@ margin_top = 1200.0
 margin_right = 5248.0
 margin_bottom = 1440.0
 
-[node name="BossDoor" parent="ViewContainer/View9" index="2" instance=ExtResource( 28 )]
+[node name="ScreenTransitor11" parent="ViewContainer/View9" index="2" instance=ExtResource( 26 )]
+margin_left = -16.0
+margin_top = 32.0
+margin_right = 0.0
+margin_bottom = 160.0
+target_view = NodePath("../../View8")
+active_view = NodePath("..")
+
+[node name="BossDoor" parent="ViewContainer/View9" index="3" instance=ExtResource( 28 )]
 margin_left = 1772.0
 margin_top = 96.0
 margin_right = 1812.0
@@ -2289,6 +2305,7 @@ centered = false
 [connection signal="entered_area" from="AreaNotifier" to="ChainDestroyController" method="_on_AreaNotifier_entered_area"]
 [connection signal="entered_area" from="AreaNotifier" to="ChainDestroyController2" method="_on_AreaNotifier_entered_area"]
 [connection signal="transition_activated" from="ViewContainer/View8/ScreenTransitor10" to="ParallaxBackground" method="_on_ScreenTransitor10_transition_activated"]
+[connection signal="transition_activated" from="ViewContainer/View9/ScreenTransitor11" to="ParallaxBackground" method="_on_ScreenTransitor10_transition_activated"]
 [connection signal="transition_activated" from="ViewContainer/View9/BossDoor" to="ParallaxBackground" method="_on_BossDoor_transition_activated"]
 
 [editable path="Iterable/Player"]

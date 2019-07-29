@@ -129,5 +129,6 @@ func _on_BossCore_slain(target) -> void:
 func destroy_all_enemies():
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	for i in enemies:
-		if i != self:
-			i.die()
+		if i is EnemyCore:
+			if not i.is_in_group("Boss"):
+				i.die()
