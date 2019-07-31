@@ -18,6 +18,8 @@
 
 extends Sprite
 
+const MAX_TIP_TOE_FRAME = 7
+
 export(NodePath) var path_to_platformer_behavior
 export(bool) var animation_paused = false #For screen transition purposes
 
@@ -27,7 +29,6 @@ onready var character_platformer_animation = $CharacterPlatformerAnimation
 #Normal Attack Cooldown. Define how long the animation will come back
 #to non-attacking state.
 onready var normal_attack_cooldown = $NormalAttackCooldown
-
 
 #Temp
 var is_path_to_platformer_behavior_valid : bool = false
@@ -65,12 +66,18 @@ func _process(delta: float) -> void:
 	elif casted_plat_bhv.on_floor:
 		if is_launching_normal_attack:
 			if casted_plat_bhv.walk_left or casted_plat_bhv.walk_right:
-				character_platformer_animation.play("Shooting Walk")
+				if casted_plat_bhv.left_right_key_press_time < casted_plat_bhv.MAX_TIP_TOE_FRAME:
+					character_platformer_animation.play("Tipping Toe Shooting")
+				else:
+					character_platformer_animation.play("Shooting Walk")
 			else:
 				character_platformer_animation.play("Shooting Idle")
 		else:
 			if casted_plat_bhv.walk_left or casted_plat_bhv.walk_right:
-				character_platformer_animation.play("Walk")
+				if casted_plat_bhv.left_right_key_press_time < casted_plat_bhv.MAX_TIP_TOE_FRAME:
+					character_platformer_animation.play("Tipping Toe")
+				else:
+					character_platformer_animation.play("Walk")
 			else:
 				character_platformer_animation.play("Idle")
 	else:

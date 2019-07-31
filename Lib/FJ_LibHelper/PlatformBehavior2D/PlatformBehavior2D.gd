@@ -74,6 +74,8 @@ export(bool) var INITIAL_STATE = true
 export(bool) var CONTROL_ENABLE = true
 export(bool) var IS_PREVENT_OUTSIDE_SCREEN = true
 export(int) var PREVENT_OUTSIDE_SCREEN_OFFSET = 12 #Won't work if WARPS_LEFT_RIGHT_SIDE is on.
+export(bool) var USE_TIP_TOE_MOVEMENT = false
+export(float) var MAX_TIP_TOE_FRAME = 7
 
 export(String) var DEFAULT_CONTROL_LEFT = 'game_left'
 export(String) var DEFAULT_CONTROL_RIGHT = 'game_right'
@@ -116,6 +118,7 @@ var on_ceiling = false
 var on_wall = false
 var jump = false #Init... once
 var move_direction : int #-1 = moving left, 1 = moving right, 0 = still.
+var left_right_key_press_time : float = 0
 
 func _ready():
 	if !is_validate():
@@ -140,6 +143,18 @@ func _physics_process(delta):
 	
 	# Either Move and slide or Move and collide
 	if move_type == MOVE_TYPE_PRESET.MOVE_AND_SLIDE:
+		#TIP TOE: IF ON, I WILL HANDLE THIS.
+		if USE_TIP_TOE_MOVEMENT:
+			if left_right_key_press_time < MAX_TIP_TOE_FRAME and on_floor:
+				if left_right_key_press_time > 2:
+					velocity.x = 0
+				else:
+					if walk_left:
+						velocity.x = -60
+					if walk_right:
+						velocity.x = 60
+				
+		
 		velocity = custom_move_and_slide(velocity, FLOOR_NORMAL)
 	elif move_type == MOVE_TYPE_PRESET.MOVE_AND_COLLIDE:
 		var kinematic_collision = parent.move_and_collide(GRAVITY_VEC * delta)
@@ -214,7 +229,7 @@ func _physics_process(delta):
 	check_warp_around_up_down()
 	check_warp_around_left_right()
 	check_falling_into_pit()
-
+	check_left_right_key_press_time(delta) #Resetter
 
 
 #The same as calling parent: move_and_slidec
@@ -280,6 +295,12 @@ func check_falling_into_pit():
 	var limit_bottom = level_view_container.CAMERA_LIMIT_BOTTOM + WARP_OFFSET.y
 	if parent.position.y > limit_bottom:
 		emit_signal("fell_into_pit")
+
+func check_left_right_key_press_time(delta):
+	if not(walk_left or walk_right): #If not currently doing either one of these
+		left_right_key_press_time = 0
+	else:
+		left_right_key_press_time += 60 * delta
 
 #Check if this node will work. Return false if not.
 #An optional parameter can be passed to print for specific errors.

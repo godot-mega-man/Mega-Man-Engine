@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://DEV_ExampleUsages/Ex_CharacterTemplate/Ex_SpriteSheet.png" type="Texture" id=1]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.gd" type="Script" id=2]
@@ -161,6 +161,36 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=11]
+resource_name = "Tipping Toe"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 21 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Tipping Toe Shooting"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 22 ]
+}
+
+[sub_resource type="Animation" id=12]
 length = 0.48
 loop = true
 step = 0.12
@@ -194,7 +224,9 @@ anims/Idle = SubResource( 3 )
 "anims/Shooting Jump Falling" = SubResource( 8 )
 "anims/Shooting Jump Up" = SubResource( 9 )
 "anims/Shooting Walk" = SubResource( 10 )
-anims/Walk = SubResource( 11 )
+"anims/Tipping Toe" = SubResource( 11 )
+"anims/Tipping Toe Shooting" = SubResource( 13 )
+anims/Walk = SubResource( 12 )
 
 [node name="NormalAttackCooldown" type="Timer" parent="."]
 wait_time = 0.25

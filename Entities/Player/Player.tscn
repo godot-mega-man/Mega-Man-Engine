@@ -239,6 +239,7 @@ JUMP_SPEED = 320.0
 VELOCITY_X_DAMPING = 1.0
 MAX_FALL_SPEED = 360.0
 INITIAL_STATE = false
+USE_TIP_TOE_MOVEMENT = true
 
 [node name="PlatformerSprite" parent="." instance=ExtResource( 3 )]
 path_to_platformer_behavior = NodePath("../PlatformBehavior")
