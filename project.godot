@@ -505,7 +505,7 @@ gdscript/warnings/return_value_discarded=false
 [display]
 
 window/size/width=256
-window/size/height=240
+window/size/height=224
 window/energy_saving/keep_screen_on=false
 window/handheld/orientation="sensor_landscape"
 window/stretch/mode="viewport"

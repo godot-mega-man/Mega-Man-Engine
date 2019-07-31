@@ -6,15 +6,13 @@
 [ext_resource path="res://Misc/DebugShapeDrawer/DebugShapeDrawer.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 432, 240 )
+extents = Vector2( 256, 224 )
 
 [node name="View" type="ReferenceRect"]
 modulate = Color( 0.380392, 0.572549, 1, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -248.0
-margin_bottom = -160.0
-rect_min_size = Vector2( 256, 240 )
+rect_min_size = Vector2( 256, 224 )
 border_color = Color( 1, 1, 1, 1 )
 script = ExtResource( 1 )
 

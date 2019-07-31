@@ -285,12 +285,15 @@ editor/display_folded = true
 
 [node name="View" parent="ViewContainer" index="0"]
 modulate = Color( 1, 1, 1, 1 )
+margin_top = 8.0
+margin_right = 256.0
+margin_bottom = 232.0
 
 [node name="ScreenTransitor2" parent="ViewContainer/View" index="2" instance=ExtResource( 10 )]
 margin_left = 255.0
-margin_top = 132.0
+margin_top = 124.0
 margin_right = 271.0
-margin_bottom = 192.0
+margin_bottom = 184.0
 target_view = NodePath("../../View2")
 active_view = NodePath("..")
 direction = 1
@@ -298,28 +301,30 @@ direction = 1
 [node name="View2" parent="ViewContainer" index="1" instance=ExtResource( 11 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 256.0
+margin_top = 8.0
 margin_right = 512.0
-margin_bottom = 240.0
+margin_bottom = 232.0
 
 [node name="BossDoor" parent="ViewContainer/View2" index="2" instance=ExtResource( 12 )]
 margin_left = 240.0
-margin_top = 64.0
+margin_top = 56.0
 margin_right = 272.0
-margin_bottom = 128.0
+margin_bottom = 120.0
 target_view = NodePath("../../View3")
 active_view = NodePath("..")
 
 [node name="View3" parent="ViewContainer" index="2" instance=ExtResource( 11 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 512.0
+margin_top = 8.0
 margin_right = 1024.0
-margin_bottom = 240.0
+margin_bottom = 232.0
 
 [node name="ScreenTransitor3" parent="ViewContainer/View3" index="2" instance=ExtResource( 10 )]
 margin_left = 512.0
-margin_top = 16.0
+margin_top = 8.0
 margin_right = 528.0
-margin_bottom = 152.0
+margin_bottom = 144.0
 target_view = NodePath("../../View4")
 active_view = NodePath("..")
 direction = 1
@@ -327,30 +332,32 @@ direction = 1
 [node name="View4" parent="ViewContainer" index="3" instance=ExtResource( 11 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 1024.0
+margin_top = 8.0
 margin_right = 1440.0
-margin_bottom = 240.0
+margin_bottom = 232.0
 
 [node name="ScreenTransitor4" parent="ViewContainer/View4" index="2" instance=ExtResource( 10 )]
 margin_left = -16.0
-margin_top = 16.0
+margin_top = 8.0
 margin_right = 0.0
-margin_bottom = 152.0
+margin_bottom = 144.0
 target_view = NodePath("../../View3")
 active_view = NodePath("..")
 
 [node name="BossDoor2" parent="ViewContainer/View4" index="3" instance=ExtResource( 12 )]
 margin_left = 400.0
-margin_top = 144.0
+margin_top = 136.0
 margin_right = 432.0
-margin_bottom = 208.0
+margin_bottom = 200.0
 target_view = NodePath("../../View5")
 active_view = NodePath("..")
 
 [node name="View5" parent="ViewContainer" index="4" instance=ExtResource( 11 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 1440.0
+margin_top = 8.0
 margin_right = 1696.0
-margin_bottom = 240.0
+margin_bottom = 232.0
 
 [editable path="Iterable/Player"]
 

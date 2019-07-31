@@ -2073,7 +2073,7 @@ margin_bottom = 1392.0
 
 [node name="View" parent="ViewContainer" index="0"]
 margin_left = -256.0
-margin_top = 240.0
+margin_top = 256.0
 margin_bottom = 480.0
 
 [node name="ScreenTransitor2" parent="ViewContainer/View" index="2" instance=ExtResource( 26 )]
