@@ -68,7 +68,7 @@ onready var currency_manager = get_node("/root/CurrencyManager")
 onready var player_stats = get_node("/root/PlayerStats")
 
 #Preloading objects... Ex: Bullets.
-var proj_classicBullet = preload("res://Entities/PlayerProjectile/PlayerProjectile_ClassicBullet.tscn")
+var proj_classicBullet = preload("res://Entities/PlayerProjectile/PlayerProjectile_MegaBuster.tscn")
 var dmg_counter = preload("res://GUI/DamageCounter.tscn")
 var explosion_effect = preload("res://Entities/Effects/Explosion/Explosion.tscn")
 var coin_particles = preload("res://Entities/Effects/Particles/CoinParticles.tscn")

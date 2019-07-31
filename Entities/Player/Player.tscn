@@ -4,7 +4,7 @@
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets_ReleaseExcluded/Sprites/Effects/Damage.png" type="Texture" id=4]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/CharacterTeleport.png" type="Texture" id=5]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/MegaMan_Template.png" type="Texture" id=5]
 [ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportIn.wav" type="AudioStream" id=6]
 [ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportOut.wav" type="AudioStream" id=7]
 
@@ -79,7 +79,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 1.05, 1.1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 0, 2 ]
+"values": [ 27, 28, 27, 29 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:position")
@@ -252,7 +252,7 @@ shape = SubResource( 1 )
 [node name="Pivots" type="Node2D" parent="."]
 
 [node name="Shoot" type="Position2D" parent="Pivots"]
-position = Vector2( 15, 0 )
+position = Vector2( 20, 0 )
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 one_shot = true
@@ -294,7 +294,8 @@ anims/StopFlashin = SubResource( 5 )
 [node name="TeleportSprite" type="Sprite" parent="."]
 position = Vector2( 0, -512 )
 texture = ExtResource( 5 )
-hframes = 3
+vframes = 3
+hframes = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TeleportSprite"]
 autoplay = "New Anim"
