@@ -234,7 +234,7 @@ __meta__ = {
 }
 
 [node name="PlatformBehavior" parent="." instance=ExtResource( 2 )]
-WALK_SPEED = 78.0
+WALK_SPEED = 77.813
 JUMP_SPEED = 320.0
 VELOCITY_X_DAMPING = 1.0
 MAX_FALL_SPEED = 360.0
