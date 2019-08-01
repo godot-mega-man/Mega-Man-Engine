@@ -126,7 +126,7 @@ extents = Vector2( 8, 11 )
 [node name="MachineGunJoe" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 _database = ExtResource( 3 )
-damage_area_nodes = [ NodePath("SpriteMain/DamageArea2D"), NodePath("SpriteMain/ShieldArea2D") ]
+damage_area_nodes = [ NodePath("SpriteMain/ShieldArea2D"), NodePath("SpriteMain/DamageArea2D") ]
 
 [node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 4 )]
 CONTROL_ENABLE = false
