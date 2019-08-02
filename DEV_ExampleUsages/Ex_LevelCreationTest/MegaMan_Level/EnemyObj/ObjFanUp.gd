@@ -3,7 +3,7 @@
 
 extends EnemyCore
 
-export (float) var blow_power = 18
+export (float) var blow_power = 1080
 export (float) var max_velocity_y_allowed = 160
 
 onready var blow_area = $BlowArea_1
@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 				play_fan_sound()
 				i.is_cancel_holding_jump_allowed = false
 			
-			i.pf_bhv.velocity.y -= blow_power
+			i.pf_bhv.velocity.y -= blow_power * delta
 			
 			#Can't let player's velo_y exceeds limit
 			#allowed by this obj.
