@@ -8,7 +8,7 @@ margin_right = 16.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 8, 8 )
 script = ExtResource( 1 )
-transit_duration = Vector2( 1.065, 1 )
+transit_duration = Vector2( 1.065, 0.94 )
 
 [node name="AreaNotifier" parent="." instance=ExtResource( 2 )]
 anchor_right = 1.0
