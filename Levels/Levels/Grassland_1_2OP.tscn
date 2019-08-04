@@ -65,7 +65,7 @@ func update_bg():
 
 "
 
-[node name="Level" index="0" instance=ExtResource( 1 )]
+[node name="Level" instance=ExtResource( 1 )]
 BG_COLOR = Color( 0, 0, 0, 1 )
 MUSIC = ExtResource( 2 )
 
@@ -2075,6 +2075,8 @@ margin_bottom = 1392.0
 margin_left = -256.0
 margin_top = 256.0
 margin_bottom = 480.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor2" parent="ViewContainer/View" index="2" instance=ExtResource( 26 )]
 margin_left = 256.0
@@ -2088,6 +2090,8 @@ direction = 1
 [node name="View12" parent="ViewContainer" index="1" instance=ExtResource( 27 )]
 margin_right = 1232.0
 margin_bottom = 480.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor" parent="ViewContainer/View12" index="2" instance=ExtResource( 26 )]
 margin_left = 1152.0
@@ -2111,6 +2115,8 @@ margin_left = 800.0
 margin_top = 480.0
 margin_right = 1232.0
 margin_bottom = 720.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor2" parent="ViewContainer/View2" index="2" instance=ExtResource( 26 )]
 margin_left = 32.0
@@ -2126,6 +2132,8 @@ margin_left = 800.0
 margin_top = 720.0
 margin_right = 1664.0
 margin_bottom = 960.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor3" parent="ViewContainer/View3" index="2" instance=ExtResource( 26 )]
 margin_left = 864.0
@@ -2140,6 +2148,8 @@ margin_left = 1664.0
 margin_top = 720.0
 margin_right = 2176.0
 margin_bottom = 960.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor4" parent="ViewContainer/View4" index="2" instance=ExtResource( 26 )]
 margin_left = 512.0
@@ -2162,6 +2172,8 @@ margin_left = 2176.0
 margin_top = 720.0
 margin_right = 3200.0
 margin_bottom = 960.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor6" parent="ViewContainer/View5" index="2" instance=ExtResource( 26 )]
 margin_left = -16.0
@@ -2184,6 +2196,8 @@ margin_left = 3200.0
 margin_top = 720.0
 margin_right = 3456.0
 margin_bottom = 960.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor8" parent="ViewContainer/View6" index="2" instance=ExtResource( 26 )]
 margin_left = 192.0
@@ -2199,6 +2213,8 @@ margin_left = 3200.0
 margin_top = 960.0
 margin_right = 3456.0
 margin_bottom = 1200.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor9" parent="ViewContainer/View7" index="2" instance=ExtResource( 26 )]
 margin_left = 16.0
@@ -2214,6 +2230,8 @@ margin_left = 3200.0
 margin_top = 1200.0
 margin_right = 3456.0
 margin_bottom = 1440.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor10" parent="ViewContainer/View8" index="2" instance=ExtResource( 26 )]
 margin_left = 256.0
@@ -2230,6 +2248,8 @@ margin_left = 3456.0
 margin_top = 1200.0
 margin_right = 5248.0
 margin_bottom = 1440.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor11" parent="ViewContainer/View9" index="2" instance=ExtResource( 26 )]
 margin_left = -16.0
@@ -2254,6 +2274,8 @@ margin_left = 5248.0
 margin_top = 1200.0
 margin_right = 5504.0
 margin_bottom = 1440.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="BossDoor2" parent="ViewContainer/View10" index="2" instance=ExtResource( 28 )]
 margin_left = 240.0
@@ -2269,6 +2291,8 @@ margin_left = 5504.0
 margin_top = 1200.0
 margin_right = 5760.0
 margin_bottom = 1440.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="17"]
 script = SubResource( 1 )

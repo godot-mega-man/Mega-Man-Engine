@@ -71,14 +71,9 @@ position = Vector2( -4.76837e-007, -0.999999 )
 scale = Vector2( 3.2, 3.1 )
 rect = Rect2( -8, -8, 16, 16 )
 
-[node name="StackableDmgCounterTimer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 visible = false
 pause_particles = false
 process_parent = true
 physics_process_parent = true
 [connection signal="screen_exited" from="ActiveVisNotifier" to="." method="_on_ActiveVisNotifier_screen_exited"]
-[connection signal="timeout" from="StackableDmgCounterTimer" to="." method="_on_StackableDmgCounterTimer_timeout"]

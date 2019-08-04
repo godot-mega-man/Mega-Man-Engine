@@ -125,8 +125,8 @@ script = ExtResource( 14 )
 default_view = NodePath("View")
 
 [node name="View" parent="ViewContainer" instance=ExtResource( 15 )]
-margin_right = 0.0
-margin_bottom = 0.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 [connection signal="player_die" from="Iterable/Player" to="GameGui" method="_on_Player_player_die"]
 [connection signal="inventory_btn_pressed" from="GameGui" to="." method="_on_GameGui_inventory_btn_pressed"]
 [connection signal="pause_btn_pressed" from="GameGui" to="." method="_on_GameGui_pause_btn_pressed"]

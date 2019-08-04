@@ -46,7 +46,6 @@ onready var platform_collision_shape = $PlatformCollisionShape2D as CollisionSha
 onready var hp_bar = $HpBar
 onready var active_vis_notifier = $ActiveVisNotifier
 onready var level_camera = get_node("/root/Level/Camera2D")
-onready var stackable_dmg_counter_timer = $StackableDmgCounterTimer
 
 onready var player = $"/root/Level/Iterable/Player"
 
@@ -63,7 +62,7 @@ var initialy_inactive = false
 var is_fresh_respawn = false
 var is_reset_state_called = false #Call once
 var is_coin_dropped = false
-var total_stacked_damage = 0 #Used in damage counter. Stacking damage for a short brief when constantly taking damage.
+var path_to_spawned_dmg_counter_obj : NodePath #Temp reference obj
 
 #Preloaded scenes
 var dmg_counter = preload("res://GUI/DamageCounter.tscn")
@@ -220,7 +219,7 @@ func apply_damage(var calculated_damage, var update_hp_bar = true, var spawn_dam
 	
 	#Spawn damage counter on the screen.
 	if spawn_damage_counter:
-		start_stackable_damage_counter(calculated_damage)
+		spawn_damage_counter(calculated_damage)
 	#Update health bar
 	if update_hp_bar:
 		hp_bar.update_hp_bar(current_hp)
@@ -306,35 +305,25 @@ func play_death_sfx():
 			FJ_AudioManager.sfx_combat_large_explosion.play()
 	
 
-#Start stacking damage counter to an enemy before spawning the text.
-#When the enemy is constantly taking damage in a short brief,
-#the damage value are added up.
-#After a while enemy not taking damage, damage counter will then pop out.
-func start_stackable_damage_counter(value_add : float):
-	#Stack!
-	total_stacked_damage += value_add
-	#Check whether enemy is dead.
-	#If that so, spawn damage counter immediately.
-	if current_hp <= 0 and !database.general.combat.death_immunity:
-		spawn_damage_counter(total_stacked_damage)
-	else:
-		stackable_dmg_counter_timer.start()
-func _on_StackableDmgCounterTimer_timeout():
-	#Spawn damage counter.
-	spawn_damage_counter(total_stacked_damage)
-
 func spawn_damage_counter(damage, offset : Vector2 = Vector2(0, 0)):
 	if !GameSettings.gameplay.damage_popup_enemy:
 		return
 	
-	var dmg_text = dmg_counter.instance() #Instance DamageCounter
-	dmg_text.global_position = self.global_position #Set position to enemy
-	dmg_text.position += offset #Offset
-	get_parent().add_child(dmg_text) #Spawn
-	dmg_text.set_float_as_text(damage) #Set child node's text
-	
-	#Reset total stacked damage value to zero.
-	total_stacked_damage = 0
+	if path_to_spawned_dmg_counter_obj.is_empty() or get_node_or_null(path_to_spawned_dmg_counter_obj) == null:
+		var dmg_text = dmg_counter.instance() #Instance DamageCounter
+		dmg_text.global_position = self.global_position #Set position to enemy
+		dmg_text.position += offset #Offset
+		dmg_text.current_damage_value += damage
+		get_parent().add_child(dmg_text) #Spawn
+		
+		
+		path_to_spawned_dmg_counter_obj = dmg_text.get_path()
+	else:
+		var obj_dmg_counter = get_node(path_to_spawned_dmg_counter_obj)
+		if obj_dmg_counter is DamageCounter:
+			obj_dmg_counter.current_damage_value += damage
+			obj_dmg_counter.global_position = self.global_position #Set position to enemy
+			obj_dmg_counter.restart()
 	
 	emit_signal("damage_counter_released", damage, self)
 
@@ -343,7 +332,6 @@ func spawn_exp_counter(damage, offset : Vector2 = Vector2(0, 0)):
 		return
 	
 	var dmg_text = exp_counter.instance() #Instance DamageCounter
-	dmg_text.get_node('Label').text = str(damage) #Set child node's text
 	dmg_text.global_position = self.global_position #Set position to enemy
 	dmg_text.position += offset #Offset
 	dmg_text.get_node('Label').add_color_override("font_color", Color(0, 0.7, 1)) #Set text color to cyan
@@ -354,6 +342,7 @@ func spawn_exp_counter(damage, offset : Vector2 = Vector2(0, 0)):
 	dmg_text.RANDOM_Y_GEYSER_MIN = 90
 	dmg_text.stay_time = 1.5
 	get_parent().add_child(dmg_text) #Spawn
+	dmg_text.label.text = str(damage) #Set child node's text
 
 func drop_coin_start():
 	#If this enemy do not drop coin upon death... Do nothing.
