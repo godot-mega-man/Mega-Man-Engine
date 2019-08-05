@@ -2075,8 +2075,6 @@ margin_bottom = 1392.0
 margin_left = -256.0
 margin_top = 256.0
 margin_bottom = 480.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor2" parent="ViewContainer/View" index="2" instance=ExtResource( 26 )]
 margin_left = 256.0

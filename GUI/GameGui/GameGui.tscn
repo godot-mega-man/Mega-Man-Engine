@@ -1,18 +1,15 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://GUI/GameGui/GameGui.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=2]
-[ext_resource path="res://GUI/GameGui/VitalBar.png" type="Texture" id=3]
-[ext_resource path="res://GUI/HpBar/HpBar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Sprites/GUI/Progress_Blue.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/GUI/Icons/Heart.png" type="Texture" id=6]
-[ext_resource path="res://GUI/HpText/HpText.tscn" type="PackedScene" id=7]
+[ext_resource path="res://GUI/GameGui/VitalBar.png" type="Texture" id=2]
+[ext_resource path="res://GUI/HpBar/HpBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Sprites/GUI/Progress_Blue.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/GUI/Icons/Heart.png" type="Texture" id=5]
+[ext_resource path="res://GUI/HpText/HpText.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=7]
 [ext_resource path="res://GUI/HpText/HpText_Extended.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Sprites/Collectibles/Coin/Coin1.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Sprites/Collectibles/Diamond/Diamond_Tiny.png" type="Texture" id=10]
-[ext_resource path="res://GUI/HpBar/HpBar_ExpExtended.gd" type="Script" id=11]
-[ext_resource path="res://Assets/Sprites/GUI/Progress_Green.png" type="Texture" id=12]
-[ext_resource path="res://GUI/CollectItemTooltip/TooltipController.tscn" type="PackedScene" id=13]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 9 )
@@ -254,73 +251,6 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=11]
-length = 0.3
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath("ExpText:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 0.054902, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=12]
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.74902, 0.74902, 0.74902, 1 ), Color( 0.498039, 0.498039, 0.498039, 1 ), Color( 0.247059, 0.247059, 0.247059, 1 ), Color( 0, 0, 0, 1 ) ]
-}
-
 [sub_resource type="Animation" id=13]
 length = 0.5
 tracks/0/type = "value"
@@ -386,19 +316,10 @@ anchor_bottom = 1.0
 rect_scale = Vector2( 1, 0.981944 )
 mouse_filter = 1
 
-[node name="ONEUP" type="Label" parent="Control"]
-visible = false
-margin_left = 24.0
-margin_top = 74.0184
-margin_right = 64.0
-margin_bottom = 88.0184
-custom_fonts/font = ExtResource( 2 )
-text = "3"
-
 [node name="VitalBar" type="Sprite" parent="Control"]
 visible = false
 position = Vector2( 24, 16 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 centered = false
 hframes = 29
 frame = 25
@@ -410,14 +331,14 @@ margin_right = 120.0
 margin_bottom = 32.2942
 border_color = Color( 0.156863, 1, 0, 0 )
 
-[node name="HpBar" parent="Control/ReferenceGui" instance=ExtResource( 4 )]
+[node name="HpBar" parent="Control/ReferenceGui" instance=ExtResource( 3 )]
 visible = false
 margin_left = 14.0
 margin_top = 4.0
 margin_right = 96.0
 margin_bottom = 10.0
 
-[node name="MpBar" parent="Control/ReferenceGui" instance=ExtResource( 4 )]
+[node name="MpBar" parent="Control/ReferenceGui" instance=ExtResource( 3 )]
 visible = false
 margin_left = 8.0
 margin_top = 10.0
@@ -425,14 +346,14 @@ margin_right = 72.0
 margin_bottom = 16.0
 
 [node name="HpBar" parent="Control/ReferenceGui/MpBar" index="1"]
-texture_progress = ExtResource( 5 )
+texture_progress = ExtResource( 4 )
 
 [node name="HeartTexture" type="TextureRect" parent="Control/ReferenceGui"]
 visible = false
 margin_top = 2.0
 margin_right = 16.0
 margin_bottom = 18.0
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="HpTextHBox" type="HBoxContainer" parent="Control/ReferenceGui"]
 anchor_left = 1.0
@@ -444,7 +365,7 @@ margin_bottom = 68.7242
 custom_constants/separation = 0
 alignment = 2
 
-[node name="HpText" parent="Control/ReferenceGui/HpTextHBox" instance=ExtResource( 7 )]
+[node name="HpText" parent="Control/ReferenceGui/HpTextHBox" instance=ExtResource( 6 )]
 margin_left = 72.0
 margin_right = 80.0
 margin_bottom = 11.0
@@ -454,15 +375,15 @@ align = 0
 margin_left = 80.0
 margin_right = 80.0
 margin_bottom = 11.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 7 )
 
 [node name="MaxHp" type="Label" parent="Control/ReferenceGui/HpTextHBox"]
 margin_left = 80.0
 margin_right = 80.0
 margin_bottom = 11.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 7 )
 
-[node name="CoinText" parent="Control/ReferenceGui" instance=ExtResource( 7 )]
+[node name="CoinText" parent="Control/ReferenceGui" instance=ExtResource( 6 )]
 editor/display_folded = true
 anchor_right = 1.0
 margin_left = 0.0
@@ -490,7 +411,7 @@ anims/Show = SubResource( 3 )
 [node name="HideTimer" type="Timer" parent="Control/ReferenceGui/CoinText"]
 one_shot = true
 
-[node name="DiamondText" parent="Control/ReferenceGui" instance=ExtResource( 7 )]
+[node name="DiamondText" parent="Control/ReferenceGui" instance=ExtResource( 6 )]
 editor/display_folded = true
 anchor_right = 1.0
 margin_left = 0.0
@@ -523,52 +444,9 @@ anims/Critical = SubResource( 8 )
 anims/Died = SubResource( 9 )
 anims/Restore = SubResource( 10 )
 
-[node name="ExpBar" parent="Control" instance=ExtResource( 4 )]
-visible = false
-modulate = Color( 0, 0, 0, 1 )
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -48.0
-margin_top = -2.94485
-margin_right = 48.0
-margin_bottom = 3.05515
-script = ExtResource( 11 )
-
-[node name="HpBar" parent="Control/ExpBar" index="1"]
-texture_progress = ExtResource( 12 )
-
-[node name="HideTimer" type="Timer" parent="Control/ExpBar"]
-wait_time = 1.5
-one_shot = true
-
-[node name="ExpText" type="Label" parent="Control/ExpBar"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -96.0
-margin_top = -5.96321
-margin_bottom = 6.03679
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "CURRENT/NEXT"
-align = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/ExpBar"]
-anims/Brightern = SubResource( 11 )
-anims/Fade = SubResource( 12 )
-
 [node name="ShowHideGuiPlayer" type="AnimationPlayer" parent="Control"]
 playback_speed = 2.0
 "anims/Hide Gui" = SubResource( 13 )
 "anims/Show Gui" = SubResource( 14 )
 
-[node name="TooltipController" parent="Control" instance=ExtResource( 13 )]
-visible = false
-margin_top = 57.0297
-margin_right = -216.0
-margin_bottom = -100.97
-
 [editable path="Control/ReferenceGui/MpBar"]
-
-[editable path="Control/ExpBar"]

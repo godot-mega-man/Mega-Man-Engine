@@ -186,8 +186,6 @@ func player_collected_coin():
 		#Play floating text animation
 		counter.animation_player.play("CoinCounter")
 		
-		#Call Game-GUI to create collected item tooltip.
-		level.game_gui.tooltip_controller.add_collected_item_tooltip("Coin", COIN_VALUE, collect_icon)
 		level.game_gui.update_coin()
 		
 		if get_node_or_null("/root/Level/Iterable/Player") != null:
@@ -209,8 +207,6 @@ func player_collected_coin():
 		#Call inventory manager to add item to inventory
 		inventory_manager.add_item(loaded_item_data_file)
 		
-		#Call Game-GUI to create collected item tooltip.
-		level.game_gui.tooltip_controller.add_collected_item_tooltip(loaded_item_data_file.name, 1, loaded_item_data_file.item_image)
 	elif is_diamond():
 		#Create diamond counter effect
 		var counter = text_counter.instance()
@@ -220,8 +216,6 @@ func player_collected_coin():
 		#Play floating text animation
 		counter.animation_player.play("DiamondCounter")
 		
-		#Call Game-GUI to create collected item tooltip.
-		level.game_gui.tooltip_controller.add_collected_item_tooltip("Diamond", COIN_VALUE, collect_icon)
 		level.game_gui.update_diamond()
 	
 	#Create coin counter effect

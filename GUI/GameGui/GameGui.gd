@@ -23,10 +23,7 @@ onready var coin_text = control.get_node("ReferenceGui/CoinText")
 onready var coin_text_tween = coin_text.get_node("Tween")
 onready var diamond_text = control.get_node("ReferenceGui/DiamondText")
 onready var diamond_text_tween = diamond_text.get_node("Tween")
-onready var exp_bar = control.get_node("ExpBar")
-onready var exp_bar_tween = exp_bar.get_node("Tween")
 onready var show_hide_gui_player = control.get_node("ShowHideGuiPlayer")
-onready var tooltip_controller = get_node("Control/TooltipController")
 onready var critical_hp_player = $Control/ReferenceGui/CriticalHpPlayer
 #Lookup nodes
 onready var fade_screen = get_node("/root/Level/FadeScreen") as FadeScreen
@@ -37,17 +34,11 @@ func _ready():
 	#Init values
 	hp_bar.init_health_bar(0, player.max_hp, player.current_hp)
 	mp_bar.init_health_bar(0, player.max_mp, player.current_mp)
-	exp_bar.init_health_bar(0, player_stats.experience_point_next, player_stats.experience_point)
 	
 	#Show GUI on start.
 	control.visible = true
 	
 	update_gui_bar()
-	update_exp()
-	update_one_up_text()
-
-func update_one_up_text():
-	get_node("Control/ONEUP").text = str(get_node("/root/GlobalVariables").one_up)
 
 func update_gui_bar():
 	#Tween text label
@@ -66,9 +57,6 @@ func update_diamond():
 	#Tween text label
 	diamond_text.init_and_tween(currency_manager.game_diamond)
 	diamond_text.show_coin_text()
-
-func update_exp():
-	exp_bar.update_hp_bar(player_stats.experience_point)
 
 #Show/Hide GUI
 func hide_all_gui():
@@ -104,9 +92,6 @@ func _on_Player_player_die() -> void:
 
 func enable_buttons(var set : bool):
 	set = !set #Inverse
-
-func add_item_collect_tooltip(new_header_label : String, new_quan_label : int = 0, new_icon_texture = null, new_rarity = 0):
-	tooltip_controller.add_collected_item_tooltip(new_header_label, new_quan_label, new_icon_texture, new_rarity)
 
 func check_hp_critical(var curr_hp_value : float):
 	var current_hp_percentage = curr_hp_value / hp_bar.max_value

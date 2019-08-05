@@ -191,7 +191,7 @@ func start_launching_attack() -> void:
 	
 	#Calculate damage
 	var total_damage = 0
-	total_damage = DAMAGE_BASE + bullet.DAMAGE_POWER + (player_stats.current_level - 1)
+	total_damage = DAMAGE_BASE + bullet.DAMAGE_POWER
 	bullet.DAMAGE_POWER = total_damage #Final damage output
 	
 	
@@ -393,7 +393,7 @@ func spawn_death_coins(var lost_amount):
 	coin_inst.amount = clamp(lost_amount, 0, 150)
 	coin_inst.global_position = self.global_position
 	
-	print("Player(Spawn_death_coins): Coin lost: ", + currency_manager.coin_lost, ", Exp lost: ", player_stats.exp_lost)
+	print("Player(Spawn_death_coins): Coin lost: ", + currency_manager.coin_lost)
 
 func _on_tree_exiting():
 	player_stats.current_hp = current_hp

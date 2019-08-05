@@ -45,9 +45,8 @@ func shake_camera(duration, frequency, amplitude):
 
 #Player notifies this node that player is dead.
 func _player_die():
-	#Decrease coins and exp as penalty
+	#Decrease coins as penalty
 	currency_manager.decrease_coins_as_penalty_by_ratio(0.05)
-	player_stats.decrease_exp_as_penalty_by_ratio(0.05)
 	player.spawn_death_coins(currency_manager.coin_lost)
 	death_timer.start()
 	FJ_AudioManager.stop_bgm()
@@ -90,9 +89,6 @@ func update_game_gui_coin():
 
 func update_game_gui_diamond():
 	game_gui.update_diamond()
-
-func update_game_gui_exp():
-	game_gui.update_exp()
 
 func set_cut_scene_enable(enable : bool):
 	if enable:

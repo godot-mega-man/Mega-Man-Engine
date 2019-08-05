@@ -66,7 +66,6 @@ var path_to_spawned_dmg_counter_obj : NodePath #Temp reference obj
 
 #Preloaded scenes
 var dmg_counter = preload("res://GUI/DamageCounter.tscn")
-var exp_counter = preload("res://GUI/ExpCounter.tscn")
 var coin = preload("res://Entities/Coin/Coin1.tscn")
 var item = preload("res://Entities/Coin/Item.tscn")
 var diamond = preload("res://Entities/Coin/Diamond1.tscn")
@@ -270,8 +269,6 @@ func die():
 	drop_coin_start()
 	drop_item_start()
 	drop_diamond_start()
-	#Awards player experience points.
-	earn_exp()
 	
 	#Shake Camera
 	if level_camera != null:
@@ -327,23 +324,6 @@ func spawn_damage_counter(damage, offset : Vector2 = Vector2(0, 0)):
 	
 	emit_signal("damage_counter_released", damage, self)
 
-func spawn_exp_counter(damage, offset : Vector2 = Vector2(0, 0)):
-	if !GameSettings.gameplay.exp_popup:
-		return
-	
-	var dmg_text = exp_counter.instance() #Instance DamageCounter
-	dmg_text.global_position = self.global_position #Set position to enemy
-	dmg_text.position += offset #Offset
-	dmg_text.get_node('Label').add_color_override("font_color", Color(0, 0.7, 1)) #Set text color to cyan
-	#Make the text float up
-	dmg_text.GRAVITY = 60
-	dmg_text.RANDOM_X_SWAY = 0
-	dmg_text.RANDOM_Y_GEYSER_MAX = 90
-	dmg_text.RANDOM_Y_GEYSER_MIN = 90
-	dmg_text.stay_time = 1.5
-	get_parent().add_child(dmg_text) #Spawn
-	dmg_text.label.text = str(damage) #Set child node's text
-
 func drop_coin_start():
 	#If this enemy do not drop coin upon death... Do nothing.
 	if !database.loots.coin.drop_coin:
@@ -369,18 +349,6 @@ func drop_diamond_start():
 	if chance < database.loots.diamond.DIAMOND_DROP_CHANCE:
 		call_deferred("spawn_a_diamond")
 
-func earn_exp(value : int = database.loots.experience.exp_awarded):
-	#If exp value is below zero, do nothing.
-	if value <= 0:
-		return
-	
-	#Earn exp.
-	player_stats.experience_point += value
-	#Update GUI
-	level.update_game_gui_exp()
-	
-	#Spawn exp counter
-	spawn_exp_counter(value, Vector2(0, -16))
 
 func spawn_coins_by_amount(var coin_value : int = 1, var coin_drop_count : int = 1):
 	for i in coin_drop_count:
