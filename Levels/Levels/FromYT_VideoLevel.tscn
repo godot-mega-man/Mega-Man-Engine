@@ -288,8 +288,6 @@ modulate = Color( 1, 1, 1, 1 )
 margin_top = 8.0
 margin_right = 256.0
 margin_bottom = 232.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor2" parent="ViewContainer/View" index="2" instance=ExtResource( 10 )]
 margin_left = 255.0
