@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/takeonme.ogg-138dd8e8bc7481c28efd8ec2304c863a.oggstr"
+
+[deps]
+
+source_file="res://Assets_ReleaseExcluded/Sounds/BGM/takeonme.ogg"
+dest_files=[ "res://.import/takeonme.ogg-138dd8e8bc7481c28efd8ec2304c863a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=27.97

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Generelea.wav-a29d6790513056a29761032cf08ed270.sample"
+
+[deps]
+
+source_file="res://Assets_ReleaseExcluded/Sounds/Sfx/Combat/Generelea.wav"
+dest_files=[ "res://.import/Generelea.wav-a29d6790513056a29761032cf08ed270.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Beed28Level.ogg-79e2803bc9c0841e209827914141cfe2.oggstr"
+
+[deps]
+
+source_file="res://Assets_ReleaseExcluded/Sounds/BGM/Beed28Level.ogg"
+dest_files=[ "res://.import/Beed28Level.ogg-79e2803bc9c0841e209827914141cfe2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
