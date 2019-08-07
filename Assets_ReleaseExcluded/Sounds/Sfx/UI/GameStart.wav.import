@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/GameStart.wav-a3d9e303e2869da73155a93a2ec10a5f.sample"
+
+[deps]
+
+source_file="res://Assets_ReleaseExcluded/Sounds/Sfx/UI/GameStart.wav"
+dest_files=[ "res://.import/GameStart.wav-a3d9e303e2869da73155a93a2ec10a5f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

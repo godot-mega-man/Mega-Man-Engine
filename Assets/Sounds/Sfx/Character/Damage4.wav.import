@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Damage4.wav-c567768eb8bd4775267a0d7337335827.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Sfx/Character/Damage4.wav"
+dest_files=[ "res://.import/Damage4.wav-c567768eb8bd4775267a0d7337335827.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
