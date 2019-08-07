@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/BossDoor.wav-2415762bb9c0184ddbc15cb5f39e9145.sample"
+
+[deps]
+
+source_file="res://Assets_ReleaseExcluded/Sounds/Sfx/Environments/BossDoor.wav"
+dest_files=[ "res://.import/BossDoor.wav-2415762bb9c0184ddbc15cb5f39e9145.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

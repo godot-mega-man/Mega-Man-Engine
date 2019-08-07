@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MM6_IceBreak.wav-f26d5cdd6133a83f94f09fe0b7bedeea.sample"
+
+[deps]
+
+source_file="res://Assets_ReleaseExcluded/Sounds/Sfx/Combat/MM6_IceBreak.wav"
+dest_files=[ "res://.import/MM6_IceBreak.wav-f26d5cdd6133a83f94f09fe0b7bedeea.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

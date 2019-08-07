@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/BBLIR.ogg-c8b47041c8aa9a15c27559dcf47f194b.oggstr"
+
+[deps]
+
+source_file="res://Assets_ReleaseExcluded/Sounds/BGM/BBLIR.ogg"
+dest_files=[ "res://.import/BBLIR.ogg-c8b47041c8aa9a15c27559dcf47f194b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
