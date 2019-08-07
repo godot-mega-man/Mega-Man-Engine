@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Entities/PlayerProjectile/PlayerProjectileCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/Projectiles/ChargedMegaBuster2.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 0.16
+loop = true
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 16 )
+
+[node name="FullyChargedMegaBuster" instance=ExtResource( 1 )]
+DAMAGE_POWER = 1
+DESTROY_ON_COLLIDE_TYPE = 1
+
+[node name="BulletBehavior" parent="." index="0"]
+speed = 300.0
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource( 2 )
