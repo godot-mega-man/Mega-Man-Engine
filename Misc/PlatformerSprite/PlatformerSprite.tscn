@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://DEV_ExampleUsages/Ex_CharacterTemplate/Ex_SpriteSheet.png" type="Texture" id=1]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/Reimu_B.png" type="Texture" id=1]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -15,14 +15,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 20 ]
+"values": [ 13 ]
 }
 
 [sub_resource type="Animation" id=2]
 resource_name = "Dash"
 length = 0.16
 loop = true
-step = 0.01
+step = 0.08
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -33,7 +33,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.08 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 8, 9 ]
+"values": [ 11, 12 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -55,6 +55,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "Jump Falling"
+step = 0.12
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -62,13 +63,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.12 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 7 ]
+"values": [ 9, 10 ]
 }
 
 [sub_resource type="Animation" id=5]
+step = 0.12
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -76,10 +78,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.12 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 6 ]
+"values": [ 7, 8 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -101,6 +103,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=7]
 length = 2.0
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -111,11 +114,12 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 1.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 10, 11, 10 ]
+"values": [ 116, 117, 116 ]
 }
 
 [sub_resource type="Animation" id=8]
 resource_name = "Shooting Jump Falling"
+step = 0.12
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -123,13 +127,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.12 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 17 ]
+"values": [ 125, 126 ]
 }
 
 [sub_resource type="Animation" id=9]
+step = 0.12
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -137,10 +142,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.12 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 16 ]
+"values": [ 123, 124 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -157,7 +162,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.12, 0.24, 0.36 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 12, 13, 14, 15 ]
+"values": [ 119, 120, 121, 122 ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -172,10 +177,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 21 ]
+"values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 resource_name = "Tipping Toe Shooting"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -187,10 +192,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 22 ]
+"values": [ 118 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.48
 loop = true
 step = 0.12
@@ -204,13 +209,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.12, 0.24, 0.36 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 2, 3, 4, 5 ]
+"values": [ 3, 4, 5, 6 ]
 }
 
 [node name="PlatformerSprite" type="Sprite"]
 texture = ExtResource( 1 )
-vframes = 3
-hframes = 10
+offset = Vector2( 1, 1 )
+vframes = 16
+hframes = 116
 script = ExtResource( 2 )
 
 [node name="CharacterPlatformerAnimation" type="AnimationPlayer" parent="."]
@@ -225,8 +231,8 @@ anims/Idle = SubResource( 3 )
 "anims/Shooting Jump Up" = SubResource( 9 )
 "anims/Shooting Walk" = SubResource( 10 )
 "anims/Tipping Toe" = SubResource( 11 )
-"anims/Tipping Toe Shooting" = SubResource( 13 )
-anims/Walk = SubResource( 12 )
+"anims/Tipping Toe Shooting" = SubResource( 12 )
+anims/Walk = SubResource( 13 )
 
 [node name="NormalAttackCooldown" type="Timer" parent="."]
 wait_time = 0.25
