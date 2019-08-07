@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Effects/Damage.png" type="Texture" id=4]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/MegaMan_Template.png" type="Texture" id=5]
-[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportIn.wav" type="AudioStream" id=6]
-[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportOut.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/MegaMan.png" type="Texture" id=4]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Effects/Damage.png" type="Texture" id=5]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/MegaMan_Template.png" type="Texture" id=6]
+[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportIn.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportOut.wav" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 10 )
@@ -242,6 +243,7 @@ INITIAL_STATE = false
 USE_TIP_TOE_MOVEMENT = true
 
 [node name="PlatformerSprite" parent="." instance=ExtResource( 3 )]
+texture = ExtResource( 4 )
 path_to_platformer_behavior = NodePath("../PlatformBehavior")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -285,7 +287,7 @@ anims/Invincible = SubResource( 3 )
 [node name="DamageSprite" type="Sprite" parent="."]
 editor/display_folded = true
 visible = false
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="Ani" type="AnimationPlayer" parent="DamageSprite"]
 anims/Flashing = SubResource( 4 )
@@ -293,7 +295,7 @@ anims/StopFlashin = SubResource( 5 )
 
 [node name="TeleportSprite" type="Sprite" parent="."]
 position = Vector2( 0, -512 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 vframes = 3
 hframes = 10
 
@@ -304,11 +306,11 @@ playback_speed = 0.8
 anims/TelOut = SubResource( 7 )
 
 [node name="TelIn" type="AudioStreamPlayer2D" parent="TeleportSprite"]
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 volume_db = -6.0
 
 [node name="TelOut" type="AudioStreamPlayer2D" parent="TeleportSprite"]
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = -2.0
 [connection signal="input_event" from="." to="." method="_on_Player_input_event"]
 [connection signal="launched_attack" from="." to="PlatformerSprite" method="start_normal_attack_animation"]

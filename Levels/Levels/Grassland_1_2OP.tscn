@@ -65,7 +65,7 @@ func update_bg():
 
 "
 
-[node name="Level" instance=ExtResource( 1 )]
+[node name="Level" index="0" instance=ExtResource( 1 )]
 BG_COLOR = Color( 0, 0, 0, 1 )
 MUSIC = ExtResource( 2 )
 
@@ -1692,9 +1692,10 @@ custom_parameters = {
 }
 
 [node name="Player" parent="Iterable" index="96"]
+editor/display_folded = true
 position = Vector2( -128, 435 )
 
-[node name="ThiunEffectCreator" parent="Iterable/Player" index="9" instance=ExtResource( 21 )]
+[node name="ThiunEffectCreator" parent="Iterable/Player" index="12" instance=ExtResource( 21 )]
 create_target = NodePath("../..")
 
 [node name="CheckpointZone" parent="." index="5" instance=ExtResource( 22 )]
@@ -2324,12 +2325,11 @@ position = Vector2( 0, -120 )
 texture = ExtResource( 31 )
 centered = false
 [connection signal="player_die_normally" from="Iterable/Player" to="Iterable/Player/ThiunEffectCreator" method="create"]
+[connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="Iterable/Player" method="_on_TransitionTween_tween_all_completed"]
 [connection signal="entered_area" from="AreaNotifier" to="ChainDestroyController2" method="_on_AreaNotifier_entered_area"]
 [connection signal="entered_area" from="AreaNotifier" to="ChainDestroyController" method="_on_AreaNotifier_entered_area"]
 [connection signal="transition_activated" from="ViewContainer/View8/ScreenTransitor10" to="ParallaxBackground" method="_on_ScreenTransitor10_transition_activated"]
 [connection signal="transition_activated" from="ViewContainer/View9/ScreenTransitor11" to="ParallaxBackground" method="_on_ScreenTransitor10_transition_activated"]
 [connection signal="transition_activated" from="ViewContainer/View9/BossDoor" to="ParallaxBackground" method="_on_BossDoor_transition_activated"]
-
-[editable path="Iterable/Player"]
 
 [editable path="Camera2D"]
