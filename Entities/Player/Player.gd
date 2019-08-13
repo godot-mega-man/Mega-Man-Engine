@@ -28,6 +28,8 @@ const ATTACK_HOTKEY = 'game_action'
 const ATTACK_HOTKEY_1 = 'game_hotkey1'
 const TAKING_DAMAGE_SLIDE_LEFT := -20
 const TAKING_DAMAGE_SLIDE_RIGHT := 20
+const SLIDE_FRAME : float = 25.0
+const SLIDE_SPEED : float = 150.0
 
 #Current stats.
 var current_hp = HP_BASE
@@ -37,27 +39,31 @@ var max_mp = 20
 var attack_power = DAMAGE_BASE
 var is_invincible = false
 var is_attack_ready = true
-var attack_cooldown_apply_time = 0.01
+var attack_cooldown_apply_time = 0.05
 var attack_type = 0 #0:By Pressing action button, 1:Holding action button
 var is_cutscene_mode = false #When true, player won't take damage while in cutscene
 var is_cancel_holding_jump_allowed = true
 var is_taking_damage = false
 var taking_damage_slide_pos := 0 #Use only x-axis!
+var is_sliding = false
+var slide_remaining : float
 
 #Player's child nodes
 onready var pf_bhv := $PlatformBehavior as FJ_PlatformBehavior2D
 onready var area = $Area2D
 onready var area_collision := $Area2D/CollisionShape2D as CollisionShape2D
 onready var collision_shape := $CollisionShape2D as CollisionShape2D
+onready var slide_collision_shape := $SlideCollisionShape2D
 onready var platformer_sprite = $PlatformerSprite
 onready var animation_player = $AnimationPlayer
-onready var pivot_shoot = $Pivots/Shoot
+onready var shoot_pos = $PlatformerSprite/ShootPos
 onready var attack_cooldown_timer = $AttackCooldownTimer
 onready var invis_timer = $InvincibleTimer
 onready var taking_damage_timer = $TakingDamageTimer
 onready var transition_tween := $TransitionTween as Tween
 onready var damage_sprite = $DamageSprite
 onready var damage_sprite_ani = $DamageSprite/Ani
+onready var slide_dust_pos = $PlatformerSprite/SlideDustPos
 
 onready var level_camera := get_node_or_null("/root/Level/Camera2D") as Camera2D
 
@@ -73,6 +79,7 @@ var dmg_counter = preload("res://GUI/DamageCounter.tscn")
 var explosion_effect = preload("res://Entities/Effects/Explosion/Explosion.tscn")
 var coin_particles = preload("res://Entities/Effects/Particles/CoinParticles.tscn")
 var vulnerable_effect = preload("res://Assets_ReleaseExcluded/Sprites/Effects/VulnerableEffect.tscn")
+var slide_dust_effect = preload("res://Entities/Effects/SlideDust/SlideDust.tscn")
 '''---------------------------------------------------------------------------------'''
 
 func _ready():
@@ -98,6 +105,7 @@ func _process(delta):
 	press_attack_check()
 	check_for_area_collisions()
 	crush_check() #Check if player is crushed
+	check_press_jump_or_sliding() 
 	check_holding_jump_key()
 	check_taking_damage()
 
@@ -148,9 +156,9 @@ func _on_PlatformerBehavior_fell_into_pit() -> void:
 
 func set_vflip_by_keypress():
 	if pf_bhv.walk_left:
-		platformer_sprite.flip_h = true
+		platformer_sprite.scale.x = -1
 	if pf_bhv.walk_right:
-		platformer_sprite.flip_h = false
+		platformer_sprite.scale.x = 1
 
 func press_attack_check():
 	#Character will start to shoot/attack when the player pressed "action key"
@@ -181,13 +189,9 @@ func start_launching_attack() -> void:
 	var bullet = proj_classicBullet.instance()
 	get_parent().add_child(bullet) #Deploy projectile from player.
 	
-	#-----HARD CODED------
-	var hvlip_shift_pivot_offset : Vector2 = Vector2(0, 0)
-	if platformer_sprite.flip_h:
-		hvlip_shift_pivot_offset.x = -pivot_shoot.position.x
-	bullet.position = pivot_shoot.global_position + (hvlip_shift_pivot_offset * 2)
-	#--END OF HARD CODED--
-	bullet.bullet_behavior.angle_in_degrees = 180.0 if platformer_sprite.flip_h else 0.0
+	bullet.position = shoot_pos.global_position
+	bullet.bullet_behavior.angle_in_degrees = -90 + (90.0 * platformer_sprite.scale.x)
+	bullet.sprite.scale.x = platformer_sprite.scale.x
 	
 	#Calculate damage
 	var total_damage = 0
@@ -243,14 +247,6 @@ func player_take_damage(damage_amount : int, repel_player : bool = false, repel_
 	if is_invincible or is_cutscene_mode:
 		return
 	
-	#TODO: Shock guard item..
-	#Remove these if you don't want HP stops at 1.
-	#(Reference from 'Shock Guard' item)
-	if current_hp > 1:
-		if current_hp - damage_amount < 1:
-			damage_amount = current_hp - 1
-			FJ_AudioManager.sfx_ui_game_start.play()
-	
 	#Subtracting health from damage taken.
 	current_hp -= damage_amount
 	#Repel player to the opposite direction the player is facing.
@@ -303,6 +299,44 @@ func check_taking_damage():
 	if is_taking_damage:
 		pf_bhv.velocity.x = taking_damage_slide_pos
 
+func check_press_jump_or_sliding():
+	if not is_taking_damage:
+		if Input.is_action_just_pressed("game_jump"):
+			if pf_bhv.on_floor:
+				if Input.is_action_pressed("game_down"):
+					#To be able to slide, must be on floor and not sliding.
+					#In addition, the player must not be nearby wall
+					#by current direction the player is facing.
+					if not is_sliding:
+						if platformer_sprite.scale.x == -1:
+							if not (test_move(self.get_transform(), Vector2(-4, 0))):
+								start_sliding()
+						else:
+							if not (test_move(self.get_transform(), Vector2(4, 0))):
+								start_sliding()
+				else:
+					if pf_bhv.INITIAL_STATE and pf_bhv.CONTROL_ENABLE:
+						pf_bhv.jump_start()
+	
+	if is_sliding and (!pf_bhv.on_floor or pf_bhv.on_wall):
+		if pf_bhv.on_wall:
+			pf_bhv.left_right_key_press_time = 0
+		slide_remaining = -1
+		stop_sliding()
+	
+	#Decrease slide remaining
+	if slide_remaining > 0:
+		if platformer_sprite.scale.x == -1:
+			pf_bhv.velocity.x = -SLIDE_SPEED
+		else:
+			pf_bhv.velocity.x = SLIDE_SPEED
+		slide_remaining -= 1
+		pf_bhv.left_right_key_press_time = 30
+	elif slide_remaining == 0:
+		slide_remaining = -1
+		stop_sliding()
+
+
 func change_player_current_hp(var amount):
 	current_hp += amount
 	if current_hp < 0:
@@ -327,7 +361,7 @@ func _on_invis_timer_timeout():
 func repel_player():
 	pf_bhv.velocity.x = 0
 	pf_bhv.velocity.y = -50
-	if platformer_sprite.flip_h:
+	if platformer_sprite.scale.x == -1:
 		taking_damage_slide_pos = TAKING_DAMAGE_SLIDE_RIGHT
 	else:
 		taking_damage_slide_pos = TAKING_DAMAGE_SLIDE_LEFT
@@ -338,7 +372,7 @@ func spawn_damage_counter(damage, var spawn_offset : Vector2 = Vector2(0,0)):
 	
 	var dmg_text = dmg_counter.instance() #Instance DamageCounter
 	get_parent().add_child(dmg_text) #Spawn
-	dmg_text.label.text = str(damage) #Set child node's text
+	dmg_text.label.text = str(damage * 177) #Set child node's text
 	dmg_text.global_position = self.global_position #Set position to player
 	dmg_text.global_position += spawn_offset #Spawn offset
 	dmg_text.get_node('Label').add_color_override("font_color", Color(1,0,0,1))
@@ -520,3 +554,22 @@ func _on_TakingDamageTimer_timeout() -> void:
 	
 	#Stops flashing animation.
 	damage_sprite_ani.play("StopFlashin")
+
+func start_sliding():
+	slide_collision_shape.set_deferred("disabled", false)
+	collision_shape.set_deferred("disabled", true)
+	platformer_sprite.is_sliding = true
+	is_sliding = true
+	slide_remaining = SLIDE_FRAME
+	
+	#Create slide effect
+	var inst_slide_effect = slide_dust_effect.instance()
+	get_parent().add_child(inst_slide_effect)
+	inst_slide_effect.global_position = slide_dust_pos.global_position
+	inst_slide_effect.scale.x = platformer_sprite.scale.x
+
+func stop_sliding():
+	slide_collision_shape.set_deferred("disabled", true)
+	collision_shape.set_deferred("disabled", false)
+	platformer_sprite.is_sliding = false
+	is_sliding = false

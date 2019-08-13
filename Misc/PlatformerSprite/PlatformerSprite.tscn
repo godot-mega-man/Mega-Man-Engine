@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/Reimu_B.png" type="Texture" id=1]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.gd" type="Script" id=2]
@@ -18,11 +18,8 @@ tracks/0/keys = {
 "values": [ 13 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Dash"
-length = 0.16
-loop = true
-step = 0.08
+[sub_resource type="Animation" id=14]
+resource_name = "Damage Sliding"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -30,10 +27,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.08 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 11, 12 ]
+"values": [ 14 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -84,23 +81,6 @@ tracks/0/keys = {
 "values": [ 7, 8 ]
 }
 
-[sub_resource type="Animation" id=6]
-length = 0.16
-loop = true
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.08 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 18, 19 ]
-}
-
 [sub_resource type="Animation" id=7]
 length = 2.0
 loop = true
@@ -148,6 +128,24 @@ tracks/0/keys = {
 "values": [ 123, 124 ]
 }
 
+[sub_resource type="Animation" id=15]
+resource_name = "Shooting Sliding"
+length = 0.16
+loop = true
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 127, 128 ]
+}
+
 [sub_resource type="Animation" id=10]
 length = 0.48
 loop = true
@@ -163,6 +161,24 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 119, 120, 121, 122 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Sliding"
+length = 0.16
+loop = true
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 11, 12 ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -217,19 +233,21 @@ texture = ExtResource( 1 )
 offset = Vector2( 1, 1 )
 vframes = 16
 hframes = 116
+frame = 19
 script = ExtResource( 2 )
 
 [node name="CharacterPlatformerAnimation" type="AnimationPlayer" parent="."]
 anims/Damage = SubResource( 1 )
-anims/Dash = SubResource( 2 )
+"anims/Damage Sliding" = SubResource( 14 )
 anims/Idle = SubResource( 3 )
 "anims/Jump Falling" = SubResource( 4 )
 "anims/Jump Up" = SubResource( 5 )
-"anims/Shooting Dash" = SubResource( 6 )
 "anims/Shooting Idle" = SubResource( 7 )
 "anims/Shooting Jump Falling" = SubResource( 8 )
 "anims/Shooting Jump Up" = SubResource( 9 )
+"anims/Shooting Sliding" = SubResource( 15 )
 "anims/Shooting Walk" = SubResource( 10 )
+anims/Sliding = SubResource( 2 )
 "anims/Tipping Toe" = SubResource( 11 )
 "anims/Tipping Toe Shooting" = SubResource( 12 )
 anims/Walk = SubResource( 13 )

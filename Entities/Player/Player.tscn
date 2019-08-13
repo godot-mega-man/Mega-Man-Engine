@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=2]
@@ -10,10 +10,13 @@
 [ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportOut.wav" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7, 10 )
+extents = Vector2( 6, 10 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 10, 6 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 6.99, 9.5 )
+extents = Vector2( 6, 9.5 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Invincible"
@@ -241,20 +244,26 @@ VELOCITY_X_DAMPING = 1.0
 MAX_FALL_SPEED = 360.0
 INITIAL_STATE = false
 USE_TIP_TOE_MOVEMENT = true
+DEFAULT_CONTROL_JUMP = ""
 
 [node name="PlatformerSprite" parent="." instance=ExtResource( 3 )]
 texture = ExtResource( 4 )
 path_to_platformer_behavior = NodePath("../PlatformBehavior")
 
+[node name="ShootPos" type="Position2D" parent="PlatformerSprite"]
+position = Vector2( 20, 0 )
+
+[node name="SlideDustPos" type="Position2D" parent="PlatformerSprite"]
+position = Vector2( -11, 11 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 3 )
 shape = SubResource( 1 )
 
-[node name="Pivots" type="Node2D" parent="."]
-
-[node name="Shoot" type="Position2D" parent="Pivots"]
-position = Vector2( 20, 0 )
+[node name="SlideCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 7 )
+shape = SubResource( 8 )
+disabled = true
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 one_shot = true
