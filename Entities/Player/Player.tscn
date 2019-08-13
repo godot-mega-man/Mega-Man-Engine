@@ -249,7 +249,7 @@ path_to_platformer_behavior = NodePath("../PlatformBehavior")
 position = Vector2( 20, 0 )
 
 [node name="SlideDustPos" type="Position2D" parent="PlatformerSprite"]
-position = Vector2( -11, 11 )
+position = Vector2( -8, 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
