@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/BusterCharging.wav-ac6b61a737d65edf8737623780505db2.sample"
+
+[deps]
+
+source_file="res://Assets_ReleaseExcluded/Sounds/Sfx/Combat/BusterCharging.wav"
+dest_files=[ "res://.import/BusterCharging.wav-ac6b61a737d65edf8737623780505db2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -108,6 +108,9 @@ onready var sfx_collectibles_item : AudioStreamPlayer = $SFX/Collectibles/Sfx_It
 
 onready var sfx_combat_ballade_cracker_bomb : AudioStreamPlayer = $SFX/Combat/Sfx_BalladeCrackerBomb
 onready var sfx_combat_buster : AudioStreamPlayer = $SFX/Combat/Sfx_Buster
+onready var sfx_combat_buster_fullycharged : AudioStreamPlayer = $SFX/Combat/Sfx_BusterFullyCharged
+onready var sfx_combat_buster_minicharged : AudioStreamPlayer = $SFX/Combat/Sfx_BusterMiniCharged
+onready var sfx_combat_buster_charging : AudioStreamPlayer = $SFX/Combat/Sfx_BusterCharging
 onready var sfx_combat_diarn_sp_shot : AudioStreamPlayer = $SFX/Combat/Sfx_DiarnSPShot
 onready var sfx_combat_ice_break : AudioStreamPlayer = $SFX/Combat/Sfx_IceBreak
 onready var sfx_combat_ice_make : AudioStreamPlayer = $SFX/Combat/Sfx_IceMake
