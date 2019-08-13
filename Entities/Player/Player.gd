@@ -104,7 +104,6 @@ func _process(delta):
 	set_vflip_by_keypress()
 	press_attack_check()
 	check_for_area_collisions()
-	crush_check() #Check if player is crushed
 	check_press_jump_or_sliding(delta) 
 	check_holding_jump_key()
 	check_taking_damage()
@@ -300,6 +299,9 @@ func check_taking_damage():
 		pf_bhv.velocity.x = taking_damage_slide_pos
 
 func check_press_jump_or_sliding(delta : float):
+	if !(pf_bhv.INITIAL_STATE and pf_bhv.CONTROL_ENABLE):
+		return
+	
 	if not is_taking_damage:
 		if Input.is_action_just_pressed("game_jump"):
 			if pf_bhv.on_floor:
@@ -307,33 +309,33 @@ func check_press_jump_or_sliding(delta : float):
 					#To be able to slide, must be on floor and not sliding.
 					#In addition, the player must not be nearby wall
 					#by current direction the player is facing.
-					if not is_sliding:
-						if platformer_sprite.scale.x == -1:
-							if not (test_move(self.get_transform(), Vector2(-4, 0))):
-								start_sliding()
-						else:
-							if not (test_move(self.get_transform(), Vector2(4, 0))):
-								start_sliding()
+					if not is_sliding and not test_slide_check_collision():
+						start_sliding()
 				else:
-					if pf_bhv.INITIAL_STATE and pf_bhv.CONTROL_ENABLE:
+					#If the player tries to jump while sliding under ceiling,
+					#it would fail.
+					if !(is_sliding and test_normal_check_collision()):
 						pf_bhv.jump_start()
 	
 	if is_sliding and (!pf_bhv.on_floor or pf_bhv.on_wall):
 		if pf_bhv.on_wall:
-			pf_bhv.left_right_key_press_time = 0
-		slide_remaining = -10
-		stop_sliding()
+			if not test_normal_check_collision():
+				pf_bhv.left_right_key_press_time = 0
+				stop_sliding() #Stop normally
+		else:
+			stop_sliding(true) #Force stop
 	
-	#Decrease slide remaining
-	if slide_remaining > 0:
+	if is_sliding:
 		if platformer_sprite.scale.x == -1:
 			pf_bhv.velocity.x = -SLIDE_SPEED * 60 * delta
 		else:
 			pf_bhv.velocity.x = SLIDE_SPEED * 60 * delta
+		pf_bhv.left_right_key_press_time = 30 #Fix tipping toe glitch
+	
+	#Decrease slide remaining
+	if slide_remaining > 0:
 		slide_remaining -= 60 * delta
-		pf_bhv.left_right_key_press_time = 30
 	elif slide_remaining < 0 and slide_remaining > -10:
-		slide_remaining = -10
 		stop_sliding()
 
 
@@ -439,15 +441,6 @@ func set_control_enable_from_cutscene(enabled : bool):
 	pf_bhv.CONTROL_ENABLE = enabled
 	self.is_cutscene_mode = enabled
 
-#For check if player is stuck (suffocated) in the wall.
-func crush_check():
-	if area.overlaps_body(tile_map):
-		#Spawn damage counter.
-		spawn_damage_counter(current_hp)
-		current_hp = 0
-		#Update GUI
-		update_gui("update_gui_bar")
-		player_death()
 
 func _on_leveled_up():
 	heal_to_full_hp()
@@ -507,7 +500,6 @@ func start_screen_transition(normalized_direction : Vector2, duration : float, r
 	transition_tween.start()
 	
 	pf_bhv.INITIAL_STATE = false
-	collision_shape.call_deferred("set_disabled", true)
 	area_collision.call_deferred("set_disabled", true)
 	platformer_sprite.animation_paused = true
 	
@@ -521,7 +513,6 @@ func start_screen_transition(normalized_direction : Vector2, duration : float, r
 
 #After screen transiting has completed
 func _on_TransitionTween_tween_all_completed() -> void:
-	collision_shape.call_deferred("set_disabled", false)
 	area_collision.call_deferred("set_disabled", false)
 	platformer_sprite.animation_paused = false
 	pf_bhv.INITIAL_STATE = true
@@ -568,8 +559,40 @@ func start_sliding():
 	inst_slide_effect.global_position = slide_dust_pos.global_position
 	inst_slide_effect.scale.x = platformer_sprite.scale.x
 
-func stop_sliding():
+
+func stop_sliding(var force_stop : bool = false):
+	#If the collision would occur while stopping slide.
+	if test_normal_check_collision() and !force_stop:
+		 return
+	
 	slide_collision_shape.set_deferred("disabled", true)
 	collision_shape.set_deferred("disabled", false)
 	platformer_sprite.is_sliding = false
 	is_sliding = false
+	slide_remaining = -10
+
+func test_normal_check_collision() -> bool:
+	var result : bool
+	var last_collision_shape : bool = collision_shape.disabled
+	var last_slide_collision_shape : bool = slide_collision_shape.disabled
+	
+	collision_shape.disabled = false
+	slide_collision_shape.disabled = true
+	result = test_move(self.get_transform(), Vector2(0, -1))
+	collision_shape.disabled = last_collision_shape
+	slide_collision_shape.disabled = last_slide_collision_shape
+	
+	return result
+
+func test_slide_check_collision() -> bool:
+	var result : bool
+	var last_collision_shape : bool = collision_shape.disabled
+	var last_slide_collision_shape : bool = slide_collision_shape.disabled
+	
+	collision_shape.disabled = true
+	slide_collision_shape.disabled = false
+	result = test_move(self.get_transform(), Vector2(0, -1))
+	collision_shape.disabled = last_collision_shape
+	slide_collision_shape.disabled = last_slide_collision_shape
+	
+	return result
