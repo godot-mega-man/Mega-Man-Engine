@@ -35,6 +35,7 @@ var is_path_to_platformer_behavior_valid : bool = false
 var casted_plat_bhv : FJ_PlatformBehavior2D #Casted Platformer Behavior. For use in _process().
 var is_launching_normal_attack : bool = false
 var is_taking_damage : bool = false
+var is_sliding : bool = false
 
 func _ready() -> void:
 	if path_to_platformer_behavior != null:
@@ -62,24 +63,33 @@ func _process(delta: float) -> void:
 		return
 	
 	if is_taking_damage:
-		character_platformer_animation.play("Damage")
+		if not is_sliding:
+			character_platformer_animation.play("Damage")
+		else:
+			character_platformer_animation.play("Damage Sliding")
 	elif casted_plat_bhv.on_floor:
 		if is_launching_normal_attack:
-			if casted_plat_bhv.walk_left or casted_plat_bhv.walk_right:
-				if casted_plat_bhv.left_right_key_press_time < casted_plat_bhv.MAX_TIP_TOE_FRAME:
-					character_platformer_animation.play("Tipping Toe Shooting")
+			if not is_sliding:
+				if casted_plat_bhv.walk_left or casted_plat_bhv.walk_right:
+					if casted_plat_bhv.left_right_key_press_time < casted_plat_bhv.MAX_TIP_TOE_FRAME:
+						character_platformer_animation.play("Tipping Toe Shooting")
+					else:
+						character_platformer_animation.play("Shooting Walk")
 				else:
-					character_platformer_animation.play("Shooting Walk")
+					character_platformer_animation.play("Shooting Idle")
 			else:
-				character_platformer_animation.play("Shooting Idle")
+				character_platformer_animation.play("Shooting Sliding")
 		else:
-			if casted_plat_bhv.walk_left or casted_plat_bhv.walk_right:
-				if casted_plat_bhv.left_right_key_press_time < casted_plat_bhv.MAX_TIP_TOE_FRAME:
-					character_platformer_animation.play("Tipping Toe")
+			if not is_sliding:
+				if casted_plat_bhv.walk_left or casted_plat_bhv.walk_right:
+					if casted_plat_bhv.left_right_key_press_time < casted_plat_bhv.MAX_TIP_TOE_FRAME:
+						character_platformer_animation.play("Tipping Toe")
+					else:
+						character_platformer_animation.play("Walk")
 				else:
-					character_platformer_animation.play("Walk")
+					character_platformer_animation.play("Idle")
 			else:
-				character_platformer_animation.play("Idle")
+				character_platformer_animation.play("Sliding")
 	else:
 		if is_launching_normal_attack:
 			if casted_plat_bhv.velocity.y < 0:

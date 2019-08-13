@@ -26,19 +26,6 @@ func _ready():
 	if !Engine.is_editor_hint():
 		$Label.queue_free()
 
-func _process(delta):
-	#Check if player is in warp zone.
-	if is_player_in_area:
-		#Key is pressed, activating warp zone
-		if Input.is_action_just_pressed("game_down"):
-			#In case teleport type is on floor only,
-			#Player will have to be on land to activate warp zone.
-			if PLAYER_ON_FLOOR_ONLY:
-				if player.is_on_floor():
-					entered_area()
-			else:
-				entered_area()
-
 #Since Node2D and Controls are incompatible. There's no possible
 #way to resize and expand its area node to fit the entire parent node.
 #This code will fix and expand to full rectangle of parent node.
