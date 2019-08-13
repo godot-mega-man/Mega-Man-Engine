@@ -47,6 +47,7 @@ var is_taking_damage = false
 var taking_damage_slide_pos := 0 #Use only x-axis!
 var is_sliding = false
 var slide_remaining : float
+var slide_direction_x : float = 0 #-1 and 1 value are used.
 
 #Player's child nodes
 onready var pf_bhv := $PlatformBehavior as FJ_PlatformBehavior2D
@@ -105,7 +106,7 @@ func _process(delta):
 	press_attack_check()
 	check_for_area_collisions()
 	check_sliding(delta)
-	check_press_jump_or_sliding() 
+	check_press_jump_or_sliding()
 	check_holding_jump_key()
 	check_taking_damage()
 
@@ -330,6 +331,8 @@ func check_sliding(delta : float):
 	if !(pf_bhv.INITIAL_STATE and pf_bhv.CONTROL_ENABLE):
 		return
 	
+	check_canceling_slide()
+	
 	if is_sliding and (!pf_bhv.on_floor or pf_bhv.on_wall):
 		if pf_bhv.on_wall:
 			if not test_normal_check_collision():
@@ -339,10 +342,8 @@ func check_sliding(delta : float):
 			stop_sliding(true) #Force stop
 	
 	if is_sliding:
-		if platformer_sprite.scale.x == -1:
-			pf_bhv.velocity.x = -SLIDE_SPEED * 60 * delta
-		else:
-			pf_bhv.velocity.x = SLIDE_SPEED * 60 * delta
+		slide_direction_x = platformer_sprite.scale.x
+		pf_bhv.velocity.x = SLIDE_SPEED * slide_direction_x * 60 * delta
 		pf_bhv.left_right_key_press_time = 30 #Fix tipping toe glitch
 	
 	#Decrease slide remaining
@@ -351,6 +352,16 @@ func check_sliding(delta : float):
 	elif slide_remaining < 0 and slide_remaining > -10:
 		stop_sliding()
 
+func check_canceling_slide():
+	if is_sliding:
+		if Input.is_action_just_pressed("game_left"):
+			if slide_direction_x == 1: #Right
+				pf_bhv.left_right_key_press_time = 0
+				stop_sliding()
+		if Input.is_action_just_pressed("game_right"):
+			if slide_direction_x == -1:
+				pf_bhv.left_right_key_press_time = 0
+				stop_sliding()
 
 func change_player_current_hp(var amount):
 	current_hp += amount
