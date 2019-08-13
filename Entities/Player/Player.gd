@@ -372,7 +372,7 @@ func spawn_damage_counter(damage, var spawn_offset : Vector2 = Vector2(0,0)):
 	
 	var dmg_text = dmg_counter.instance() #Instance DamageCounter
 	get_parent().add_child(dmg_text) #Spawn
-	dmg_text.label.text = str(damage * 177) #Set child node's text
+	dmg_text.label.text = str(damage) #Set child node's text
 	dmg_text.global_position = self.global_position #Set position to player
 	dmg_text.global_position += spawn_offset #Spawn offset
 	dmg_text.get_node('Label').add_color_override("font_color", Color(1,0,0,1))
