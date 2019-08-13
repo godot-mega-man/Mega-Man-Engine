@@ -12,14 +12,13 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 10 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 6 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 6, 9.5 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "Invincible"
+[sub_resource type="Animation" id=4]
 length = 0.06
 loop = true
 step = 0.01
@@ -36,8 +35,7 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Flashing"
+[sub_resource type="Animation" id=5]
 length = 0.06
 loop = true
 step = 0.03
@@ -54,8 +52,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "StopFlashin"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -69,8 +66,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "New Anim"
+[sub_resource type="Animation" id=7]
 length = 1.5
 step = 0.05
 tracks/0/type = "value"
@@ -148,8 +144,7 @@ tracks/5/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "TelOut"
+[sub_resource type="Animation" id=8]
 length = 1.5
 step = 0.05
 tracks/0/type = "value"
@@ -262,7 +257,7 @@ shape = SubResource( 1 )
 
 [node name="SlideCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 7 )
-shape = SubResource( 8 )
+shape = SubResource( 2 )
 disabled = true
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
@@ -281,7 +276,7 @@ collision_layer = 2
 collision_mask = 60
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="InvincibleTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -289,7 +284,7 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
-anims/Invincible = SubResource( 3 )
+anims/Invincible = SubResource( 4 )
 
 [node name="TransitionTween" type="Tween" parent="."]
 
@@ -299,8 +294,8 @@ visible = false
 texture = ExtResource( 5 )
 
 [node name="Ani" type="AnimationPlayer" parent="DamageSprite"]
-anims/Flashing = SubResource( 4 )
-anims/StopFlashin = SubResource( 5 )
+anims/Flashing = SubResource( 5 )
+anims/StopFlashin = SubResource( 6 )
 
 [node name="TeleportSprite" type="Sprite" parent="."]
 position = Vector2( 0, -512 )
@@ -311,8 +306,8 @@ hframes = 10
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TeleportSprite"]
 autoplay = "New Anim"
 playback_speed = 0.8
-"anims/New Anim" = SubResource( 6 )
-anims/TelOut = SubResource( 7 )
+"anims/New Anim" = SubResource( 7 )
+anims/TelOut = SubResource( 8 )
 
 [node name="TelIn" type="AudioStreamPlayer2D" parent="TeleportSprite"]
 stream = ExtResource( 7 )

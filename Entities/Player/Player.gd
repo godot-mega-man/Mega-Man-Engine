@@ -105,7 +105,7 @@ func _process(delta):
 	press_attack_check()
 	check_for_area_collisions()
 	crush_check() #Check if player is crushed
-	check_press_jump_or_sliding() 
+	check_press_jump_or_sliding(delta) 
 	check_holding_jump_key()
 	check_taking_damage()
 
@@ -299,7 +299,7 @@ func check_taking_damage():
 	if is_taking_damage:
 		pf_bhv.velocity.x = taking_damage_slide_pos
 
-func check_press_jump_or_sliding():
+func check_press_jump_or_sliding(delta : float):
 	if not is_taking_damage:
 		if Input.is_action_just_pressed("game_jump"):
 			if pf_bhv.on_floor:
@@ -321,19 +321,19 @@ func check_press_jump_or_sliding():
 	if is_sliding and (!pf_bhv.on_floor or pf_bhv.on_wall):
 		if pf_bhv.on_wall:
 			pf_bhv.left_right_key_press_time = 0
-		slide_remaining = -1
+		slide_remaining = -10
 		stop_sliding()
 	
 	#Decrease slide remaining
 	if slide_remaining > 0:
 		if platformer_sprite.scale.x == -1:
-			pf_bhv.velocity.x = -SLIDE_SPEED
+			pf_bhv.velocity.x = -SLIDE_SPEED * 60 * delta
 		else:
-			pf_bhv.velocity.x = SLIDE_SPEED
-		slide_remaining -= 1
+			pf_bhv.velocity.x = SLIDE_SPEED * 60 * delta
+		slide_remaining -= 60 * delta
 		pf_bhv.left_right_key_press_time = 30
-	elif slide_remaining == 0:
-		slide_remaining = -1
+	elif slide_remaining < 0 and slide_remaining > -10:
+		slide_remaining = -10
 		stop_sliding()
 
 
