@@ -64,6 +64,7 @@ var is_posing = true
 func _ready():
 	start_intro_music_or_regular_music()
 	stop_player_controls()
+	FJ_AudioManager.sfx_combat_buster_charging.stream_paused = true
 
 #Start intro music (if specified). Otherwise, boss music will be
 #used instead.
@@ -104,6 +105,7 @@ func _on_boss_health_bar_filled_up_bar_to_max():
 		player.set_control_enable(true)
 	emit_signal("boss_done_posing")
 	is_posing = false
+	FJ_AudioManager.sfx_combat_buster_charging.stream_paused = false
 
 #When the boss takes damage, update boss health bar.
 func _on_BossCore_taken_damage(value, target, player_proj_source) -> void:

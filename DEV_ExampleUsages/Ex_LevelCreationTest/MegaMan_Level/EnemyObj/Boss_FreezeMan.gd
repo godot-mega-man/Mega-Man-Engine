@@ -52,7 +52,8 @@ func _process(delta: float) -> void:
 			Input.is_action_pressed("game_left") or
 			Input.is_action_pressed("game_right") or
 			Input.is_action_pressed("game_jump") or
-			Input.is_action_pressed("game_action")
+			Input.is_action_just_pressed("game_action") or
+			Input.is_action_just_released("game_action")
 		):
 			current_atk_pattern = ATTACK_PATTERN.MOVE_TO_EDGE
 			turn_toward_player()

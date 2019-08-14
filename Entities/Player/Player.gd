@@ -26,6 +26,9 @@ const DAMAGE_BASE = 2
 const DEFAULT_INVIS_TIME : float = 1.5
 const ATTACK_HOTKEY = 'game_action'
 const ATTACK_HOTKEY_1 = 'game_hotkey1'
+const PROJECTILE_ON_SCREEN_LIMIT : float = 3.0
+const CHARGE_MEGABUSTER_STARTING_TIME = 0.6
+const FULLY_CHARGE_MEGABUSTER_STARTING_TIME = 1.5
 const TAKING_DAMAGE_SLIDE_LEFT := -20
 const TAKING_DAMAGE_SLIDE_RIGHT := 20
 const SLIDE_FRAME : float = 25.0
@@ -41,6 +44,8 @@ var is_invincible = false
 var is_attack_ready = true
 var attack_cooldown_apply_time = 0.05
 var attack_type = 0 #0:By Pressing action button, 1:Holding action button
+var attack_hold_time = 0 #Increase as the attack button is pressed.
+var mega_buster_charge_lv = 0
 var is_cutscene_mode = false #When true, player won't take damage while in cutscene
 var is_cancel_holding_jump_allowed = true
 var is_taking_damage = false
@@ -75,7 +80,9 @@ onready var currency_manager = get_node("/root/CurrencyManager")
 onready var player_stats = get_node("/root/PlayerStats")
 
 #Preloading objects... Ex: Bullets.
-var proj_classicBullet = preload("res://Entities/PlayerProjectile/PlayerProjectile_MegaBuster.tscn")
+var proj_megabuster = preload("res://Entities/PlayerProjectile/PlayerProjectile_MegaBuster.tscn")
+var proj_chargedmegabuster1 = preload("res://Entities/PlayerProjectile/PlayerProjectile_ChargedMegaBuster1.tscn")
+var proj_chargedmegabuster2 = preload("res://Entities/PlayerProjectile/PlayerProjectile_ChargedMegaBuster2.tscn")
 var dmg_counter = preload("res://GUI/DamageCounter.tscn")
 var explosion_effect = preload("res://Entities/Effects/Explosion/Explosion.tscn")
 var coin_particles = preload("res://Entities/Effects/Particles/CoinParticles.tscn")
@@ -103,7 +110,7 @@ func _process(delta):
 	--------Movement--------
 	"""
 	set_vflip_by_keypress()
-	press_attack_check()
+	press_attack_check(delta)
 	check_for_area_collisions()
 	check_sliding(delta)
 	check_press_jump_or_sliding()
@@ -162,7 +169,10 @@ func set_vflip_by_keypress():
 	if pf_bhv.walk_right:
 		platformer_sprite.scale.x = 1
 
-func press_attack_check():
+func press_attack_check(delta : float):
+	if !pf_bhv.CONTROL_ENABLE or !pf_bhv.INITIAL_STATE:
+		return
+	
 	#Character will start to shoot/attack when the player pressed "action key"
 	#To be able to attack, all of the following conditions must be met:
 	#  -There is a keypress stroke.
@@ -170,25 +180,45 @@ func press_attack_check():
 	if is_attack_ready:
 		if attack_type == 0:
 			if Input.is_action_just_pressed(ATTACK_HOTKEY):
-				start_launching_attack()
-		else:
-			if Input.is_action_pressed(ATTACK_HOTKEY):
-				attack_cooldown_timer.start(attack_cooldown_apply_time)
-				is_attack_ready = false
-				start_launching_attack()
-			if Input.is_action_pressed(ATTACK_HOTKEY_1):
-				attack_cooldown_timer.start(attack_cooldown_apply_time)
-				is_attack_ready = false
-				start_launching_attack_skill()
+				if not can_spawn_projectile() or is_sliding:
+					return
+				start_launching_attack(proj_megabuster)
+				FJ_AudioManager.sfx_combat_buster.play()
+	
+	#Check if releasing attack button or holding either way
+	if not Input.is_action_pressed(ATTACK_HOTKEY):
+		if not can_spawn_projectile() or is_sliding:
+			return
+		
+		if attack_hold_time > FULLY_CHARGE_MEGABUSTER_STARTING_TIME:
+			start_launching_attack(proj_chargedmegabuster2)
+			FJ_AudioManager.sfx_combat_buster_fullycharged.play()
+			FJ_AudioManager.sfx_combat_buster_charging.call_deferred("stop")
+		elif attack_hold_time > CHARGE_MEGABUSTER_STARTING_TIME:
+			start_launching_attack(proj_chargedmegabuster1)
+			FJ_AudioManager.sfx_combat_buster_minicharged.play()
+			FJ_AudioManager.sfx_combat_buster_charging.call_deferred("stop")
+		
+		attack_hold_time = 0
+		mega_buster_charge_lv = 0
+	else:
+		attack_hold_time += delta
+		
+		if attack_hold_time > CHARGE_MEGABUSTER_STARTING_TIME and not can_spawn_projectile():
+			attack_hold_time = CHARGE_MEGABUSTER_STARTING_TIME
+			return
+		
+		#Charge actions
+		if mega_buster_charge_lv == 0:
+			if attack_hold_time > CHARGE_MEGABUSTER_STARTING_TIME:
+				mega_buster_charge_lv = 1
+				FJ_AudioManager.sfx_combat_buster_charging.play()
+		elif mega_buster_charge_lv == 1:
+			if attack_hold_time > FULLY_CHARGE_MEGABUSTER_STARTING_TIME:
+				mega_buster_charge_lv = 2
 
-func start_launching_attack() -> void:
-	if get_total_projectile_on_screen_count() > 2:
-		return
-	
-	if !pf_bhv.CONTROL_ENABLE:
-		return
-	
-	var bullet = proj_classicBullet.instance()
+func start_launching_attack(packed_scene : PackedScene) -> void:
+	var bullet = packed_scene.instance()
 	get_parent().add_child(bullet) #Deploy projectile from player.
 	
 	bullet.position = shoot_pos.global_position
@@ -200,15 +230,18 @@ func start_launching_attack() -> void:
 	total_damage = DAMAGE_BASE + bullet.DAMAGE_POWER
 	bullet.DAMAGE_POWER = total_damage #Final damage output
 	
-	
-	#Play sound
-	FJ_AudioManager.sfx_combat_buster.play()
-	
 	#Emit signal
 	emit_signal("launched_attack")
 
-func get_total_projectile_on_screen_count() -> int:
-	return get_tree().get_nodes_in_group("PlayerProjectile").size()
+#Check if the projectile is not above limit
+func can_spawn_projectile() -> bool:
+	var size : float = 0
+	
+	for i in get_tree().get_nodes_in_group("PlayerProjectile"):
+		if i is PlayerProjectile:
+			size += i.projectile_limit_cost
+	
+	return size < PROJECTILE_ON_SCREEN_LIMIT
 
 #OBSOLETED! Will be removed and rewritten to a better one.
 func start_launching_attack_skill() -> void:
@@ -424,6 +457,7 @@ func player_death():
 	get_parent().add_child(effect)
 	
 	#Play death sound
+	FJ_AudioManager.sfx_combat_buster_charging.call_deferred("stop")
 	FJ_AudioManager.sfx_character_player_die.play()
 	
 	#Shake the camera (if exists)

@@ -22,6 +22,7 @@ export(bool) var DESTROY_OUTSIDE_SCREEN = true
 export(bool) var HIT_ONCE_PER_FRAME = true #If true, bullet can hit multiple enemies at the same time.
 
 export(REFLECT_TYPE_PRESET) var reflect_type = 1
+export (float) var projectile_limit_cost = 1
 
 #Child nodes
 onready var sprite = $Sprite
