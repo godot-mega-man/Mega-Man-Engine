@@ -15,9 +15,11 @@ signal player_die_normally
 #                   Warp zones may overrides this option.
 export(int, "Auto", "Ignore Teleporters", "Never (Unsafe)") var STARTING_LOCATION = 0
 
-export(NodePath) var level_path
-export(NodePath) var game_gui_path
-export(NodePath) var tilemap_path
+export (NodePath) var level_path
+export (NodePath) var game_gui_path
+export (NodePath) var tilemap_path
+export (Resource) var player_color_palette_res
+export (int) var CURRENT_PALETTE_STATE #Don't touch this!
 
 #Player's stats
 const HP_BASE : int = 28
@@ -28,7 +30,7 @@ const ATTACK_HOTKEY = 'game_action'
 const ATTACK_HOTKEY_1 = 'game_hotkey1'
 const PROJECTILE_ON_SCREEN_LIMIT : float = 3.0
 const CHARGE_MEGABUSTER_STARTING_TIME = 0.6
-const FULLY_CHARGE_MEGABUSTER_STARTING_TIME = 1.5
+const FULLY_CHARGE_MEGABUSTER_STARTING_TIME = 1.6
 const TAKING_DAMAGE_SLIDE_LEFT := -20
 const TAKING_DAMAGE_SLIDE_RIGHT := 20
 const SLIDE_FRAME : float = 25.0
@@ -70,6 +72,8 @@ onready var transition_tween := $TransitionTween as Tween
 onready var damage_sprite = $DamageSprite
 onready var damage_sprite_ani = $DamageSprite/Ani
 onready var slide_dust_pos = $PlatformerSprite/SlideDustPos
+onready var palette_ani_player = $PlatformerSprite/PaletteAniPlayer
+onready var palette_ani_player_changer = $PlatformerSprite/PaletteAniPlayer/PaletteAniChanger
 
 onready var level_camera := get_node_or_null("/root/Level/Camera2D") as Camera2D
 
@@ -201,6 +205,8 @@ func press_attack_check(delta : float):
 		
 		attack_hold_time = 0
 		mega_buster_charge_lv = 0
+		palette_ani_player.play("Init")
+		palette_ani_player_changer.stop()
 	else:
 		attack_hold_time += delta
 		
@@ -213,9 +219,11 @@ func press_attack_check(delta : float):
 			if attack_hold_time > CHARGE_MEGABUSTER_STARTING_TIME:
 				mega_buster_charge_lv = 1
 				FJ_AudioManager.sfx_combat_buster_charging.play()
+				palette_ani_player_changer.play("Charging")
 		elif mega_buster_charge_lv == 1:
 			if attack_hold_time > FULLY_CHARGE_MEGABUSTER_STARTING_TIME:
 				mega_buster_charge_lv = 2
+				palette_ani_player_changer.play("FullyCharged")
 
 func start_launching_attack(packed_scene : PackedScene) -> void:
 	var bullet = packed_scene.instance()
@@ -654,13 +662,39 @@ func test_slide_check_collision(vel_rel := Vector2(0, -1)) -> bool:
 	return result
 
 func update_platformer_sprite_color_palettes():
+	_update_current_character_palette_state()
+	
 	platformer_sprite.palette_sprite.primary_sprite.modulate = global_var.current_player_primary_color
 	platformer_sprite.palette_sprite.second_sprite.modulate = global_var.current_player_secondary_color
 	platformer_sprite.palette_sprite.outline_sprite.modulate = global_var.current_player_outline_color
 
-#Can set through global variables, will have to do through
-#Animation Player through.
-func update_global_player_color_palettes(primary_color : Color, secondary_color : Color, outline_color : Color):
-	global_var.current_player_primary_color = primary_color
-	global_var.current_player_secondary_color = secondary_color
-	global_var.current_player_outline_color = outline_color
+func _update_current_character_palette_state():
+	if player_color_palette_res == null:
+		return
+	
+	if player_color_palette_res is CharacterColorPalette:
+		match CURRENT_PALETTE_STATE:
+			0:
+				global_var.current_player_primary_color = Color(player_color_palette_res.primary_color)
+				global_var.current_player_secondary_color = Color(player_color_palette_res.secondary_color)
+				global_var.current_player_outline_color = Color(player_color_palette_res.outline_color)
+			1:
+				global_var.current_player_primary_color = Color(player_color_palette_res.primary_color)
+				global_var.current_player_secondary_color = Color(player_color_palette_res.secondary_color)
+				global_var.current_player_outline_color = Color(player_color_palette_res.outline_color_charge1)
+			2:
+				global_var.current_player_primary_color = Color(player_color_palette_res.primary_color)
+				global_var.current_player_secondary_color = Color(player_color_palette_res.secondary_color)
+				global_var.current_player_outline_color = Color(player_color_palette_res.outline_color_charge2)
+			3:
+				global_var.current_player_primary_color = Color(player_color_palette_res.primary_color)
+				global_var.current_player_secondary_color = Color(player_color_palette_res.secondary_color)
+				global_var.current_player_outline_color = Color(player_color_palette_res.outline_color_charge3)
+			4:
+				global_var.current_player_primary_color = Color(player_color_palette_res.secondary_color)
+				global_var.current_player_secondary_color = Color(player_color_palette_res.outline_color)
+				global_var.current_player_outline_color = Color(player_color_palette_res.primary_color)
+			5:
+				global_var.current_player_primary_color = Color(player_color_palette_res.outline_color)
+				global_var.current_player_secondary_color = Color(player_color_palette_res.primary_color)
+				global_var.current_player_outline_color = Color(player_color_palette_res.secondary_color)

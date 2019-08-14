@@ -1,13 +1,133 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/MegaMan.png" type="Texture" id=4]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Effects/Damage.png" type="Texture" id=5]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/MegaMan_Template.png" type="Texture" id=6]
-[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportIn.wav" type="AudioStream" id=7]
-[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportOut.wav" type="AudioStream" id=8]
+[ext_resource path="res://DatabaseCore/CharacterColorPalette/MegaMan.tres" type="Resource" id=2]
+[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/MegaMan.png" type="Texture" id=5]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Effects/Damage.png" type="Texture" id=6]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/MegaMan_Template.png" type="Texture" id=7]
+[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportIn.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportOut.wav" type="AudioStream" id=9]
+
+[sub_resource type="Animation" id=9]
+resource_name = "Init"
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:CURRENT_PALETTE_STATE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Lv1"
+length = 0.06
+loop = true
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:CURRENT_PALETTE_STATE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Lv2"
+length = 0.06
+loop = true
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:CURRENT_PALETTE_STATE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Lv3"
+length = 0.06
+loop = true
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:CURRENT_PALETTE_STATE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 0 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Lv4"
+length = 0.09
+loop = true
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:CURRENT_PALETTE_STATE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03, 0.06 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 0 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Charging"
+length = 1.6
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 2,
+"values": [ "Lv1", "Lv2", "Lv3" ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "FullyCharged"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "Lv4" ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 10 )
@@ -231,8 +351,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+player_color_palette_res = ExtResource( 2 )
 
-[node name="PlatformBehavior" parent="." instance=ExtResource( 2 )]
+[node name="PlatformBehavior" parent="." instance=ExtResource( 3 )]
 WALK_SPEED = 77.813
 JUMP_SPEED = 320.0
 VELOCITY_X_DAMPING = 1.0
@@ -241,8 +362,8 @@ INITIAL_STATE = false
 USE_TIP_TOE_MOVEMENT = true
 DEFAULT_CONTROL_JUMP = ""
 
-[node name="PlatformerSprite" parent="." instance=ExtResource( 3 )]
-texture = ExtResource( 4 )
+[node name="PlatformerSprite" parent="." instance=ExtResource( 4 )]
+texture = ExtResource( 5 )
 path_to_platformer_behavior = NodePath("../PlatformBehavior")
 
 [node name="ShootPos" type="Position2D" parent="PlatformerSprite"]
@@ -250,6 +371,17 @@ position = Vector2( 20, 0 )
 
 [node name="SlideDustPos" type="Position2D" parent="PlatformerSprite"]
 position = Vector2( -8, 11 )
+
+[node name="PaletteAniPlayer" type="AnimationPlayer" parent="PlatformerSprite"]
+anims/Init = SubResource( 9 )
+anims/Lv1 = SubResource( 10 )
+anims/Lv2 = SubResource( 11 )
+anims/Lv3 = SubResource( 12 )
+anims/Lv4 = SubResource( 13 )
+
+[node name="PaletteAniChanger" type="AnimationPlayer" parent="PlatformerSprite/PaletteAniPlayer"]
+anims/Charging = SubResource( 14 )
+anims/FullyCharged = SubResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
@@ -291,7 +423,7 @@ anims/Invincible = SubResource( 4 )
 [node name="DamageSprite" type="Sprite" parent="."]
 editor/display_folded = true
 visible = false
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Ani" type="AnimationPlayer" parent="DamageSprite"]
 anims/Flashing = SubResource( 5 )
@@ -299,7 +431,7 @@ anims/StopFlashin = SubResource( 6 )
 
 [node name="TeleportSprite" type="Sprite" parent="."]
 position = Vector2( 0, -512 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 vframes = 3
 hframes = 10
 
@@ -310,11 +442,11 @@ playback_speed = 0.8
 anims/TelOut = SubResource( 8 )
 
 [node name="TelIn" type="AudioStreamPlayer2D" parent="TeleportSprite"]
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = -6.0
 
 [node name="TelOut" type="AudioStreamPlayer2D" parent="TeleportSprite"]
-stream = ExtResource( 8 )
+stream = ExtResource( 9 )
 volume_db = -2.0
 [connection signal="input_event" from="." to="." method="_on_Player_input_event"]
 [connection signal="launched_attack" from="." to="PlatformerSprite" method="start_normal_attack_animation"]
