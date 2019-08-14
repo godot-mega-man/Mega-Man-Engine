@@ -623,3 +623,10 @@ func update_platformer_sprite_color_palettes():
 	platformer_sprite.palette_sprite.primary_sprite.modulate = global_var.current_player_primary_color
 	platformer_sprite.palette_sprite.second_sprite.modulate = global_var.current_player_secondary_color
 	platformer_sprite.palette_sprite.outline_sprite.modulate = global_var.current_player_outline_color
+
+#Can set through global variables, will have to do through
+#Animation Player through.
+func update_global_player_color_palettes(primary_color : Color, secondary_color : Color, outline_color : Color):
+	global_var.current_player_primary_color = primary_color
+	global_var.current_player_secondary_color = secondary_color
+	global_var.current_player_outline_color = outline_color
