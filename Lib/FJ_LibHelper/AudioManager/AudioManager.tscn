@@ -199,12 +199,12 @@ bus = "SFX"
 
 [node name="Sfx_BusterFullyCharged" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 12 )
-volume_db = -3.0
+volume_db = -2.0
 bus = "SFX"
 
 [node name="Sfx_BusterMiniCharged" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 13 )
-volume_db = -4.0
+volume_db = -6.0
 bus = "SFX"
 
 [node name="Sfx_BusterCharging" type="AudioStreamPlayer" parent="SFX/Combat"]
