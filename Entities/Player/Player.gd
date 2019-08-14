@@ -109,6 +109,7 @@ func _process(delta):
 	check_press_jump_or_sliding()
 	check_holding_jump_key()
 	check_taking_damage()
+	update_platformer_sprite_color_palettes()
 
 #Check if jump key is holding while in the air.
 #Otherwise, resets velocity y
@@ -438,9 +439,6 @@ func player_death():
 	#Stop everything
 	#Hide player from view and disable process
 	set_player_disappear(true)
-	
-	#Loses one up!
-	get_node("/root/GlobalVariables").one_up -= 1
 
 #Spawn coins particle 
 #Called by Level.
@@ -620,3 +618,8 @@ func test_slide_check_collision(vel_rel := Vector2(0, -1)) -> bool:
 	slide_collision_shape.disabled = last_slide_collision_shape
 	
 	return result
+
+func update_platformer_sprite_color_palettes():
+	platformer_sprite.palette_sprite.primary_sprite.modulate = global_var.current_player_primary_color
+	platformer_sprite.palette_sprite.second_sprite.modulate = global_var.current_player_secondary_color
+	platformer_sprite.palette_sprite.outline_sprite.modulate = global_var.current_player_outline_color

@@ -12,7 +12,10 @@ var saved_dead_enemies : Array
 
 var current_view : String = ""
 
-var one_up = 2
+var current_player_primary_color := NESColorPalette.TORQUOISE3
+var current_player_secondary_color := NESColorPalette.TORQUOISE2
+var current_player_outline_color := NESColorPalette.BLACK1
 
+#Obsolete!
 func add_to_dead_enemies(obj : DeadEnemyInfo):
 	saved_dead_enemies.push_back(obj)

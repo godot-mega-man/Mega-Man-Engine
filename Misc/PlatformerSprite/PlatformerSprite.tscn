@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/Reimu_B.png" type="Texture" id=1]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.gd" type="Script" id=2]
+[ext_resource path="res://Misc/PaletteSpriteCore/PaletteSpriteCore.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Damage"
@@ -230,7 +231,6 @@ texture = ExtResource( 1 )
 offset = Vector2( 1, 1 )
 vframes = 16
 hframes = 116
-frame = 19
 script = ExtResource( 2 )
 
 [node name="CharacterPlatformerAnimation" type="AnimationPlayer" parent="."]
@@ -252,4 +252,9 @@ anims/Walk = SubResource( 14 )
 [node name="NormalAttackCooldown" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="PaletteSprite" parent="." instance=ExtResource( 3 )]
+primary_color_frame_add = 29
+secondary_color_frame_add = 58
+outline_color_frame_add = 87
 [connection signal="timeout" from="NormalAttackCooldown" to="." method="_on_NormalAttackCooldown_timeout"]
