@@ -671,6 +671,8 @@ func update_platformer_sprite_color_palettes():
 func _update_current_character_palette_state():
 	if player_color_palette_res == null:
 		return
+	if !pf_bhv.INITIAL_STATE or !pf_bhv.CONTROL_ENABLE:
+		return
 	
 	if player_color_palette_res is CharacterColorPalette:
 		match CURRENT_PALETTE_STATE:

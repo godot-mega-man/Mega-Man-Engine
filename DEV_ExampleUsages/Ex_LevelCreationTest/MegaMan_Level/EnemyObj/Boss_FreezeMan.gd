@@ -67,7 +67,7 @@ func _process(delta: float) -> void:
 		else:
 			freeze_man_ani.play("Jumping")
 		
-		pf_bhv.simulate_jump = Input.is_action_just_pressed("game_action")
+		pf_bhv.simulate_jump = Input.is_action_just_pressed("game_action") or Input.is_action_just_released("game_action")
 		
 		#Stop jumping if by wall.
 		if pf_bhv.on_wall:
