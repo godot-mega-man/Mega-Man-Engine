@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Effects/IceCrackEffect.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Effects/IceCrackEffect.png" type="Texture" id=1]
 [ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/Effects/IceCrackEffect.gd" type="Script" id=2]
 [ext_resource path="res://Lib/FJ_LibHelper/BulletBehavior2D/BulletBehavior2D.tscn" type="PackedScene" id=3]
+
 
 
 

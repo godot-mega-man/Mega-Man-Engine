@@ -1,8 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Effects/Thiun.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Effects/Thiun.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Effects/Explosion/Explosion.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Effects/Particles/ExplosionParticles.tscn" type="PackedScene" id=3]
+
 
 [sub_resource type="Animation" id=1]
 step = 0.05

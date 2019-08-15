@@ -92,7 +92,7 @@ var proj_chargedmegabuster2 = preload("res://Entities/PlayerProjectile/PlayerPro
 var dmg_counter = preload("res://GUI/DamageCounter.tscn")
 var explosion_effect = preload("res://Entities/Effects/Explosion/Explosion.tscn")
 var coin_particles = preload("res://Entities/Effects/Particles/CoinParticles.tscn")
-var vulnerable_effect = preload("res://Assets_ReleaseExcluded/Sprites/Effects/VulnerableEffect.tscn")
+var vulnerable_effect = preload("res://Entities/Effects/VulnerableEffect/VulnerableEffect.tscn")
 var slide_dust_effect = preload("res://Entities/Effects/SlideDust/SlideDust.tscn")
 '''---------------------------------------------------------------------------------'''
 

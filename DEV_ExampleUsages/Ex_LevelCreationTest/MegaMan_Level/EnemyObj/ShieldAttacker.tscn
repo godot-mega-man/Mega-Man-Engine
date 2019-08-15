@@ -2,10 +2,12 @@
 
 [ext_resource path="res://Entities/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
 [ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/ShieldAttacker.gd" type="Script" id=2]
-[ext_resource path="res://Assets_ReleaseExcluded/Database/Enemy/ShieldAttacker.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Database/Enemy/ShieldAttacker.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Enemies/Mm4shieldattackersprite.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Enemies/Mm4shieldattackersprite.png" type="Texture" id=5]
 [ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=6]
+
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )

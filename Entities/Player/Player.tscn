@@ -4,11 +4,11 @@
 [ext_resource path="res://DatabaseCore/CharacterColorPalette/MegaMan.tres" type="Resource" id=2]
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/MegaMan.png" type="Texture" id=5]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Effects/Damage.png" type="Texture" id=6]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/MegaMan_Template.png" type="Texture" id=7]
-[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportIn.wav" type="AudioStream" id=8]
-[ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportOut.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Sprites/Characters/MegaMan.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Effects/Damage.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Characters/MegaMan_Template.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sounds/Sfx/Character/TeleportIn.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sounds/Sfx/Character/TeleportOut.wav" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Init"
