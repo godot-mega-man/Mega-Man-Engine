@@ -367,6 +367,7 @@ DEFAULT_CONTROL_JUMP = ""
 
 [node name="PlatformerSprite" parent="." instance=ExtResource( 4 )]
 texture = ExtResource( 5 )
+offset = Vector2( 1, 2 )
 path_to_platformer_behavior = NodePath("../PlatformBehavior")
 
 [node name="ShootPos" type="Position2D" parent="PlatformerSprite"]
@@ -401,7 +402,7 @@ disabled = true
 one_shot = true
 
 [node name="TakingDamageTimer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.3
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." groups=[

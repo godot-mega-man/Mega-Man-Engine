@@ -25,7 +25,7 @@ export (int) var CURRENT_PALETTE_STATE #Don't touch this!
 const HP_BASE : int = 28
 const MP_BASE : int = 20
 const DAMAGE_BASE = 2
-const DEFAULT_INVIS_TIME : float = 1.5
+const DEFAULT_INVIS_TIME : float = 1.4
 const ATTACK_HOTKEY = 'game_action'
 const ATTACK_HOTKEY_1 = 'game_hotkey1'
 const PROJECTILE_ON_SCREEN_LIMIT : float = 3.0
@@ -33,7 +33,7 @@ const CHARGE_MEGABUSTER_STARTING_TIME = 0.6
 const FULLY_CHARGE_MEGABUSTER_STARTING_TIME = 1.6
 const TAKING_DAMAGE_SLIDE_LEFT := -20
 const TAKING_DAMAGE_SLIDE_RIGHT := 20
-const SLIDE_FRAME : float = 25.0
+const SLIDE_FRAME : float = 26.0
 const SLIDE_SPEED : float = 150.0
 const SUICIDE_KEY = KEY_2
 
