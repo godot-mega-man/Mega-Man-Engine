@@ -10,7 +10,7 @@
 [ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportIn.wav" type="AudioStream" id=8]
 [ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportOut.wav" type="AudioStream" id=9]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=1]
 resource_name = "Init"
 tracks/0/type = "value"
 tracks/0/path = NodePath("..:CURRENT_PALETTE_STATE")
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=2]
 resource_name = "Lv1"
 length = 0.06
 loop = true
@@ -43,7 +43,7 @@ tracks/0/keys = {
 "values": [ 1, 0 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=3]
 resource_name = "Lv2"
 length = 0.06
 loop = true
@@ -61,7 +61,7 @@ tracks/0/keys = {
 "values": [ 2, 0 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=4]
 resource_name = "Lv3"
 length = 0.06
 loop = true
@@ -79,7 +79,7 @@ tracks/0/keys = {
 "values": [ 3, 0 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=5]
 resource_name = "Lv4"
 length = 0.09
 loop = true
@@ -97,7 +97,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 0 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=6]
 resource_name = "Charging"
 length = 1.6
 step = 0.33
@@ -114,7 +114,7 @@ tracks/0/keys = {
 "values": [ "Lv1", "Lv2", "Lv3" ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=7]
 resource_name = "FullyCharged"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:current_animation")
@@ -129,16 +129,16 @@ tracks/0/keys = {
 "values": [ "Lv4" ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 6, 10 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10, 6 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 6, 9.5 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=11]
 length = 0.06
 loop = true
 step = 0.01
@@ -155,7 +155,7 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=12]
 length = 0.06
 loop = true
 step = 0.03
@@ -172,7 +172,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -186,7 +186,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=14]
 length = 1.5
 step = 0.05
 tracks/0/type = "value"
@@ -264,7 +264,7 @@ tracks/5/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=15]
 length = 1.5
 step = 0.05
 tracks/0/type = "value"
@@ -373,23 +373,23 @@ position = Vector2( 20, 0 )
 position = Vector2( -8, 11 )
 
 [node name="PaletteAniPlayer" type="AnimationPlayer" parent="PlatformerSprite"]
-anims/Init = SubResource( 9 )
-anims/Lv1 = SubResource( 10 )
-anims/Lv2 = SubResource( 11 )
-anims/Lv3 = SubResource( 12 )
-anims/Lv4 = SubResource( 13 )
+anims/Init = SubResource( 1 )
+anims/Lv1 = SubResource( 2 )
+anims/Lv2 = SubResource( 3 )
+anims/Lv3 = SubResource( 4 )
+anims/Lv4 = SubResource( 5 )
 
 [node name="PaletteAniChanger" type="AnimationPlayer" parent="PlatformerSprite/PaletteAniPlayer"]
-anims/Charging = SubResource( 14 )
-anims/FullyCharged = SubResource( 15 )
+anims/Charging = SubResource( 6 )
+anims/FullyCharged = SubResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
-shape = SubResource( 1 )
+shape = SubResource( 8 )
 
 [node name="SlideCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 7 )
-shape = SubResource( 2 )
+shape = SubResource( 9 )
 disabled = true
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
@@ -408,7 +408,7 @@ collision_layer = 2
 collision_mask = 60
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="InvincibleTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -416,7 +416,7 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
-anims/Invincible = SubResource( 4 )
+anims/Invincible = SubResource( 11 )
 
 [node name="TransitionTween" type="Tween" parent="."]
 
@@ -426,8 +426,8 @@ visible = false
 texture = ExtResource( 6 )
 
 [node name="Ani" type="AnimationPlayer" parent="DamageSprite"]
-anims/Flashing = SubResource( 5 )
-anims/StopFlashin = SubResource( 6 )
+anims/Flashing = SubResource( 12 )
+anims/StopFlashin = SubResource( 13 )
 
 [node name="TeleportSprite" type="Sprite" parent="."]
 position = Vector2( 0, -512 )
@@ -438,8 +438,8 @@ hframes = 10
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TeleportSprite"]
 autoplay = "New Anim"
 playback_speed = 0.8
-"anims/New Anim" = SubResource( 7 )
-anims/TelOut = SubResource( 8 )
+"anims/New Anim" = SubResource( 14 )
+anims/TelOut = SubResource( 15 )
 
 [node name="TelIn" type="AudioStreamPlayer2D" parent="TeleportSprite"]
 stream = ExtResource( 8 )

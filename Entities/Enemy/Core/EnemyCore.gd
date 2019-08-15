@@ -250,10 +250,16 @@ func heal(amount_of_hp_to_restore : float):
 #Check whether this enemy can die.
 #If its hit points drop below zero, DIE!~
 func check_for_death():
-	FJ_AudioManager.sfx_combat_buster.call_deferred("stop")
+	if FJ_AudioManager.sfx_combat_buster.is_playing():
+		FJ_AudioManager.sfx_combat_buster.call_deferred("stop")
+	if FJ_AudioManager.sfx_combat_buster_minicharged.is_playing():
+		FJ_AudioManager.sfx_combat_buster_minicharged.call_deferred("stop")
+	if FJ_AudioManager.sfx_combat_buster_fullycharged.is_playing():
+		FJ_AudioManager.sfx_combat_buster_fullycharged.call_deferred("stop")
 	
 	if !database.general.combat.death_immunity && current_hp <= 0:
-		FJ_AudioManager.sfx_character_enemy_damage.call_deferred("stop")
+		if FJ_AudioManager.sfx_character_enemy_damage.is_playing():
+			FJ_AudioManager.sfx_character_enemy_damage.call_deferred("stop")
 		play_death_sfx()
 		die()
 	else:

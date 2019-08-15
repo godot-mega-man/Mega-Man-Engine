@@ -569,8 +569,10 @@ func start_screen_transition(normalized_direction : Vector2, duration : float, r
 	
 	if reset_vel_x:
 		pf_bhv.velocity.x = 0
+		stop_sliding()
 	if reset_vel_y:
 		pf_bhv.velocity.y = 0
+		stop_sliding()
 	
 	invis_timer.paused = true
 	taking_damage_timer.paused = true
