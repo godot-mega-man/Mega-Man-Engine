@@ -91,7 +91,7 @@ extents = Vector2( 2, 15 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 2, 15 )
 
-[node name="ShieldAttacker" index="0" instance=ExtResource( 1 )]
+[node name="ShieldAttacker" instance=ExtResource( 1 )]
 collision_mask = 1
 script = ExtResource( 2 )
 _database = ExtResource( 3 )
@@ -118,7 +118,6 @@ anims/Moving = SubResource( 2 )
 anims/Turning = SubResource( 3 )
 
 [node name="ShieldArea2D" type="Area2D" parent="SpriteMain" index="1"]
-editor/display_folded = true
 position = Vector2( -7, -1 )
 collision_layer = 8
 collision_mask = 6
@@ -129,7 +128,6 @@ shape = SubResource( 4 )
 [node name="ProjectileReflector" parent="SpriteMain/ShieldArea2D" index="1" instance=ExtResource( 6 )]
 
 [node name="DamageArea2D" type="Area2D" parent="SpriteMain" index="2"]
-editor/display_folded = true
 position = Vector2( 7, -1 )
 collision_layer = 8
 collision_mask = 6

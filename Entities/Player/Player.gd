@@ -35,6 +35,7 @@ const TAKING_DAMAGE_SLIDE_LEFT := -20
 const TAKING_DAMAGE_SLIDE_RIGHT := 20
 const SLIDE_FRAME : float = 25.0
 const SLIDE_SPEED : float = 150.0
+const SUICIDE_KEY = KEY_2
 
 #Current stats.
 var current_hp = HP_BASE
@@ -60,6 +61,7 @@ var slide_direction_x : float = 0 #-1 and 1 value are used.
 onready var pf_bhv := $PlatformBehavior as FJ_PlatformBehavior2D
 onready var area = $Area2D
 onready var area_collision := $Area2D/CollisionShape2D as CollisionShape2D
+onready var area_slide_collision := $Area2D/SlideCollisionShape2D as CollisionShape2D
 onready var collision_shape := $CollisionShape2D as CollisionShape2D
 onready var slide_collision_shape := $SlideCollisionShape2D
 onready var platformer_sprite = $PlatformerSprite
@@ -121,6 +123,20 @@ func _process(delta):
 	check_holding_jump_key()
 	check_taking_damage()
 	update_platformer_sprite_color_palettes()
+
+func _input(event):
+	if event is InputEventKey:
+		if event.get_scancode() == SUICIDE_KEY:
+			if !pf_bhv.INITIAL_STATE:
+				return
+			if !pf_bhv.CONTROL_ENABLE:
+				return
+			if current_hp <= 0:
+				return
+			player_death()
+			update_gui("update_gui_bar")
+			
+			emit_signal("player_die_normally")
 
 #Check if jump key is holding while in the air.
 #Otherwise, resets velocity y
@@ -564,7 +580,6 @@ func start_screen_transition(normalized_direction : Vector2, duration : float, r
 	transition_tween.start()
 	
 	pf_bhv.INITIAL_STATE = false
-	area_collision.call_deferred("set_disabled", true)
 	platformer_sprite.animation_paused = true
 	
 	if reset_vel_x:
@@ -579,7 +594,6 @@ func start_screen_transition(normalized_direction : Vector2, duration : float, r
 
 #After screen transiting has completed
 func _on_TransitionTween_tween_all_completed() -> void:
-	area_collision.call_deferred("set_disabled", false)
 	platformer_sprite.animation_paused = false
 	pf_bhv.INITIAL_STATE = true
 	invis_timer.paused = false
@@ -624,6 +638,10 @@ func start_sliding():
 	get_parent().add_child(inst_slide_effect)
 	inst_slide_effect.global_position = slide_dust_pos.global_position
 	inst_slide_effect.scale.x = platformer_sprite.scale.x
+	
+	#Update player's damage hitbox
+	area_slide_collision.set_disabled(false)
+	area_collision.set_disabled(true)
 
 
 func stop_sliding(var force_stop : bool = false):
@@ -636,6 +654,10 @@ func stop_sliding(var force_stop : bool = false):
 	platformer_sprite.is_sliding = false
 	is_sliding = false
 	slide_remaining = -10
+	
+	#Update player's damage hitbox
+	area_slide_collision.set_disabled(true)
+	area_collision.set_disabled(false)
 
 func test_normal_check_collision(vel_rel := Vector2(0, -1)) -> bool:
 	var result : bool
