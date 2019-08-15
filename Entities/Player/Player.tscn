@@ -1,12 +1,12 @@
 [gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://DatabaseCore/CharacterColorPalette/MegaMan.tres" type="Resource" id=2]
+[ext_resource path="res://DatabaseCore/CharacterColorPalette/DarkwingDuck.tres" type="Resource" id=2]
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/MegaMan.png" type="Texture" id=5]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/Darkwing_Duck.png" type="Texture" id=5]
 [ext_resource path="res://Assets_ReleaseExcluded/Sprites/Effects/Damage.png" type="Texture" id=6]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/MegaMan_Template.png" type="Texture" id=7]
+[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Characters/Reimu_Template_II.png" type="Texture" id=7]
 [ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportIn.wav" type="AudioStream" id=8]
 [ext_resource path="res://Assets_ReleaseExcluded/Sounds/Sfx/Character/TeleportOut.wav" type="AudioStream" id=9]
 
