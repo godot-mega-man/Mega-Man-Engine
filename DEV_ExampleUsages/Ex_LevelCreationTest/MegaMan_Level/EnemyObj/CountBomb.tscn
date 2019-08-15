@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Entities/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
 [ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/CountBomb.gd" type="Script" id=2]
@@ -11,7 +11,11 @@
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="Animation" id=3]
 length = 1.15
 step = 0.05
 tracks/0/type = "value"
@@ -73,7 +77,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.12
 loop = true
 step = 0.06
@@ -104,7 +108,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath(":frame")
 tracks/0/interp = 1
@@ -130,25 +134,26 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 8, 12 )
-
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 8, 12 )
 
 [sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 8, 12 )
+
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 8, 4 )
 
 [node name="CountBomb" index="0" instance=ExtResource( 1 )]
 collision_mask = 0
 script = ExtResource( 2 )
 _database = ExtResource( 3 )
+sprite_preview_texture = SubResource( 1 )
 damage_area_nodes = [ NodePath("DamageArea") ]
 DEATH_SHAKE_STRENGTH = 5
 
 [node name="SpritePreview" type="Sprite" parent="." index="0"]
 visible = false
-texture = SubResource( 1 )
+texture = SubResource( 2 )
 
 [node name="Sprite" parent="SpriteMain" index="0"]
 texture = ExtResource( 4 )
@@ -156,9 +161,9 @@ hframes = 8
 
 [node name="CountBombAni" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
 autoplay = "Initial"
-anims/Countdown = SubResource( 2 )
-anims/Exploding = SubResource( 3 )
-anims/Initial = SubResource( 4 )
+anims/Countdown = SubResource( 3 )
+anims/Exploding = SubResource( 4 )
+anims/Initial = SubResource( 5 )
 
 [node name="StaticBody" type="StaticBody2D" parent="." index="2"]
 collision_layer = 64
@@ -166,14 +171,14 @@ collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="StaticBody" index="0"]
 position = Vector2( 0, -4 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="DamageArea" type="Area2D" parent="." index="3"]
 position = Vector2( 0, -4 )
 collision_layer = 72
 
 [node name="CollisionShape" type="CollisionShape2D" parent="DamageArea" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="ProjectileReflector" parent="DamageArea" index="1" instance=ExtResource( 5 )]
 
@@ -185,7 +190,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LandingChecker" index="0"]
 position = Vector2( 0, -1 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="HpBar" parent="." index="6"]
 visible = false
