@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Levels/Core/Lv_Core.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets_ReleaseExcluded/Sounds/BGM/eLvlMain_Rbade.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets_ReleaseExcluded/Sounds/BGM/BBLIR.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Misc/LevelBrightnessModifier/LevelBrightnessModifier.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Tilesets/GrasslandTileset.tres" type="TileSet" id=4]
 [ext_resource path="res://Entities/DeathSpike/DeathSpike.tscn" type="PackedScene" id=5]
@@ -2536,8 +2536,8 @@ position = Vector2( 0, -120 )
 texture = ExtResource( 33 )
 centered = false
 [connection signal="player_die_normally" from="Iterable/Player" to="Iterable/Player/ThiunEffectCreator" method="create"]
-[connection signal="entered_area" from="AreaNotifier" to="ChainDestroyController" method="_on_AreaNotifier_entered_area"]
 [connection signal="entered_area" from="AreaNotifier" to="ChainDestroyController2" method="_on_AreaNotifier_entered_area"]
+[connection signal="entered_area" from="AreaNotifier" to="ChainDestroyController" method="_on_AreaNotifier_entered_area"]
 [connection signal="transition_activated" from="ViewContainer/View8/ScreenTransitor10" to="ParallaxBackground" method="_on_ScreenTransitor10_transition_activated"]
 [connection signal="transition_activated" from="ViewContainer/View9/ScreenTransitor11" to="ParallaxBackground" method="_on_ScreenTransitor10_transition_activated"]
 [connection signal="transition_activated" from="ViewContainer/View9/BossDoor" to="ParallaxBackground" method="_on_BossDoor_transition_activated"]
