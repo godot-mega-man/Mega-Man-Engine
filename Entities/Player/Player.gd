@@ -35,6 +35,7 @@ const TAKING_DAMAGE_SLIDE_LEFT := -20
 const TAKING_DAMAGE_SLIDE_RIGHT := 20
 const SLIDE_FRAME : float = 25.0
 const SLIDE_SPEED : float = 150.0
+const SUICIDE_KEY = KEY_2
 
 #Current stats.
 var current_hp = HP_BASE
@@ -122,6 +123,20 @@ func _process(delta):
 	check_holding_jump_key()
 	check_taking_damage()
 	update_platformer_sprite_color_palettes()
+
+func _input(event):
+	if event is InputEventKey:
+		if event.get_scancode() == SUICIDE_KEY:
+			if !pf_bhv.INITIAL_STATE:
+				return
+			if !pf_bhv.CONTROL_ENABLE:
+				return
+			if current_hp <= 0:
+				return
+			player_death()
+			update_gui("update_gui_bar")
+			
+			emit_signal("player_die_normally")
 
 #Check if jump key is holding while in the air.
 #Otherwise, resets velocity y
