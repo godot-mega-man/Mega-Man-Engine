@@ -28,6 +28,7 @@ extents = Vector2( 16, 16 )
 DAMAGE_POWER = 1
 DESTROY_ON_COLLIDE_TYPE = 1
 projectile_limit_cost = 3.0
+destroy_on_overkill = false
 
 [node name="BulletBehavior" parent="." index="0"]
 speed = 300.0

@@ -193,6 +193,10 @@ func _check_for_area_collisions():
 					projectile.emit_signal("hit_enemy", projectile)
 					projectile.is_hitted = true
 				
+				#Destroy on overkill check.
+				if current_hp <= 0 and not projectile.destroy_on_overkill:
+					destroy_bullet_at_the_end = false
+				
 				#Destroy projectile if hit an enemy.
 				if destroy_bullet_at_the_end:
 					projectile.queue_free_start()
