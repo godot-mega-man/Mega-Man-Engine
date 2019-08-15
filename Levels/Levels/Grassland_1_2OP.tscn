@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Levels/Core/Lv_Core.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets_ReleaseExcluded/Sounds/BGM/It_Is_MMC5_NOT_ACTUALLY_MM6.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Sounds/Bgm/It_Is_MMC5_NOT_ACTUALLY_MM6.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Misc/LevelBrightnessModifier/LevelBrightnessModifier.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Tilesets/GrasslandTileset.tres" type="TileSet" id=4]
 [ext_resource path="res://Entities/DeathSpike/DeathSpike.tscn" type="PackedScene" id=5]
@@ -19,7 +19,7 @@
 [ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/DiarnSP.tscn" type="PackedScene" id=17]
 [ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/ObjFanUp.tscn" type="PackedScene" id=18]
 [ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/Boss_FreezeMan.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Assets_ReleaseExcluded/Sounds/BGM/0-boss.ogg" type="AudioStream" id=20]
+[ext_resource path="res://Assets/Sounds/Bgm/0-boss.ogg" type="AudioStream" id=20]
 [ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/MM_Thiun/ThiunEffectCreator.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Entities/CheckpointZone/CheckpointZone.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Entities/BlockChainDestroyer/ChainDestroyController.tscn" type="PackedScene" id=23]
@@ -28,9 +28,11 @@
 [ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Entities/ScreenTransitor/BossDoor.tscn" type="PackedScene" id=28]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Background/MM7FreezeBg.png" type="Texture" id=29]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Background/MM7FreezeBgAlt.png" type="Texture" id=30]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Background/MM7FreezeBgAlt2.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBg.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt2.png" type="Texture" id=31]
+
+
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends ParallaxBackground

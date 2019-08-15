@@ -2,7 +2,8 @@
 
 [ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/Effects/FireworkEffect.gd" type="Script" id=1]
 [ext_resource path="res://Lib/FJ_LibHelper/BulletBehavior2D/BulletBehavior2D.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets_ReleaseExcluded/Sprites/Effects/Firework_Effect.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Effects/Firework_Effect.png" type="Texture" id=3]
+
 
 
 

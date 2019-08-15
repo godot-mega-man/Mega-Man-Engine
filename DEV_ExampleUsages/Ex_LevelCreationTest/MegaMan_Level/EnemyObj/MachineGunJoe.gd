@@ -8,7 +8,6 @@ onready var joe_animation = $SpriteMain/Sprite/JoeAnimation
 onready var platformer_behavior = $PlatformBehavior
 onready var fire_bullet = $SpriteMain/FireBullet
 onready var attack_cooldown_timer = $AttackCooldownTimer
-onready var gun_sound = $GunSound
 onready var projectile_reflector = $SpriteMain/ShieldArea2D/ProjectileReflector
 
 #Temp

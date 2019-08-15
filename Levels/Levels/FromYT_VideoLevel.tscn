@@ -1,17 +1,19 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Levels/Core/Lv_Core.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets_ReleaseExcluded/Sounds/BGM/eLvlMain_Rbade.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Sounds/Bgm/eLvlMain_Rbade.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Assets/Tilesets/GrasslandTileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Misc/ObjSpawner/ObjSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/100Watton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/DiarnSP.tscn" type="PackedScene" id=6]
 [ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/Dompan.tscn" type="PackedScene" id=7]
 [ext_resource path="res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/Boss_FreezeMan.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets_ReleaseExcluded/Database/Enemy/Boss_FreezeManWEAK.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Database/Enemy/Boss_FreezeManWEAK.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Entities/ScreenTransitor/BossDoor.tscn" type="PackedScene" id=12]
+
+
 
 [node name="Level" instance=ExtResource( 1 )]
 MUSIC = ExtResource( 2 )

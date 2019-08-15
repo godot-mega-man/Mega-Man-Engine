@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Fan.wav-1e9ce44da2f98ed927bee4945285f1f5.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Sfx/Environments/Fan.wav"
+dest_files=[ "res://.import/Fan.wav-1e9ce44da2f98ed927bee4945285f1f5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

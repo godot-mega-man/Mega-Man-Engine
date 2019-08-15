@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/It_Is_MMC5_NOT_ACTUALLY_MM6.ogg-4ad0ed1e1ed9314620bd66fd1124ae04.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Bgm/It_Is_MMC5_NOT_ACTUALLY_MM6.ogg"
+dest_files=[ "res://.import/It_Is_MMC5_NOT_ACTUALLY_MM6.ogg-4ad0ed1e1ed9314620bd66fd1124ae04.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
