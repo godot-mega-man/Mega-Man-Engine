@@ -24,7 +24,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )
 
-[node name="FullyChargedMegaBuster" index="0" instance=ExtResource( 1 )]
+[node name="FullyChargedMegaBuster" instance=ExtResource( 1 )]
 DAMAGE_POWER = 1
 DESTROY_ON_COLLIDE_TYPE = 1
 projectile_limit_cost = 3.0
