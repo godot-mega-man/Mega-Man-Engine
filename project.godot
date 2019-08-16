@@ -375,6 +375,11 @@ _global_script_classes=[ {
 "path": "res://Misc/PaletteSpriteCore/PaletteSpriteCore.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "Pickups",
+"language": "GDScript",
+"path": "res://Entities/Pickups/PickupsCore.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Entities/Player/Player.gd"
@@ -473,6 +478,7 @@ _global_script_class_icons={
 "LevelViewContainer": "",
 "NESColorPalette": "",
 "PaletteSprite": "",
+"Pickups": "",
 "Player": "",
 "PlayerProjectile": "",
 "ProjectileReflector": "",

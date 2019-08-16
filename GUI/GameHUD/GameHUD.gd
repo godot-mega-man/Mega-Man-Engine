@@ -90,6 +90,9 @@ func _fill_process_start():
 		return
 	
 	get_tree().set_pause(false)
+	remaining_player_vital_fill = 0
+	remaining_player_weapon_fill = 0
+	remaining_boss_vital_fill = 0
 	if FJ_AudioManager.sfx_ui_boss_fill_hp.is_playing():
 		FJ_AudioManager.sfx_ui_boss_fill_hp.call_deferred("stop")
 

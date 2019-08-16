@@ -10,14 +10,14 @@ item = "res://Assets/Database/Items/Material/RareDiamonda.tres"
 weight = 10
 quantity = 1
 
-[node name="Database" instance=ExtResource( 1 )]
+[node name="Database" index="0" instance=ExtResource( 1 )]
 
 [node name="Combat" parent="General" index="1"]
 contact_damage = 4.0
 
 [node name="Stats" parent="General" index="2"]
 nickname = "Freeze Man"
-hit_points_base = 5
+hit_points_base = 28
 
 [node name="Coin" parent="Loots" index="0"]
 coin_value = 25
