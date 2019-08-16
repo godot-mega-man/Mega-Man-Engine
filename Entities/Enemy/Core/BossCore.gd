@@ -41,7 +41,7 @@ export (float) var fill_up_health_bar_duration = 2.0
 export (bool) var stop_music_after_death #If false, the game music will resume.
 export (bool) var destroy_all_enemies_on_death = true
 
-var thiuns = preload("res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/MM_Thiun/Thiun.tscn")
+var thiuns = preload("res://Entities/Effects/MM_Thiun/Thiun.tscn")
 
 func create_thuin() -> void:
 	var speed = [60,120]

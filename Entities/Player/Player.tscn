@@ -367,7 +367,7 @@ DEFAULT_CONTROL_JUMP = ""
 
 [node name="PlatformerSprite" parent="." instance=ExtResource( 4 )]
 texture = ExtResource( 5 )
-offset = Vector2( 1, 2 )
+offset = Vector2( 0, 2 )
 path_to_platformer_behavior = NodePath("../PlatformBehavior")
 
 [node name="ShootPos" type="Position2D" parent="PlatformerSprite"]
