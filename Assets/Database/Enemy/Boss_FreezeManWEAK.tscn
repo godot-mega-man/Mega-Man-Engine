@@ -10,7 +10,7 @@ item = "res://Assets/Database/Items/Material/RareDiamonda.tres"
 weight = 10
 quantity = 1
 
-[node name="Database" index="0" instance=ExtResource( 1 )]
+[node name="Database" instance=ExtResource( 1 )]
 
 [node name="Combat" parent="General" index="1"]
 contact_damage = 4.0

@@ -31,6 +31,7 @@ onready var outline_sprite := $Outline as Sprite
 
 #Loads texture at the start
 func _ready():
+	set_subnode_centered()
 	set_subnode_textures()
 	set_subnode_hframes()
 	set_subnode_vframes()
@@ -47,6 +48,14 @@ func _process(delta):
 #####################
 ### Public Methods
 #####################
+
+func set_subnode_centered():
+	var parent = get_parent()
+	
+	if parent is Sprite:
+		primary_sprite.centered = parent.centered
+		second_sprite.centered = parent.centered
+		outline_sprite.centered = parent.centered
 
 func set_subnode_textures():
 	var parent = get_parent()

@@ -502,6 +502,7 @@ NumberSimplifier="*res://Misc/Libraries/Utils/NumberSimplifier/NumberSimplifier.
 LevelBrightness="*res://Misc/LevelBrightnessModifier/LevelBrightness.gd"
 BitFlagsComparator="*res://Misc/Libraries/Utils/BitFlagsComparator/BitFlagsComparator.gd"
 GameSettings="*res://Misc/GameSettings/GameSettings.tscn"
+GameHUD="*res://GUI/GameHUD/GameHUD.tscn"
 
 [debug]
 

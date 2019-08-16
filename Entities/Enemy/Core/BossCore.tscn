@@ -3,7 +3,7 @@
 [ext_resource path="res://Entities/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Enemy/Core/BossCore.gd" type="Script" id=2]
 
-[node name="BossCore" groups=[
+[node name="BossCore" index="0" groups=[
 "Boss",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
