@@ -76,6 +76,9 @@ func start_screen_transition():
 	delete_all_objects_by_group_name("Enemy")
 	delete_all_objects_by_group_name("Pickups")
 	delete_all_objects_by_group_name("PlayerProjectile")
+	
+	#Hide boss's health bar if present
+	GameHUD.boss_vital_bar.set_visible(false)
 
 func _on_TransitionTween_tween_all_completed() -> void:
 	is_screen_transiting = false

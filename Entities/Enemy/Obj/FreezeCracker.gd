@@ -57,9 +57,11 @@ func spawn_icicles():
 		get_parent().add_child(icicle_projectile)
 		icicle_projectile.global_position = self.global_position + Vector2(0, 10)
 		icicle_projectile.global_position.x += i * 32
+		icicle_projectile.pickups_drop_enabled = false
 	for i in 6:
 		var icicle_projectile = icicle.instance()
 		icicle_projectile.delay = delay_start + i * 0.5
 		get_parent().add_child(icicle_projectile)
 		icicle_projectile.global_position = self.global_position + Vector2(-32, 10)
 		icicle_projectile.global_position.x -= i * 32
+		icicle_projectile.pickups_drop_enabled = false

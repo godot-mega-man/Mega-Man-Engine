@@ -29,6 +29,8 @@ script = ExtResource( 1 )
 
 [node name="PlatformBehavior" parent="." instance=ExtResource( 2 )]
 WALK_SPEED = 0.0
+VELOCITY_X_DAMPING = 1.0
+MAX_FALL_SPEED = 360.0
 CONTROL_ENABLE = false
 IS_PREVENT_OUTSIDE_SCREEN = false
 

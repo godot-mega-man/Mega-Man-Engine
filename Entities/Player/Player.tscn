@@ -431,7 +431,6 @@ anims/Invincible = SubResource( 12 )
 [node name="TransitionTween" type="Tween" parent="."]
 
 [node name="DamageSprite" type="Sprite" parent="."]
-editor/display_folded = true
 visible = false
 texture = ExtResource( 6 )
 

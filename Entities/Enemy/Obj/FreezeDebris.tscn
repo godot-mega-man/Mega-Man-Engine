@@ -29,6 +29,7 @@ extents = Vector2( 5, 5 )
 [node name="FreezeDebris" index="0" instance=ExtResource( 1 )]
 _database = ExtResource( 2 )
 damage_area_nodes = [ NodePath("Area2D") ]
+pickups_drop_enabled = false
 
 [node name="BulletBehavior" parent="." index="0"]
 speed = 240.0

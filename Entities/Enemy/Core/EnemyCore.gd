@@ -44,6 +44,8 @@ export var ACTIVE_ON_SCREEN = Vector2(32, 32) #Active/inactive when the enemy is
 export var PERMA_DEATH_SCENE = true #Die permanently WITHIN SCENE ONLY instead of respawning everytime enemy dies
 export var PERMA_DEATH_LEVEL = false #Die permanently within current level. Useful with bosses and mini-bosses
 export var IS_A_CLONE = false
+export var invincible_enabled = false
+export var pickups_drop_enabled = true
 
 export (PackedScene) var pickup_obj_weapon_large : PackedScene
 export (PackedScene) var pickup_obj_weapon_small : PackedScene
@@ -60,6 +62,8 @@ onready var hp_bar = $HpBar
 onready var active_vis_notifier = $ActiveVisNotifier
 onready var level_camera = get_node("/root/Level/Camera2D")
 onready var pickups_drop_set = $PickupsDropSet as ItemSet
+onready var damage_sprite_ani = $DamageSprite/Ani
+onready var invis_timer = $InvisTimer
 
 onready var player = $"/root/Level/Iterable/Player"
 
@@ -77,6 +81,7 @@ var is_fresh_respawn = false
 var is_reset_state_called = false #Call once
 var is_coin_dropped = false
 var path_to_spawned_dmg_counter_obj : NodePath #Temp reference obj
+var is_invincible = false
 
 #Preloaded scenes
 var dmg_counter = preload("res://GUI/DamageCounter.tscn")
@@ -129,14 +134,21 @@ func hit_by_player_projectile(var damage : float, var player_proj_source : Playe
 	#Start apply damage if all conditions are met.
 	if can_apply_damage:
 		var damage_output = calculate_damage_output(damage)
-		apply_damage(damage_output)
-		emit_signal("taken_damage", damage_output, self, player_proj_source)
 		
-		#Play animation "Blink". Blinking sprite indicates that
-		#the enemy is taking damage or being invincible.
-		flicker_anim.play("Damage")
-		
-		check_for_death()
+		if not is_invincible:
+			apply_damage(damage_output)
+			emit_signal("taken_damage", damage_output, self, player_proj_source)
+			check_for_death()
+			spawn_damage_counter(damage_output)
+			if invincible_enabled:
+				flicker_anim.play("Damage_Loop")
+				damage_sprite_ani.play("Flashing")
+				invis_timer.start()
+				is_invincible = true
+			else:
+				#Play animation "Blink". Blinking sprite indicates that
+				#the enemy is taking damage or being invincible.
+				flicker_anim.play("Damage")
 		
 		#Damage is applied. Set value to true.
 		condition = true
@@ -231,13 +243,10 @@ func calculate_damage_output(var raw_damage : float) -> float:
 
 #Use calculated damage value to apply damage to enemy.
 #Ignores invisibility time.
-func apply_damage(var calculated_damage, var update_hp_bar = true, var spawn_damage_counter = true):
+func apply_damage(var calculated_damage, var update_hp_bar = true):
 	#Subtracting HP.
 	current_hp -= calculated_damage
 	
-	#Spawn damage counter on the screen.
-	if spawn_damage_counter:
-		spawn_damage_counter(calculated_damage)
 	#Update health bar
 	if update_hp_bar:
 		hp_bar.update_hp_bar(current_hp)
@@ -374,6 +383,8 @@ func drop_diamond_start():
 		call_deferred("spawn_a_diamond")
 
 func drop_pickups_start():
+	if not pickups_drop_enabled:
+		return
 	var pickup = pickups_drop_set.get_an_item()
 	if pickup is ItemSetData:
 		spawn_pickup_by_name(pickup.item)
@@ -480,3 +491,8 @@ func get_player_distance() -> float:
 
 func get_sprite_main_direction() -> float:
 	return sprite_main.scale.x
+
+func _on_InvisTimer_timeout() -> void:
+	is_invincible = false
+	damage_sprite_ani.play("StopFlashing")
+	flicker_anim.play("NoLongerDamage")

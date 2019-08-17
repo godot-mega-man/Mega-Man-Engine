@@ -40,6 +40,9 @@ export (bool) var show_boss_health_bar = true
 export (float) var fill_up_health_bar_duration = 2.0
 export (bool) var stop_music_after_death #If false, the game music will resume.
 export (bool) var destroy_all_enemies_on_death = true
+export (NESColorPalette.NesColor) var vital_bar_primary_color = NESColorPalette.NesColor.WHITE4
+export (NESColorPalette.NesColor) var vital_bar_secondary_color = NESColorPalette.NesColor.TOMATO2
+export (NESColorPalette.NesColor) var vital_bar_outline_color = NESColorPalette.NesColor.BLACK1
 
 var thiuns = preload("res://Entities/Effects/MM_Thiun/Thiun.tscn")
 
@@ -62,6 +65,7 @@ func create_thuin() -> void:
 var is_posing = true
 
 func _ready():
+	GameHUD.update_boss_vital_bar_colors(Color(vital_bar_primary_color), Color(vital_bar_secondary_color), Color(vital_bar_outline_color))
 	start_intro_music_or_regular_music()
 	stop_player_controls()
 	GameHUD.connect("boss_vital_bar_fully_filled", self, "_on_boss_vital_bar_fully_filled")
@@ -102,6 +106,7 @@ func _on_boss_vital_bar_fully_filled():
 	FJ_AudioManager.sfx_combat_buster_charging.stream_paused = false
 
 #When the boss takes damage, update boss health bar.
+#Makes the boss invincible for a short time.
 func _on_BossCore_taken_damage(value, target, player_proj_source) -> void:
 	GameHUD.update_boss_vital_bar(current_hp)
 
@@ -124,5 +129,3 @@ func destroy_all_enemies():
 		if i is EnemyCore:
 			if not i.is_in_group("Boss"):
 				i.die()
-
-
