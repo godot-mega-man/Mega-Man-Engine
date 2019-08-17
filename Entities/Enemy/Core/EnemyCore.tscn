@@ -44,7 +44,7 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=3]
 resource_name = "NoLongerDamage"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -59,47 +59,46 @@ tracks/0/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="Resource" id=4]
+[sub_resource type="Resource" id=5]
 script = ExtResource( 9 )
 item = ""
 weight = 78
 quantity = 1
 
-[sub_resource type="Resource" id=5]
+[sub_resource type="Resource" id=6]
 script = ExtResource( 9 )
 item = "WeaponEnergySmall"
 weight = 25
 quantity = 1
 
-[sub_resource type="Resource" id=6]
+[sub_resource type="Resource" id=7]
 script = ExtResource( 9 )
 item = "LifeEnergySmall"
 weight = 15
 quantity = 1
 
-[sub_resource type="Resource" id=7]
+[sub_resource type="Resource" id=8]
 script = ExtResource( 9 )
 item = "WeaponEnergyLarge"
 weight = 5
 quantity = 1
 
-[sub_resource type="Resource" id=8]
+[sub_resource type="Resource" id=9]
 script = ExtResource( 9 )
 item = "LifeEnergyLarge"
 weight = 4
 quantity = 1
 
-[sub_resource type="Resource" id=9]
+[sub_resource type="Resource" id=10]
 script = ExtResource( 9 )
 item = "Life"
 weight = 1
 quantity = 1
 
-[sub_resource type="Animation" id=10]
-resource_name = "Flashing"
+[sub_resource type="Animation" id=11]
 length = 0.06
 loop = true
 step = 0.03
@@ -116,8 +115,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "StopFlashing"
+[sub_resource type="Animation" id=12]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -150,11 +148,11 @@ pickup_obj_life = ExtResource( 6 )
 [node name="FlickerAnimationPlayer" type="AnimationPlayer" parent="SpriteMain"]
 anims/Damage = SubResource( 1 )
 anims/Damage_Loop = SubResource( 2 )
-anims/NoLongerDamage = SubResource( 12 )
+anims/NoLongerDamage = SubResource( 3 )
 
 [node name="PlatformCollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 disabled = true
 
 [node name="HpBar" parent="." instance=ExtResource( 7 )]
@@ -176,7 +174,7 @@ process_parent = true
 physics_process_parent = true
 
 [node name="PickupsDropSet" parent="." instance=ExtResource( 8 )]
-items = [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ]
+items = [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ]
 
 [node name="InvisTimer" type="Timer" parent="."]
 wait_time = 0.8
@@ -187,7 +185,7 @@ visible = false
 texture = ExtResource( 10 )
 
 [node name="Ani" type="AnimationPlayer" parent="DamageSprite"]
-anims/Flashing = SubResource( 10 )
-anims/StopFlashing = SubResource( 11 )
+anims/Flashing = SubResource( 11 )
+anims/StopFlashing = SubResource( 12 )
 [connection signal="screen_exited" from="ActiveVisNotifier" to="." method="_on_ActiveVisNotifier_screen_exited"]
 [connection signal="timeout" from="InvisTimer" to="." method="_on_InvisTimer_timeout"]

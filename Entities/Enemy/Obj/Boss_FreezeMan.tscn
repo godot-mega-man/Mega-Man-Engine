@@ -382,7 +382,7 @@ tracks/0/keys = {
 "values": [ 17, 18, 19, 18 ]
 }
 
-[node name="Freeze Man" instance=ExtResource( 1 )]
+[node name="Freeze Man" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 _database = ExtResource( 3 )
 sprite_preview_texture = SubResource( 1 )
@@ -455,6 +455,9 @@ anims/Walking = SubResource( 14 )
 
 [node name="Sfx_IceSlasher" type="AudioStreamPlayer2D" parent="." index="10"]
 stream = ExtResource( 6 )
+
+[node name="DamageSprite" parent="." index="13"]
+position = Vector2( 0, 8 )
 [connection signal="boss_done_posing" from="." to="." method="_on_Freeze_Man_boss_done_posing"]
 [connection signal="slain" from="." to="." method="_on_Freeze_Man_slain"]
 [connection signal="animation_finished" from="FreezeManAni" to="." method="_on_FreezeManAni_animation_finished"]

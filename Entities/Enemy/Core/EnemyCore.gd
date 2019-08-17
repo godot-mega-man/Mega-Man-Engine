@@ -138,7 +138,6 @@ func hit_by_player_projectile(var damage : float, var player_proj_source : Playe
 		if not is_invincible:
 			apply_damage(damage_output)
 			emit_signal("taken_damage", damage_output, self, player_proj_source)
-			check_for_death()
 			spawn_damage_counter(damage_output)
 			if invincible_enabled:
 				flicker_anim.play("Damage_Loop")
@@ -149,6 +148,8 @@ func hit_by_player_projectile(var damage : float, var player_proj_source : Playe
 				#Play animation "Blink". Blinking sprite indicates that
 				#the enemy is taking damage or being invincible.
 				flicker_anim.play("Damage")
+		
+		check_for_death()
 		
 		#Damage is applied. Set value to true.
 		condition = true

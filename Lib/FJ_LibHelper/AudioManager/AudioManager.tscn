@@ -187,7 +187,6 @@ stream = ExtResource( 9 )
 bus = "SFX"
 
 [node name="Combat" type="Node" parent="SFX"]
-editor/display_folded = true
 
 [node name="Sfx_BalladeCrackerBomb" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 10 )
@@ -206,7 +205,7 @@ bus = "SFX"
 
 [node name="Sfx_BusterMiniCharged" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 13 )
-volume_db = -6.0
+volume_db = -3.0
 bus = "SFX"
 
 [node name="Sfx_BusterCharging" type="AudioStreamPlayer" parent="SFX/Combat"]
@@ -284,6 +283,7 @@ volume_db = -9.0
 bus = "SFX"
 
 [node name="UI" type="Node" parent="SFX"]
+editor/display_folded = true
 
 [node name="Sfx_BossFillHp" type="AudioStreamPlayer" parent="SFX/UI"]
 stream = ExtResource( 29 )
@@ -305,6 +305,7 @@ volume_db = -9.0
 bus = "SFX"
 
 [node name="Uncategorized" type="Node" parent="SFX"]
+editor/display_folded = true
 
 [node name="Sfx_SeriousDamage" type="AudioStreamPlayer" parent="SFX/Uncategorized"]
 stream = ExtResource( 33 )
