@@ -80,7 +80,6 @@ var initialy_inactive = false
 var is_fresh_respawn = false
 var is_reset_state_called = false #Call once
 var is_coin_dropped = false
-var path_to_spawned_dmg_counter_obj : NodePath #Temp reference obj
 var is_invincible = false
 
 #Preloaded scenes
@@ -340,21 +339,11 @@ func spawn_damage_counter(damage, offset : Vector2 = Vector2(0, 0)):
 	if !GameSettings.gameplay.damage_popup_enemy:
 		return
 	
-	if path_to_spawned_dmg_counter_obj.is_empty() or get_node_or_null(path_to_spawned_dmg_counter_obj) == null:
-		var dmg_text = dmg_counter.instance() #Instance DamageCounter
-		dmg_text.global_position = self.global_position #Set position to enemy
-		dmg_text.position += offset #Offset
-		dmg_text.current_damage_value += damage
-		get_parent().add_child(dmg_text) #Spawn
-		
-		
-		path_to_spawned_dmg_counter_obj = dmg_text.get_path()
-	else:
-		var obj_dmg_counter = get_node(path_to_spawned_dmg_counter_obj)
-		if obj_dmg_counter is DamageCounter:
-			obj_dmg_counter.current_damage_value += damage
-			obj_dmg_counter.global_position = self.global_position #Set position to enemy
-			obj_dmg_counter.restart()
+	var dmg_text = dmg_counter.instance() #Instance DamageCounter
+	get_parent().add_child(dmg_text) #Spawn
+	dmg_text.global_position = self.global_position #Set position to enemy
+	dmg_text.position += offset #Offset
+	dmg_text.label.text = str(damage)
 	
 	emit_signal("damage_counter_released", damage, self)
 

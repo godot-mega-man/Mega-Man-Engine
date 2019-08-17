@@ -496,6 +496,10 @@ func player_death():
 	
 	player_stats.is_died = true #PLAYER IS DEAD!
 	
+	#Reset to initial palette, prevents weapon energy palette glitch
+	CURRENT_PALETTE_STATE = 0
+	update_platformer_sprite_color_palettes()
+	
 	#Stop everything
 	#Hide player from view and disable process
 	set_player_disappear(true)
