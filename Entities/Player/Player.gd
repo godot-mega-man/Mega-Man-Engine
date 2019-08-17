@@ -180,6 +180,7 @@ func _on_PlatformerBehavior_fell_into_pit() -> void:
 	#Spawn damage counter.
 	current_hp = 0
 	#Update GUI
+	GameHUD.update_player_vital_bar(current_hp)
 	player_death()
 
 func set_vflip_by_keypress():
