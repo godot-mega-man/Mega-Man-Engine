@@ -17,7 +17,7 @@ contact_damage = 4.0
 
 [node name="Stats" parent="General" index="2"]
 nickname = "Freeze Man"
-hit_points_base = 5
+hit_points_base = 28
 
 [node name="Coin" parent="Loots" index="0"]
 coin_value = 25

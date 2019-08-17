@@ -7,10 +7,6 @@
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Sounds/Sfx/Combat/MM1_IceSlasher.wav" type="AudioStream" id=6]
 
-
-
-
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 96, 48, 48 )
@@ -392,6 +388,7 @@ _database = ExtResource( 3 )
 sprite_preview_texture = SubResource( 1 )
 damage_area_nodes = [ NodePath("DamageArea") ]
 stop_music_after_death = true
+vital_bar_secondary_color = 1770717183
 
 [node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 5 )]
 WALK_SPEED = 120.0
@@ -458,6 +455,9 @@ anims/Walking = SubResource( 14 )
 
 [node name="Sfx_IceSlasher" type="AudioStreamPlayer2D" parent="." index="10"]
 stream = ExtResource( 6 )
+
+[node name="DamageSprite" parent="." index="13"]
+position = Vector2( 0, 8 )
 [connection signal="boss_done_posing" from="." to="." method="_on_Freeze_Man_boss_done_posing"]
 [connection signal="slain" from="." to="." method="_on_Freeze_Man_slain"]
 [connection signal="animation_finished" from="FreezeManAni" to="." method="_on_FreezeManAni_animation_finished"]

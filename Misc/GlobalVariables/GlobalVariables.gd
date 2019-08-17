@@ -1,5 +1,4 @@
 extends Node
-class_name GlobalVariables
 
 #INVENTORY!
 #Item can be stacked while equipment items will be kept

@@ -40,6 +40,9 @@ export (bool) var show_boss_health_bar = true
 export (float) var fill_up_health_bar_duration = 2.0
 export (bool) var stop_music_after_death #If false, the game music will resume.
 export (bool) var destroy_all_enemies_on_death = true
+export (NESColorPalette.NesColor) var vital_bar_primary_color = NESColorPalette.NesColor.WHITE4
+export (NESColorPalette.NesColor) var vital_bar_secondary_color = NESColorPalette.NesColor.TOMATO2
+export (NESColorPalette.NesColor) var vital_bar_outline_color = NESColorPalette.NesColor.BLACK1
 
 var thiuns = preload("res://Entities/Effects/MM_Thiun/Thiun.tscn")
 
@@ -62,8 +65,10 @@ func create_thuin() -> void:
 var is_posing = true
 
 func _ready():
+	GameHUD.update_boss_vital_bar_colors(Color(vital_bar_primary_color), Color(vital_bar_secondary_color), Color(vital_bar_outline_color))
 	start_intro_music_or_regular_music()
 	stop_player_controls()
+	GameHUD.connect("boss_vital_bar_fully_filled", self, "_on_boss_vital_bar_fully_filled")
 	FJ_AudioManager.sfx_combat_buster_charging.stream_paused = true
 
 #Start intro music (if specified). Otherwise, boss music will be
@@ -83,22 +88,15 @@ func stop_player_controls():
 			player.set_control_enable(false)
 
 func start_show_boss_health_bar():
-	if level != null:
-		if not show_boss_health_bar:
-			return
-		level.boss_health_bar.show_health_bar(database.general.stats.hit_points_base, database.general.stats.nickname)
-		level.boss_health_bar.connect("filled_up_bar_to_max", self, "_on_boss_health_bar_filled_up_bar_to_max")
-	else:
-		push_warning(str(self.get_path, ": Health bar was not shown. Level not found."))
+	GameHUD.update_boss_vital_bar(0)
+	GameHUD.boss_vital_bar.set_visible(true)
 
 func start_fill_up_health_bar():
-	if level != null:
-		level.boss_health_bar.fill_up_hp(fill_up_health_bar_duration)
-	else:
-		push_warning(str(self.get_path, ": Health bar was not filled up. Level not found."))
+	GameHUD.fill_boss_vital_bar(28)
+	current_hp = 28
 
 #Fill up bar to max... Start playing music.
-func _on_boss_health_bar_filled_up_bar_to_max():
+func _on_boss_vital_bar_fully_filled():
 	if boss_music != null:
 		FJ_AudioManager.play_bgm(boss_music)
 	if player != null:
@@ -108,11 +106,9 @@ func _on_boss_health_bar_filled_up_bar_to_max():
 	FJ_AudioManager.sfx_combat_buster_charging.stream_paused = false
 
 #When the boss takes damage, update boss health bar.
+#Makes the boss invincible for a short time.
 func _on_BossCore_taken_damage(value, target, player_proj_source) -> void:
-	if level != null:
-		if not show_boss_health_bar:
-			return
-		level.boss_health_bar.update_health_bar(self.current_hp)
+	GameHUD.update_boss_vital_bar(current_hp)
 
 #When dies, the level music starts or stops.
 #Hides boss health bar GUI.
@@ -123,7 +119,6 @@ func _on_BossCore_slain(target) -> void:
 	else:
 		if level != null:
 			FJ_AudioManager.play_bgm(level.MUSIC)
-	level.boss_health_bar.hide_health_bar()
 	
 	create_thuin()
 

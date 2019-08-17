@@ -7,6 +7,8 @@
 "Boss",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+invincible_enabled = true
+pickups_drop_enabled = false
 
 [node name="HpBar" parent="." index="2"]
 visible = false

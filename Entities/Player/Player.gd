@@ -16,7 +16,6 @@ signal player_die_normally
 export(int, "Auto", "Ignore Teleporters", "Never (Unsafe)") var STARTING_LOCATION = 0
 
 export (NodePath) var level_path
-export (NodePath) var game_gui_path
 export (NodePath) var tilemap_path
 export (Resource) var player_color_palette_res
 export (int) var CURRENT_PALETTE_STATE #Don't touch this!
@@ -110,11 +109,10 @@ func _ready():
 	
 	#Let's the entire scene know that the player is alive.
 	player_stats.is_died = false
+	
+	_update_current_character_palette_state(true)
 
 func _process(delta):
-	"""
-	--------Movement--------
-	"""
 	set_vflip_by_keypress()
 	press_attack_check(delta)
 	check_for_area_collisions()
@@ -134,7 +132,7 @@ func _input(event):
 			if current_hp <= 0:
 				return
 			player_death()
-			update_gui("update_gui_bar")
+			GameHUD.update_player_vital_bar(0)
 			
 			emit_signal("player_die_normally")
 
@@ -175,12 +173,13 @@ func set_starting_stats():
 		player_stats.restore_hp_on_load = false
 	else:
 		current_hp = player_stats.current_hp
+	GameHUD.update_player_vital_bar(current_hp)
 
 func _on_PlatformerBehavior_fell_into_pit() -> void:
 	#Spawn damage counter.
 	current_hp = 0
 	#Update GUI
-	get_owner().update_game_gui_health()
+	GameHUD.update_player_vital_bar(current_hp)
 	player_death()
 
 func set_vflip_by_keypress():
@@ -288,12 +287,12 @@ func check_for_area_collisions():
 					#Add coin PERMANENTLY to your bank!!
 					currency_manager.game_coin += coin.COIN_VALUE
 					#Update coin GUI too! Yeah! You've made a progress.
-					update_gui("update_coin")
+#					update_gui("update_coin")
 				elif coin.is_diamond():
 					#Add diamond PERMANENTLY to your bank!!
 					currency_manager.game_diamond += coin.COIN_VALUE
 					#Update coin GUI too! Yeah! You've made a progress.
-					update_gui("update_diamond")
+#					update_gui("update_diamond")
 				#Destroy coin
 				coin.player_collected_coin()
 
@@ -353,8 +352,7 @@ func player_take_damage(damage_amount : int, repel_player : bool = false, repel_
 		FJ_AudioManager.sfx_character_player_damage.play()
 		animation_player.play("Invincible")
 	
-	#Update GUI
-	update_gui("update_gui_bar")
+	GameHUD.update_player_vital_bar(current_hp)
 	
 	is_taking_damage = true
 
@@ -421,20 +419,24 @@ func check_canceling_slide():
 				pf_bhv.left_right_key_press_time = 0
 				stop_sliding()
 
-func change_player_current_hp(var amount):
+func change_player_current_hp(var amount : int):
 	current_hp += amount
 	if current_hp < 0:
 		current_hp = 0
 		player_death()
 	if current_hp > max_hp:
 		current_hp = max_hp
-	
-	#Update GUI
-	update_gui("update_gui_bar")
+	GameHUD.update_player_vital_bar(current_hp)
 
 func heal_to_full_hp():
 	current_hp = max_hp
-	update_gui("update_gui_bar")
+	GameHUD.update_player_vital_bar(current_hp)
+
+func heal(var amount : int):
+	current_hp += abs(amount)
+	if current_hp > max_hp:
+		current_hp = max_hp
+	GameHUD.fill_player_vital_bar(amount)
 
 #When the invincible's timer runs out, player will be able to get hurt again.
 func _on_invis_timer_timeout():
@@ -494,6 +496,10 @@ func player_death():
 	
 	player_stats.is_died = true #PLAYER IS DEAD!
 	
+	#Reset to initial palette, prevents weapon energy palette glitch
+	CURRENT_PALETTE_STATE = 0
+	update_platformer_sprite_color_palettes()
+	
 	#Stop everything
 	#Hide player from view and disable process
 	set_player_disappear(true)
@@ -534,24 +540,6 @@ func set_player_disappear(var set : bool) -> void:
 	visible = !set
 	collision_shape.call_deferred("set_disabled", set)
 	area_collision.call_deferred("set_disabled", set)
-
-#Call GameGui to update bar or some sort...
-func update_gui(var method_name : String) -> bool:
-	if get_node_or_null(game_gui_path) != null:
-		if get_node(game_gui_path).has_method(method_name):
-			get_node(game_gui_path).update_gui_bar()
-			return true
-		else:
-			push_warning(
-				str(
-					self.name,
-					": Method ",
-					method_name,
-					" not found! Nothing was done."
-				)
-			)
-	
-	return false
 
 #Start transition between screens. This is done by event.
 func start_screen_transition(normalized_direction : Vector2, duration : float, reset_vel_x : bool, reset_vel_y : bool, start_delay : float, transit_distance : float):
@@ -692,10 +680,10 @@ func update_platformer_sprite_color_palettes():
 	platformer_sprite.palette_sprite.second_sprite.modulate = global_var.current_player_secondary_color
 	platformer_sprite.palette_sprite.outline_sprite.modulate = global_var.current_player_outline_color
 
-func _update_current_character_palette_state():
+func _update_current_character_palette_state(force_update : bool = false):
 	if player_color_palette_res == null:
 		return
-	if !pf_bhv.INITIAL_STATE or !pf_bhv.CONTROL_ENABLE:
+	if (!pf_bhv.INITIAL_STATE or !pf_bhv.CONTROL_ENABLE) and !force_update:
 		return
 	
 	if player_color_palette_res is CharacterColorPalette:

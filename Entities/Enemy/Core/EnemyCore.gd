@@ -20,6 +20,13 @@ enum dead_sfx {
 	LARGE_EXPLOSION
 }
 
+const PICKUP_NONE = ""
+const PICKUP_WEAPON_ENERGY_SMALL = "WeaponEnergySmall"
+const PICKUP_LIFE_ENERGY_SMALL = "LifeEnergySmall"
+const PICKUP_WEAPON_ENERGY_LARGE = "WeaponEnergyLarge"
+const PICKUP_LIFE_ENERGY_LARGE = "LifeEnergyLarge"
+const PICKUP_LIFE = "Life"
+
 export (PackedScene) var _database
 export (Texture) var sprite_preview_texture
 export (Array, NodePath) onready var damage_area_nodes
@@ -37,6 +44,14 @@ export var ACTIVE_ON_SCREEN = Vector2(32, 32) #Active/inactive when the enemy is
 export var PERMA_DEATH_SCENE = true #Die permanently WITHIN SCENE ONLY instead of respawning everytime enemy dies
 export var PERMA_DEATH_LEVEL = false #Die permanently within current level. Useful with bosses and mini-bosses
 export var IS_A_CLONE = false
+export var invincible_enabled = false
+export var pickups_drop_enabled = true
+
+export (PackedScene) var pickup_obj_weapon_large : PackedScene
+export (PackedScene) var pickup_obj_weapon_small : PackedScene
+export (PackedScene) var pickup_obj_life_large : PackedScene
+export (PackedScene) var pickup_obj_life_small : PackedScene
+export (PackedScene) var pickup_obj_life : PackedScene
 
 #Child nodes:
 onready var flicker_anim = $SpriteMain/FlickerAnimationPlayer
@@ -46,6 +61,9 @@ onready var platform_collision_shape = $PlatformCollisionShape2D as CollisionSha
 onready var hp_bar = $HpBar
 onready var active_vis_notifier = $ActiveVisNotifier
 onready var level_camera = get_node("/root/Level/Camera2D")
+onready var pickups_drop_set = $PickupsDropSet as ItemSet
+onready var damage_sprite_ani = $DamageSprite/Ani
+onready var invis_timer = $InvisTimer
 
 onready var player = $"/root/Level/Iterable/Player"
 
@@ -62,7 +80,7 @@ var initialy_inactive = false
 var is_fresh_respawn = false
 var is_reset_state_called = false #Call once
 var is_coin_dropped = false
-var path_to_spawned_dmg_counter_obj : NodePath #Temp reference obj
+var is_invincible = false
 
 #Preloaded scenes
 var dmg_counter = preload("res://GUI/DamageCounter.tscn")
@@ -115,12 +133,20 @@ func hit_by_player_projectile(var damage : float, var player_proj_source : Playe
 	#Start apply damage if all conditions are met.
 	if can_apply_damage:
 		var damage_output = calculate_damage_output(damage)
-		apply_damage(damage_output)
-		emit_signal("taken_damage", damage_output, self, player_proj_source)
 		
-		#Play animation "Blink". Blinking sprite indicates that
-		#the enemy is taking damage or being invincible.
-		flicker_anim.play("Damage")
+		if not is_invincible:
+			apply_damage(damage_output)
+			emit_signal("taken_damage", damage_output, self, player_proj_source)
+			spawn_damage_counter(damage_output)
+			if invincible_enabled:
+				flicker_anim.play("Damage_Loop")
+				damage_sprite_ani.play("Flashing")
+				invis_timer.start()
+				is_invincible = true
+			else:
+				#Play animation "Blink". Blinking sprite indicates that
+				#the enemy is taking damage or being invincible.
+				flicker_anim.play("Damage")
 		
 		check_for_death()
 		
@@ -217,13 +243,10 @@ func calculate_damage_output(var raw_damage : float) -> float:
 
 #Use calculated damage value to apply damage to enemy.
 #Ignores invisibility time.
-func apply_damage(var calculated_damage, var update_hp_bar = true, var spawn_damage_counter = true):
+func apply_damage(var calculated_damage, var update_hp_bar = true):
 	#Subtracting HP.
 	current_hp -= calculated_damage
 	
-	#Spawn damage counter on the screen.
-	if spawn_damage_counter:
-		spawn_damage_counter(calculated_damage)
 	#Update health bar
 	if update_hp_bar:
 		hp_bar.update_hp_bar(current_hp)
@@ -277,9 +300,8 @@ func die():
 	get_parent().add_child(effect)
 	
 	#Drop coin when dies
-	drop_coin_start()
 	drop_item_start()
-	drop_diamond_start()
+	drop_pickups_start()
 	
 	#Shake Camera
 	if level_camera != null:
@@ -317,21 +339,11 @@ func spawn_damage_counter(damage, offset : Vector2 = Vector2(0, 0)):
 	if !GameSettings.gameplay.damage_popup_enemy:
 		return
 	
-	if path_to_spawned_dmg_counter_obj.is_empty() or get_node_or_null(path_to_spawned_dmg_counter_obj) == null:
-		var dmg_text = dmg_counter.instance() #Instance DamageCounter
-		dmg_text.global_position = self.global_position #Set position to enemy
-		dmg_text.position += offset #Offset
-		dmg_text.current_damage_value += damage
-		get_parent().add_child(dmg_text) #Spawn
-		
-		
-		path_to_spawned_dmg_counter_obj = dmg_text.get_path()
-	else:
-		var obj_dmg_counter = get_node(path_to_spawned_dmg_counter_obj)
-		if obj_dmg_counter is DamageCounter:
-			obj_dmg_counter.current_damage_value += damage
-			obj_dmg_counter.global_position = self.global_position #Set position to enemy
-			obj_dmg_counter.restart()
+	var dmg_text = dmg_counter.instance() #Instance DamageCounter
+	get_parent().add_child(dmg_text) #Spawn
+	dmg_text.global_position = self.global_position #Set position to enemy
+	dmg_text.position += offset #Offset
+	dmg_text.label.text = str(damage)
 	
 	emit_signal("damage_counter_released", damage, self)
 
@@ -360,16 +372,12 @@ func drop_diamond_start():
 	if chance < database.loots.diamond.DIAMOND_DROP_CHANCE:
 		call_deferred("spawn_a_diamond")
 
-
-func spawn_coins_by_amount(var coin_value : int = 1, var coin_drop_count : int = 1):
-	for i in coin_drop_count:
-		var coin_inst = coin.instance()
-		get_parent().call_deferred("add_child", coin_inst)
-		coin_inst.ITEM_TYPE = 0 #Coin
-		coin_inst.global_position = self.global_position
-		coin_inst.COIN_VALUE = coin_value
-	
-	emit_signal("dropped_coin", coin_value, coin_drop_count)
+func drop_pickups_start():
+	if not pickups_drop_enabled:
+		return
+	var pickup = pickups_drop_set.get_an_item()
+	if pickup is ItemSetData:
+		spawn_pickup_by_name(pickup.item)
 
 func spawn_items_by_amount(var item_path : String, var quantity : int = 1):
 	if item_path.empty():
@@ -384,13 +392,32 @@ func spawn_items_by_amount(var item_path : String, var quantity : int = 1):
 	
 	emit_signal("dropped_item", item_path, quantity)
 
-func spawn_a_diamond():
-	var diamond_inst = diamond.instance()
-	get_parent().call_deferred("add_child", diamond_inst)
-	diamond_inst.ITEM_TYPE = 2 #Diamond
-	diamond_inst.global_position = self.global_position
+func spawn_pickup_by_name(pickup_name : String):
+	var pickup_object
 	
-	emit_signal("dropped_diamond")
+	match pickup_name:
+		PICKUP_NONE:
+			return
+		PICKUP_WEAPON_ENERGY_SMALL:
+			pickup_object = pickup_obj_weapon_small.instance()
+			get_parent().add_child(pickup_object)
+			pickup_object.global_position = global_position
+		PICKUP_LIFE_ENERGY_SMALL:
+			pickup_object = pickup_obj_life_small.instance()
+			get_parent().add_child(pickup_object)
+			pickup_object.global_position = global_position
+		PICKUP_WEAPON_ENERGY_LARGE:
+			pickup_object = pickup_obj_weapon_large.instance()
+			get_parent().add_child(pickup_object)
+			pickup_object.global_position = global_position
+		PICKUP_LIFE_ENERGY_LARGE:
+			pickup_object = pickup_obj_life_large.instance()
+			get_parent().add_child(pickup_object)
+			pickup_object.global_position = global_position
+		PICKUP_LIFE:
+			pickup_object = pickup_obj_life.instance()
+			get_parent().add_child(pickup_object)
+			pickup_object.global_position = global_position
 
 func is_at_full_health():
 	return current_hp >= database.general.stats.hit_points_base
@@ -454,3 +481,8 @@ func get_player_distance() -> float:
 
 func get_sprite_main_direction() -> float:
 	return sprite_main.scale.x
+
+func _on_InvisTimer_timeout() -> void:
+	is_invincible = false
+	damage_sprite_ani.play("StopFlashing")
+	flicker_anim.play("NoLongerDamage")

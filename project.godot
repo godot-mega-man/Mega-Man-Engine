@@ -310,11 +310,6 @@ _global_script_classes=[ {
 "path": "res://Misc/GameSettings/Gameplay.gd"
 }, {
 "base": "Node",
-"class": "GlobalVariables",
-"language": "GDScript",
-"path": "res://Misc/GlobalVariables/GlobalVariables.gd"
-}, {
-"base": "Node",
 "class": "ItemData",
 "language": "GDScript",
 "path": "res://DatabaseCore/Items/Core/ItemData.gd"
@@ -373,6 +368,11 @@ _global_script_classes=[ {
 "class": "PaletteSprite",
 "language": "GDScript",
 "path": "res://Misc/PaletteSpriteCore/PaletteSpriteCore.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Pickups",
+"language": "GDScript",
+"path": "res://Entities/Pickups/PickupsCore.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -460,7 +460,6 @@ _global_script_class_icons={
 "FadeScreen": "",
 "GameSettingsAudio": "",
 "GameSettingsGameplay": "",
-"GlobalVariables": "",
 "ItemData": "",
 "ItemSet": "",
 "ItemSetData": "",
@@ -473,6 +472,7 @@ _global_script_class_icons={
 "LevelViewContainer": "",
 "NESColorPalette": "",
 "PaletteSprite": "",
+"Pickups": "",
 "Player": "",
 "PlayerProjectile": "",
 "ProjectileReflector": "",
@@ -502,6 +502,7 @@ NumberSimplifier="*res://Misc/Libraries/Utils/NumberSimplifier/NumberSimplifier.
 LevelBrightness="*res://Misc/LevelBrightnessModifier/LevelBrightness.gd"
 BitFlagsComparator="*res://Misc/Libraries/Utils/BitFlagsComparator/BitFlagsComparator.gd"
 GameSettings="*res://Misc/GameSettings/GameSettings.tscn"
+GameHUD="*res://GUI/GameHUD/GameHUD.tscn"
 
 [debug]
 

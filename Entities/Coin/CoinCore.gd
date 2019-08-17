@@ -186,11 +186,9 @@ func player_collected_coin():
 		#Play floating text animation
 		counter.animation_player.play("CoinCounter")
 		
-		level.game_gui.update_coin()
-		
 		if get_node_or_null("/root/Level/Iterable/Player") != null:
 			var player = get_node("/root/Level/Iterable/Player")
-			player.change_player_current_hp(1)
+			player.heal(1)
 	elif is_item():
 		#Unused
 #		#Create item counter effect.
@@ -215,8 +213,6 @@ func player_collected_coin():
 		counter.get_node("Label").text = "+" + str(COIN_VALUE) #Set text
 		#Play floating text animation
 		counter.animation_player.play("DiamondCounter")
-		
-		level.game_gui.update_diamond()
 	
 	#Create coin counter effect
 	var sparkling = coin_sparkling_effect.instance()
