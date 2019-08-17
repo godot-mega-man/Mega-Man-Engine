@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pickups.png-fd7da49495389fba9058d6c74f8bc8bf.stex"
+path="res://.import/Pickups.png-d8bbabe99a59189af5e1ccd3e6cdafc6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Pickups/Pickups.png"
-dest_files=[ "res://.import/Pickups.png-fd7da49495389fba9058d6c74f8bc8bf.stex" ]
+source_file="res://Assets/Sprites/Collectibles/Pickups/Pickups.png"
+dest_files=[ "res://.import/Pickups.png-d8bbabe99a59189af5e1ccd3e6cdafc6.stex" ]
 
 [params]
 

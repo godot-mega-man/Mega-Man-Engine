@@ -283,6 +283,9 @@ custom_parameters = {
 [node name="ReadyGUI" parent="." index="4"]
 editor/display_folded = true
 
+[node name="Camera2D" parent="." index="5"]
+editor/display_folded = false
+
 [node name="View" parent="ViewContainer" index="0"]
 modulate = Color( 1, 1, 1, 1 )
 margin_top = 8.0
@@ -304,8 +307,6 @@ margin_left = 256.0
 margin_top = 8.0
 margin_right = 512.0
 margin_bottom = 232.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="BossDoor" parent="ViewContainer/View2" index="2" instance=ExtResource( 12 )]
 margin_left = 240.0
@@ -321,8 +322,6 @@ margin_left = 512.0
 margin_top = 8.0
 margin_right = 1024.0
 margin_bottom = 232.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor3" parent="ViewContainer/View3" index="2" instance=ExtResource( 10 )]
 margin_left = 512.0
@@ -339,8 +338,6 @@ margin_left = 1024.0
 margin_top = 8.0
 margin_right = 1440.0
 margin_bottom = 232.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor4" parent="ViewContainer/View4" index="2" instance=ExtResource( 10 )]
 margin_left = -16.0
@@ -364,8 +361,6 @@ margin_left = 1440.0
 margin_top = 8.0
 margin_right = 1696.0
 margin_bottom = 232.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [editable path="Iterable/Player"]
 

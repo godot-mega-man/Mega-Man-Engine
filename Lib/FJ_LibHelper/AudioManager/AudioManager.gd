@@ -130,6 +130,7 @@ onready var sfx_env_fan : AudioStreamPlayer = $SFX/Environments/Sfx_Fan
 onready var sfx_ui_boss_fill_hp : AudioStreamPlayer = $SFX/UI/Sfx_BossFillHp
 onready var sfx_ui_game_start : AudioStreamPlayer = $SFX/UI/Sfx_GameStart
 onready var sfx_ui_level_up : AudioStreamPlayer = $SFX/UI/Sfx_LevelUp
+onready var sfx_ui_one_up : AudioStreamPlayer = $SFX/UI/Sfx_OneUp
 
 onready var sfx_unc_serious_damage : AudioStreamPlayer = $SFX/Uncategorized/Sfx_SeriousDamage
 

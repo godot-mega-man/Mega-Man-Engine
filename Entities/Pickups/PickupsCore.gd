@@ -18,6 +18,8 @@ signal collected_by_player(player_obj)
 #      Constants
 #-------------------------------------------------
 
+const INITIAL_VELOCITY = Vector2(0, -180)
+
 #-------------------------------------------------
 #      Properties
 #-------------------------------------------------
@@ -37,6 +39,9 @@ onready var disappear_ani = $DisappearAnimation
 #-------------------------------------------------
 #      Notifications
 #-------------------------------------------------
+
+func _ready() -> void:
+	pf_bhv.velocity = INITIAL_VELOCITY
 
 #-------------------------------------------------
 #      Virtual Methods
@@ -80,7 +85,7 @@ func _on_CollectArea2D_area_entered(area):
 #เมื่อเวลาของ blink start timer หมดก็จะทำให้ pickup กระพริบ
 #เพื่อแสดงว่ากำลังจะหายไปในเร็วๆนี้
 func _on_BlinkStartTimer_timeout():
-	disappear_ani.play("Blinking")
+	disappear_ani.play("Disappearing")
 
 #เมื่อเวลาของ disappear หมดก็จะทำให้ pickup หายไปจาก
 #Scene tree ทันที

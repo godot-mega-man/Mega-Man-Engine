@@ -1,7 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/Enemy/Core/EnemyCore.gd" type="Script" id=1]
-[ext_resource path="res://GUI/HpBar/HpBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Pickups/WeaponEnergyLarge.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Pickups/WeaponEnergySmall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Pickups/LifeEnergyLarge.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Pickups/LifeEnergySmall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Pickups/Life.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GUI/HpBar/HpBar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSet.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSetData/ItemSetData.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=1]
 length = 0.12
@@ -39,12 +46,53 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8, 8 )
 
+[sub_resource type="Resource" id=4]
+script = ExtResource( 9 )
+item = ""
+weight = 78
+quantity = 1
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 9 )
+item = "WeaponEnergySmall"
+weight = 25
+quantity = 1
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 9 )
+item = "LifeEnergySmall"
+weight = 15
+quantity = 1
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 9 )
+item = "WeaponEnergyLarge"
+weight = 5
+quantity = 1
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 9 )
+item = "LifeEnergyLarge"
+weight = 4
+quantity = 1
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 9 )
+item = "Life"
+weight = 1
+quantity = 1
+
 [node name="EnemyCore" type="KinematicBody2D" groups=[
 "Enemy",
 ]]
 collision_layer = 0
 collision_mask = 65
 script = ExtResource( 1 )
+pickup_obj_weapon_large = ExtResource( 2 )
+pickup_obj_weapon_small = ExtResource( 3 )
+pickup_obj_life_large = ExtResource( 4 )
+pickup_obj_life_small = ExtResource( 5 )
+pickup_obj_life = ExtResource( 6 )
 
 [node name="SpriteMain" type="Node2D" parent="."]
 
@@ -59,7 +107,7 @@ visible = false
 shape = SubResource( 3 )
 disabled = true
 
-[node name="HpBar" parent="." instance=ExtResource( 2 )]
+[node name="HpBar" parent="." instance=ExtResource( 7 )]
 margin_left = -8.0
 margin_top = 8.0
 margin_right = 8.0
@@ -76,4 +124,7 @@ visible = false
 pause_particles = false
 process_parent = true
 physics_process_parent = true
+
+[node name="PickupsDropSet" parent="." instance=ExtResource( 8 )]
+items = [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ]
 [connection signal="screen_exited" from="ActiveVisNotifier" to="." method="_on_ActiveVisNotifier_screen_exited"]

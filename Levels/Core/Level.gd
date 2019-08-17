@@ -73,7 +73,9 @@ func go_to_scene(var target):
 
 func start_screen_transition():
 	is_screen_transiting = true
-	delete_all_enemies()
+	delete_all_objects_by_group_name("Enemy")
+	delete_all_objects_by_group_name("Pickups")
+	delete_all_objects_by_group_name("PlayerProjectile")
 
 func _on_TransitionTween_tween_all_completed() -> void:
 	is_screen_transiting = false
@@ -96,6 +98,6 @@ func init_screen_transition(direction : Vector2, duration : float, target_view, 
 	player.start_screen_transition(direction, duration, reset_vel_x, reset_vel_y, start_delay, transit_distance)
 	get_node("/root/GlobalVariables").current_view = target_view.name
 
-func delete_all_enemies():
-	for i in get_tree().get_nodes_in_group("Enemy"):
+func delete_all_objects_by_group_name(group_name : String):
+	for i in get_tree().get_nodes_in_group(group_name):
 		i.queue_free()

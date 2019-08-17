@@ -213,8 +213,6 @@ func player_collected_coin():
 		counter.get_node("Label").text = "+" + str(COIN_VALUE) #Set text
 		#Play floating text animation
 		counter.animation_player.play("DiamondCounter")
-		
-		level.game_gui.update_diamond()
 	
 	#Create coin counter effect
 	var sparkling = coin_sparkling_effect.instance()

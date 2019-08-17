@@ -100,9 +100,7 @@ script = ExtResource( 8 )
 default_view = NodePath("View")
 
 [node name="View" parent="ViewContainer" instance=ExtResource( 9 )]
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
-[connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="Iterable/Player" method="_on_TransitionTween_tween_all_completed"]
 [connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="." method="_on_TransitionTween_tween_all_completed"]
+[connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="Iterable/Player" method="_on_TransitionTween_tween_all_completed"]
 
 [editable path="Camera2D"]

@@ -310,11 +310,6 @@ _global_script_classes=[ {
 "path": "res://Misc/GameSettings/Gameplay.gd"
 }, {
 "base": "Node",
-"class": "GlobalVariables",
-"language": "GDScript",
-"path": "res://Misc/GlobalVariables/GlobalVariables.gd"
-}, {
-"base": "Node",
 "class": "ItemData",
 "language": "GDScript",
 "path": "res://DatabaseCore/Items/Core/ItemData.gd"
@@ -465,7 +460,6 @@ _global_script_class_icons={
 "FadeScreen": "",
 "GameSettingsAudio": "",
 "GameSettingsGameplay": "",
-"GlobalVariables": "",
 "ItemData": "",
 "ItemSet": "",
 "ItemSetData": "",

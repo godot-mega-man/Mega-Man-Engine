@@ -34,6 +34,7 @@ script = ExtResource( 6 )
 script = ExtResource( 7 )
 
 [node name="ItemTable" parent="Loots" instance=ExtResource( 8 )]
+enabled = true
 
 [node name="Experience" type="Node" parent="Loots"]
 script = ExtResource( 9 )

@@ -109,11 +109,10 @@ func _ready():
 	
 	#Let's the entire scene know that the player is alive.
 	player_stats.is_died = false
+	
+	_update_current_character_palette_state(true)
 
 func _process(delta):
-	"""
-	--------Movement--------
-	"""
 	set_vflip_by_keypress()
 	press_attack_check(delta)
 	check_for_area_collisions()
@@ -677,10 +676,10 @@ func update_platformer_sprite_color_palettes():
 	platformer_sprite.palette_sprite.second_sprite.modulate = global_var.current_player_secondary_color
 	platformer_sprite.palette_sprite.outline_sprite.modulate = global_var.current_player_outline_color
 
-func _update_current_character_palette_state():
+func _update_current_character_palette_state(force_update : bool = false):
 	if player_color_palette_res == null:
 		return
-	if !pf_bhv.INITIAL_STATE or !pf_bhv.CONTROL_ENABLE:
+	if (!pf_bhv.INITIAL_STATE or !pf_bhv.CONTROL_ENABLE) and !force_update:
 		return
 	
 	if player_color_palette_res is CharacterColorPalette:

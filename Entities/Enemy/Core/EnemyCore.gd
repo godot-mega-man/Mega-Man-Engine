@@ -20,6 +20,13 @@ enum dead_sfx {
 	LARGE_EXPLOSION
 }
 
+const PICKUP_NONE = ""
+const PICKUP_WEAPON_ENERGY_SMALL = "WeaponEnergySmall"
+const PICKUP_LIFE_ENERGY_SMALL = "LifeEnergySmall"
+const PICKUP_WEAPON_ENERGY_LARGE = "WeaponEnergyLarge"
+const PICKUP_LIFE_ENERGY_LARGE = "LifeEnergyLarge"
+const PICKUP_LIFE = "Life"
+
 export (PackedScene) var _database
 export (Texture) var sprite_preview_texture
 export (Array, NodePath) onready var damage_area_nodes
@@ -38,6 +45,12 @@ export var PERMA_DEATH_SCENE = true #Die permanently WITHIN SCENE ONLY instead o
 export var PERMA_DEATH_LEVEL = false #Die permanently within current level. Useful with bosses and mini-bosses
 export var IS_A_CLONE = false
 
+export (PackedScene) var pickup_obj_weapon_large : PackedScene
+export (PackedScene) var pickup_obj_weapon_small : PackedScene
+export (PackedScene) var pickup_obj_life_large : PackedScene
+export (PackedScene) var pickup_obj_life_small : PackedScene
+export (PackedScene) var pickup_obj_life : PackedScene
+
 #Child nodes:
 onready var flicker_anim = $SpriteMain/FlickerAnimationPlayer
 onready var sprite_main = $SpriteMain
@@ -46,6 +59,7 @@ onready var platform_collision_shape = $PlatformCollisionShape2D as CollisionSha
 onready var hp_bar = $HpBar
 onready var active_vis_notifier = $ActiveVisNotifier
 onready var level_camera = get_node("/root/Level/Camera2D")
+onready var pickups_drop_set = $PickupsDropSet as ItemSet
 
 onready var player = $"/root/Level/Iterable/Player"
 
@@ -277,9 +291,8 @@ func die():
 	get_parent().add_child(effect)
 	
 	#Drop coin when dies
-	drop_coin_start()
 	drop_item_start()
-	drop_diamond_start()
+	drop_pickups_start()
 	
 	#Shake Camera
 	if level_camera != null:
@@ -360,16 +373,10 @@ func drop_diamond_start():
 	if chance < database.loots.diamond.DIAMOND_DROP_CHANCE:
 		call_deferred("spawn_a_diamond")
 
-
-func spawn_coins_by_amount(var coin_value : int = 1, var coin_drop_count : int = 1):
-	for i in coin_drop_count:
-		var coin_inst = coin.instance()
-		get_parent().call_deferred("add_child", coin_inst)
-		coin_inst.ITEM_TYPE = 0 #Coin
-		coin_inst.global_position = self.global_position
-		coin_inst.COIN_VALUE = coin_value
-	
-	emit_signal("dropped_coin", coin_value, coin_drop_count)
+func drop_pickups_start():
+	var pickup = pickups_drop_set.get_an_item()
+	if pickup is ItemSetData:
+		spawn_pickup_by_name(pickup.item)
 
 func spawn_items_by_amount(var item_path : String, var quantity : int = 1):
 	if item_path.empty():
@@ -384,13 +391,32 @@ func spawn_items_by_amount(var item_path : String, var quantity : int = 1):
 	
 	emit_signal("dropped_item", item_path, quantity)
 
-func spawn_a_diamond():
-	var diamond_inst = diamond.instance()
-	get_parent().call_deferred("add_child", diamond_inst)
-	diamond_inst.ITEM_TYPE = 2 #Diamond
-	diamond_inst.global_position = self.global_position
+func spawn_pickup_by_name(pickup_name : String):
+	var pickup_object
 	
-	emit_signal("dropped_diamond")
+	match pickup_name:
+		PICKUP_NONE:
+			return
+		PICKUP_WEAPON_ENERGY_SMALL:
+			pickup_object = pickup_obj_weapon_small.instance()
+			get_parent().add_child(pickup_object)
+			pickup_object.global_position = global_position
+		PICKUP_LIFE_ENERGY_SMALL:
+			pickup_object = pickup_obj_life_small.instance()
+			get_parent().add_child(pickup_object)
+			pickup_object.global_position = global_position
+		PICKUP_WEAPON_ENERGY_LARGE:
+			pickup_object = pickup_obj_weapon_large.instance()
+			get_parent().add_child(pickup_object)
+			pickup_object.global_position = global_position
+		PICKUP_LIFE_ENERGY_LARGE:
+			pickup_object = pickup_obj_life_large.instance()
+			get_parent().add_child(pickup_object)
+			pickup_object.global_position = global_position
+		PICKUP_LIFE:
+			pickup_object = pickup_obj_life.instance()
+			get_parent().add_child(pickup_object)
+			pickup_object.global_position = global_position
 
 func is_at_full_health():
 	return current_hp >= database.general.stats.hit_points_base

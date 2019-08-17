@@ -36,6 +36,8 @@ onready var level := get_node_or_null("/root/Level") as Level
 #On player enters area...
 func _on_AreaNotifier_entered_area() -> void:
 	if level != null:
+		if level.is_screen_transiting:
+			return
 		if get_node_or_null(target_view) == null:
 			push_warning("Target view is null. Can't transit!")
 			return
