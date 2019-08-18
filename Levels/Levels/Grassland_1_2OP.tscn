@@ -1,36 +1,35 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Levels/Core/Lv_Core.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sounds/Bgm/It_Is_MMC5_NOT_ACTUALLY_MM6.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Misc/LevelBrightnessModifier/LevelBrightnessModifier.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Tilesets/GrasslandTileset.tres" type="TileSet" id=4]
 [ext_resource path="res://Entities/DeathSpike/DeathSpike.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Entities/Effects/MM_Thiun/ThiunEffectCreator.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Misc/ObjSpawner/ObjSpawner.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Entities/Enemy/Obj/MachineGunJoe.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Entities/Enemy/Obj/Metall.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Entities/Enemy/Obj/ShieldAttacker.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Entities/Enemy/Obj/MetallK1000.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Entities/Enemy/Obj/Icicle.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Entities/Enemy/Obj/Hammer.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Entities/Enemy/Obj/CountBomb.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Entities/Enemy/Obj/100Watton.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Entities/Enemy/Obj/Dompan.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Entities/Enemy/Obj/PowerSlam.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Entities/Enemy/Obj/DiarnSP.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Entities/Enemy/Obj/ObjFanUp.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Entities/Enemy/Obj/Boss_FreezeMan.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Assets/Sounds/Bgm/0-boss.ogg" type="AudioStream" id=21]
-[ext_resource path="res://Entities/CheckpointZone/CheckpointZone.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=23]
-[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=24]
-[ext_resource path="res://Entities/ScreenTransitor/BossDoor.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Entities/BlockChainDestroyer/ChainDestroyController.tscn" type="PackedScene" id=26]
-[ext_resource path="res://Entities/BlockChainDestroyer/AreaChainDestroyer.tscn" type="PackedScene" id=27]
-[ext_resource path="res://Entities/PlayerAreaNotifier/PlayerAreaNotifier.tscn" type="PackedScene" id=28]
-[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBg.png" type="Texture" id=29]
-[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt.png" type="Texture" id=30]
-[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt2.png" type="Texture" id=31]
+[ext_resource path="res://Misc/ObjSpawner/ObjSpawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Enemy/Obj/MachineGunJoe.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Enemy/Obj/Metall.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemy/Obj/ShieldAttacker.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Enemy/Obj/MetallK1000.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Enemy/Obj/Icicle.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Enemy/Obj/Hammer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Entities/Enemy/Obj/CountBomb.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/Enemy/Obj/100Watton.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Entities/Enemy/Obj/Dompan.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Entities/Enemy/Obj/PowerSlam.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Entities/Enemy/Obj/DiarnSP.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Entities/Enemy/Obj/ObjFanUp.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Entities/Enemy/Obj/Boss_FreezeMan.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Assets/Sounds/Bgm/0-boss.ogg" type="AudioStream" id=20]
+[ext_resource path="res://Entities/CheckpointZone/CheckpointZone.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Entities/ScreenTransitor/BossDoor.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Entities/BlockChainDestroyer/ChainDestroyController.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Entities/BlockChainDestroyer/AreaChainDestroyer.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Entities/PlayerAreaNotifier/PlayerAreaNotifier.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBg.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt2.png" type="Texture" id=30]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends ParallaxBackground
@@ -343,1373 +342,742 @@ position = Vector2( 4760, 1336 )
 position = Vector2( 4760, 1288 )
 
 [node name="Player" parent="Iterable" index="1"]
-editor/display_folded = true
 position = Vector2( -128, 435 )
 
-[node name="ThiunEffectCreator" parent="Iterable/Player" index="12" instance=ExtResource( 6 )]
-create_target = NodePath("../..")
-
-[node name="Joe" parent="Iterable" index="2" instance=ExtResource( 7 )]
+[node name="Joe" parent="Iterable" index="2" instance=ExtResource( 6 )]
 position = Vector2( 384, 416 )
-obj_spawn = ExtResource( 8 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 7 )
 custom_parameters = {
 
 }
 
-[node name="Joe5" parent="Iterable" index="3" instance=ExtResource( 7 )]
+[node name="Joe5" parent="Iterable" index="3" instance=ExtResource( 6 )]
 position = Vector2( 208, 400 )
-obj_spawn = ExtResource( 8 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 7 )
 custom_parameters = {
 
 }
 
-[node name="Met2" parent="Iterable" index="4" instance=ExtResource( 7 )]
+[node name="Met2" parent="Iterable" index="4" instance=ExtResource( 6 )]
 position = Vector2( 312, 280 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="Met3" parent="Iterable" index="5" instance=ExtResource( 7 )]
+[node name="Met3" parent="Iterable" index="5" instance=ExtResource( 6 )]
 position = Vector2( 616, 152 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="ShieldAtk" parent="Iterable" index="6" instance=ExtResource( 7 )]
+[node name="ShieldAtk" parent="Iterable" index="6" instance=ExtResource( 6 )]
 position = Vector2( 1024, 640 )
-obj_spawn = ExtResource( 10 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 9 )
 custom_parameters = {
 
 }
 
-[node name="MetK1000" parent="Iterable" index="7" instance=ExtResource( 7 )]
+[node name="MetK1000" parent="Iterable" index="7" instance=ExtResource( 6 )]
 position = Vector2( 560, 80 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-
-}
-
-[node name="MetK1001" parent="Iterable" index="8" instance=ExtResource( 7 )]
-position = Vector2( 784, 256 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-
-}
-
-[node name="MetK1002" parent="Iterable" index="9" instance=ExtResource( 7 )]
-position = Vector2( 912, 352 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-
-}
-
-[node name="ShieldAtk2" parent="Iterable" index="10" instance=ExtResource( 7 )]
-position = Vector2( 1024, 432 )
 obj_spawn = ExtResource( 10 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
 
-[node name="Joe2" parent="Iterable" index="11" instance=ExtResource( 7 )]
+[node name="MetK1001" parent="Iterable" index="8" instance=ExtResource( 6 )]
+position = Vector2( 784, 256 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="MetK1002" parent="Iterable" index="9" instance=ExtResource( 6 )]
+position = Vector2( 912, 352 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="ShieldAtk2" parent="Iterable" index="10" instance=ExtResource( 6 )]
+position = Vector2( 1024, 432 )
+obj_spawn = ExtResource( 9 )
+custom_parameters = {
+
+}
+
+[node name="Joe2" parent="Iterable" index="11" instance=ExtResource( 6 )]
 position = Vector2( 1136, 384 )
-obj_spawn = ExtResource( 8 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 7 )
 custom_parameters = {
 
 }
 
-[node name="Joe4" parent="Iterable" index="12" instance=ExtResource( 7 )]
+[node name="Joe4" parent="Iterable" index="12" instance=ExtResource( 6 )]
 position = Vector2( 384, 160 )
-obj_spawn = ExtResource( 8 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 7 )
 custom_parameters = {
 
 }
 
-[node name="Icicl10" parent="Iterable" index="13" instance=ExtResource( 7 )]
+[node name="Icicl10" parent="Iterable" index="13" instance=ExtResource( 6 )]
 position = Vector2( 952, 512 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 1.0
-one_shot = false
 autostart = true
 obj_exist_limit = 4
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
 
-[node name="Icicl5" parent="Iterable" index="14" instance=ExtResource( 7 )]
+[node name="Icicl5" parent="Iterable" index="14" instance=ExtResource( 6 )]
 position = Vector2( 1128, 352 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 1.82
-one_shot = false
 autostart = true
 obj_exist_limit = 2
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
 
-[node name="Met4" parent="Iterable" index="15" instance=ExtResource( 7 )]
+[node name="Met4" parent="Iterable" index="15" instance=ExtResource( 6 )]
 position = Vector2( 904, 616 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="Hammer2" parent="Iterable" index="16" instance=ExtResource( 7 )]
+[node name="Hammer2" parent="Iterable" index="16" instance=ExtResource( 6 )]
 position = Vector2( 1000, 808 )
-obj_spawn = ExtResource( 13 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-
-}
-
-[node name="Hammer5" parent="Iterable" index="17" instance=ExtResource( 7 )]
-position = Vector2( 1048, 792 )
-obj_spawn = ExtResource( 13 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-
-}
-
-[node name="Hammer6" parent="Iterable" index="18" instance=ExtResource( 7 )]
-position = Vector2( 1224, 768 )
-obj_spawn = ExtResource( 13 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-
-}
-
-[node name="Hammer7" parent="Iterable" index="19" instance=ExtResource( 7 )]
-position = Vector2( 1336, 768 )
-obj_spawn = ExtResource( 13 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-
-}
-
-[node name="Hammer8" parent="Iterable" index="20" instance=ExtResource( 7 )]
-position = Vector2( 1416, 784 )
-obj_spawn = ExtResource( 13 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-
-}
-
-[node name="Hammer9" parent="Iterable" index="21" instance=ExtResource( 7 )]
-position = Vector2( 1960, 808 )
-obj_spawn = ExtResource( 13 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-
-}
-
-[node name="Met5" parent="Iterable" index="22" instance=ExtResource( 7 )]
-position = Vector2( 952, 888 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-
-}
-
-[node name="Icicl12" parent="Iterable" index="23" instance=ExtResource( 7 )]
-position = Vector2( 1144, 352 )
 obj_spawn = ExtResource( 12 )
+custom_parameters = {
+
+}
+
+[node name="Hammer5" parent="Iterable" index="17" instance=ExtResource( 6 )]
+position = Vector2( 1048, 792 )
+obj_spawn = ExtResource( 12 )
+custom_parameters = {
+
+}
+
+[node name="Hammer6" parent="Iterable" index="18" instance=ExtResource( 6 )]
+position = Vector2( 1224, 768 )
+obj_spawn = ExtResource( 12 )
+custom_parameters = {
+
+}
+
+[node name="Hammer7" parent="Iterable" index="19" instance=ExtResource( 6 )]
+position = Vector2( 1336, 768 )
+obj_spawn = ExtResource( 12 )
+custom_parameters = {
+
+}
+
+[node name="Hammer8" parent="Iterable" index="20" instance=ExtResource( 6 )]
+position = Vector2( 1416, 784 )
+obj_spawn = ExtResource( 12 )
+custom_parameters = {
+
+}
+
+[node name="Hammer9" parent="Iterable" index="21" instance=ExtResource( 6 )]
+position = Vector2( 1960, 808 )
+obj_spawn = ExtResource( 12 )
+custom_parameters = {
+
+}
+
+[node name="Met5" parent="Iterable" index="22" instance=ExtResource( 6 )]
+position = Vector2( 952, 888 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="Icicl12" parent="Iterable" index="23" instance=ExtResource( 6 )]
+position = Vector2( 1144, 352 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 1.96
-one_shot = false
 autostart = true
 obj_exist_limit = 2
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
 
-[node name="Met6" parent="Iterable" index="24" instance=ExtResource( 7 )]
+[node name="Met6" parent="Iterable" index="24" instance=ExtResource( 6 )]
 position = Vector2( 1400, 856 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="Icicl13" parent="Iterable" index="25" instance=ExtResource( 7 )]
+[node name="Icicl13" parent="Iterable" index="25" instance=ExtResource( 6 )]
 position = Vector2( 1480, 768 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 1.4
-one_shot = false
 autostart = true
 obj_exist_limit = 2
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
 
-[node name="Icicl16" parent="Iterable" index="26" instance=ExtResource( 7 )]
+[node name="Icicl16" parent="Iterable" index="26" instance=ExtResource( 6 )]
 position = Vector2( 1432, 768 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 1.6
-one_shot = false
 autostart = true
 obj_exist_limit = 2
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
 
-[node name="Icicl14" parent="Iterable" index="27" instance=ExtResource( 7 )]
+[node name="Icicl14" parent="Iterable" index="27" instance=ExtResource( 6 )]
 position = Vector2( 1576, 768 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 1.22
-one_shot = false
 autostart = true
 obj_exist_limit = 2
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
 
-[node name="MetK1003" parent="Iterable" index="28" instance=ExtResource( 7 )]
+[node name="MetK1003" parent="Iterable" index="28" instance=ExtResource( 6 )]
 position = Vector2( 1248, 880 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="MetK1004" parent="Iterable" index="29" instance=ExtResource( 7 )]
+[node name="MetK1004" parent="Iterable" index="29" instance=ExtResource( 6 )]
 position = Vector2( 1376, 880 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb" parent="Iterable" index="30" instance=ExtResource( 7 )]
+[node name="CountBomb" parent="Iterable" index="30" instance=ExtResource( 6 )]
 position = Vector2( 1168, 672 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb2" parent="Iterable" index="31" instance=ExtResource( 7 )]
+[node name="CountBomb2" parent="Iterable" index="31" instance=ExtResource( 6 )]
 position = Vector2( 1496, 896 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb3" parent="Iterable" index="32" instance=ExtResource( 7 )]
+[node name="CountBomb3" parent="Iterable" index="32" instance=ExtResource( 6 )]
 position = Vector2( 1544, 896 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb4" parent="Iterable" index="33" instance=ExtResource( 7 )]
+[node name="CountBomb4" parent="Iterable" index="33" instance=ExtResource( 6 )]
 position = Vector2( 2328, 864 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb5" parent="Iterable" index="34" instance=ExtResource( 7 )]
+[node name="CountBomb5" parent="Iterable" index="34" instance=ExtResource( 6 )]
 position = Vector2( 2344, 864 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb6" parent="Iterable" index="35" instance=ExtResource( 7 )]
+[node name="CountBomb6" parent="Iterable" index="35" instance=ExtResource( 6 )]
 position = Vector2( 2360, 864 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb7" parent="Iterable" index="36" instance=ExtResource( 7 )]
+[node name="CountBomb7" parent="Iterable" index="36" instance=ExtResource( 6 )]
 position = Vector2( 2376, 864 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb8" parent="Iterable" index="37" instance=ExtResource( 7 )]
+[node name="CountBomb8" parent="Iterable" index="37" instance=ExtResource( 6 )]
 position = Vector2( 2392, 864 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb9" parent="Iterable" index="38" instance=ExtResource( 7 )]
+[node name="CountBomb9" parent="Iterable" index="38" instance=ExtResource( 6 )]
 position = Vector2( 2408, 864 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb25" parent="Iterable" index="39" instance=ExtResource( 7 )]
+[node name="CountBomb25" parent="Iterable" index="39" instance=ExtResource( 6 )]
 position = Vector2( 2424, 864 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb10" parent="Iterable" index="40" instance=ExtResource( 7 )]
+[node name="CountBomb10" parent="Iterable" index="40" instance=ExtResource( 6 )]
 position = Vector2( 2520, 832 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb11" parent="Iterable" index="41" instance=ExtResource( 7 )]
+[node name="CountBomb11" parent="Iterable" index="41" instance=ExtResource( 6 )]
 position = Vector2( 2536, 832 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb12" parent="Iterable" index="42" instance=ExtResource( 7 )]
+[node name="CountBomb12" parent="Iterable" index="42" instance=ExtResource( 6 )]
 position = Vector2( 2552, 832 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb13" parent="Iterable" index="43" instance=ExtResource( 7 )]
+[node name="CountBomb13" parent="Iterable" index="43" instance=ExtResource( 6 )]
 position = Vector2( 2568, 832 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb14" parent="Iterable" index="44" instance=ExtResource( 7 )]
+[node name="CountBomb14" parent="Iterable" index="44" instance=ExtResource( 6 )]
 position = Vector2( 2584, 832 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="100Wat" parent="Iterable" index="45" instance=ExtResource( 7 )]
+[node name="100Wat" parent="Iterable" index="45" instance=ExtResource( 6 )]
 position = Vector2( 2456, 792 )
-obj_spawn = ExtResource( 15 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 14 )
 custom_parameters = {
 
 }
 
-[node name="Dompan4" parent="Iterable" index="46" instance=ExtResource( 7 )]
+[node name="Dompan4" parent="Iterable" index="46" instance=ExtResource( 6 )]
 position = Vector2( 2528, 800 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
 
-[node name="Met7" parent="Iterable" index="47" instance=ExtResource( 7 )]
+[node name="Met7" parent="Iterable" index="47" instance=ExtResource( 6 )]
 position = Vector2( 2648, 808 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="MetK1005" parent="Iterable" index="48" instance=ExtResource( 7 )]
+[node name="MetK1005" parent="Iterable" index="48" instance=ExtResource( 6 )]
 position = Vector2( 2768, 880 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb15" parent="Iterable" index="49" instance=ExtResource( 7 )]
+[node name="CountBomb15" parent="Iterable" index="49" instance=ExtResource( 6 )]
 position = Vector2( 2696, 912 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb16" parent="Iterable" index="50" instance=ExtResource( 7 )]
+[node name="CountBomb16" parent="Iterable" index="50" instance=ExtResource( 6 )]
 position = Vector2( 2712, 912 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb17" parent="Iterable" index="51" instance=ExtResource( 7 )]
+[node name="CountBomb17" parent="Iterable" index="51" instance=ExtResource( 6 )]
 position = Vector2( 2728, 912 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb18" parent="Iterable" index="52" instance=ExtResource( 7 )]
+[node name="CountBomb18" parent="Iterable" index="52" instance=ExtResource( 6 )]
 position = Vector2( 2744, 912 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb19" parent="Iterable" index="53" instance=ExtResource( 7 )]
+[node name="CountBomb19" parent="Iterable" index="53" instance=ExtResource( 6 )]
 position = Vector2( 2760, 912 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb20" parent="Iterable" index="54" instance=ExtResource( 7 )]
+[node name="CountBomb20" parent="Iterable" index="54" instance=ExtResource( 6 )]
 position = Vector2( 2776, 912 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="100Wat2" parent="Iterable" index="55" instance=ExtResource( 7 )]
+[node name="100Wat2" parent="Iterable" index="55" instance=ExtResource( 6 )]
 position = Vector2( 2864, 848 )
-obj_spawn = ExtResource( 15 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 14 )
 custom_parameters = {
 
 }
 
-[node name="100Wat4" parent="Iterable" index="56" instance=ExtResource( 7 )]
+[node name="100Wat4" parent="Iterable" index="56" instance=ExtResource( 6 )]
 position = Vector2( 3088, 848 )
-obj_spawn = ExtResource( 15 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 14 )
 custom_parameters = {
 
 }
 
-[node name="Dompan5" parent="Iterable" index="57" instance=ExtResource( 7 )]
+[node name="Dompan5" parent="Iterable" index="57" instance=ExtResource( 6 )]
 position = Vector2( 2960, 896 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-
-}
-
-[node name="100Wat5" parent="Iterable" index="58" instance=ExtResource( 7 )]
-position = Vector2( 3408, 768 )
 obj_spawn = ExtResource( 15 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
 
-[node name="Dompan6" parent="Iterable" index="59" instance=ExtResource( 7 )]
+[node name="100Wat5" parent="Iterable" index="58" instance=ExtResource( 6 )]
+position = Vector2( 3408, 768 )
+obj_spawn = ExtResource( 14 )
+custom_parameters = {
+
+}
+
+[node name="Dompan6" parent="Iterable" index="59" instance=ExtResource( 6 )]
 position = Vector2( 3376, 880 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb21" parent="Iterable" index="60" instance=ExtResource( 7 )]
+[node name="CountBomb21" parent="Iterable" index="60" instance=ExtResource( 6 )]
 position = Vector2( 3240, 896 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb22" parent="Iterable" index="61" instance=ExtResource( 7 )]
+[node name="CountBomb22" parent="Iterable" index="61" instance=ExtResource( 6 )]
 position = Vector2( 3256, 896 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb23" parent="Iterable" index="62" instance=ExtResource( 7 )]
+[node name="CountBomb23" parent="Iterable" index="62" instance=ExtResource( 6 )]
 position = Vector2( 3304, 896 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb24" parent="Iterable" index="63" instance=ExtResource( 7 )]
+[node name="CountBomb24" parent="Iterable" index="63" instance=ExtResource( 6 )]
 position = Vector2( 3320, 896 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb26" parent="Iterable" index="64" instance=ExtResource( 7 )]
+[node name="CountBomb26" parent="Iterable" index="64" instance=ExtResource( 6 )]
 position = Vector2( 3400, 1024 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb27" parent="Iterable" index="65" instance=ExtResource( 7 )]
+[node name="CountBomb27" parent="Iterable" index="65" instance=ExtResource( 6 )]
 position = Vector2( 3416, 1024 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="Icicl18" parent="Iterable" index="66" instance=ExtResource( 7 )]
+[node name="Icicl18" parent="Iterable" index="66" instance=ExtResource( 6 )]
 position = Vector2( 3256, 1008 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 0.7
-one_shot = false
 autostart = true
 obj_exist_limit = 25
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 "delay": 1.4
 }
 
-[node name="Icicl19" parent="Iterable" index="67" instance=ExtResource( 7 )]
+[node name="Icicl19" parent="Iterable" index="67" instance=ExtResource( 6 )]
 position = Vector2( 3272, 1008 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 0.7
-one_shot = false
 autostart = true
 obj_exist_limit = 25
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 "delay": 1.2
 }
 
-[node name="Icicl20" parent="Iterable" index="68" instance=ExtResource( 7 )]
+[node name="Icicl20" parent="Iterable" index="68" instance=ExtResource( 6 )]
 position = Vector2( 3288, 1008 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 0.7
-one_shot = false
 autostart = true
 obj_exist_limit = 25
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 "delay": 1.0
 }
 
-[node name="Icicl21" parent="Iterable" index="69" instance=ExtResource( 7 )]
+[node name="Icicl21" parent="Iterable" index="69" instance=ExtResource( 6 )]
 position = Vector2( 3304, 1008 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 0.7
-one_shot = false
 autostart = true
 obj_exist_limit = 25
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 "delay": 0.8
 }
 
-[node name="Icicl22" parent="Iterable" index="70" instance=ExtResource( 7 )]
+[node name="Icicl22" parent="Iterable" index="70" instance=ExtResource( 6 )]
 position = Vector2( 3320, 1008 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 0.7
-one_shot = false
 autostart = true
 obj_exist_limit = 25
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 "delay": 0.6
 }
 
-[node name="Icicl23" parent="Iterable" index="71" instance=ExtResource( 7 )]
+[node name="Icicl23" parent="Iterable" index="71" instance=ExtResource( 6 )]
 position = Vector2( 3336, 1008 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 0.7
-one_shot = false
 autostart = true
 obj_exist_limit = 25
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 "delay": 0.4
 }
 
-[node name="Icicl25" parent="Iterable" index="72" instance=ExtResource( 7 )]
+[node name="Icicl25" parent="Iterable" index="72" instance=ExtResource( 6 )]
 position = Vector2( 3352, 1008 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 0.7
-one_shot = false
 autostart = true
 obj_exist_limit = 25
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 "delay": 0.2
 }
 
-[node name="Icicl24" parent="Iterable" index="73" instance=ExtResource( 7 )]
+[node name="Icicl24" parent="Iterable" index="73" instance=ExtResource( 6 )]
 position = Vector2( 3368, 1008 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 0.7
-one_shot = false
 autostart = true
 obj_exist_limit = 25
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 "delay": 0.0
 }
 
-[node name="PowerSlam" parent="Iterable" index="74" instance=ExtResource( 7 )]
+[node name="PowerSlam" parent="Iterable" index="74" instance=ExtResource( 6 )]
 position = Vector2( 3384, 1320 )
-obj_spawn = ExtResource( 17 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 16 )
 custom_parameters = {
 
 }
 
-[node name="DiarnSP" parent="Iterable" index="75" instance=ExtResource( 7 )]
+[node name="DiarnSP" parent="Iterable" index="75" instance=ExtResource( 6 )]
 position = Vector2( 3896, 1320 )
-obj_spawn = ExtResource( 18 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
 
-[node name="DiarnSP2" parent="Iterable" index="76" instance=ExtResource( 7 )]
+[node name="DiarnSP2" parent="Iterable" index="76" instance=ExtResource( 6 )]
 position = Vector2( 4168, 1264 )
-obj_spawn = ExtResource( 18 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
 
-[node name="DiarnSP3" parent="Iterable" index="77" instance=ExtResource( 7 )]
+[node name="DiarnSP3" parent="Iterable" index="77" instance=ExtResource( 6 )]
 position = Vector2( 4448, 1248 )
-obj_spawn = ExtResource( 18 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
 
-[node name="DiarnSP4" parent="Iterable" index="78" instance=ExtResource( 7 )]
+[node name="DiarnSP4" parent="Iterable" index="78" instance=ExtResource( 6 )]
 position = Vector2( 5008, 1224 )
-obj_spawn = ExtResource( 18 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
 
-[node name="DiarnSP7" parent="Iterable" index="79" instance=ExtResource( 7 )]
+[node name="DiarnSP7" parent="Iterable" index="79" instance=ExtResource( 6 )]
 position = Vector2( 5184, 1248 )
-obj_spawn = ExtResource( 18 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
 
-[node name="Fan8" parent="Iterable" index="80" instance=ExtResource( 7 )]
+[node name="Fan8" parent="Iterable" index="80" instance=ExtResource( 6 )]
 position = Vector2( 3632, 1400 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 18 )
 custom_parameters = {
 
 }
 
-[node name="Fan" parent="Iterable" index="81" instance=ExtResource( 7 )]
+[node name="Fan" parent="Iterable" index="81" instance=ExtResource( 6 )]
 position = Vector2( 3792, 1416 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 18 )
 custom_parameters = {
 
 }
 
-[node name="Fan2" parent="Iterable" index="82" instance=ExtResource( 7 )]
+[node name="Fan2" parent="Iterable" index="82" instance=ExtResource( 6 )]
 position = Vector2( 3952, 1416 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 18 )
 custom_parameters = {
 
 }
 
-[node name="MetK1006" parent="Iterable" index="83" instance=ExtResource( 7 )]
+[node name="MetK1006" parent="Iterable" index="83" instance=ExtResource( 6 )]
 position = Vector2( 4080, 1328 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="Fan3" parent="Iterable" index="84" instance=ExtResource( 7 )]
+[node name="Fan3" parent="Iterable" index="84" instance=ExtResource( 6 )]
 position = Vector2( 4128, 1384 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 18 )
 custom_parameters = {
 
 }
 
-[node name="Fan4" parent="Iterable" index="85" instance=ExtResource( 7 )]
+[node name="Fan4" parent="Iterable" index="85" instance=ExtResource( 6 )]
 position = Vector2( 4208, 1384 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 18 )
 custom_parameters = {
 
 }
 
-[node name="MetK1007" parent="Iterable" index="86" instance=ExtResource( 7 )]
+[node name="MetK1007" parent="Iterable" index="86" instance=ExtResource( 6 )]
 position = Vector2( 4432, 1328 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="MetK1008" parent="Iterable" index="87" instance=ExtResource( 7 )]
+[node name="MetK1008" parent="Iterable" index="87" instance=ExtResource( 6 )]
 position = Vector2( 4688, 1328 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="Fan5" parent="Iterable" index="88" instance=ExtResource( 7 )]
+[node name="Fan5" parent="Iterable" index="88" instance=ExtResource( 6 )]
 position = Vector2( 4432, 1352 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 18 )
 custom_parameters = {
 
 }
 
-[node name="Fan6" parent="Iterable" index="89" instance=ExtResource( 7 )]
+[node name="Fan6" parent="Iterable" index="89" instance=ExtResource( 6 )]
 position = Vector2( 4560, 1352 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 18 )
 custom_parameters = {
 
 }
 
-[node name="Icicl26" parent="Iterable" index="90" instance=ExtResource( 7 )]
+[node name="Icicl26" parent="Iterable" index="90" instance=ExtResource( 6 )]
 position = Vector2( 4664, 1280 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 spawn_on = 1
 spawn_interval = 0.5
-one_shot = false
 autostart = true
 obj_exist_limit = 6
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 "delay": 0.0
 }
 
-[node name="Fan7" parent="Iterable" index="91" instance=ExtResource( 7 )]
+[node name="Fan7" parent="Iterable" index="91" instance=ExtResource( 6 )]
 position = Vector2( 4720, 1368 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 18 )
 custom_parameters = {
 
 }
 
-[node name="Met8" parent="Iterable" index="92" instance=ExtResource( 7 )]
+[node name="Met8" parent="Iterable" index="92" instance=ExtResource( 6 )]
 position = Vector2( 4856, 1240 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="Met10" parent="Iterable" index="93" instance=ExtResource( 7 )]
+[node name="Met10" parent="Iterable" index="93" instance=ExtResource( 6 )]
 position = Vector2( 4872, 1368 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="Met9" parent="Iterable" index="94" instance=ExtResource( 7 )]
+[node name="Met9" parent="Iterable" index="94" instance=ExtResource( 6 )]
 position = Vector2( 5144, 1352 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="FreezeMan" parent="Iterable" index="95" instance=ExtResource( 7 )]
+[node name="FreezeMan" parent="Iterable" index="95" instance=ExtResource( 6 )]
 position = Vector2( 5712, 1368 )
-obj_spawn = ExtResource( 20 )
+obj_spawn = ExtResource( 19 )
 spawn_interval = 1.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
-"boss_music": ExtResource( 21 )
+"boss_music": ExtResource( 20 )
 }
 
-[node name="CheckpointZone" parent="." index="5" instance=ExtResource( 22 )]
+[node name="CheckpointZone" parent="." index="5" instance=ExtResource( 21 )]
 margin_left = 1760.0
 margin_top = 752.0
 margin_right = 1824.0
 margin_bottom = 880.0
 target_view = NodePath("../ViewContainer/View4")
 
-[node name="CheckpointZone2" parent="." index="6" instance=ExtResource( 22 )]
+[node name="CheckpointZone2" parent="." index="6" instance=ExtResource( 21 )]
 margin_left = 3552.0
 margin_top = 1328.0
 margin_right = 3616.0
 margin_bottom = 1392.0
 target_view = NodePath("../ViewContainer/View9")
 
-[node name="CheckpointZone3" parent="." index="7" instance=ExtResource( 22 )]
+[node name="CheckpointZone3" parent="." index="7" instance=ExtResource( 21 )]
 margin_left = 5344.0
 margin_top = 1296.0
 margin_right = 5408.0
@@ -1721,7 +1089,7 @@ margin_left = -256.0
 margin_top = 256.0
 margin_bottom = 480.0
 
-[node name="ScreenTransitor2" parent="ViewContainer/View" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor2" parent="ViewContainer/View" index="2" instance=ExtResource( 22 )]
 margin_left = 256.0
 margin_top = 88.0
 margin_right = 272.0
@@ -1730,13 +1098,11 @@ target_view = NodePath("../../View12")
 active_view = NodePath("..")
 direction = 1
 
-[node name="View12" parent="ViewContainer" index="1" instance=ExtResource( 24 )]
+[node name="View12" parent="ViewContainer" index="1" instance=ExtResource( 23 )]
 margin_right = 1232.0
 margin_bottom = 480.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor" parent="ViewContainer/View12" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor" parent="ViewContainer/View12" index="2" instance=ExtResource( 22 )]
 margin_left = 1152.0
 margin_top = 480.0
 margin_right = 1184.0
@@ -1745,7 +1111,7 @@ target_view = NodePath("../../View2")
 active_view = NodePath("..")
 direction = 3
 
-[node name="ScreenTransitor3" parent="ViewContainer/View12" index="3" instance=ExtResource( 23 )]
+[node name="ScreenTransitor3" parent="ViewContainer/View12" index="3" instance=ExtResource( 22 )]
 margin_left = -16.0
 margin_top = 328.0
 margin_right = 0.0
@@ -1753,15 +1119,13 @@ margin_bottom = 448.0
 target_view = NodePath("../../View")
 active_view = NodePath("..")
 
-[node name="View2" parent="ViewContainer" index="2" instance=ExtResource( 24 )]
+[node name="View2" parent="ViewContainer" index="2" instance=ExtResource( 23 )]
 margin_left = 800.0
 margin_top = 480.0
 margin_right = 1232.0
 margin_bottom = 720.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor2" parent="ViewContainer/View2" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor2" parent="ViewContainer/View2" index="2" instance=ExtResource( 22 )]
 margin_left = 32.0
 margin_top = 240.0
 margin_right = 80.0
@@ -1770,15 +1134,13 @@ target_view = NodePath("../../View3")
 active_view = NodePath("..")
 direction = 3
 
-[node name="View3" parent="ViewContainer" index="3" instance=ExtResource( 24 )]
+[node name="View3" parent="ViewContainer" index="3" instance=ExtResource( 23 )]
 margin_left = 800.0
 margin_top = 720.0
 margin_right = 1664.0
 margin_bottom = 960.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor3" parent="ViewContainer/View3" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor3" parent="ViewContainer/View3" index="2" instance=ExtResource( 22 )]
 margin_left = 864.0
 margin_right = 880.0
 margin_bottom = 160.0
@@ -1786,15 +1148,13 @@ target_view = NodePath("../../View4")
 active_view = NodePath("..")
 direction = 1
 
-[node name="View4" parent="ViewContainer" index="4" instance=ExtResource( 24 )]
+[node name="View4" parent="ViewContainer" index="4" instance=ExtResource( 23 )]
 margin_left = 1664.0
 margin_top = 720.0
 margin_right = 2176.0
 margin_bottom = 960.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor4" parent="ViewContainer/View4" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor4" parent="ViewContainer/View4" index="2" instance=ExtResource( 22 )]
 margin_left = 512.0
 margin_top = 16.0
 margin_right = 528.0
@@ -1803,29 +1163,27 @@ target_view = NodePath("../../View5")
 active_view = NodePath("..")
 direction = 1
 
-[node name="ScreenTransitor5" parent="ViewContainer/View4" index="3" instance=ExtResource( 23 )]
+[node name="ScreenTransitor5" parent="ViewContainer/View4" index="3" instance=ExtResource( 22 )]
 margin_left = -16.0
 margin_right = 0.0
 margin_bottom = 192.0
 target_view = NodePath("../../View3")
 active_view = NodePath("..")
 
-[node name="View5" parent="ViewContainer" index="5" instance=ExtResource( 24 )]
+[node name="View5" parent="ViewContainer" index="5" instance=ExtResource( 23 )]
 margin_left = 2176.0
 margin_top = 720.0
 margin_right = 3200.0
 margin_bottom = 960.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor6" parent="ViewContainer/View5" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor6" parent="ViewContainer/View5" index="2" instance=ExtResource( 22 )]
 margin_left = -16.0
 margin_right = 0.0
 margin_bottom = 160.0
 target_view = NodePath("../../View4")
 active_view = NodePath("..")
 
-[node name="ScreenTransitor7" parent="ViewContainer/View5" index="3" instance=ExtResource( 23 )]
+[node name="ScreenTransitor7" parent="ViewContainer/View5" index="3" instance=ExtResource( 22 )]
 margin_left = 1024.0
 margin_top = 32.0
 margin_right = 1040.0
@@ -1834,15 +1192,13 @@ target_view = NodePath("../../View6")
 active_view = NodePath("..")
 direction = 1
 
-[node name="View6" parent="ViewContainer" index="6" instance=ExtResource( 24 )]
+[node name="View6" parent="ViewContainer" index="6" instance=ExtResource( 23 )]
 margin_left = 3200.0
 margin_top = 720.0
 margin_right = 3456.0
 margin_bottom = 960.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor8" parent="ViewContainer/View6" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor8" parent="ViewContainer/View6" index="2" instance=ExtResource( 22 )]
 margin_left = 192.0
 margin_top = 232.0
 margin_right = 224.0
@@ -1851,15 +1207,13 @@ target_view = NodePath("../../View7")
 active_view = NodePath("..")
 direction = 3
 
-[node name="View7" parent="ViewContainer" index="7" instance=ExtResource( 24 )]
+[node name="View7" parent="ViewContainer" index="7" instance=ExtResource( 23 )]
 margin_left = 3200.0
 margin_top = 960.0
 margin_right = 3456.0
 margin_bottom = 1200.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor9" parent="ViewContainer/View7" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor9" parent="ViewContainer/View7" index="2" instance=ExtResource( 22 )]
 margin_left = 16.0
 margin_top = 232.0
 margin_right = 48.0
@@ -1868,15 +1222,13 @@ target_view = NodePath("../../View8")
 active_view = NodePath("..")
 direction = 3
 
-[node name="View8" parent="ViewContainer" index="8" instance=ExtResource( 24 )]
+[node name="View8" parent="ViewContainer" index="8" instance=ExtResource( 23 )]
 margin_left = 3200.0
 margin_top = 1200.0
 margin_right = 3456.0
 margin_bottom = 1440.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor10" parent="ViewContainer/View8" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor10" parent="ViewContainer/View8" index="2" instance=ExtResource( 22 )]
 margin_left = 256.0
 margin_top = 32.0
 margin_right = 272.0
@@ -1885,16 +1237,14 @@ target_view = NodePath("../../View9")
 active_view = NodePath("..")
 direction = 1
 
-[node name="View9" parent="ViewContainer" index="9" instance=ExtResource( 24 )]
+[node name="View9" parent="ViewContainer" index="9" instance=ExtResource( 23 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 3456.0
 margin_top = 1200.0
 margin_right = 5248.0
 margin_bottom = 1440.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor11" parent="ViewContainer/View9" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor11" parent="ViewContainer/View9" index="2" instance=ExtResource( 22 )]
 margin_left = -16.0
 margin_top = 32.0
 margin_right = 0.0
@@ -1902,7 +1252,7 @@ margin_bottom = 160.0
 target_view = NodePath("../../View8")
 active_view = NodePath("..")
 
-[node name="BossDoor" parent="ViewContainer/View9" index="3" instance=ExtResource( 25 )]
+[node name="BossDoor" parent="ViewContainer/View9" index="3" instance=ExtResource( 24 )]
 margin_left = 1776.0
 margin_top = 96.0
 margin_right = 1808.0
@@ -1911,16 +1261,14 @@ target_view = NodePath("../../View10")
 active_view = NodePath("..")
 transit_duration = Vector2( 1.42, 1 )
 
-[node name="View10" parent="ViewContainer" index="10" instance=ExtResource( 24 )]
+[node name="View10" parent="ViewContainer" index="10" instance=ExtResource( 23 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 5248.0
 margin_top = 1200.0
 margin_right = 5504.0
 margin_bottom = 1440.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="BossDoor2" parent="ViewContainer/View10" index="2" instance=ExtResource( 25 )]
+[node name="BossDoor2" parent="ViewContainer/View10" index="2" instance=ExtResource( 24 )]
 margin_left = 240.0
 margin_top = 96.0
 margin_right = 272.0
@@ -1929,18 +1277,16 @@ target_view = NodePath("../../View11")
 active_view = NodePath("..")
 transit_duration = Vector2( 1.42, 1 )
 
-[node name="View11" parent="ViewContainer" index="11" instance=ExtResource( 24 )]
+[node name="View11" parent="ViewContainer" index="11" instance=ExtResource( 23 )]
 margin_left = 5504.0
 margin_top = 1200.0
 margin_right = 5760.0
 margin_bottom = 1440.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ChainDestroyController" parent="." index="12" instance=ExtResource( 26 )]
+[node name="ChainDestroyController" parent="." index="12" instance=ExtResource( 25 )]
 editor/display_folded = true
 
-[node name="Delayer3" parent="ChainDestroyController" index="1" instance=ExtResource( 27 )]
+[node name="Delayer3" parent="ChainDestroyController" index="1" instance=ExtResource( 26 )]
 margin_left = 5456.0
 margin_top = 1168.0
 margin_right = 5472.0
@@ -1949,7 +1295,7 @@ shake_screen = false
 update_nearby_tiles_bitmap = false
 sfx = 0
 
-[node name="AreaChainDestroyer" parent="ChainDestroyController" index="2" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer" parent="ChainDestroyController" index="2" instance=ExtResource( 26 )]
 margin_left = 5504.0
 margin_top = 1216.0
 margin_right = 5520.0
@@ -1959,7 +1305,7 @@ shake_screen = false
 set_tile_id = 3
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer2" parent="ChainDestroyController" index="3" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer2" parent="ChainDestroyController" index="3" instance=ExtResource( 26 )]
 margin_left = 5520.0
 margin_top = 1216.0
 margin_right = 5536.0
@@ -1969,7 +1315,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer3" parent="ChainDestroyController" index="4" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer3" parent="ChainDestroyController" index="4" instance=ExtResource( 26 )]
 margin_left = 5536.0
 margin_top = 1216.0
 margin_right = 5552.0
@@ -1979,7 +1325,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer4" parent="ChainDestroyController" index="5" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer4" parent="ChainDestroyController" index="5" instance=ExtResource( 26 )]
 margin_left = 5552.0
 margin_top = 1216.0
 margin_right = 5568.0
@@ -1989,7 +1335,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer5" parent="ChainDestroyController" index="6" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer5" parent="ChainDestroyController" index="6" instance=ExtResource( 26 )]
 margin_left = 5568.0
 margin_top = 1216.0
 margin_right = 5584.0
@@ -1999,7 +1345,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer6" parent="ChainDestroyController" index="7" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer6" parent="ChainDestroyController" index="7" instance=ExtResource( 26 )]
 margin_left = 5584.0
 margin_top = 1216.0
 margin_right = 5600.0
@@ -2009,7 +1355,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer7" parent="ChainDestroyController" index="8" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer7" parent="ChainDestroyController" index="8" instance=ExtResource( 26 )]
 margin_left = 5600.0
 margin_top = 1216.0
 margin_right = 5616.0
@@ -2019,7 +1365,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer8" parent="ChainDestroyController" index="9" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer8" parent="ChainDestroyController" index="9" instance=ExtResource( 26 )]
 margin_left = 5616.0
 margin_top = 1216.0
 margin_right = 5632.0
@@ -2029,7 +1375,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer9" parent="ChainDestroyController" index="10" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer9" parent="ChainDestroyController" index="10" instance=ExtResource( 26 )]
 margin_left = 5632.0
 margin_top = 1216.0
 margin_right = 5648.0
@@ -2039,7 +1385,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer10" parent="ChainDestroyController" index="11" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer10" parent="ChainDestroyController" index="11" instance=ExtResource( 26 )]
 margin_left = 5648.0
 margin_top = 1216.0
 margin_right = 5664.0
@@ -2049,7 +1395,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer11" parent="ChainDestroyController" index="12" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer11" parent="ChainDestroyController" index="12" instance=ExtResource( 26 )]
 margin_left = 5664.0
 margin_top = 1216.0
 margin_right = 5680.0
@@ -2059,7 +1405,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer12" parent="ChainDestroyController" index="13" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer12" parent="ChainDestroyController" index="13" instance=ExtResource( 26 )]
 margin_left = 5680.0
 margin_top = 1216.0
 margin_right = 5696.0
@@ -2069,7 +1415,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer13" parent="ChainDestroyController" index="14" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer13" parent="ChainDestroyController" index="14" instance=ExtResource( 26 )]
 margin_left = 5696.0
 margin_top = 1216.0
 margin_right = 5712.0
@@ -2079,7 +1425,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer14" parent="ChainDestroyController" index="15" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer14" parent="ChainDestroyController" index="15" instance=ExtResource( 26 )]
 margin_left = 5712.0
 margin_top = 1216.0
 margin_right = 5728.0
@@ -2089,7 +1435,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer15" parent="ChainDestroyController" index="16" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer15" parent="ChainDestroyController" index="16" instance=ExtResource( 26 )]
 margin_left = 5728.0
 margin_top = 1216.0
 margin_right = 5744.0
@@ -2099,7 +1445,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer16" parent="ChainDestroyController" index="17" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer16" parent="ChainDestroyController" index="17" instance=ExtResource( 26 )]
 margin_left = 5744.0
 margin_top = 1216.0
 margin_right = 5760.0
@@ -2109,10 +1455,10 @@ shake_screen = false
 set_tile_id = 4
 update_nearby_tiles_bitmap = false
 
-[node name="ChainDestroyController2" parent="." index="13" instance=ExtResource( 26 )]
+[node name="ChainDestroyController2" parent="." index="13" instance=ExtResource( 25 )]
 editor/display_folded = true
 
-[node name="Delayer2" parent="ChainDestroyController2" index="1" instance=ExtResource( 27 )]
+[node name="Delayer2" parent="ChainDestroyController2" index="1" instance=ExtResource( 26 )]
 margin_left = 5456.0
 margin_top = 1152.0
 margin_right = 5472.0
@@ -2121,7 +1467,7 @@ shake_screen = false
 update_nearby_tiles_bitmap = false
 sfx = 0
 
-[node name="AreaChainDestroyer" parent="ChainDestroyController2" index="2" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer" parent="ChainDestroyController2" index="2" instance=ExtResource( 26 )]
 margin_left = 5504.0
 margin_top = 1200.0
 margin_right = 5520.0
@@ -2131,7 +1477,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer2" parent="ChainDestroyController2" index="3" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer2" parent="ChainDestroyController2" index="3" instance=ExtResource( 26 )]
 margin_left = 5520.0
 margin_top = 1200.0
 margin_right = 5536.0
@@ -2141,7 +1487,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer3" parent="ChainDestroyController2" index="4" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer3" parent="ChainDestroyController2" index="4" instance=ExtResource( 26 )]
 margin_left = 5536.0
 margin_top = 1200.0
 margin_right = 5552.0
@@ -2151,7 +1497,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer4" parent="ChainDestroyController2" index="5" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer4" parent="ChainDestroyController2" index="5" instance=ExtResource( 26 )]
 margin_left = 5552.0
 margin_top = 1200.0
 margin_right = 5568.0
@@ -2161,7 +1507,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer5" parent="ChainDestroyController2" index="6" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer5" parent="ChainDestroyController2" index="6" instance=ExtResource( 26 )]
 margin_left = 5568.0
 margin_top = 1200.0
 margin_right = 5584.0
@@ -2171,7 +1517,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer6" parent="ChainDestroyController2" index="7" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer6" parent="ChainDestroyController2" index="7" instance=ExtResource( 26 )]
 margin_left = 5584.0
 margin_top = 1200.0
 margin_right = 5600.0
@@ -2181,7 +1527,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer7" parent="ChainDestroyController2" index="8" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer7" parent="ChainDestroyController2" index="8" instance=ExtResource( 26 )]
 margin_left = 5600.0
 margin_top = 1200.0
 margin_right = 5616.0
@@ -2191,7 +1537,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer8" parent="ChainDestroyController2" index="9" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer8" parent="ChainDestroyController2" index="9" instance=ExtResource( 26 )]
 margin_left = 5616.0
 margin_top = 1200.0
 margin_right = 5632.0
@@ -2201,7 +1547,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer9" parent="ChainDestroyController2" index="10" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer9" parent="ChainDestroyController2" index="10" instance=ExtResource( 26 )]
 margin_left = 5632.0
 margin_top = 1200.0
 margin_right = 5648.0
@@ -2211,7 +1557,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer10" parent="ChainDestroyController2" index="11" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer10" parent="ChainDestroyController2" index="11" instance=ExtResource( 26 )]
 margin_left = 5648.0
 margin_top = 1200.0
 margin_right = 5664.0
@@ -2221,7 +1567,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer11" parent="ChainDestroyController2" index="12" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer11" parent="ChainDestroyController2" index="12" instance=ExtResource( 26 )]
 margin_left = 5664.0
 margin_top = 1200.0
 margin_right = 5680.0
@@ -2231,7 +1577,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer12" parent="ChainDestroyController2" index="13" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer12" parent="ChainDestroyController2" index="13" instance=ExtResource( 26 )]
 margin_left = 5680.0
 margin_top = 1200.0
 margin_right = 5696.0
@@ -2241,7 +1587,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer13" parent="ChainDestroyController2" index="14" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer13" parent="ChainDestroyController2" index="14" instance=ExtResource( 26 )]
 margin_left = 5696.0
 margin_top = 1200.0
 margin_right = 5712.0
@@ -2251,7 +1597,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer14" parent="ChainDestroyController2" index="15" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer14" parent="ChainDestroyController2" index="15" instance=ExtResource( 26 )]
 margin_left = 5712.0
 margin_top = 1200.0
 margin_right = 5728.0
@@ -2261,7 +1607,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer15" parent="ChainDestroyController2" index="16" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer15" parent="ChainDestroyController2" index="16" instance=ExtResource( 26 )]
 margin_left = 5728.0
 margin_top = 1200.0
 margin_right = 5744.0
@@ -2271,7 +1617,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer16" parent="ChainDestroyController2" index="17" instance=ExtResource( 27 )]
+[node name="AreaChainDestroyer16" parent="ChainDestroyController2" index="17" instance=ExtResource( 26 )]
 margin_left = 5744.0
 margin_top = 1200.0
 margin_right = 5760.0
@@ -2281,7 +1627,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaNotifier" parent="." index="14" instance=ExtResource( 28 )]
+[node name="AreaNotifier" parent="." index="14" instance=ExtResource( 27 )]
 margin_left = 5520.0
 margin_top = 1376.0
 margin_right = 5552.0
@@ -2296,7 +1642,7 @@ motion_mirroring = Vector2( 256, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
 position = Vector2( 0, -136 )
-texture = ExtResource( 29 )
+texture = ExtResource( 28 )
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
@@ -2306,7 +1652,7 @@ motion_mirroring = Vector2( 256, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="0"]
 position = Vector2( 0, -120 )
-texture = ExtResource( 30 )
+texture = ExtResource( 29 )
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
@@ -2316,9 +1662,8 @@ motion_mirroring = Vector2( 256, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3" index="0"]
 position = Vector2( 0, -120 )
-texture = ExtResource( 31 )
+texture = ExtResource( 30 )
 centered = false
-[connection signal="player_die_normally" from="Iterable/Player" to="Iterable/Player/ThiunEffectCreator" method="create"]
 [connection signal="transition_activated" from="ViewContainer/View8/ScreenTransitor10" to="ParallaxBackground" method="_on_ScreenTransitor10_transition_activated"]
 [connection signal="transition_activated" from="ViewContainer/View9/ScreenTransitor11" to="ParallaxBackground" method="_on_ScreenTransitor10_transition_activated"]
 [connection signal="transition_activated" from="ViewContainer/View9/BossDoor" to="ParallaxBackground" method="_on_BossDoor_transition_activated"]
