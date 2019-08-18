@@ -363,6 +363,8 @@ texture = ExtResource( 5 )
 pause_mode = 2
 anims/Flashing = SubResource( 14 )
 anims/StopFlashin = SubResource( 15 )
+
+[node name="Sprite" type="Sprite" parent="."]
 [connection signal="input_event" from="." to="." method="_on_Player_input_event"]
 [connection signal="launched_attack" from="." to="PlatformerSprite" method="start_normal_attack_animation"]
 [connection signal="collided" from="PlatformBehavior" to="." method="_on_PlatformerBehavior_collided"]
