@@ -2,6 +2,6 @@
 
 Here is a showcase of platformer 2D demo game made with Godot engine.
 
-# Who can use this?
+# Contribution policy
 
-Anyone is free to use this or any portion of it so long as it is for a non-commercial cause. Commercial applications are strictly forbidden.
+This will be added soon.
