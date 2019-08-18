@@ -2,6 +2,6 @@
 
 Here is a showcase of platformer 2D demo game made with Godot engine.
 
-# Contribution policy
+# How to contribute?
 
 This will be added soon.
