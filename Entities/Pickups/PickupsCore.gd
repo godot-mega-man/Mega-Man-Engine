@@ -36,6 +36,11 @@ onready var pf_bhv = $PlatformBehavior
 
 onready var disappear_ani = $DisappearAnimation
 
+onready var collected_delete_delay_timer = $CollectedDeleteDelayTimer
+
+
+var is_collected = false
+
 #-------------------------------------------------
 #      Notifications
 #-------------------------------------------------
@@ -79,8 +84,8 @@ func _on_CollectArea2D_area_entered(area):
 		#Call virtual method. 
 		_collected_by_player()
 		
-		#Start collect action.
-		_collect_action()
+		#Start deletion bomb (Timer).
+		collected_delete_delay_timer.start()
 
 #เมื่อเวลาของ blink start timer หมดก็จะทำให้ pickup กระพริบ
 #เพื่อแสดงว่ากำลังจะหายไปในเร็วๆนี้
@@ -96,6 +101,10 @@ func _on_DisappearTimer_timeout():
 func _on_PlatformBehavior_landed() -> void:
 	bounce_up()
 
+func _on_CollectedDeleteDelayTimer_timeout() -> void:
+	#Start collect action.
+	_collect_action()
+
 #-------------------------------------------------
 #      Private Methods
 #-------------------------------------------------
@@ -109,6 +118,7 @@ func _collect_action():
 #-------------------------------------------------
 #      Setters & Getters
 #-------------------------------------------------
+
 
 
 

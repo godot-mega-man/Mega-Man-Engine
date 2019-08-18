@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://DatabaseCore/CharacterData/Reimu.tres" type="Resource" id=2]
+[ext_resource path="res://DatabaseCore/CharacterData/MegaMan.tres" type="Resource" id=2]
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Sprites/Effects/Damage.png" type="Texture" id=5]
@@ -125,7 +125,7 @@ tracks/0/keys = {
 "values": [ "Lv4" ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=8]
 resource_name = "TeleportIn"
 length = 1.15
 step = 0.05
@@ -204,19 +204,19 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 5, 10 )
 
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 10, 6 )
-
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 6, 10 )
+extents = Vector2( 10, 6 )
 
 [sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 6, 10 )
+
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 10, 6 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.06
 loop = true
 step = 0.01
@@ -233,7 +233,7 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 0.06
 loop = true
 step = 0.03
@@ -250,7 +250,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -286,7 +286,6 @@ DEFAULT_CONTROL_JUMP = ""
 
 [node name="PlatformerSprite" parent="." instance=ExtResource( 4 )]
 offset = Vector2( 0, 2 )
-frame = 605
 path_to_platformer_behavior = NodePath("../PlatformBehavior")
 animation_paused = true
 
@@ -310,17 +309,17 @@ anims/FullyCharged = SubResource( 7 )
 [node name="TeleportPlayer" type="AnimationPlayer" parent="PlatformerSprite"]
 autoplay = "TeleportIn"
 playback_speed = 0.8
-anims/TeleportIn = SubResource( 17 )
+anims/TeleportIn = SubResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 3 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="SlideCollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 7 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 disabled = true
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
@@ -338,11 +337,11 @@ collision_layer = 2
 collision_mask = 60
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="SlideCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, 4 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 disabled = true
 
 [node name="InvincibleTimer" type="Timer" parent="."]
@@ -351,7 +350,7 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
-anims/Invincible = SubResource( 12 )
+anims/Invincible = SubResource( 13 )
 
 [node name="TransitionTween" type="Tween" parent="."]
 
@@ -362,8 +361,8 @@ texture = ExtResource( 5 )
 
 [node name="Ani" type="AnimationPlayer" parent="DamageSprite"]
 pause_mode = 2
-anims/Flashing = SubResource( 13 )
-anims/StopFlashin = SubResource( 14 )
+anims/Flashing = SubResource( 14 )
+anims/StopFlashin = SubResource( 15 )
 [connection signal="input_event" from="." to="." method="_on_Player_input_event"]
 [connection signal="launched_attack" from="." to="PlatformerSprite" method="start_normal_attack_animation"]
 [connection signal="collided" from="PlatformBehavior" to="." method="_on_PlatformerBehavior_collided"]

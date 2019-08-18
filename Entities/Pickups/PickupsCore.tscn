@@ -58,7 +58,12 @@ autostart = true
 
 [node name="DisappearAnimation" type="AnimationPlayer" parent="."]
 anims/Disappearing = SubResource( 1 )
+
+[node name="CollectedDeleteDelayTimer" type="Timer" parent="."]
+wait_time = 0.01
+one_shot = true
 [connection signal="landed" from="PlatformBehavior" to="." method="_on_PlatformBehavior_landed"]
 [connection signal="area_entered" from="CollectArea2D" to="." method="_on_CollectArea2D_area_entered"]
 [connection signal="timeout" from="BlinkStartTimer" to="." method="_on_BlinkStartTimer_timeout"]
 [connection signal="timeout" from="DisappearTimer" to="." method="_on_DisappearTimer_timeout"]
+[connection signal="timeout" from="CollectedDeleteDelayTimer" to="." method="_on_CollectedDeleteDelayTimer_timeout"]
