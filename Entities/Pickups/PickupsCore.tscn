@@ -49,12 +49,10 @@ collision_mask = 6
 [node name="BlinkStartTimer" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
-autostart = true
 
 [node name="DisappearTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
-autostart = true
 
 [node name="DisappearAnimation" type="AnimationPlayer" parent="."]
 anims/Disappearing = SubResource( 1 )
