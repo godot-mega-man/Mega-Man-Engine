@@ -40,9 +40,9 @@ _global_script_classes=[ {
 "path": "res://Entities/BlockChainDestroyer/AreaChainDestroyer.gd"
 }, {
 "base": "Resource",
-"class": "CharacterColorPalette",
+"class": "CharacterData",
 "language": "GDScript",
-"path": "res://DatabaseCore/CharacterColorPalette/Core/CharacterColorPalette.gd"
+"path": "res://DatabaseCore/CharacterData/Core/CharacterData.gd"
 }, {
 "base": "Node",
 "class": "CheckpointManager",
@@ -172,67 +172,67 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "FJ_Game_Character",
 "language": "GDScript",
-"path": "res://DatabaseCore/Character/Core/Character.gd"
+"path": "res://DatabaseCore/Character (Unused)/Core/Character.gd"
 }, {
 "base": "Node",
 "class": "FJ_Game_CharacterGeneral",
 "language": "GDScript",
-"path": "res://DatabaseCore/Character/Core/CharacterGeneral.gd"
+"path": "res://DatabaseCore/Character (Unused)/Core/CharacterGeneral.gd"
 }, {
 "base": "Node",
 "class": "FJ_Game_CharacterInitialEquipment",
 "language": "GDScript",
-"path": "res://DatabaseCore/Character/Core/CharacterInitialEquipment.gd"
+"path": "res://DatabaseCore/Character (Unused)/Core/CharacterInitialEquipment.gd"
 }, {
 "base": "Node",
 "class": "FJ_Game_CharacterPersonal",
 "language": "GDScript",
-"path": "res://DatabaseCore/Character/Core/CharacterPersonal.gd"
+"path": "res://DatabaseCore/Character (Unused)/Core/CharacterPersonal.gd"
 }, {
 "base": "Node",
 "class": "FJ_Game_Class",
 "language": "GDScript",
-"path": "res://DatabaseCore/Classes/Core/Class.gd"
+"path": "res://DatabaseCore/Classes (Unused)/Core/Class.gd"
 }, {
 "base": "Node",
 "class": "FJ_Game_ClassGeneral",
 "language": "GDScript",
-"path": "res://DatabaseCore/Classes/Core/ClassGeneral.gd"
+"path": "res://DatabaseCore/Classes (Unused)/Core/ClassGeneral.gd"
 }, {
 "base": "Node",
 "class": "FJ_Game_ClassParameterCurves",
 "language": "GDScript",
-"path": "res://DatabaseCore/Classes/Core/ClassParameterCurves.gd"
+"path": "res://DatabaseCore/Classes (Unused)/Core/ClassParameterCurves.gd"
 }, {
 "base": "Node",
 "class": "FJ_Game_ClassSkillsToLearn",
 "language": "GDScript",
-"path": "res://DatabaseCore/Classes/Core/ClassSkillsToLearn.gd"
+"path": "res://DatabaseCore/Classes (Unused)/Core/ClassSkillsToLearn.gd"
 }, {
 "base": "Resource",
 "class": "FJ_Game_ClassSkillsToLearnPacks",
 "language": "GDScript",
-"path": "res://DatabaseCore/Classes/Res/SkillsToLearnPack.gd"
+"path": "res://DatabaseCore/Classes (Unused)/Res/SkillsToLearnPack.gd"
 }, {
 "base": "Node",
 "class": "FJ_Game_General",
 "language": "GDScript",
-"path": "res://DatabaseCore/Skills/Core/SkillGeneral.gd"
+"path": "res://DatabaseCore/Skills (Unused)/Core/SkillGeneral.gd"
 }, {
 "base": "Node",
 "class": "FJ_Game_Skill",
 "language": "GDScript",
-"path": "res://DatabaseCore/Skills/Core/Skill.gd"
+"path": "res://DatabaseCore/Skills (Unused)/Core/Skill.gd"
 }, {
 "base": "Node",
 "class": "FJ_Game_SkillsDamage",
 "language": "GDScript",
-"path": "res://DatabaseCore/Skills/Core/SkillDamage.gd"
+"path": "res://DatabaseCore/Skills (Unused)/Core/SkillDamage.gd"
 }, {
 "base": "Node",
 "class": "FJ_Game_SkillsInvocation",
 "language": "GDScript",
-"path": "res://DatabaseCore/Skills/Core/SkillsInvocation.gd"
+"path": "res://DatabaseCore/Skills (Unused)/Core/SkillsInvocation.gd"
 }, {
 "base": "Node",
 "class": "FJ_PlatformBehavior2D",
@@ -406,7 +406,7 @@ _global_script_class_icons={
 "ButtonPlus": "",
 "ChainDestroyController": "",
 "ChainDestroyerArea": "",
-"CharacterColorPalette": "",
+"CharacterData": "",
 "CheckpointManager": "",
 "CoinCore": "",
 "CurvePlus": "",

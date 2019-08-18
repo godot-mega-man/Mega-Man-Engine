@@ -17,7 +17,7 @@ export(int, "Auto", "Ignore Teleporters", "Never (Unsafe)") var STARTING_LOCATIO
 
 export (NodePath) var level_path
 export (NodePath) var tilemap_path
-export (Resource) var player_color_palette_res
+export (Resource) var player_character_data_res
 export (int) var CURRENT_PALETTE_STATE #Don't touch this!
 
 #Player's stats
@@ -110,6 +110,7 @@ func _ready():
 	#Let's the entire scene know that the player is alive.
 	player_stats.is_died = false
 	
+	update_player_sprite_texture()
 	_update_current_character_palette_state(true)
 
 func _process(delta):
@@ -681,34 +682,47 @@ func update_platformer_sprite_color_palettes():
 	platformer_sprite.palette_sprite.outline_sprite.modulate = global_var.current_player_outline_color
 
 func _update_current_character_palette_state(force_update : bool = false):
-	if player_color_palette_res == null:
+	if player_character_data_res == null:
 		return
 	if (!pf_bhv.INITIAL_STATE or !pf_bhv.CONTROL_ENABLE) and !force_update:
 		return
 	
-	if player_color_palette_res is CharacterColorPalette:
+	if player_character_data_res is CharacterData:
 		match CURRENT_PALETTE_STATE:
 			0:
-				global_var.current_player_primary_color = Color(player_color_palette_res.primary_color)
-				global_var.current_player_secondary_color = Color(player_color_palette_res.secondary_color)
-				global_var.current_player_outline_color = Color(player_color_palette_res.outline_color)
+				global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
+				global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
+				global_var.current_player_outline_color = Color(player_character_data_res.outline_color)
 			1:
-				global_var.current_player_primary_color = Color(player_color_palette_res.primary_color)
-				global_var.current_player_secondary_color = Color(player_color_palette_res.secondary_color)
-				global_var.current_player_outline_color = Color(player_color_palette_res.outline_color_charge1)
+				global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
+				global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
+				global_var.current_player_outline_color = Color(player_character_data_res.outline_color_charge1)
 			2:
-				global_var.current_player_primary_color = Color(player_color_palette_res.primary_color)
-				global_var.current_player_secondary_color = Color(player_color_palette_res.secondary_color)
-				global_var.current_player_outline_color = Color(player_color_palette_res.outline_color_charge2)
+				global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
+				global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
+				global_var.current_player_outline_color = Color(player_character_data_res.outline_color_charge2)
 			3:
-				global_var.current_player_primary_color = Color(player_color_palette_res.primary_color)
-				global_var.current_player_secondary_color = Color(player_color_palette_res.secondary_color)
-				global_var.current_player_outline_color = Color(player_color_palette_res.outline_color_charge3)
+				global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
+				global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
+				global_var.current_player_outline_color = Color(player_character_data_res.outline_color_charge3)
 			4:
-				global_var.current_player_primary_color = Color(player_color_palette_res.secondary_color)
-				global_var.current_player_secondary_color = Color(player_color_palette_res.outline_color)
-				global_var.current_player_outline_color = Color(player_color_palette_res.primary_color)
+				global_var.current_player_primary_color = Color(player_character_data_res.secondary_color)
+				global_var.current_player_secondary_color = Color(player_character_data_res.outline_color)
+				global_var.current_player_outline_color = Color(player_character_data_res.primary_color)
 			5:
-				global_var.current_player_primary_color = Color(player_color_palette_res.outline_color)
-				global_var.current_player_secondary_color = Color(player_color_palette_res.primary_color)
-				global_var.current_player_outline_color = Color(player_color_palette_res.secondary_color)
+				global_var.current_player_primary_color = Color(player_character_data_res.outline_color)
+				global_var.current_player_secondary_color = Color(player_character_data_res.primary_color)
+				global_var.current_player_outline_color = Color(player_character_data_res.secondary_color)
+
+func update_player_sprite_texture():
+	if player_character_data_res == null:
+		return
+	
+	if player_character_data_res is CharacterData:
+		platformer_sprite.set_texture(player_character_data_res.character_spritesheet)
+
+func play_teleport_in_sound():
+	FJ_AudioManager.sfx_character_teleport_in.play()
+
+func play_teleport_out_sound():
+	FJ_AudioManager.sfx_character_teleport_out.play()

@@ -101,6 +101,8 @@ onready var sfx_character_enemy_damage : AudioStreamPlayer = $SFX/Character/Sfx_
 onready var sfx_character_player_damage : AudioStreamPlayer = $SFX/Character/Sfx_PlayerDamage
 onready var sfx_character_player_die : AudioStreamPlayer = $SFX/Character/Sfx_PlayerDie
 onready var sfx_character_land : AudioStreamPlayer = $SFX/Character/Sfx_Land
+onready var sfx_character_teleport_in : AudioStreamPlayer = $SFX/Character/Sfx_TeleportIn
+onready var sfx_character_teleport_out : AudioStreamPlayer = $SFX/Character/Sfx_TeleportOut
 
 onready var sfx_collectibles_coin : AudioStreamPlayer = $SFX/Collectibles/Sfx_Coin
 onready var sfx_collectibles_diamond : AudioStreamPlayer = $SFX/Collectibles/Sfx_Diamond

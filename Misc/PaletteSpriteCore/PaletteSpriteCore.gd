@@ -32,7 +32,6 @@ onready var outline_sprite := $Outline as Sprite
 #Loads texture at the start
 func _ready():
 	set_subnode_centered()
-	set_subnode_textures()
 	set_subnode_hframes()
 	set_subnode_vframes()
 	set_subnode_offsets()
@@ -44,6 +43,8 @@ func _process(delta):
 		primary_sprite.frame = parent.frame + primary_color_frame_add
 		second_sprite.frame = parent.frame + secondary_color_frame_add
 		outline_sprite.frame = parent.frame + outline_color_frame_add
+	
+	set_subnode_textures() #Set every frame but once if it's not the same.
 
 #####################
 ### Public Methods

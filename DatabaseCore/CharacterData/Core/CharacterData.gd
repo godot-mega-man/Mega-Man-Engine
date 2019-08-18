@@ -1,10 +1,11 @@
-# CharacterColorPalette
+# CharacterData
 # Code by: First
 
 extends Resource
 
-class_name CharacterColorPalette
+class_name CharacterData
 
+export (Texture) var character_spritesheet
 export (NESColorPalette.NesColor) var primary_color
 export (NESColorPalette.NesColor) var secondary_color
 export (NESColorPalette.NesColor) var outline_color

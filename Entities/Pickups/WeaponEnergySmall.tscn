@@ -24,7 +24,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 4, 4 )
+extents = Vector2( 3, 4 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4, 4 )

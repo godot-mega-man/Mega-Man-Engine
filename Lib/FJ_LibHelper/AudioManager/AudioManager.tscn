@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Lib/FJ_LibHelper/AudioManager/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sounds/Sfx/Character/Collapse6.wav" type="AudioStream" id=2]
@@ -6,33 +6,35 @@
 [ext_resource path="res://Assets/Sounds/Sfx/Character/Landing.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Sounds/Sfx/Character/Damage4.wav" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Sounds/Sfx/Character/Collapse5.wav" type="AudioStream" id=6]
-[ext_resource path="res://Assets/Sounds/Sfx/Collectibles/Coin.wav" type="AudioStream" id=7]
-[ext_resource path="res://Assets/Sounds/Sfx/Collectibles/Diamond.wav" type="AudioStream" id=8]
-[ext_resource path="res://Assets/Sounds/Sfx/Collectibles/Item.wav" type="AudioStream" id=9]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/BalladeCrackerBomb.wav" type="AudioStream" id=10]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/Buster.wav" type="AudioStream" id=11]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/BusterFullyCharged.wav" type="AudioStream" id=12]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/BusterMiniCharged.wav" type="AudioStream" id=13]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/BusterCharging.wav" type="AudioStream" id=14]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/DiarnSPShot.wav" type="AudioStream" id=15]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/MM6_IceBreak.wav" type="AudioStream" id=16]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/MM6_IceMake.wav" type="AudioStream" id=17]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/Explosion.wav" type="AudioStream" id=18]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/PowerFall.wav" type="AudioStream" id=19]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/PowerLanding.wav" type="AudioStream" id=20]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/PowerLaunch.wav" type="AudioStream" id=21]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/Reflect1.wav" type="AudioStream" id=22]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/Shot.wav" type="AudioStream" id=23]
-[ext_resource path="res://Assets/Sounds/Sfx/Environments/BossDoor.wav" type="AudioStream" id=24]
-[ext_resource path="res://Assets/Sounds/Sfx/Environments/Coin_Landing.wav" type="AudioStream" id=25]
-[ext_resource path="res://Assets/Sounds/Sfx/Environments/Diamond_Landing.wav" type="AudioStream" id=26]
-[ext_resource path="res://Assets/Sounds/Sfx/Environments/EnterDoor.wav" type="AudioStream" id=27]
-[ext_resource path="res://Assets/Sounds/Sfx/Environments/Fan.wav" type="AudioStream" id=28]
-[ext_resource path="res://Assets/Sounds/Sfx/UI/BossFillHp.wav" type="AudioStream" id=29]
-[ext_resource path="res://Assets/Sounds/Sfx/UI/GameStart.wav" type="AudioStream" id=30]
-[ext_resource path="res://Assets/Sounds/Sfx/UI/Level_Up.wav" type="AudioStream" id=31]
-[ext_resource path="res://Assets/Sounds/Sfx/UI/OneUp.wav" type="AudioStream" id=32]
-[ext_resource path="res://Assets/Sounds/Sfx/Uncategorized/MAGMML2_SeriousDamage.wav" type="AudioStream" id=33]
+[ext_resource path="res://Assets/Sounds/Sfx/Character/TeleportIn.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Sounds/Sfx/Character/TeleportOut.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sounds/Sfx/Collectibles/Coin.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Sounds/Sfx/Collectibles/Diamond.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sounds/Sfx/Collectibles/Item.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/BalladeCrackerBomb.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/Buster.wav" type="AudioStream" id=13]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/BusterFullyCharged.wav" type="AudioStream" id=14]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/BusterMiniCharged.wav" type="AudioStream" id=15]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/BusterCharging.wav" type="AudioStream" id=16]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/DiarnSPShot.wav" type="AudioStream" id=17]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/MM6_IceBreak.wav" type="AudioStream" id=18]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/MM6_IceMake.wav" type="AudioStream" id=19]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/Explosion.wav" type="AudioStream" id=20]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/PowerFall.wav" type="AudioStream" id=21]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/PowerLanding.wav" type="AudioStream" id=22]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/PowerLaunch.wav" type="AudioStream" id=23]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/Reflect1.wav" type="AudioStream" id=24]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/Shot.wav" type="AudioStream" id=25]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/BossDoor.wav" type="AudioStream" id=26]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/Coin_Landing.wav" type="AudioStream" id=27]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/Diamond_Landing.wav" type="AudioStream" id=28]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/EnterDoor.wav" type="AudioStream" id=29]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/Fan.wav" type="AudioStream" id=30]
+[ext_resource path="res://Assets/Sounds/Sfx/UI/BossFillHp.wav" type="AudioStream" id=31]
+[ext_resource path="res://Assets/Sounds/Sfx/UI/GameStart.wav" type="AudioStream" id=32]
+[ext_resource path="res://Assets/Sounds/Sfx/UI/Level_Up.wav" type="AudioStream" id=33]
+[ext_resource path="res://Assets/Sounds/Sfx/UI/OneUp.wav" type="AudioStream" id=34]
+[ext_resource path="res://Assets/Sounds/Sfx/Uncategorized/MAGMML2_SeriousDamage.wav" type="AudioStream" id=35]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dim"
@@ -144,7 +146,6 @@ anims/Undim = SubResource( 5 )
 [node name="SFX" type="Node" parent="."]
 
 [node name="Character" type="Node" parent="SFX"]
-editor/display_folded = true
 
 [node name="Sfx_EnemyCollapse" type="AudioStreamPlayer" parent="SFX/Character"]
 stream = ExtResource( 2 )
@@ -171,88 +172,98 @@ stream = ExtResource( 6 )
 volume_db = -3.0
 bus = "SFX"
 
+[node name="Sfx_TeleportIn" type="AudioStreamPlayer" parent="SFX/Character"]
+stream = ExtResource( 7 )
+volume_db = -3.0
+bus = "SFX"
+
+[node name="Sfx_TeleportOut" type="AudioStreamPlayer" parent="SFX/Character"]
+stream = ExtResource( 8 )
+bus = "SFX"
+
 [node name="Collectibles" type="Node" parent="SFX"]
 editor/display_folded = true
 
 [node name="Sfx_Coin" type="AudioStreamPlayer" parent="SFX/Collectibles"]
-stream = ExtResource( 7 )
-bus = "SFX"
-
-[node name="Sfx_Diamond" type="AudioStreamPlayer" parent="SFX/Collectibles"]
-stream = ExtResource( 8 )
-bus = "SFX"
-
-[node name="Sfx_Item" type="AudioStreamPlayer" parent="SFX/Collectibles"]
 stream = ExtResource( 9 )
 bus = "SFX"
 
+[node name="Sfx_Diamond" type="AudioStreamPlayer" parent="SFX/Collectibles"]
+stream = ExtResource( 10 )
+bus = "SFX"
+
+[node name="Sfx_Item" type="AudioStreamPlayer" parent="SFX/Collectibles"]
+stream = ExtResource( 11 )
+bus = "SFX"
+
 [node name="Combat" type="Node" parent="SFX"]
+editor/display_folded = true
 
 [node name="Sfx_BalladeCrackerBomb" type="AudioStreamPlayer" parent="SFX/Combat"]
-stream = ExtResource( 10 )
-volume_db = -2.0
-bus = "SFX"
-
-[node name="Sfx_Buster" type="AudioStreamPlayer" parent="SFX/Combat"]
-stream = ExtResource( 11 )
-volume_db = -6.0
-bus = "SFX"
-
-[node name="Sfx_BusterFullyCharged" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 12 )
 volume_db = -2.0
 bus = "SFX"
 
-[node name="Sfx_BusterMiniCharged" type="AudioStreamPlayer" parent="SFX/Combat"]
+[node name="Sfx_Buster" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 13 )
+volume_db = -6.0
+bus = "SFX"
+
+[node name="Sfx_BusterFullyCharged" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 14 )
+volume_db = -2.0
+bus = "SFX"
+
+[node name="Sfx_BusterMiniCharged" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 15 )
 volume_db = -3.0
 bus = "SFX"
 
 [node name="Sfx_BusterCharging" type="AudioStreamPlayer" parent="SFX/Combat"]
-stream = ExtResource( 14 )
-volume_db = -6.0
-bus = "SFX"
-
-[node name="Sfx_DiarnSPShot" type="AudioStreamPlayer" parent="SFX/Combat"]
-stream = ExtResource( 15 )
-bus = "SFX"
-
-[node name="Sfx_IceBreak" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 16 )
 volume_db = -6.0
 bus = "SFX"
 
-[node name="Sfx_IceMake" type="AudioStreamPlayer" parent="SFX/Combat"]
+[node name="Sfx_DiarnSPShot" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 17 )
-volume_db = -6.0
 bus = "SFX"
 
-[node name="Sfx_LargeExplosion" type="AudioStreamPlayer" parent="SFX/Combat"]
+[node name="Sfx_IceBreak" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 18 )
 volume_db = -6.0
 bus = "SFX"
 
-[node name="Sfx_PowerFall" type="AudioStreamPlayer" parent="SFX/Combat"]
+[node name="Sfx_IceMake" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 19 )
-volume_db = -8.0
+volume_db = -6.0
 bus = "SFX"
 
-[node name="Sfx_PowerLanding" type="AudioStreamPlayer" parent="SFX/Combat"]
+[node name="Sfx_LargeExplosion" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 20 )
-volume_db = -4.0
+volume_db = -6.0
 bus = "SFX"
 
-[node name="Sfx_PowerLaunch" type="AudioStreamPlayer" parent="SFX/Combat"]
+[node name="Sfx_PowerFall" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 21 )
 volume_db = -8.0
 bus = "SFX"
 
-[node name="Sfx_Reflect" type="AudioStreamPlayer" parent="SFX/Combat"]
+[node name="Sfx_PowerLanding" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 22 )
+volume_db = -4.0
+bus = "SFX"
+
+[node name="Sfx_PowerLaunch" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 23 )
+volume_db = -8.0
+bus = "SFX"
+
+[node name="Sfx_Reflect" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 24 )
 bus = "SFX"
 
 [node name="Sfx_Shot" type="AudioStreamPlayer" parent="SFX/Combat"]
-stream = ExtResource( 23 )
+stream = ExtResource( 25 )
 volume_db = -3.0
 bus = "SFX"
 
@@ -260,25 +271,25 @@ bus = "SFX"
 editor/display_folded = true
 
 [node name="Sfx_BossDoor" type="AudioStreamPlayer" parent="SFX/Environments"]
-stream = ExtResource( 24 )
+stream = ExtResource( 26 )
 volume_db = -6.0
 bus = "SFX"
 
 [node name="Sfx_CoinLanding" type="AudioStreamPlayer" parent="SFX/Environments"]
-stream = ExtResource( 25 )
+stream = ExtResource( 27 )
 volume_db = -12.0
 bus = "SFX"
 
 [node name="Sfx_DiamondLanding" type="AudioStreamPlayer" parent="SFX/Environments"]
-stream = ExtResource( 26 )
+stream = ExtResource( 28 )
 bus = "SFX"
 
 [node name="Sfx_EnterDoor" type="AudioStreamPlayer" parent="SFX/Environments"]
-stream = ExtResource( 27 )
+stream = ExtResource( 29 )
 bus = "SFX"
 
 [node name="Sfx_Fan" type="AudioStreamPlayer" parent="SFX/Environments"]
-stream = ExtResource( 28 )
+stream = ExtResource( 30 )
 volume_db = -9.0
 bus = "SFX"
 
@@ -286,21 +297,21 @@ bus = "SFX"
 editor/display_folded = true
 
 [node name="Sfx_BossFillHp" type="AudioStreamPlayer" parent="SFX/UI"]
-stream = ExtResource( 29 )
+stream = ExtResource( 31 )
 volume_db = -3.0
 bus = "SFX"
 
 [node name="Sfx_GameStart" type="AudioStreamPlayer" parent="SFX/UI"]
-stream = ExtResource( 30 )
+stream = ExtResource( 32 )
 bus = "SFX"
 
 [node name="Sfx_LevelUp" type="AudioStreamPlayer" parent="SFX/UI"]
-stream = ExtResource( 31 )
+stream = ExtResource( 33 )
 volume_db = -9.0
 bus = "SFX"
 
 [node name="Sfx_OneUp" type="AudioStreamPlayer" parent="SFX/UI"]
-stream = ExtResource( 32 )
+stream = ExtResource( 34 )
 volume_db = -9.0
 bus = "SFX"
 
@@ -308,5 +319,5 @@ bus = "SFX"
 editor/display_folded = true
 
 [node name="Sfx_SeriousDamage" type="AudioStreamPlayer" parent="SFX/Uncategorized"]
-stream = ExtResource( 33 )
+stream = ExtResource( 35 )
 bus = "SFX"
