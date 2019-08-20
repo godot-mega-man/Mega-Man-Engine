@@ -3,6 +3,8 @@ extends EnemyCore
 const SHOT_DEGREES_INCREASE = 32
 const MOVE_RANDOM_ADD_DEGREES = 45
 
+export (PackedScene) var ballade_cracker
+
 onready var blt_bhv := $BulletBehavior
 onready var sprite_ani = $SpriteMain/Sprite/AnimationPlayer
 onready var start_move_delay_timer = $StartMoveDelayTimer
@@ -12,7 +14,6 @@ onready var attack_duration_timer = $AttackDurationTimer
 var current_shoot_degrees = -45
 var is_attacking = false
 
-var ballade_cracker = preload("res://Entities/Enemy/Obj/BalladeCracker.tscn")
 
 func _ready() -> void:
 	blt_point_toward_player()

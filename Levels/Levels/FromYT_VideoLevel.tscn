@@ -4,13 +4,17 @@
 [ext_resource path="res://Assets/Sounds/Bgm/eLvlMain_Rbade.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Assets/Tilesets/GrasslandTileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Misc/ObjSpawner/ObjSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Entities/Enemy/Obj/100Watton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Entities/Enemy/Obj/DiarnSP.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Entities/Enemy/Obj/Dompan.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Entities/Enemy/Obj/Boss_FreezeMan.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_100Watton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Enemy/Obj/MM9_c_DiarnSP.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_Dompan.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Enemy/Obj/MM7_c_Boss_FreezeMan.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Entities/ScreenTransitor/BossDoor.tscn" type="PackedScene" id=11]
+
+
+
+
 
 [node name="Level" index="0" instance=ExtResource( 1 )]
 MUSIC = ExtResource( 2 )

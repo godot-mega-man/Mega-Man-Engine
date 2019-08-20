@@ -1,8 +1,9 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/Enemy/Obj/ObjFanUp.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Enemy/Obj/MM6_ObjFanUp.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sprites/Enemies/MM6_FanUp.png" type="Texture" id=3]
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )

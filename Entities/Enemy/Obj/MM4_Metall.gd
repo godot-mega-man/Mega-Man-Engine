@@ -9,6 +9,7 @@ enum ATTACK_MODE_PRESET {
 	SPIN
 }
 
+export (PackedScene) var generelea
 export (ATTACK_MODE_PRESET) var attack_mode = 1
 
 onready var pf_bhv := $PlatformBehavior
@@ -19,8 +20,6 @@ onready var damage_area_reflector = $DamageArea/ProjectileReflector
 var attack_ready = true
 var state : int = 0
 
-#preload
-var generelea = preload("res://Entities/Enemy/Obj/Bullet.tscn")
 
 func _ready() -> void:
 	pass

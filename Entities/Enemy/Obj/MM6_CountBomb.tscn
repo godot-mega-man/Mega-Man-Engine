@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Entities/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/Enemy/Obj/CountBomb.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Enemy/Obj/MM6_CountBomb.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sprites/Enemies/Mm6countbomb.png" type="Texture" id=3]
-[ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/Countbomb.wav" type="AudioStream" id=5]
+[ext_resource path="res://Entities/Enemy/Obj/MM3_LargeExplosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/Countbomb.wav" type="AudioStream" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -151,6 +152,7 @@ contact_damage = 5.0
 can_hit = false
 can_damage = false
 DEATH_SHAKE_STRENGTH = 5
+large_explosion_enemy = ExtResource( 4 )
 
 [node name="SpritePreview" type="Sprite" parent="." index="0"]
 visible = false
@@ -181,7 +183,7 @@ collision_layer = 72
 [node name="CollisionShape" type="CollisionShape2D" parent="DamageArea" index="0"]
 shape = SubResource( 7 )
 
-[node name="ProjectileReflector" parent="DamageArea" index="1" instance=ExtResource( 4 )]
+[node name="ProjectileReflector" parent="DamageArea" index="1" instance=ExtResource( 5 )]
 
 [node name="LandingChecker" type="Area2D" parent="." index="4"]
 modulate = Color( 0, 1, 0.00392157, 1 )
@@ -194,7 +196,7 @@ position = Vector2( 0, -1 )
 shape = SubResource( 8 )
 
 [node name="TickSound" type="AudioStreamPlayer2D" parent="." index="9"]
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = -4.0
 attenuation = 0.420448
 bus = "SFX"

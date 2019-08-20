@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Entities/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/Enemy/Obj/MetallK1999.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Enemy/Obj/MM5_c_MetallK1999.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Effects/LargeExplosion/LargeExplosion.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Sprites/Enemies/MM5_MetallK1000.png" type="Texture" id=5]
-[ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/Undertale_Encounter.wav" type="AudioStream" id=7]
+[ext_resource path="res://Entities/Enemy/Obj/MM3_LargeExplosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_Metall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Sprites/Enemies/MM5_MetallK1000.png" type="Texture" id=7]
+[ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/Undertale_Encounter.wav" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Attacking"
@@ -107,7 +109,7 @@ extents = Vector2( 14, 13 )
 extents = Vector2( 12, 12 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 64, 64 )
 
 [node name="MetallK1999" index="0" instance=ExtResource( 1 )]
@@ -117,14 +119,16 @@ explosion_effect = ExtResource( 3 )
 death_sound = 1
 contact_damage = 4.0
 hit_points_base = 4
+large_explosion = ExtResource( 4 )
+metall = ExtResource( 5 )
 
-[node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 4 )]
+[node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 6 )]
 VELOCITY_X_DAMPING = 1.0
 CONTROL_ENABLE = false
 IS_PREVENT_OUTSIDE_SCREEN = false
 
 [node name="Sprite" parent="SpriteMain" index="0"]
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 vframes = 3
 hframes = 4
 frame = 11
@@ -143,7 +147,7 @@ position = Vector2( 0, 3 )
 collision_layer = 8
 collision_mask = 6
 
-[node name="ProjectileReflector" parent="DamageArea" index="0" instance=ExtResource( 6 )]
+[node name="ProjectileReflector" parent="DamageArea" index="0" instance=ExtResource( 8 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" index="1"]
 shape = SubResource( 4 )
@@ -154,7 +158,7 @@ shape = SubResource( 5 )
 disabled = false
 
 [node name="Sfx_TrainLaunch" type="AudioStreamPlayer2D" parent="." index="7"]
-stream = ExtResource( 7 )
+stream = ExtResource( 9 )
 bus = "SFX"
 
 [node name="SpritePreview" type="Sprite" parent="." index="8"]

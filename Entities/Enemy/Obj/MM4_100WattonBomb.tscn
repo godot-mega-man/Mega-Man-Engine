@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/Enemy/Core/EnemyProjectileCore.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/Enemy/Obj/100WattonBomb.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Sprites/Enemies/Mm4_100wattonPot.png" type="Texture" id=3]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_100WattonBomb.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_100WattonBullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Sprites/Enemies/Mm4_100wattonPot.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "New Anim"
@@ -28,6 +29,7 @@ extents = Vector2( 5, 7 )
 script = ExtResource( 2 )
 damage_area_nodes = [ NodePath("DamageArea") ]
 contact_damage = 4.0
+watton_bullet = ExtResource( 3 )
 
 [node name="BulletBehavior" parent="." index="0"]
 speed = 300.0
@@ -38,7 +40,7 @@ angle_in_degrees = -90.0
 process_mode = 0
 
 [node name="Sprite" parent="SpriteMain" index="0"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]

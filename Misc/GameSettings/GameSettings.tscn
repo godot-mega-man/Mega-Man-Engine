@@ -14,5 +14,6 @@ show_enemy_hp_bars = false
 [node name="Audio" type="Node" parent="."]
 script = ExtResource( 3 )
 sfx_volume = -5.0
+bgm_volume = -80.0
 
 [node name="Control" type="Node" parent="."]

@@ -2,7 +2,7 @@ extends EnemyCore
 
 const BULLET_GRAVITY = 640
 
-var enemy_explosion = preload("res://Entities/Enemy/Obj/LargeExplosionEnemy.tscn")
+export (PackedScene) var enemy_explosion
 
 onready var bullet_bhv := $BulletBehavior as FJ_BulletBehavior
 

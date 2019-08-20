@@ -8,6 +8,8 @@ const DASH_SPEED = 240
 
 const ATTACK_RANGE = 76
 
+export (PackedScene) var large_explosion
+export (PackedScene) var metall
 export (float) var metall_spawned_walk_spd = 0
 
 onready var pf_bhv = $PlatformBehavior
@@ -18,8 +20,6 @@ onready var spawn_metall_pos = $SpriteMain/SpawnMetallPos
 var state : int = 0
 
 #Preload
-var large_explosion_enemy = preload("res://Entities/Enemy/Obj/LargeExplosionEnemy.tscn")
-var metall = preload("res://Entities/Enemy/Obj/Metall.tscn")
 
 func _ready() -> void:
 	pf_bhv.WALK_SPEED = MOVE_SPEED
@@ -70,7 +70,7 @@ func spawn_jumping_metall():
 func _on_PlatformerBehavior_by_wall() -> void:
 	sprite_main.scale.x *= -1
 	if state == 2:
-		var enemy = large_explosion_enemy.instance()
+		var enemy = large_explosion.instance()
 		get_parent().add_child(enemy)
 		enemy.global_position = self.global_position
 		enemy.contact_damage = self.contact_damage

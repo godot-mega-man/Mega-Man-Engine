@@ -6,19 +6,19 @@
 [ext_resource path="res://Assets/Tilesets/GrasslandTileset.tres" type="TileSet" id=4]
 [ext_resource path="res://Entities/DeathSpike/DeathSpike.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Misc/ObjSpawner/ObjSpawner.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Entities/Enemy/Obj/MachineGunJoe.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Entities/Enemy/Obj/Metall.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Entities/Enemy/Obj/ShieldAttacker.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Entities/Enemy/Obj/MetallK1999.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Entities/Enemy/Obj/Icicle.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Entities/Enemy/Obj/Hammer.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Entities/Enemy/Obj/CountBomb.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Entities/Enemy/Obj/100Watton.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Entities/Enemy/Obj/Dompan.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Entities/Enemy/Obj/PowerSlam.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Entities/Enemy/Obj/DiarnSP.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Entities/Enemy/Obj/ObjFanUp.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Entities/Enemy/Obj/Boss_FreezeMan.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Entities/Enemy/Obj/MM9_c_MachineGunJoe.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_Metall.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_ShieldAttacker.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Enemy/Obj/MM5_c_MetallK1999.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Enemy/Obj/MM7_Icicle.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Enemy/Obj/IDK_Hammer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Entities/Enemy/Obj/MM6_CountBomb.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_100Watton.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_Dompan.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Entities/Enemy/Obj/MM6_PowerSlam.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Entities/Enemy/Obj/MM9_c_DiarnSP.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Entities/Enemy/Obj/MM6_ObjFanUp.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Entities/Enemy/Obj/MM7_c_Boss_FreezeMan.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Assets/Sounds/Bgm/0-boss.ogg" type="AudioStream" id=20]
 [ext_resource path="res://Entities/CheckpointZone/CheckpointZone.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=22]
@@ -30,6 +30,21 @@
 [ext_resource path="res://Assets/Sprites/Background/MM7FreezeBg.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt2.png" type="Texture" id=30]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 [sub_resource type="GDScript" id=1]

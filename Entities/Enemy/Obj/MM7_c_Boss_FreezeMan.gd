@@ -1,12 +1,5 @@
 extends BossCore
 
-onready var pf_bhv = $PlatformBehavior
-onready var freeze_man_ani = $FreezeManAni
-onready var flip = $Flip
-onready var flood_floor_shoot_pos = $Flip/FloodFloorShootPos
-onready var freeze_cracker_shoot_pos = $Flip/FreezeCrackerShootPos
-onready var launch_icicle_pos = $Flip/LaunchIciclePos
-
 enum ATTACK_PATTERN {
 	IDLE,
 	MOVE_TO_EDGE,
@@ -15,7 +8,18 @@ enum ATTACK_PATTERN {
 	LAUNCH_ICICLE_BALL
 }
 
+export (PackedScene) var ice_shard_effect
+export (PackedScene) var freeze_cracker_proj
+
+onready var pf_bhv = $PlatformBehavior
+onready var freeze_man_ani = $FreezeManAni
+onready var flip = $Flip
+onready var flood_floor_shoot_pos = $Flip/FloodFloorShootPos
+onready var freeze_cracker_shoot_pos = $Flip/FreezeCrackerShootPos
+onready var launch_icicle_pos = $Flip/LaunchIciclePos
+
 onready var PHASE_2_AT_HP = hit_points_base / 3
+
 var is_provoked = false
 var current_atk_pattern : int = 0
 var dir = 0
@@ -28,9 +32,6 @@ var flood_floor_w_ice_move_count_left = 10
 var flood_floor_w_ice_is_jumped = false
 var flood_floor_w_ice_launched = false
 
-#prelaod
-var ice_shard_effect = preload("res://Entities/Effects/IceCrackEffect/IceShardEffect.tscn")
-var freeze_cracker_proj = preload("res://Entities/Enemy/Obj/FreezeCracker.tscn")
 
 #Spawn ice effect
 func spawn_ice_shard_on_self():

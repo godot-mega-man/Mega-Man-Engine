@@ -1,6 +1,6 @@
 extends EnemyProjectile
 
-export (PackedScene) var watton_bullet = preload("res://Entities/Enemy/Obj/100WattonBullet.tscn")
+export (PackedScene) var watton_bullet
 export(Array, float) var rndm_explode_time_pool = [0.8, 0.85, 0.9]
 
 onready var explode_timer = $ExplodeTimer

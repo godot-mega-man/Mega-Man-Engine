@@ -1,5 +1,6 @@
 extends EnemyCore
 
+export (PackedScene) var large_explosion_enemy
 export(int) var flash_count_b4_explode = 3
 
 onready var count_bomb_ani = $SpriteMain/Sprite/CountBombAni
@@ -7,9 +8,6 @@ onready var landing_checker = $LandingChecker
 
 #Temp
 var pressed = false
-
-#Preloading scene
-var large_explosion_enemy = preload("res://Entities/Enemy/Obj/LargeExplosionEnemy.tscn")
 
 func _process(delta: float) -> void:
 	if pressed:

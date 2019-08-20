@@ -1,7 +1,7 @@
 extends EnemyCore
 
-export (PackedScene) var launch_projectile = preload("res://Entities/Enemy/Obj/100WattonBomb.tscn")
-export (PackedScene) var launch_smoke_effect = preload("res://Entities/Effects/100WattonSmokeEffect/100WattonSmokeEffect.tscn")
+export (PackedScene) var launch_projectile
+export (PackedScene) var launch_smoke_effect
 
 onready var bullet_behavior = $BulletBehavior
 onready var bomb_launcher_position = $BombLauncherPosition

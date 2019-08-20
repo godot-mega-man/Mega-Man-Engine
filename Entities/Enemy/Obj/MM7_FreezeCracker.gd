@@ -2,9 +2,9 @@ extends EnemyProjectile
 
 onready var area = $Area2D
 
-var debris = preload("res://Entities/Enemy/Obj/FreezeDebris.tscn")
-var ice_shard_effect = preload("res://Entities/Effects/IceCrackEffect/IceShardEffect.tscn")
-var icicle = preload("res://Entities/Enemy/Obj/Icicle.tscn")
+export (PackedScene) var debris
+export (PackedScene) var ice_shard_effect
+export (PackedScene) var icicle
 
 var behavior_type = 0 #0 : Freeze Cracker
 					  #1 : Floor Flood
