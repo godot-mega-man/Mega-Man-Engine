@@ -1,23 +1,17 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Entities/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Enemy/Obj/CountBomb.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Database/Enemy/CountBomb.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Sprites/Enemies/Mm6countbomb.png" type="Texture" id=4]
-[ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/Countbomb.wav" type="AudioStream" id=6]
-
-
-
-
-
+[ext_resource path="res://Assets/Sprites/Enemies/Mm6countbomb.png" type="Texture" id=3]
+[ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/Countbomb.wav" type="AudioStream" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="Animation" id=3]
@@ -151,9 +145,11 @@ extents = Vector2( 8, 4 )
 [node name="CountBomb" index="0" instance=ExtResource( 1 )]
 collision_mask = 0
 script = ExtResource( 2 )
-_database = ExtResource( 3 )
 sprite_preview_texture = SubResource( 1 )
 damage_area_nodes = [ NodePath("DamageArea") ]
+contact_damage = 5.0
+can_hit = false
+can_damage = false
 DEATH_SHAKE_STRENGTH = 5
 
 [node name="SpritePreview" type="Sprite" parent="." index="0"]
@@ -161,7 +157,7 @@ visible = false
 texture = SubResource( 2 )
 
 [node name="Sprite" parent="SpriteMain" index="0"]
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 hframes = 8
 
 [node name="CountBombAni" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
@@ -185,7 +181,7 @@ collision_layer = 72
 [node name="CollisionShape" type="CollisionShape2D" parent="DamageArea" index="0"]
 shape = SubResource( 7 )
 
-[node name="ProjectileReflector" parent="DamageArea" index="1" instance=ExtResource( 5 )]
+[node name="ProjectileReflector" parent="DamageArea" index="1" instance=ExtResource( 4 )]
 
 [node name="LandingChecker" type="Area2D" parent="." index="4"]
 modulate = Color( 0, 1, 0.00392157, 1 )
@@ -197,12 +193,8 @@ collision_mask = 2
 position = Vector2( 0, -1 )
 shape = SubResource( 8 )
 
-[node name="HpBar" parent="." index="6"]
-visible = false
-affects_game_settings = false
-
 [node name="TickSound" type="AudioStreamPlayer2D" parent="." index="9"]
-stream = ExtResource( 6 )
+stream = ExtResource( 5 )
 volume_db = -4.0
 attenuation = 0.420448
 bus = "SFX"

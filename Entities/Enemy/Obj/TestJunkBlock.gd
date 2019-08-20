@@ -17,12 +17,8 @@ func _process(delta: float) -> void:
 			if i != null and i is Player:
 				#Hard coded. need to reduce or remove multi-check cond. 
 				if !i.is_invincible:
-					i.player_take_damage(database.general.combat.contact_damage)
-				database.loots.coin.drop_coin = false
-				database.loots.experience.exp_awarded = 0
-				database.loots.diamond.drop_diamond = false
-				database.loots.item_table.enabled = false
-				self.hit_by_player_projectile(database.general.stats.hit_points_base, null)
+					i.player_take_damage(contact_damage)
+				self.hit_by_player_projectile(hit_points_base, null)
 				return
 	if platformer_behavior.velocity.y > 0:
 		on_floor_time = 0

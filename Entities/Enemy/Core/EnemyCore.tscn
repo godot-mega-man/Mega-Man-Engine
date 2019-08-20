@@ -1,15 +1,16 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Entities/Enemy/Core/EnemyCore.gd" type="Script" id=1]
-[ext_resource path="res://Entities/Pickups/WeaponEnergyLarge.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/Pickups/WeaponEnergySmall.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Entities/Pickups/LifeEnergyLarge.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Entities/Pickups/LifeEnergySmall.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Entities/Pickups/Life.tscn" type="PackedScene" id=6]
-[ext_resource path="res://GUI/HpBar/HpBar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Effects/Explosion/Explosion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Pickups/WeaponEnergyLarge.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Pickups/WeaponEnergySmall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Pickups/LifeEnergyLarge.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Pickups/LifeEnergySmall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Pickups/Life.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSet.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSetData/ItemSetData.gd" type="Script" id=9]
 [ext_resource path="res://Assets/Sprites/Effects/Damage.png" type="Texture" id=10]
+[ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemTable.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 length = 0.12
@@ -135,11 +136,12 @@ tracks/0/keys = {
 collision_layer = 0
 collision_mask = 65
 script = ExtResource( 1 )
-pickup_obj_weapon_large = ExtResource( 2 )
-pickup_obj_weapon_small = ExtResource( 3 )
-pickup_obj_life_large = ExtResource( 4 )
-pickup_obj_life_small = ExtResource( 5 )
-pickup_obj_life = ExtResource( 6 )
+explosion_effect = ExtResource( 2 )
+pickup_obj_weapon_large = ExtResource( 3 )
+pickup_obj_weapon_small = ExtResource( 4 )
+pickup_obj_life_large = ExtResource( 5 )
+pickup_obj_life_small = ExtResource( 6 )
+pickup_obj_life = ExtResource( 7 )
 
 [node name="SpriteMain" type="Node2D" parent="."]
 
@@ -154,12 +156,6 @@ anims/NoLongerDamage = SubResource( 3 )
 visible = false
 shape = SubResource( 4 )
 disabled = true
-
-[node name="HpBar" parent="." instance=ExtResource( 7 )]
-margin_left = -8.0
-margin_top = 8.0
-margin_right = 8.0
-margin_bottom = 14.0
 
 [node name="ActiveVisNotifier" type="VisibilityNotifier2D" parent="."]
 visible = false
@@ -187,5 +183,8 @@ texture = ExtResource( 10 )
 [node name="Ani" type="AnimationPlayer" parent="DamageSprite"]
 anims/Flashing = SubResource( 11 )
 anims/StopFlashing = SubResource( 12 )
+
+[node name="ItemTable" parent="." instance=ExtResource( 11 )]
+enabled = true
 [connection signal="screen_exited" from="ActiveVisNotifier" to="." method="_on_ActiveVisNotifier_screen_exited"]
 [connection signal="timeout" from="InvisTimer" to="." method="_on_InvisTimer_timeout"]

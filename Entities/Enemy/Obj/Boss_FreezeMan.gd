@@ -15,7 +15,7 @@ enum ATTACK_PATTERN {
 	LAUNCH_ICICLE_BALL
 }
 
-onready var PHASE_2_AT_HP = database.general.stats.hit_points_base / 3
+onready var PHASE_2_AT_HP = hit_points_base / 3
 var is_provoked = false
 var current_atk_pattern : int = 0
 var dir = 0

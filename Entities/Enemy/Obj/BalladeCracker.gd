@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 			var en = enemy_explosion.instance()
 			get_parent().add_child(en)
 			en.global_position = self.global_position
-			en.database.general.combat.contact_damage = self.database.general.combat.contact_damage
+			en.contact_damage = self.contact_damage
 			
 			FJ_AudioManager.sfx_combat_ballade_cracker_bomb.play()
 			

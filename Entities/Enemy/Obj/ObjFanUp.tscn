@@ -4,8 +4,6 @@
 [ext_resource path="res://Entities/Enemy/Obj/ObjFanUp.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sprites/Enemies/MM6_FanUp.png" type="Texture" id=3]
 
-
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
 region = Rect2( 0, -3, 32, 22 )
@@ -48,9 +46,6 @@ hframes = 6
 [node name="Ani" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
 autoplay = "New Anim"
 "anims/New Anim" = SubResource( 2 )
-
-[node name="HpBar" parent="." index="2"]
-visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="6"]
 editor/display_folded = true

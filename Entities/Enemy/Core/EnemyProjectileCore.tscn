@@ -6,9 +6,9 @@
 
 [node name="EnemyProjectileCore" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+contact_damage = 3.0
+can_hit = false
+eat_player_projectile = false
+hit_points_base = 1
 
 [node name="BulletBehavior" parent="." index="0" instance=ExtResource( 3 )]
-
-[node name="HpBar" parent="." index="3"]
-visible = false
-affects_game_settings = false

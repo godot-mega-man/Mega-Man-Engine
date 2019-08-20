@@ -48,6 +48,6 @@ func explode():
 	var inst_enemy_obj = large_explosion_enemy.instance()
 	get_parent().add_child(inst_enemy_obj)
 	inst_enemy_obj.position = self.position
-	inst_enemy_obj.database.general.combat.contact_damage = database.general.combat.contact_damage
+	inst_enemy_obj.contact_damage = contact_damage
 	
 	queue_free()

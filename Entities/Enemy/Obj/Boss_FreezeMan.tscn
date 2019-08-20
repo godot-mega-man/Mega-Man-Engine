@@ -1,18 +1,19 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Entities/Enemy/Core/BossCore.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Enemy/Obj/Boss_FreezeMan.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Database/Enemy/Boss_FreezeMan.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Sprites/Enemies/MM7_freezeman.png" type="Texture" id=4]
-[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Sounds/Sfx/Combat/MM1_IceSlasher.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Sprites/Enemies/MM7_freezeman.png" type="Texture" id=3]
+[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/MM1_IceSlasher.wav" type="AudioStream" id=5]
+[ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSetData/ItemSetData.gd" type="Script" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 96, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 96, 48, 48 )
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -382,15 +383,20 @@ tracks/0/keys = {
 "values": [ 17, 18, 19, 18 ]
 }
 
+[sub_resource type="Resource" id=15]
+script = ExtResource( 7 )
+item = "res://Assets/Database/Items/Material/RareDiamonda.tres"
+weight = 10
+quantity = 1
+
 [node name="Freeze Man" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-_database = ExtResource( 3 )
 sprite_preview_texture = SubResource( 1 )
 damage_area_nodes = [ NodePath("DamageArea") ]
 stop_music_after_death = true
 vital_bar_secondary_color = 1770717183
 
-[node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 5 )]
+[node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 4 )]
 WALK_SPEED = 120.0
 JUMP_SPEED = 300.0
 VELOCITY_X_DAMPING = 1.0
@@ -400,7 +406,7 @@ CONTROL_ENABLE = false
 [node name="Flip" type="Node2D" parent="." index="1"]
 
 [node name="Sprite" type="Sprite" parent="Flip" index="0"]
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 vframes = 4
 hframes = 8
 frame = 30
@@ -454,10 +460,13 @@ anims/ThrowIcicle = SubResource( 12 )
 anims/Walking = SubResource( 14 )
 
 [node name="Sfx_IceSlasher" type="AudioStreamPlayer2D" parent="." index="10"]
-stream = ExtResource( 6 )
+stream = ExtResource( 5 )
 
-[node name="DamageSprite" parent="." index="13"]
+[node name="DamageSprite" parent="." index="12"]
 position = Vector2( 0, 8 )
+
+[node name="ItemSet" parent="ItemTable" index="0" instance=ExtResource( 6 )]
+items = [ SubResource( 15 ) ]
 [connection signal="boss_done_posing" from="." to="." method="_on_Freeze_Man_boss_done_posing"]
 [connection signal="slain" from="." to="." method="_on_Freeze_Man_slain"]
 [connection signal="animation_finished" from="FreezeManAni" to="." method="_on_FreezeManAni_animation_finished"]

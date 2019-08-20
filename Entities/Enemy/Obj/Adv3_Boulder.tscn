@@ -12,7 +12,7 @@ extents = Vector2( 9, 12 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
-[node name="Boulder" instance=ExtResource( 1 )]
+[node name="Boulder" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 sprite_preview_texture = ExtResource( 3 )
 damage_area_nodes = [ NodePath("DamageArea2D") ]
@@ -34,12 +34,6 @@ texture = ExtResource( 3 )
 visible = true
 shape = SubResource( 1 )
 disabled = false
-
-[node name="HpBar" parent="." index="3"]
-margin_left = -12.0
-margin_top = 16.0
-margin_right = 12.0
-margin_bottom = 22.0
 
 [node name="DamageArea2D" type="Area2D" parent="." index="9"]
 collision_layer = 8

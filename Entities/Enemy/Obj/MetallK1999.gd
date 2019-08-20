@@ -73,7 +73,7 @@ func _on_PlatformerBehavior_by_wall() -> void:
 		var enemy = large_explosion_enemy.instance()
 		get_parent().add_child(enemy)
 		enemy.global_position = self.global_position
-		enemy.database.general.combat.contact_damage = self.database.general.combat.contact_damage
+		enemy.contact_damage = self.contact_damage
 		FJ_AudioManager.sfx_combat_large_explosion.play()
 		queue_free()
 

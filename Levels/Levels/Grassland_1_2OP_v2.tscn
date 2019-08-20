@@ -10,7 +10,7 @@
 [ext_resource path="res://Entities/Enemy/Obj/CountBomb.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Entities/Enemy/Obj/MachineGunJoe.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/Enemy/Obj/Metall.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Entities/Enemy/Obj/MetallK1000.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Enemy/Obj/MetallK1999.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Entities/Enemy/Obj/ObjFanUp.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Entities/Enemy/Obj/TestJunkBlock.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Entities/Enemy/Obj/ShieldAttacker.tscn" type="PackedScene" id=14]
@@ -33,6 +33,7 @@
 [ext_resource path="res://Assets/Sprites/Background/MM7FreezeBg.png" type="Texture" id=31]
 [ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt.png" type="Texture" id=32]
 [ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt2.png" type="Texture" id=33]
+
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends ParallaxBackground
