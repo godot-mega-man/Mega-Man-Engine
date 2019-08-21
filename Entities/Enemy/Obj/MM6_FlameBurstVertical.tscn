@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Entities/Enemy/Core/EnemyProjectileCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/Projectiles/MM6_FlameBurstVertical.png" type="Texture" id=2]
+[ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=4]
+resource_name = "New Anim"
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27, 0.3, 0.33, 0.36, 0.39, 0.42, 0.45, 0.48, 0.51, 0.54 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 4, 5, 6, 4, 5, 6, 5, 2, 3, 0, 1, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.57 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4, 16 )
+
+[node name="FlameBurstVertical" index="0" instance=ExtResource( 1 )]
+damage_area_nodes = [ NodePath("DamageArea2D") ]
+contact_damage = 4.0
+can_hit = true
+eat_player_projectile = true
+
+[node name="BulletBehavior" parent="." index="0"]
+active = false
+speed = 180.0
+gravity = 480.0
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+position = Vector2( 0, -12 )
+texture = ExtResource( 2 )
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 4 )
+
+[node name="PlatformCollisionShape2D" parent="." index="2"]
+shape = SubResource( 5 )
+
+[node name="DamageArea2D" type="Area2D" parent="." index="9"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D" index="0"]
+position = Vector2( 0, -12 )
+shape = SubResource( 3 )
+
+[node name="ProjectileReflector" parent="DamageArea2D" index="1" instance=ExtResource( 3 )]

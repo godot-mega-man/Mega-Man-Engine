@@ -11,7 +11,7 @@
 [ext_resource path="res://Entities/Enemy/Obj/Adv3_Podoboo.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/Enemy/Obj/Adv3_Skull.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Entities/Enemy/Obj/Adv3_SpikePlatform.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Entities/Enemy/Obj/Adv3_Boulder.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Entities/Enemy/Obj/MM6_c_PoweredColton.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Entities/Enemy/Obj/Adv3_BasserAtk.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=15]
@@ -198,20 +198,125 @@ custom_parameters = {
 }
 
 [node name="s" parent="Iterable" index="17" instance=ExtResource( 5 )]
-position = Vector2( 656, 144 )
+position = Vector2( 688, 128 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="s2" parent="Iterable" index="18" instance=ExtResource( 5 )]
+position = Vector2( 816, 96 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="s3" parent="Iterable" index="19" instance=ExtResource( 5 )]
+position = Vector2( 976, 144 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="Colton" parent="Iterable" index="20" instance=ExtResource( 5 )]
+position = Vector2( 1456, 112 )
 obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
 
-[node name="BasserAtk" parent="Iterable" index="18" instance=ExtResource( 5 )]
+[node name="Colton2" parent="Iterable" index="21" instance=ExtResource( 5 )]
+position = Vector2( 368, 112 )
+obj_spawn = ExtResource( 12 )
+custom_parameters = {
+
+}
+
+[node name="s4" parent="Iterable" index="22" instance=ExtResource( 5 )]
+position = Vector2( 976, 112 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="s5" parent="Iterable" index="23" instance=ExtResource( 5 )]
+position = Vector2( 1008, 112 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="s6" parent="Iterable" index="24" instance=ExtResource( 5 )]
+position = Vector2( 1008, 144 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="s7" parent="Iterable" index="25" instance=ExtResource( 5 )]
+position = Vector2( 944, 112 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="s8" parent="Iterable" index="26" instance=ExtResource( 5 )]
+position = Vector2( 944, 144 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="s9" parent="Iterable" index="27" instance=ExtResource( 5 )]
+position = Vector2( 1072, 144 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="s10" parent="Iterable" index="28" instance=ExtResource( 5 )]
+position = Vector2( 1072, 112 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="s11" parent="Iterable" index="29" instance=ExtResource( 5 )]
+position = Vector2( 1136, 112 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="s12" parent="Iterable" index="30" instance=ExtResource( 5 )]
+position = Vector2( 1136, 88 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="s13" parent="Iterable" index="31" instance=ExtResource( 5 )]
+position = Vector2( 1168, 88 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="s14" parent="Iterable" index="32" instance=ExtResource( 5 )]
+position = Vector2( 1168, 112 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="BasserAtk" parent="Iterable" index="33" instance=ExtResource( 5 )]
 position = Vector2( 1328, 272 )
 obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
 
-[node name="BasserAtk2" parent="Iterable" index="19" instance=ExtResource( 5 )]
+[node name="BasserAtk2" parent="Iterable" index="34" instance=ExtResource( 5 )]
 position = Vector2( 1528, 496 )
 obj_spawn = ExtResource( 13 )
 custom_parameters = {

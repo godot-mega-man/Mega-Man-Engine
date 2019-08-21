@@ -33,6 +33,7 @@ func change_direction():
 
 func _on_PlatformBehavior_landed():
 	pf_bhv.velocity.y = bounce_set_vel_y
+	FJ_AudioManager.sfx_combat_boulder.play()
 
 
 func _on_PlatformBehavior_by_wall():

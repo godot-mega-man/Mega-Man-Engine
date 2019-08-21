@@ -1,13 +1,12 @@
 extends EnemyCore
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export (int) var number_of_fireball = 3
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var flameburst_fireball = preload("res://Entities/Enemy/Obj/MM6_FlameBurstFireball.tscn")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_Skull_taken_damage(value, target, player_proj_source) -> void:
+	for i in number_of_fireball:
+		var fireball = flameburst_fireball.instance()
+		get_parent().add_child(fireball)
+		fireball.global_position = global_position
+		fireball.bullet_behavior.angle_in_degrees = rand_range(-200, 20)
