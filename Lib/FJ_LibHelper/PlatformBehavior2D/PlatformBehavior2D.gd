@@ -71,8 +71,8 @@ export(float) var MAX_FALL_SPEED = 600
 export var FLOOR_NORMAL = Vector2(0, -1)
 
 export(bool) var INITIAL_STATE = true
-export(bool) var CONTROL_ENABLE = true
-export(bool) var IS_PREVENT_OUTSIDE_SCREEN = true
+export(bool) var CONTROL_ENABLE = false
+export(bool) var IS_PREVENT_OUTSIDE_SCREEN = false
 export(int) var PREVENT_OUTSIDE_SCREEN_OFFSET = 12 #Won't work if WARPS_LEFT_RIGHT_SIDE is on.
 export(bool) var USE_TIP_TOE_MOVEMENT = false
 export(float) var MAX_TIP_TOE_FRAME = 7
