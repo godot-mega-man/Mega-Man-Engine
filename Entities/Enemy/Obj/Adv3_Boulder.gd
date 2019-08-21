@@ -3,11 +3,11 @@ extends EnemyCore
 const DIRECTION_LEFT = -1
 const DIRECTION_RIGHT = 1
 
-export var bounce_set_vel_y = -90
+export var bounce_set_vel_y = -120
 
 onready var pf_bhv = $PlatformBehavior
 
-var current_dir = 0
+var current_dir = -1
 
 func _ready():
 	if player != null:

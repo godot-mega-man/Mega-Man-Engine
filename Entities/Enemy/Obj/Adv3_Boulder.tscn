@@ -18,14 +18,12 @@ sprite_preview_texture = ExtResource( 3 )
 damage_area_nodes = [ NodePath("DamageArea2D") ]
 explosion_effect = ExtResource( 4 )
 death_sound = 1
+contact_damage = 4.0
 
 [node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 5 )]
-GRAVITY_VEC = Vector2( 0, 600 )
 WALK_SPEED = 60.0
 JUMP_SPEED = 50.0
 VELOCITY_X_DAMPING = 1.0
-CONTROL_ENABLE = false
-IS_PREVENT_OUTSIDE_SCREEN = false
 
 [node name="Sprite" parent="SpriteMain" index="0"]
 texture = ExtResource( 3 )

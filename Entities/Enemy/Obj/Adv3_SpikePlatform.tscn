@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Sprites/Enemies/Adv3_SpikePlatform.png" type="Texture" id=3]
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "Falling"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:offset")
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "Shaking"
 length = 0.1
 loop = true
@@ -38,14 +38,14 @@ tracks/0/keys = {
 "values": [ Vector2( -2, 0 ), Vector2( 2, 0 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 4 )
-
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 8, 4 )
+extents = Vector2( 7.5, 8 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 6, 4 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 7.5, 4 )
 
 [node name="SpikePlatform" instance=ExtResource( 1 )]
 collision_layer = 64
@@ -66,12 +66,12 @@ INITIAL_STATE = false
 texture = ExtResource( 3 )
 
 [node name="Ani" type="AnimationPlayer" parent="SpriteMain" index="2"]
-anims/Falling = SubResource( 4 )
-anims/Shaking = SubResource( 5 )
+anims/Falling = SubResource( 1 )
+anims/Shaking = SubResource( 2 )
 
 [node name="PlatformCollisionShape2D" parent="." index="2"]
 visible = true
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 disabled = false
 one_way_collision = true
 
@@ -81,16 +81,16 @@ collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D" index="0"]
 position = Vector2( 0, 4 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
-[node name="DetectPlayerArea2D" type="Area2D" parent="." index="10"]
+[node name="DetectArea2D" type="Area2D" parent="." index="10"]
 modulate = Color( 0, 1, 0.156863, 1 )
 collision_layer = 0
-collision_mask = 2
+collision_mask = 14
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayerArea2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea2D" index="0"]
 position = Vector2( 0, -12 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="FallDelayTimer" type="Timer" parent="." index="11"]
 wait_time = 0.4
