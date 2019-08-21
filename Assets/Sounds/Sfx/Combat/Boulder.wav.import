@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Boulder.wav-a6a47a39c64bcf36db3a66e0527a21bd.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Sfx/Combat/Boulder.wav"
+dest_files=[ "res://.import/Boulder.wav-a6a47a39c64bcf36db3a66e0527a21bd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

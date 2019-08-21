@@ -1,0 +1,272 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Entities/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemy/Obj/MM6_c_PoweredColton.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Enemies/MM6_Colton.png" type="Texture" id=3]
+[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Misc/PaletteSpriteCore/PaletteSpriteCore.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/MM10_BluesCharge.wav" type="AudioStream" id=6]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 48, 32 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Charge1"
+length = 0.06
+loop = true
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath("../..:CURRENT_PALETTE_STATE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Charge2"
+length = 0.06
+loop = true
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath("../..:CURRENT_PALETTE_STATE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Charge3"
+length = 0.06
+loop = true
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath("../..:CURRENT_PALETTE_STATE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Charge4"
+length = 0.09
+loop = true
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath("../..:CURRENT_PALETTE_STATE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03, 0.06 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "NoCharge"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../..:CURRENT_PALETTE_STATE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Charging"
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 2,
+"values": [ "Charge1", "Charge2", "Charge3" ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "FullyCharged"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "Charge4" ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "NoCharge"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "NoCharge" ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ani:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "Idle" ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8, 12 )
+
+[node name="PoweredColton" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+sprite_preview_texture = SubResource( 3 )
+damage_area_nodes = [ NodePath("DamageArea2D") ]
+contact_damage = 4.0
+hit_points_base = 6
+RANGE_CHECKING_MODE = 2
+attack_range = 24.0
+secondary_color = 4223271167
+
+[node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 4 )]
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+position = Vector2( -8, 0 )
+texture = ExtResource( 3 )
+vframes = 4
+hframes = 5
+frame = 4
+
+[node name="PaletteSprite" parent="SpriteMain/Sprite" index="0" instance=ExtResource( 5 )]
+primary_color_frame_add = 5
+secondary_color_frame_add = 10
+outline_color_frame_add = 15
+
+[node name="PaletteAni" type="AnimationPlayer" parent="SpriteMain/Sprite" index="1"]
+autoplay = "Charge4"
+anims/Charge1 = SubResource( 6 )
+anims/Charge2 = SubResource( 7 )
+anims/Charge3 = SubResource( 8 )
+anims/Charge4 = SubResource( 9 )
+anims/NoCharge = SubResource( 10 )
+
+[node name="PaletteAniChanger" type="AnimationPlayer" parent="SpriteMain/Sprite/PaletteAni" index="0"]
+anims/Charging = SubResource( 11 )
+anims/FullyCharged = SubResource( 12 )
+anims/NoCharge = SubResource( 13 )
+
+[node name="Ani" type="AnimationPlayer" parent="SpriteMain" index="2"]
+autoplay = "Idle"
+anims/Attack = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+
+[node name="FirePosition" type="Position2D" parent="SpriteMain" index="3"]
+position = Vector2( -16, 0 )
+
+[node name="PlatformCollisionShape2D" parent="." index="2"]
+visible = true
+shape = SubResource( 5 )
+disabled = false
+
+[node name="DamageArea2D" type="Area2D" parent="." index="9"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D" index="0"]
+shape = SubResource( 4 )
+
+[node name="TurnTowardsTimer" type="Timer" parent="." index="10"]
+wait_time = 0.2
+autostart = true
+
+[node name="ChargeStartDelayTimer" type="Timer" parent="." index="11"]
+wait_time = 0.6
+one_shot = true
+
+[node name="ChargeTimer" type="Timer" parent="." index="12"]
+wait_time = 1.2
+one_shot = true
+
+[node name="ChargeSound" type="AudioStreamPlayer" parent="." index="13"]
+stream = ExtResource( 6 )
+volume_db = -5.0
+bus = "SFX"
+[connection signal="timeout" from="TurnTowardsTimer" to="." method="_on_TurnTowardsTimer_timeout"]
+[connection signal="timeout" from="ChargeStartDelayTimer" to="." method="_on_ChargeStartDelayTimer_timeout"]
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_ChargeTimer_timeout"]

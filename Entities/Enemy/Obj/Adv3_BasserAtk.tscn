@@ -14,7 +14,7 @@ RANGE_CHECKING_MODE = 1
 
 [node name="BulletBehavior" parent="." index="0" instance=ExtResource( 3 )]
 active = false
-speed = 90.0
+speed = 240.0
 
 [node name="SineBehavior" parent="." index="1" instance=ExtResource( 4 )]
 active_on_start = false
@@ -23,4 +23,4 @@ movement = 1
 wave = SubResource( 1 )
 period = 1.0
 period_offset = 0.5
-magnitude = 48.0
+magnitude = -48.0
