@@ -31,9 +31,6 @@ func activate_fall():
 	sprite_ani.play("Shaking")
 	fall_delay_timer.start()
 
-func _on_PlatformBehavior_landed():
-	pass
-
 func _on_FallDelayTimer_timeout():
 	pf_bhv.INITIAL_STATE = true
 	sprite_ani.play("Falling")
