@@ -8,7 +8,7 @@
 [ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 9, 12 )
+extents = Vector2( 6, 12 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
