@@ -3,7 +3,12 @@ extends EnemyProjectile
 var h_flame = preload("res://Entities/Enemy/Obj/MM6_FlameBurstHorizontal.tscn")
 var v_flame = preload("res://Entities/Enemy/Obj/MM6_FlameBurstVertical.tscn")
 
+var is_frame_spawned = false
+
 func _on_PlatformBehavior_landed() -> void:
+	if is_frame_spawned:
+		return
+	
 	var enemy_flame_obj = v_flame.instance()
 	get_parent().add_child(enemy_flame_obj)
 	enemy_flame_obj.global_position = global_position
@@ -13,6 +18,9 @@ func _on_PlatformBehavior_landed() -> void:
 	queue_free()
 
 func _on_PlatformBehavior_by_wall() -> void:
+	if is_frame_spawned:
+		return
+	
 	var enemy_flame_obj = h_flame.instance()
 	get_parent().add_child(enemy_flame_obj)
 	enemy_flame_obj.global_position = global_position

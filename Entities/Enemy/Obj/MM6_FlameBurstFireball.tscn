@@ -11,7 +11,7 @@ extents = Vector2( 4, 4 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4, 4 )
 
-[node name="Fireball" instance=ExtResource( 1 )]
+[node name="Fireball" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 damage_area_nodes = [ NodePath("DamageArea2D") ]
 contact_damage = 4.0

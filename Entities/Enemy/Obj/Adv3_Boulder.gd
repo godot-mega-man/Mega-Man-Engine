@@ -38,3 +38,12 @@ func _on_PlatformBehavior_landed():
 
 func _on_PlatformBehavior_by_wall():
 	change_direction()
+
+
+func _on_PlatformBehavior_collided(kinematic_collision_2d):
+	if kinematic_collision_2d is KinematicCollision2D:
+		var collider = kinematic_collision_2d.get_collider()
+		if collider is DeathSpike:
+			current_hp = 0
+			check_for_death()
+			
