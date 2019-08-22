@@ -499,7 +499,7 @@ func player_death():
 	
 	#Reset to initial palette, prevents weapon energy palette glitch
 	CURRENT_PALETTE_STATE = 0
-	update_platformer_sprite_color_palettes()
+	update_platformer_sprite_color_palettes(true)
 	
 	#Stop everything
 	#Hide player from view and disable process
@@ -674,8 +674,8 @@ func test_slide_check_collision(vel_rel := Vector2(0, -1)) -> bool:
 	
 	return result
 
-func update_platformer_sprite_color_palettes():
-	_update_current_character_palette_state()
+func update_platformer_sprite_color_palettes(force_update : bool = false):
+	_update_current_character_palette_state(force_update)
 	
 	platformer_sprite.palette_sprite.primary_sprite.modulate = global_var.current_player_primary_color
 	platformer_sprite.palette_sprite.second_sprite.modulate = global_var.current_player_secondary_color

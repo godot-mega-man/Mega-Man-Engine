@@ -126,6 +126,8 @@ onready var sfx_combat_power_landing : AudioStreamPlayer = $SFX/Combat/Sfx_Power
 onready var sfx_combat_power_launch : AudioStreamPlayer = $SFX/Combat/Sfx_PowerLaunch
 onready var sfx_combat_reflect : AudioStreamPlayer = $SFX/Combat/Sfx_Reflect
 onready var sfx_combat_shot : AudioStreamPlayer = $SFX/Combat/Sfx_Shot
+onready var sfx_combat_wheel_cutter : AudioStreamPlayer = $SFX/Combat/Sfx_WheelCutter
+onready var sfx_combat_wheel_cutter_wall : AudioStreamPlayer = $SFX/Combat/Sfx_WheelCutterWall
 
 onready var sfx_env_boss_door : AudioStreamPlayer = $SFX/Environments/Sfx_BossDoor
 onready var sfx_env_coin_landing : AudioStreamPlayer = $SFX/Environments/Sfx_CoinLanding

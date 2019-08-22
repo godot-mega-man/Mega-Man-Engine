@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Lib/FJ_LibHelper/AudioManager/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sounds/Sfx/Character/Collapse6.wav" type="AudioStream" id=2]
@@ -29,16 +29,18 @@
 [ext_resource path="res://Assets/Sounds/Sfx/Combat/PowerLaunch.wav" type="AudioStream" id=27]
 [ext_resource path="res://Assets/Sounds/Sfx/Combat/Reflect1.wav" type="AudioStream" id=28]
 [ext_resource path="res://Assets/Sounds/Sfx/Combat/Shot.wav" type="AudioStream" id=29]
-[ext_resource path="res://Assets/Sounds/Sfx/Environments/BossDoor.wav" type="AudioStream" id=30]
-[ext_resource path="res://Assets/Sounds/Sfx/Environments/Coin_Landing.wav" type="AudioStream" id=31]
-[ext_resource path="res://Assets/Sounds/Sfx/Environments/Diamond_Landing.wav" type="AudioStream" id=32]
-[ext_resource path="res://Assets/Sounds/Sfx/Environments/EnterDoor.wav" type="AudioStream" id=33]
-[ext_resource path="res://Assets/Sounds/Sfx/Environments/Fan.wav" type="AudioStream" id=34]
-[ext_resource path="res://Assets/Sounds/Sfx/UI/BossFillHp.wav" type="AudioStream" id=35]
-[ext_resource path="res://Assets/Sounds/Sfx/UI/GameStart.wav" type="AudioStream" id=36]
-[ext_resource path="res://Assets/Sounds/Sfx/UI/Level_Up.wav" type="AudioStream" id=37]
-[ext_resource path="res://Assets/Sounds/Sfx/UI/OneUp.wav" type="AudioStream" id=38]
-[ext_resource path="res://Assets/Sounds/Sfx/Uncategorized/MAGMML2_SeriousDamage.wav" type="AudioStream" id=39]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/MM10_WheelCutter.wav" type="AudioStream" id=30]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/MM10_WheelCutterWall.wav" type="AudioStream" id=31]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/BossDoor.wav" type="AudioStream" id=32]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/Coin_Landing.wav" type="AudioStream" id=33]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/Diamond_Landing.wav" type="AudioStream" id=34]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/EnterDoor.wav" type="AudioStream" id=35]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/Fan.wav" type="AudioStream" id=36]
+[ext_resource path="res://Assets/Sounds/Sfx/UI/BossFillHp.wav" type="AudioStream" id=37]
+[ext_resource path="res://Assets/Sounds/Sfx/UI/GameStart.wav" type="AudioStream" id=38]
+[ext_resource path="res://Assets/Sounds/Sfx/UI/Level_Up.wav" type="AudioStream" id=39]
+[ext_resource path="res://Assets/Sounds/Sfx/UI/OneUp.wav" type="AudioStream" id=40]
+[ext_resource path="res://Assets/Sounds/Sfx/Uncategorized/MAGMML2_SeriousDamage.wav" type="AudioStream" id=41]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dim"
@@ -291,29 +293,39 @@ stream = ExtResource( 29 )
 volume_db = -3.0
 bus = "SFX"
 
+[node name="Sfx_WheelCutter" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 30 )
+volume_db = -3.0
+bus = "SFX"
+
+[node name="Sfx_WheelCutterWall" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 31 )
+volume_db = -3.0
+bus = "SFX"
+
 [node name="Environments" type="Node" parent="SFX"]
 editor/display_folded = true
 
 [node name="Sfx_BossDoor" type="AudioStreamPlayer" parent="SFX/Environments"]
-stream = ExtResource( 30 )
+stream = ExtResource( 32 )
 volume_db = -6.0
 bus = "SFX"
 
 [node name="Sfx_CoinLanding" type="AudioStreamPlayer" parent="SFX/Environments"]
-stream = ExtResource( 31 )
+stream = ExtResource( 33 )
 volume_db = -12.0
 bus = "SFX"
 
 [node name="Sfx_DiamondLanding" type="AudioStreamPlayer" parent="SFX/Environments"]
-stream = ExtResource( 32 )
+stream = ExtResource( 34 )
 bus = "SFX"
 
 [node name="Sfx_EnterDoor" type="AudioStreamPlayer" parent="SFX/Environments"]
-stream = ExtResource( 33 )
+stream = ExtResource( 35 )
 bus = "SFX"
 
 [node name="Sfx_Fan" type="AudioStreamPlayer" parent="SFX/Environments"]
-stream = ExtResource( 34 )
+stream = ExtResource( 36 )
 volume_db = -9.0
 bus = "SFX"
 
@@ -321,21 +333,21 @@ bus = "SFX"
 editor/display_folded = true
 
 [node name="Sfx_BossFillHp" type="AudioStreamPlayer" parent="SFX/UI"]
-stream = ExtResource( 35 )
+stream = ExtResource( 37 )
 volume_db = -3.0
 bus = "SFX"
 
 [node name="Sfx_GameStart" type="AudioStreamPlayer" parent="SFX/UI"]
-stream = ExtResource( 36 )
+stream = ExtResource( 38 )
 bus = "SFX"
 
 [node name="Sfx_LevelUp" type="AudioStreamPlayer" parent="SFX/UI"]
-stream = ExtResource( 37 )
+stream = ExtResource( 39 )
 volume_db = -9.0
 bus = "SFX"
 
 [node name="Sfx_OneUp" type="AudioStreamPlayer" parent="SFX/UI"]
-stream = ExtResource( 38 )
+stream = ExtResource( 40 )
 volume_db = -9.0
 bus = "SFX"
 
@@ -343,5 +355,5 @@ bus = "SFX"
 editor/display_folded = true
 
 [node name="Sfx_SeriousDamage" type="AudioStreamPlayer" parent="SFX/Uncategorized"]
-stream = ExtResource( 39 )
+stream = ExtResource( 41 )
 bus = "SFX"

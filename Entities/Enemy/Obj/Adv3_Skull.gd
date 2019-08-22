@@ -1,6 +1,6 @@
 extends EnemyCore
 
-export (int) var number_of_fireball = 3
+export (int) var number_of_fireball = 2
 
 var flameburst_fireball = preload("res://Entities/Enemy/Obj/MM6_FlameBurstFireball.tscn")
 

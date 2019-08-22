@@ -66,7 +66,7 @@ export(float) var WALK_SPEED = 250 # pixels/sec
 export(float) var JUMP_SPEED = 360
 export(float) var SIDING_CHANGE_SPEED = 10
 export(float) var VELOCITY_X_DAMPING = 0.1
-export(float) var MAX_FALL_SPEED = 600
+export(float) var MAX_FALL_SPEED = 360
 
 export var FLOOR_NORMAL = Vector2(0, -1)
 
