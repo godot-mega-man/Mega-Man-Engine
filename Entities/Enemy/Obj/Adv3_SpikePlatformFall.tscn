@@ -78,7 +78,7 @@ wait_time = 0.4
 one_shot = true
 
 [node name="RespawnTimer" type="Timer" parent="." index="12"]
-wait_time = 1.5
+wait_time = 1.2
 one_shot = true
 
 [node name="RespawnReadyTimer" type="Timer" parent="." index="13"]
