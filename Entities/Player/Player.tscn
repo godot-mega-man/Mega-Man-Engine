@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://DatabaseCore/CharacterData/Reimu.tres" type="Resource" id=2]
+[ext_resource path="res://DatabaseCore/CharacterData/RokkoChan.tres" type="Resource" id=2]
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Sprites/Effects/Damage.png" type="Texture" id=5]

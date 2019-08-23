@@ -18,3 +18,4 @@ func _on_Skull_taken_damage(value, target, player_proj_source) -> void:
 		fireball.global_position = global_position
 		fireball.bullet_behavior.angle_in_degrees = rand_range(-70, 20)
 		
+		

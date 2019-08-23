@@ -446,8 +446,7 @@ func _on_invis_timer_timeout():
 	platformer_sprite.visible = true #Due to animation glitch, this will surely fix it.
 
 func repel_player():
-	pf_bhv.velocity.x = 0
-	pf_bhv.velocity.y = -50
+	pf_bhv.velocity = Vector2()
 	if platformer_sprite.scale.x == -1:
 		taking_damage_slide_pos = TAKING_DAMAGE_SLIDE_RIGHT
 	else:

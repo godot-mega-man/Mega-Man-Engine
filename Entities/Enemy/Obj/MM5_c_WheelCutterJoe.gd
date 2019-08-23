@@ -24,6 +24,8 @@ func _ready():
 func _on_LaunchTimer_timeout():
 	rest_timer.start()
 	sprite_ani.play("Fire")
+	
+	FJ_AudioManager.sfx_combat_wheel_cutter.play()
 
 #Spawn wheel cutter..
 #Set delay timer for wheel cutter
@@ -33,8 +35,6 @@ func _on_RestTimer_timeout():
 	
 	launch_timer.start()
 	sprite_ani.play("Producing")
-	
-	FJ_AudioManager.sfx_combat_wheel_cutter.play()
 
 
 func _spawn_wheel_cutter():

@@ -17,7 +17,8 @@ enum preset_range_checking_mode {
 #Dead sound effect
 enum dead_sfx {
 	COLLAPSE,
-	LARGE_EXPLOSION
+	LARGE_EXPLOSION,
+	LARGE_EXPLOSION_MM3
 }
 
 const PICKUP_NONE = ""
@@ -333,6 +334,8 @@ func play_death_sfx():
 			FJ_AudioManager.sfx_character_enemy_collapse.play()
 		dead_sfx.LARGE_EXPLOSION:
 			FJ_AudioManager.sfx_combat_large_explosion.play()
+		dead_sfx.LARGE_EXPLOSION_MM3:
+			FJ_AudioManager.sfx_combat_large_explosion_mm3.play()
 	
 
 func spawn_damage_counter(damage, offset : Vector2 = Vector2(0, 0)):

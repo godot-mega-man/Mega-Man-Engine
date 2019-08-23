@@ -17,7 +17,7 @@ script = ExtResource( 2 )
 sprite_preview_texture = ExtResource( 3 )
 damage_area_nodes = [ NodePath("DamageArea2D") ]
 explosion_effect = ExtResource( 4 )
-death_sound = 1
+death_sound = 2
 contact_damage = 6.0
 pickups_drop_enabled = false
 

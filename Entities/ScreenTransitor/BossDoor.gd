@@ -1,5 +1,7 @@
 extends ScreenTransitor
 
+export (bool) var hide_after_opened = false
+
 onready var sprite_ani = $Sprite/AnimationPlayer
 onready var door_close_timer = $DoorCloseTimer
 
@@ -15,5 +17,9 @@ func _on_ScreenTransitor_transition_activated() -> void:
 	FJ_AudioManager.sfx_env_boss_door.play()
 
 func _on_DoorCloseTimer_timeout() -> void:
-	sprite_ani.play("DoorClose")
+	if not hide_after_opened:
+		sprite_ani.play("DoorClose")
+	else:
+		rect_position.x -= 16 
+	
 	FJ_AudioManager.sfx_env_boss_door.play()

@@ -121,6 +121,7 @@ onready var sfx_combat_flame_burst : AudioStreamPlayer = $SFX/Combat/Sfx_FlameBu
 onready var sfx_combat_ice_break : AudioStreamPlayer = $SFX/Combat/Sfx_IceBreak
 onready var sfx_combat_ice_make : AudioStreamPlayer = $SFX/Combat/Sfx_IceMake
 onready var sfx_combat_large_explosion : AudioStreamPlayer = $SFX/Combat/Sfx_LargeExplosion
+onready var sfx_combat_large_explosion_mm3 : AudioStreamPlayer = $SFX/Combat/Sfx_LargeExplosionMM3
 onready var sfx_combat_power_fall : AudioStreamPlayer = $SFX/Combat/Sfx_PowerFall
 onready var sfx_combat_power_landing : AudioStreamPlayer = $SFX/Combat/Sfx_PowerLanding
 onready var sfx_combat_power_launch : AudioStreamPlayer = $SFX/Combat/Sfx_PowerLaunch

@@ -46,7 +46,10 @@ func _on_PlatformBehavior_by_wall():
 func _on_PlatformBehavior_collided(kinematic_collision_2d):
 	if kinematic_collision_2d is KinematicCollision2D:
 		var collider = kinematic_collision_2d.get_collider()
+		
+		#If landed on death spike that's lava.
 		if collider is DeathSpike:
-			current_hp = 0
-			check_for_death()
+			if collider.is_lava:
+				current_hp = 0
+				check_for_death()
 			
