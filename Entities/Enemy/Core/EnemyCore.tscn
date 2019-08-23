@@ -165,9 +165,10 @@ rect = Rect2( -8, -8, 16, 16 )
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 visible = false
+pause_animations = false
+freeze_bodies = false
 pause_particles = false
-process_parent = true
-physics_process_parent = true
+pause_animated_sprites = false
 
 [node name="PickupsDropSet" parent="." instance=ExtResource( 8 )]
 items = [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ]

@@ -6,12 +6,11 @@
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=5]
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "New Anim"
+[sub_resource type="Animation" id=2]
 length = 0.1
 loop = true
 step = 0.05
@@ -28,15 +27,15 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4, 4 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8, 8 )
 
 [node name="WheelCutter" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-sprite_preview_texture = SubResource( 4 )
+sprite_preview_texture = SubResource( 1 )
 damage_area_nodes = [ NodePath("DamageArea2D") ]
 contact_damage = 8.0
 hit_points_base = 5
@@ -51,11 +50,11 @@ hframes = 2
 
 [node name="Ani" type="AnimationPlayer" parent="SpriteMain" index="2"]
 autoplay = "New Anim"
-"anims/New Anim" = SubResource( 1 )
+"anims/New Anim" = SubResource( 2 )
 
 [node name="PlatformCollisionShape2D" parent="." index="2"]
 visible = true
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 disabled = false
 
 [node name="InitialStateStartTimer" type="Timer" parent="." index="9"]
@@ -70,7 +69,7 @@ collision_mask = 6
 [node name="ProjectileReflector" parent="DamageArea2D" index="0" instance=ExtResource( 5 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D" index="1"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 [connection signal="by_wall" from="PlatformBehavior" to="." method="_on_PlatformBehavior_by_wall"]
 [connection signal="hit_ceiling" from="PlatformBehavior" to="." method="_on_PlatformBehavior_hit_ceiling"]
 [connection signal="landed" from="PlatformBehavior" to="." method="_on_PlatformBehavior_landed"]

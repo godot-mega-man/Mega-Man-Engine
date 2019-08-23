@@ -3,6 +3,7 @@ extends EnemyCore
 const DIRECTION_LEFT = -1
 const DIRECTION_RIGHT = 1
 
+export var speed = 60
 export var bounce_set_vel_y = -120
 
 onready var pf_bhv = $PlatformBehavior
@@ -10,6 +11,8 @@ onready var pf_bhv = $PlatformBehavior
 var current_dir = -1
 
 func _ready():
+	pf_bhv.WALK_SPEED = speed
+	
 	if player != null:
 		if player.global_position.x > global_position.x:
 			pf_bhv.simulate_walk_right = true

@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [ 192.0, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("./SpriteMain:visible")
+tracks/1/path = NodePath("PlatformCollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -29,10 +29,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("PlatformCollisionShape2D:disabled")
+tracks/2/path = NodePath("SpriteMain:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -41,17 +41,20 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false, true ]
 }
 
 [node name="SpikePlatformUpdown" index="0" instance=ExtResource( 1 )]
 collision_mask = 0
 script = ExtResource( 2 )
-RANGE_CHECKING_MODE = 1
-Y_POS = 88.8889
+Y_POS = 192.0
+detect_range = 64.0
 
 [node name="SpriteMain" parent="." index="0"]
 visible = false
+
+[node name="PlatformCollisionShape2D" parent="." index="1"]
+disabled = true
 
 [node name="YPositionAni" type="AnimationPlayer" parent="." index="10"]
 playback_process_mode = 0
