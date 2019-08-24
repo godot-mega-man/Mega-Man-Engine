@@ -44,6 +44,7 @@ var max_mp = 20
 var attack_power = DAMAGE_BASE
 var is_invincible = false
 var is_attack_ready = true
+var is_fell_into_pit = false
 var attack_cooldown_apply_time = 0.05
 var attack_type = 0 #0:By Pressing action button, 1:Holding action button
 var attack_hold_time = 0 #Increase as the attack button is pressed.
@@ -55,6 +56,7 @@ var taking_damage_slide_pos := 0 #Use only x-axis!
 var is_sliding = false
 var slide_remaining : float
 var slide_direction_x : float = 0 #-1 and 1 value are used.
+
 
 #Player's child nodes
 onready var pf_bhv := $PlatformBehavior as FJ_PlatformBehavior2D
@@ -75,6 +77,7 @@ onready var damage_sprite_ani = $DamageSprite/Ani
 onready var slide_dust_pos = $PlatformerSprite/SlideDustPos
 onready var palette_ani_player = $PlatformerSprite/PaletteAniPlayer
 onready var palette_ani_player_changer = $PlatformerSprite/PaletteAniPlayer/PaletteAniChanger
+onready var death_freeze_timer = $DeathFreezeTimer
 
 onready var level_camera := get_node_or_null("/root/Level/Camera2D") as Camera2D
 
@@ -125,7 +128,7 @@ func _process(delta):
 
 func _input(event):
 	if event is InputEventKey:
-		if event.get_scancode() == SUICIDE_KEY:
+		if event.get_scancode() == SUICIDE_KEY and event.is_pressed():
 			if !pf_bhv.INITIAL_STATE:
 				return
 			if !pf_bhv.CONTROL_ENABLE:
@@ -134,8 +137,6 @@ func _input(event):
 				return
 			player_death()
 			GameHUD.update_player_vital_bar(0)
-			
-			emit_signal("player_die_normally")
 
 #Check if jump key is holding while in the air.
 #Otherwise, resets velocity y
@@ -177,8 +178,9 @@ func set_starting_stats():
 	GameHUD.update_player_vital_bar(current_hp)
 
 func _on_PlatformerBehavior_fell_into_pit() -> void:
-	#Spawn damage counter.
 	current_hp = 0
+	is_fell_into_pit = true
+	
 	#Update GUI
 	GameHUD.update_player_vital_bar(current_hp)
 	player_death()
@@ -332,7 +334,8 @@ func player_take_damage(damage_amount : int, repel_player : bool = false, repel_
 	invis_timer.start(new_invis_time)
 	
 	#Plays flashing animation
-	damage_sprite_ani.play("Flashing")
+	if current_hp > 0:
+		damage_sprite_ani.play("Flashing")
 	
 	#Spawn damage counter
 	spawn_damage_counter(damage_amount)
@@ -347,7 +350,6 @@ func player_take_damage(damage_amount : int, repel_player : bool = false, repel_
 	#Check for death
 	if current_hp <= 0:
 		player_death()
-		emit_signal('player_die_normally')
 		
 	else:
 		FJ_AudioManager.sfx_character_player_damage.play()
@@ -464,6 +466,9 @@ func spawn_damage_counter(damage, var spawn_offset : Vector2 = Vector2(0,0)):
 	dmg_text.get_node('Label').add_color_override("font_color", Color(1,0,0,1))
 
 func spawn_vulnerable_effect():
+	if current_hp <= 0:
+		return
+	
 	var eff = vulnerable_effect.instance()
 	get_parent().add_child(eff)
 	eff.global_position = self.global_position
@@ -473,28 +478,43 @@ func spawn_vulnerable_effect():
 #Why? The character can die... but that won't affect
 #the main story. You may get a game over screen or lost 1UP.
 func player_death():
-	current_hp = 0
-	#Tell the scene that the player has died
-	emit_signal('player_die')
-	
-	#Create Explosion effect
-	var effect = explosion_effect.instance()
-	effect.position = self.global_position
-	get_parent().add_child(effect)
-	
-	#Play death sound
+	#Stop mega buster charging sound.
 	FJ_AudioManager.sfx_combat_buster_charging.call_deferred("stop")
-	FJ_AudioManager.sfx_character_player_die.play()
+	#Stops landing sound
+	FJ_AudioManager.sfx_character_land.call_deferred("stop")
 	
-	#Shake the camera (if exists)
-	if level_camera != null:
-		level_camera.shake_camera(0.5, 100, 30)
+	#Stop music
+	FJ_AudioManager.stop_bgm()
+	
+#	#Shake the camera (if exists)
+#	if level_camera != null:
+#		level_camera.shake_camera(0.5, 100, 30)
 	
 	#Restore hp on scene load. Because we wanted player to restore health
 	#after the player is respawned.
 	player_stats.restore_hp_on_load = true
 	
 	player_stats.is_died = true #PLAYER IS DEAD!
+	
+	if is_fell_into_pit:
+		die()
+	else:
+		death_freeze_timer.start()
+		get_tree().set_pause(true)
+
+func _on_DeathFreezeTimer_timeout() -> void:
+	die()
+
+func die():
+	current_hp = 0
+	#Tell the scene that the player has died
+	emit_signal('player_die')
+	
+	if not is_fell_into_pit:
+		emit_signal('player_die_normally')
+	
+	#Play death sound
+	FJ_AudioManager.sfx_character_player_die.play()
 	
 	#Reset to initial palette, prevents weapon energy palette glitch
 	CURRENT_PALETTE_STATE = 0
@@ -503,6 +523,8 @@ func player_death():
 	#Stop everything
 	#Hide player from view and disable process
 	set_player_disappear(true)
+	
+	get_tree().set_pause(false)
 
 #Spawn coins particle 
 #Called by Level.
@@ -725,3 +747,4 @@ func play_teleport_in_sound():
 
 func play_teleport_out_sound():
 	FJ_AudioManager.sfx_character_teleport_out.play()
+

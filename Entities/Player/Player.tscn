@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://DatabaseCore/CharacterData/RokkoChan.tres" type="Resource" id=2]
+[ext_resource path="res://DatabaseCore/CharacterData/MegaMan.tres" type="Resource" id=2]
 [ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Misc/PlatformerSprite/PlatformerSprite.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Sprites/Effects/Damage.png" type="Texture" id=5]
@@ -366,6 +366,11 @@ anims/Flashing = SubResource( 14 )
 anims/StopFlashin = SubResource( 15 )
 
 [node name="Sprite" type="Sprite" parent="."]
+
+[node name="DeathFreezeTimer" type="Timer" parent="."]
+pause_mode = 2
+wait_time = 0.5
+one_shot = true
 [connection signal="input_event" from="." to="." method="_on_Player_input_event"]
 [connection signal="launched_attack" from="." to="PlatformerSprite" method="start_normal_attack_animation"]
 [connection signal="collided" from="PlatformBehavior" to="." method="_on_PlatformerBehavior_collided"]
@@ -373,3 +378,4 @@ anims/StopFlashin = SubResource( 15 )
 [connection signal="jumped_by_keypress" from="PlatformBehavior" to="." method="_on_PlatformBehavior_jumped_by_keypress"]
 [connection signal="landed" from="PlatformBehavior" to="." method="_on_PlatformBehavior_landed"]
 [connection signal="timeout" from="TakingDamageTimer" to="." method="_on_TakingDamageTimer_timeout"]
+[connection signal="timeout" from="DeathFreezeTimer" to="." method="_on_DeathFreezeTimer_timeout"]
