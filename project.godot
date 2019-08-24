@@ -358,6 +358,11 @@ _global_script_classes=[ {
 "class": "ScreenTransitor",
 "language": "GDScript",
 "path": "res://Entities/ScreenTransitor/ScreenTransitor.gd"
+}, {
+"base": "Resource",
+"class": "SpriteColorPaletteData",
+"language": "GDScript",
+"path": "res://Misc/PaletteSpriteCore/SpriteColorPaletteData.gd"
 } ]
 _global_script_class_icons={
 "BitFlagsComparator": "",
@@ -429,7 +434,8 @@ _global_script_class_icons={
 "PlayerProjectile": "",
 "ProjectileReflector": "",
 "RectCentralizer": "",
-"ScreenTransitor": ""
+"ScreenTransitor": "",
+"SpriteColorPaletteData": ""
 }
 
 [application]

@@ -9,7 +9,7 @@ func _ready():
 	#Initialize jump power onto platform behavior.
 	pf_bhv.JUMP_SPEED = jump_power * rand_range(1, jump_power_variance)
 	
-	#Jumps at the beginning, bypassing platform behavior's rule.
+	#Mid-air jumps at the beginning.
 	pf_bhv.jump_start(false)
 
 func _process(delta):

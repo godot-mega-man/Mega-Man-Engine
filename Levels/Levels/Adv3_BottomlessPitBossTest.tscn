@@ -1,80 +1,62 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Levels/Core/Lv_Core.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Sounds/Bgm/Adv3_BottomlessPit.ogg" type="AudioStream" id=2]
-[ext_resource path="res://Assets/Tilesets/BottomlessPitTileset.tres" type="TileSet" id=3]
-[ext_resource path="res://Entities/DeathSpike/DeathSpike.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Misc/ObjSpawner/ObjSpawner.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Entities/Enemy/Obj/Adv3_SpikePlatformFall.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Entities/Enemy/Obj/Adv3_Podoboo.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Entities/ScreenTransitor/BossDoor.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Tilesets/BottomlessPitTileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Entities/DeathSpike/DeathSpike.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Misc/ObjSpawner/ObjSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_SpikePlatformFall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_Boss_FieryLizard.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/ScreenTransitor/BossDoor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=8]
 
 [node name="Level" index="0" instance=ExtResource( 1 )]
 BG_COLOR = Color( 0, 0, 0, 1 )
-MUSIC = ExtResource( 2 )
 
 [node name="TileMap" parent="." index="0"]
-tile_set = ExtResource( 3 )
-tile_data = PoolIntArray( -65536, 22, 0, -65535, 23, 0, -65532, 20, 0, -65531, 21, 0, -65530, 22, 0, -65529, 21, 0, -65528, 22, 0, -65527, 21, 0, -65526, 22, 0, -65525, 23, 0, -65522, 20, 0, -65521, 21, 0, 0, 17, 0, 1, 18, 0, 4, 15, 0, 5, 16, 0, 6, 17, 0, 7, 16, 0, 8, 17, 0, 9, 16, 0, 10, 17, 0, 11, 18, 0, 14, 15, 0, 15, 16, 0, 65536, 22, 0, 65537, 23, 0, 65540, 20, 0, 65541, 21, 0, 65542, 22, 0, 65543, 21, 0, 65544, 22, 0, 65545, 21, 0, 65546, 22, 0, 65547, 23, 0, 65550, 20, 0, 65551, 21, 0, 131072, 17, 0, 131073, 18, 0, 131076, 15, 0, 131077, 16, 0, 131078, 17, 0, 131079, 16, 0, 131080, 17, 0, 131081, 16, 0, 131082, 17, 0, 131083, 18, 0, 131086, 15, 0, 131087, 16, 0, 196608, 22, 0, 196609, 23, 0, 196612, 20, 0, 196613, 21, 0, 196614, 22, 0, 196615, 21, 0, 196616, 22, 0, 196617, 21, 0, 196618, 22, 0, 196619, 23, 0, 196622, 20, 0, 196623, 21, 0, 196630, 14, 0, 196631, 14, 0, 196632, 14, 0, 196633, 14, 0, 262144, 24, 0, 262145, 24, 0, 262146, 24, 0, 262147, 24, 0, 262148, 25, 0, 262149, 26, 0, 262150, 27, 0, 262151, 26, 0, 262152, 27, 0, 262153, 26, 0, 262154, 27, 0, 262155, 28, 0, 262156, 24, 0, 262157, 24, 0, 262158, 24, 0, 262159, 24, 0, 327680, 30, 0, 327681, 31, 0, 327682, 32, 0, 327683, 32, 0, 327684, 30, 0, 327685, 31, 0, 327686, 50, 0, 327696, 14, 0, 327697, 14, 0, 327698, 14, 0, 327699, 14, 0, 327708, 14, 0, 327709, 14, 0, 327710, 14, 0, 327711, 14, 0, 393216, 35, 0, 393217, 36, 0, 393218, 37, 0, 393219, 37, 0, 393220, 35, 0, 393221, 36, 0, 393222, 35, 0, 393223, 56, 0, 458752, 32, 0, 458753, 32, 0, 458754, 30, 0, 458755, 31, 0, 458756, 40, 0, 458757, 42, 0, 458758, 30, 0, 458759, 31, 0, 458760, 44, 0, 524288, 37, 0, 524289, 37, 0, 524290, 35, 0, 524291, 36, 0, 524292, 45, 0, 524293, 47, 0, 524294, 35, 0, 524295, 36, 0, 524296, 37, 0, 524297, 56, 0, 589824, 10, 0, 589825, 11, 0, 589826, 12, 0, 589827, 11, 0, 589828, 12, 0, 589829, 11, 0, 589830, 12, 0, 589831, 11, 0, 589832, 12, 0, 589833, 11, 0, 589834, 12, 0, 589835, 11, 0, 589836, 12, 0, 589837, 11, 0, 589838, 12, 0, 589839, 13, 0, 655360, 15, 0, 655361, 16, 0, 655362, 68, 0, 655364, 17, 0, 655365, 16, 0, 655366, 17, 0, 655367, 16, 0, 655368, 17, 0, 655369, 16, 0, 655370, 17, 0, 655371, 16, 0, 655372, 68, 0, 655374, 17, 0, 655375, 18, 0, 720896, 20, 0, 720897, 21, 0, 720900, 22, 0, 720901, 21, 0, 720902, 22, 0, 720903, 21, 0, 720904, 22, 0, 720905, 21, 0, 720906, 22, 0, 720907, 21, 0, 720910, 22, 0, 720911, 23, 0, 720912, 11, 0, 720913, 12, 0, 720914, 13, 0, 720925, 10, 0, 720926, 11, 0, 720927, 12, 0, 786432, 5, 0, 786433, 5, 0, 786434, 2, 0, 786435, 2, 0, 786436, 5, 0, 786437, 5, 0, 786438, 5, 0, 786439, 5, 0, 786440, 5, 0, 786441, 5, 0, 786442, 5, 0, 786443, 5, 0, 786444, 2, 0, 786445, 2, 0, 786446, 5, 0, 786447, 5, 0, 786448, 5, 0, 786449, 5, 0, 786450, 5, 0, 786451, 5, 0, 786452, 5, 0, 786453, 5, 0, 786454, 5, 0, 786455, 5, 0, 786456, 5, 0, 786457, 5, 0, 786458, 5, 0, 786459, 5, 0, 786460, 5, 0, 786461, 5, 0, 786462, 5, 0, 786463, 5, 0, 851968, 9, 0, 851969, 9, 0, 851970, 7, 0, 851971, 7, 0, 851972, 9, 0, 851973, 9, 0, 851974, 9, 0, 851975, 9, 0, 851976, 9, 0, 851977, 9, 0, 851978, 9, 0, 851979, 9, 0, 851980, 7, 0, 851981, 7, 0, 851982, 9, 0, 851983, 9, 0, 851984, 9, 0, 851985, 9, 0, 851986, 9, 0, 851987, 9, 0, 851988, 9, 0, 851989, 9, 0, 851990, 9, 0, 851991, 9, 0, 851992, 9, 0, 851993, 9, 0, 851994, 9, 0, 851995, 9, 0, 851996, 9, 0, 851997, 9, 0, 851998, 9, 0, 851999, 9, 0 )
+tile_set = ExtResource( 2 )
+tile_data = PoolIntArray( -65536, 22, 0, -65535, 23, 0, -65532, 20, 0, -65531, 21, 0, -65530, 22, 0, -65529, 21, 0, -65528, 22, 0, -65527, 21, 0, -65526, 22, 0, -65525, 23, 0, -65522, 20, 0, -65521, 23, 0, -65504, 24, 0, 0, 17, 0, 1, 18, 0, 4, 15, 0, 5, 16, 0, 6, 17, 0, 7, 16, 0, 8, 17, 0, 9, 16, 0, 10, 17, 0, 11, 18, 0, 14, 15, 0, 15, 18, 0, 32, 24, 0, 65536, 22, 0, 65537, 23, 0, 65540, 20, 0, 65541, 21, 0, 65542, 22, 0, 65543, 21, 0, 65544, 22, 0, 65545, 21, 0, 65546, 22, 0, 65547, 23, 0, 65550, 20, 0, 65551, 23, 0, 65568, 24, 0, 131072, 17, 0, 131073, 18, 0, 131076, 15, 0, 131077, 16, 0, 131078, 17, 0, 131079, 16, 0, 131080, 17, 0, 131081, 16, 0, 131082, 17, 0, 131083, 18, 0, 131086, 15, 0, 131087, 18, 0, 131104, 24, 0, 196608, 22, 0, 196609, 23, 0, 196612, 20, 0, 196613, 21, 0, 196614, 22, 0, 196615, 21, 0, 196616, 22, 0, 196617, 21, 0, 196618, 22, 0, 196619, 23, 0, 196622, 20, 0, 196623, 23, 0, 196630, 14, 0, 196631, 14, 0, 196632, 14, 0, 196633, 14, 0, 196640, 24, 0, 262144, 24, 0, 262145, 24, 0, 262146, 24, 0, 262147, 24, 0, 262148, 25, 0, 262149, 26, 0, 262150, 27, 0, 262151, 26, 0, 262152, 27, 0, 262153, 26, 0, 262154, 27, 0, 262155, 28, 0, 262156, 24, 0, 262157, 24, 0, 262158, 24, 0, 262159, 24, 0, 262176, 24, 0, 327680, 30, 0, 327681, 31, 0, 327682, 32, 0, 327683, 32, 0, 327684, 30, 0, 327685, 31, 0, 327686, 50, 0, 327696, 14, 0, 327697, 14, 0, 327698, 14, 0, 327699, 14, 0, 327708, 14, 0, 327709, 14, 0, 327710, 14, 0, 327711, 14, 0, 327712, 24, 0, 393216, 35, 0, 393217, 36, 0, 393218, 37, 0, 393219, 37, 0, 393220, 35, 0, 393221, 36, 0, 393222, 35, 0, 393223, 56, 0, 393248, 24, 0, 458752, 32, 0, 458753, 32, 0, 458754, 30, 0, 458755, 31, 0, 458756, 40, 0, 458757, 42, 0, 458758, 30, 0, 458759, 31, 0, 458760, 44, 0, 458784, 24, 0, 524288, 37, 0, 524289, 37, 0, 524290, 35, 0, 524291, 36, 0, 524292, 45, 0, 524293, 47, 0, 524294, 35, 0, 524295, 36, 0, 524296, 37, 0, 524297, 56, 0, 524320, 24, 0, 589824, 10, 0, 589825, 11, 0, 589826, 12, 0, 589827, 11, 0, 589828, 12, 0, 589829, 11, 0, 589830, 12, 0, 589831, 11, 0, 589832, 12, 0, 589833, 11, 0, 589834, 12, 0, 589835, 11, 0, 589836, 12, 0, 589837, 11, 0, 589838, 12, 0, 589839, 13, 0, 589856, 24, 0, 655360, 15, 0, 655361, 16, 0, 655362, 68, 0, 655364, 17, 0, 655365, 16, 0, 655366, 17, 0, 655367, 16, 0, 655368, 17, 0, 655369, 16, 0, 655370, 17, 0, 655371, 16, 0, 655372, 68, 0, 655374, 17, 0, 655375, 18, 0, 655376, 12, 0, 655377, 11, 0, 655378, 12, 0, 655379, 13, 0, 655388, 10, 0, 655389, 11, 0, 655390, 12, 0, 655391, 11, 0, 655392, 24, 0, 720896, 20, 0, 720897, 21, 0, 720900, 22, 0, 720901, 21, 0, 720902, 22, 0, 720903, 21, 0, 720904, 22, 0, 720905, 21, 0, 720906, 22, 0, 720907, 21, 0, 720910, 22, 0, 720911, 23, 0, 720912, 17, 0, 720913, 16, 0, 720914, 17, 0, 720915, 18, 0, 720924, 15, 0, 720925, 16, 0, 720926, 17, 0, 720927, 16, 0, 720928, 24, 0, 786432, 5, 0, 786433, 5, 0, 786434, 2, 0, 786435, 2, 0, 786436, 5, 0, 786437, 5, 0, 786438, 5, 0, 786439, 5, 0, 786440, 5, 0, 786441, 5, 0, 786442, 5, 0, 786443, 5, 0, 786444, 2, 0, 786445, 2, 0, 786446, 5, 0, 786447, 5, 0, 786448, 5, 0, 786449, 5, 0, 786450, 5, 0, 786451, 75, 0, 786452, 5, 0, 786453, 5, 0, 786454, 5, 0, 786455, 5, 0, 786456, 5, 0, 786457, 5, 0, 786458, 5, 0, 786459, 5, 0, 786460, 75, 0, 786461, 5, 0, 786462, 5, 0, 786463, 5, 0, 786464, 24, 0, 851968, 9, 0, 851969, 9, 0, 851970, 7, 0, 851971, 7, 0, 851972, 9, 0, 851973, 9, 0, 851974, 9, 0, 851975, 9, 0, 851976, 9, 0, 851977, 9, 0, 851978, 9, 0, 851979, 9, 0, 851980, 7, 0, 851981, 7, 0, 851982, 9, 0, 851983, 9, 0, 851984, 9, 0, 851985, 9, 0, 851986, 9, 0, 851987, 9, 0, 851988, 9, 0, 851989, 9, 0, 851990, 9, 0, 851991, 9, 0, 851992, 9, 0, 851993, 9, 0, 851994, 9, 0, 851995, 9, 0, 851996, 9, 0, 851997, 9, 0, 851998, 9, 0, 851999, 9, 0, 852000, 24, 0 )
 
 [node name="AddDeathSpikeHere" parent="TileMap" index="0"]
 editor/display_folded = true
 
-[node name="Lava" parent="TileMap/AddDeathSpikeHere" index="0" instance=ExtResource( 4 )]
-position = Vector2( 296, 200 )
-is_lava = true
-
-[node name="Lava2" parent="TileMap/AddDeathSpikeHere" index="1" instance=ExtResource( 4 )]
-position = Vector2( 312, 216 )
-is_lava = true
-
-[node name="Lava3" parent="TileMap/AddDeathSpikeHere" index="2" instance=ExtResource( 4 )]
+[node name="Lava5" parent="TileMap/AddDeathSpikeHere" index="0" instance=ExtResource( 3 )]
 position = Vector2( 328, 216 )
 is_lava = true
 
-[node name="Lava4" parent="TileMap/AddDeathSpikeHere" index="3" instance=ExtResource( 4 )]
+[node name="Lava6" parent="TileMap/AddDeathSpikeHere" index="1" instance=ExtResource( 3 )]
 position = Vector2( 344, 216 )
 is_lava = true
 
-[node name="Lava5" parent="TileMap/AddDeathSpikeHere" index="4" instance=ExtResource( 4 )]
+[node name="Lava7" parent="TileMap/AddDeathSpikeHere" index="2" instance=ExtResource( 3 )]
 position = Vector2( 360, 216 )
 is_lava = true
 
-[node name="Lava6" parent="TileMap/AddDeathSpikeHere" index="5" instance=ExtResource( 4 )]
+[node name="Lava8" parent="TileMap/AddDeathSpikeHere" index="3" instance=ExtResource( 3 )]
 position = Vector2( 376, 216 )
 is_lava = true
 
-[node name="Lava7" parent="TileMap/AddDeathSpikeHere" index="6" instance=ExtResource( 4 )]
+[node name="Lava9" parent="TileMap/AddDeathSpikeHere" index="4" instance=ExtResource( 3 )]
 position = Vector2( 392, 216 )
 is_lava = true
 
-[node name="Lava8" parent="TileMap/AddDeathSpikeHere" index="7" instance=ExtResource( 4 )]
+[node name="Lava10" parent="TileMap/AddDeathSpikeHere" index="5" instance=ExtResource( 3 )]
 position = Vector2( 408, 216 )
 is_lava = true
 
-[node name="Lava9" parent="TileMap/AddDeathSpikeHere" index="8" instance=ExtResource( 4 )]
+[node name="Lava11" parent="TileMap/AddDeathSpikeHere" index="6" instance=ExtResource( 3 )]
 position = Vector2( 424, 216 )
 is_lava = true
 
-[node name="Lava10" parent="TileMap/AddDeathSpikeHere" index="9" instance=ExtResource( 4 )]
+[node name="Lava12" parent="TileMap/AddDeathSpikeHere" index="7" instance=ExtResource( 3 )]
 position = Vector2( 440, 216 )
-is_lava = true
-
-[node name="Lava11" parent="TileMap/AddDeathSpikeHere" index="10" instance=ExtResource( 4 )]
-position = Vector2( 456, 216 )
-is_lava = true
-
-[node name="Lava12" parent="TileMap/AddDeathSpikeHere" index="11" instance=ExtResource( 4 )]
-position = Vector2( 472, 200 )
 is_lava = true
 
 [node name="Player" parent="Iterable" index="1"]
 position = Vector2( 128, 131 )
 
-[node name="ObjSpawner" parent="Iterable" index="2" instance=ExtResource( 5 )]
-position = Vector2( 336, 136 )
-obj_spawn = ExtResource( 6 )
+[node name="ObjSpawner" parent="Iterable" index="2" instance=ExtResource( 4 )]
+position = Vector2( 344, 136 )
+obj_spawn = ExtResource( 5 )
 spawn_interval = 3.0
 one_shot = false
 autostart = false
@@ -87,9 +69,9 @@ custom_parameters = {
 }
 obj_deletion_by_signals = [  ]
 
-[node name="ObjSpawner2" parent="Iterable" index="3" instance=ExtResource( 5 )]
-position = Vector2( 352, 136 )
-obj_spawn = ExtResource( 6 )
+[node name="ObjSpawner2" parent="Iterable" index="3" instance=ExtResource( 4 )]
+position = Vector2( 360, 136 )
+obj_spawn = ExtResource( 5 )
 spawn_interval = 3.0
 one_shot = false
 autostart = false
@@ -102,9 +84,9 @@ custom_parameters = {
 }
 obj_deletion_by_signals = [  ]
 
-[node name="ObjSpawner6" parent="Iterable" index="4" instance=ExtResource( 5 )]
-position = Vector2( 416, 136 )
-obj_spawn = ExtResource( 6 )
+[node name="ObjSpawner6" parent="Iterable" index="4" instance=ExtResource( 4 )]
+position = Vector2( 408, 136 )
+obj_spawn = ExtResource( 5 )
 spawn_interval = 3.0
 one_shot = false
 autostart = false
@@ -117,9 +99,9 @@ custom_parameters = {
 }
 obj_deletion_by_signals = [  ]
 
-[node name="ObjSpawner7" parent="Iterable" index="5" instance=ExtResource( 5 )]
-position = Vector2( 432, 136 )
-obj_spawn = ExtResource( 6 )
+[node name="ObjSpawner7" parent="Iterable" index="5" instance=ExtResource( 4 )]
+position = Vector2( 424, 136 )
+obj_spawn = ExtResource( 5 )
 spawn_interval = 3.0
 one_shot = false
 autostart = false
@@ -132,14 +114,12 @@ custom_parameters = {
 }
 obj_deletion_by_signals = [  ]
 
-[node name="P" parent="Iterable" index="6" instance=ExtResource( 5 )]
-position = Vector2( 176, 216 )
-obj_spawn = ExtResource( 7 )
-spawn_on = 3
-spawn_interval = 0.057
+[node name="FieryLizard" parent="Iterable" index="6" instance=ExtResource( 4 )]
+position = Vector2( 480, 56 )
+obj_spawn = ExtResource( 6 )
+spawn_interval = 3.0
 one_shot = false
-autostart = true
-obj_exist_limit = 5
+autostart = false
 activate_only_on_screen = true
 spawn_target_node = NodePath("./..")
 spawn_range = 8.0
@@ -148,77 +128,6 @@ custom_parameters = {
 "permanent_death": false
 }
 obj_deletion_by_signals = [  ]
-
-[node name="P2" parent="Iterable" index="7" instance=ExtResource( 5 )]
-position = Vector2( 200, 216 )
-obj_spawn = ExtResource( 7 )
-spawn_on = 3
-spawn_interval = 0.082
-one_shot = false
-autostart = true
-obj_exist_limit = 5
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-"permanent_death": false
-}
-obj_deletion_by_signals = [  ]
-
-[node name="P3" parent="Iterable" index="8" instance=ExtResource( 5 )]
-position = Vector2( 192, 216 )
-obj_spawn = ExtResource( 7 )
-spawn_on = 3
-spawn_interval = 0.191
-one_shot = false
-autostart = true
-obj_exist_limit = 5
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-"permanent_death": false
-}
-obj_deletion_by_signals = [  ]
-
-[node name="P4" parent="Iterable" index="9" instance=ExtResource( 5 )]
-position = Vector2( 160, 216 )
-obj_spawn = ExtResource( 7 )
-spawn_on = 3
-spawn_interval = 0.589
-one_shot = false
-autostart = true
-obj_exist_limit = 5
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-"permanent_death": false
-}
-obj_deletion_by_signals = [  ]
-
-[node name="P5" parent="Iterable" index="10" instance=ExtResource( 5 )]
-position = Vector2( 152, 216 )
-obj_spawn = ExtResource( 7 )
-spawn_on = 3
-spawn_interval = 0.3
-one_shot = false
-autostart = true
-obj_exist_limit = 5
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
-custom_parameters = {
-"permanent_death": false
-}
-obj_deletion_by_signals = [  ]
-
-[node name="ViewContainer" parent="." index="6"]
-editor/display_folded = true
 
 [node name="View" parent="ViewContainer" index="0"]
 editor/display_folded = true
@@ -229,13 +138,13 @@ margin_bottom = 216.0
 WARPS_PLAYER_AROUND_UP_DOWN = false
 WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="BossDoor" parent="ViewContainer/View" index="2" instance=ExtResource( 8 )]
+[node name="BossDoor" parent="ViewContainer/View" index="2" instance=ExtResource( 7 )]
 margin_left = -16.0
 margin_top = 88.0
 margin_right = 16.0
 margin_bottom = 152.0
 
-[node name="BossDoor2" parent="ViewContainer/View" index="3" instance=ExtResource( 8 )]
+[node name="BossDoor2" parent="ViewContainer/View" index="3" instance=ExtResource( 7 )]
 margin_left = 240.0
 margin_top = 88.0
 margin_right = 272.0
@@ -244,7 +153,7 @@ target_view = NodePath("../../View2")
 active_view = NodePath("..")
 hide_after_opened = true
 
-[node name="View2" parent="ViewContainer" index="1" instance=ExtResource( 9 )]
+[node name="View2" parent="ViewContainer" index="1" instance=ExtResource( 8 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 256.0
 margin_top = -8.0

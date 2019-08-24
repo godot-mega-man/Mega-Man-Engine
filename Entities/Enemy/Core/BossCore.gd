@@ -65,7 +65,7 @@ func create_thuin() -> void:
 var is_posing = true
 
 func _ready():
-	GameHUD.update_boss_vital_bar_colors(Color(vital_bar_primary_color), Color(vital_bar_secondary_color), Color(vital_bar_outline_color))
+	update_current_boss_bar_colors()
 	start_intro_music_or_regular_music()
 	stop_player_controls()
 	GameHUD.connect("boss_vital_bar_fully_filled", self, "_on_boss_vital_bar_fully_filled")
@@ -104,6 +104,9 @@ func _on_boss_vital_bar_fully_filled():
 	emit_signal("boss_done_posing")
 	is_posing = false
 	FJ_AudioManager.sfx_combat_buster_charging.stream_paused = false
+
+func update_current_boss_bar_colors():
+	GameHUD.update_boss_vital_bar_colors(Color(vital_bar_primary_color), Color(vital_bar_secondary_color), Color(vital_bar_outline_color))
 
 #When the boss takes damage, update boss health bar.
 #Makes the boss invincible for a short time.
