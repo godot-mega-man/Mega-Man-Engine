@@ -51,7 +51,9 @@ func hitted_ground():
 		die()
 	else:
 		respawn_start()
-	FJ_AudioManager.sfx_env_platform_explode.play()
+	
+	if active_vis_notifier.is_on_screen():
+		FJ_AudioManager.sfx_env_platform_explode.play()
 
 func respawn_start():
 	var death_effect = explosion_effect.instance()

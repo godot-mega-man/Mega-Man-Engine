@@ -395,6 +395,7 @@ quantity = 1
 script = ExtResource( 2 )
 sprite_preview_texture = SubResource( 1 )
 damage_area_nodes = [ NodePath("DamageArea") ]
+contact_damage = 4.0
 stop_music_after_death = true
 vital_bar_secondary_color = 1770717183
 ice_shard_effect = ExtResource( 4 )
@@ -405,7 +406,6 @@ WALK_SPEED = 120.0
 JUMP_SPEED = 300.0
 VELOCITY_X_DAMPING = 1.0
 INITIAL_STATE = false
-CONTROL_ENABLE = false
 
 [node name="Flip" type="Node2D" parent="." index="1"]
 

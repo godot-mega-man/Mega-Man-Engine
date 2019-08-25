@@ -76,7 +76,7 @@ func summon_large_fiery_balls():
 	if current_phase == 1:
 		fireball_count = 8
 	else:
-		fireball_count = 16
+		fireball_count = 12
 	
 	for i in fireball_count:
 		var fb = large_fieryball.instance()

@@ -100,7 +100,7 @@ func _ready():
 	collect_ready_timer.start(COLLECT_READY_TIME)
 	
 	#Set velocity
-	velocity = Vector2(rand_range(-SWAY_X_RANGE, SWAY_X_RANGE), rand_range(GEYSER_Y_RANGE_MIN, GEYSER_Y_RANGE_MAX))
+	velocity = Vector2(0, rand_range(GEYSER_Y_RANGE_MIN, GEYSER_Y_RANGE_MAX))
 	
 	#Load current item data from item_data variable.
 	load_current_item_data()

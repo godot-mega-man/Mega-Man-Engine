@@ -6,10 +6,10 @@
 [ext_resource path="res://Assets/Sprites/Enemies/Adv3_LargeFieryBall.png" type="Texture" id=4]
 [ext_resource path="res://Misc/PaletteSpriteCore/PaletteSpriteCore.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Curve" id=2]
-_data = [ Vector2( 0, 0.4912 ), 0.0, -2.00253, 0, 1, Vector2( 0.245289, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.738099, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.4912 ), -1.94272, 0.0, 1, 0 ]
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0.5 ), 0.0, -2.02172, 0, 1, Vector2( 0.25, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.75, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5 ), -1.98258, 0.0, 1, 0 ]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Large"
 length = 0.24
 loop = true
@@ -27,7 +27,7 @@ tracks/0/keys = {
 "values": [ 2, 3 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Small"
 length = 0.24
 loop = true
@@ -45,7 +45,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8, 8 )
 
 [node name="LargeFieryBall" index="0" instance=ExtResource( 1 )]
@@ -56,13 +56,13 @@ hit_points_base = 3
 pickups_drop_enabled = false
 
 [node name="SineBehaviorHori" parent="." index="0" instance=ExtResource( 3 )]
-wave = SubResource( 2 )
+wave = SubResource( 5 )
 period = 3.0
 magnitude = 0.0
 
 [node name="SineBehaviorVert" parent="." index="1" instance=ExtResource( 3 )]
 movement = 1
-wave = SubResource( 2 )
+wave = SubResource( 5 )
 period = 3.0
 period_offset = 0.75
 magnitude = 0.0
@@ -80,15 +80,15 @@ outline_color_frame_add = 12
 
 [node name="Ani" type="AnimationPlayer" parent="SpriteMain" index="2"]
 autoplay = "Small"
-anims/Large = SubResource( 3 )
-anims/Small = SubResource( 4 )
+anims/Large = SubResource( 2 )
+anims/Small = SubResource( 3 )
 
 [node name="DamageArea2D" type="Area2D" parent="." index="10"]
 collision_layer = 8
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="LaunchTime" type="Timer" parent="." index="11"]
 wait_time = 2.8

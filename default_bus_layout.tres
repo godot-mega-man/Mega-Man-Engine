@@ -11,5 +11,5 @@ bus/2/name = "BGM"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = 0.0
+bus/2/volume_db = 2.0
 bus/2/send = "Master"

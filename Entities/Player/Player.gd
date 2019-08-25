@@ -482,6 +482,8 @@ func player_death():
 	FJ_AudioManager.sfx_combat_buster_charging.call_deferred("stop")
 	#Stops landing sound
 	FJ_AudioManager.sfx_character_land.call_deferred("stop")
+	#Stops item sound #TODO: remove this if no longer used.
+	FJ_AudioManager.sfx_collectibles_item.stop()
 	
 	#Stop music
 	FJ_AudioManager.stop_bgm()
