@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ShatterHand_Area3_JP.ogg-93837ffcdbc9cea54b2fbc8c1394d667.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Bgm/ShatterHand_Area3_JP.ogg"
+dest_files=[ "res://.import/ShatterHand_Area3_JP.ogg-93837ffcdbc9cea54b2fbc8c1394d667.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=2.39

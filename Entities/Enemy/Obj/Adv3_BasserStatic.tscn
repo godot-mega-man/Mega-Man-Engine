@@ -12,4 +12,5 @@ _data = [ Vector2( 0, 0 ), 0.0, 1.99286, 0, 1, Vector2( 0.5, 1 ), 1.99286, -2.00
 movement = 1
 wave = SubResource( 1 )
 period = 1.0
+period_offset = 0.25
 magnitude = 32.0

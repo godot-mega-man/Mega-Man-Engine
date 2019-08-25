@@ -135,6 +135,9 @@ onready var sfx_env_coin_landing : AudioStreamPlayer = $SFX/Environments/Sfx_Coi
 onready var sfx_env_diamond_landing : AudioStreamPlayer = $SFX/Environments/Sfx_DiamondLanding
 onready var sfx_env_enter_door : AudioStreamPlayer = $SFX/Environments/Sfx_EnterDoor
 onready var sfx_env_fan : AudioStreamPlayer = $SFX/Environments/Sfx_Fan
+onready var sfx_env_platform_explode : AudioStreamPlayer = $SFX/Environments/Sfx_PlatformExplode
+onready var sfx_env_platform_fall : AudioStreamPlayer = $SFX/Environments/Sfx_PlatformFall
+onready var sfx_env_platform_scramble : AudioStreamPlayer = $SFX/Environments/Sfx_PlatformScramble
 
 onready var sfx_ui_boss_fill_hp : AudioStreamPlayer = $SFX/UI/Sfx_BossFillHp
 onready var sfx_ui_game_start : AudioStreamPlayer = $SFX/UI/Sfx_GameStart

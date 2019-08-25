@@ -57,7 +57,7 @@ func _process(delta):
 		second_sprite.frame = parent.frame + secondary_color_frame_add
 		outline_sprite.frame = parent.frame + outline_color_frame_add
 	
-	set_subnode_textures() #Set every frame but once if it's not the same.
+	set_subnode_textures() #Set every frame
 
 #####################
 ### Public Methods

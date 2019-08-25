@@ -15,7 +15,7 @@ script = ExtResource( 2 )
 movement = 1
 wave = SubResource( 1 )
 period = 1.0
-period_offset = 0.5
+period_offset = 0.25
 magnitude = 48.0
 
 [node name="BulletBehavior" parent="." index="1" instance=ExtResource( 4 )]

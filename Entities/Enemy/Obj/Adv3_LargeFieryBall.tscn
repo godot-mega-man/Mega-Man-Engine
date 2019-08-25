@@ -57,12 +57,14 @@ pickups_drop_enabled = false
 
 [node name="SineBehaviorHori" parent="." index="0" instance=ExtResource( 3 )]
 wave = SubResource( 2 )
+period = 3.0
 magnitude = 0.0
 
 [node name="SineBehaviorVert" parent="." index="1" instance=ExtResource( 3 )]
 movement = 1
 wave = SubResource( 2 )
-period_offset = 0.5
+period = 3.0
+period_offset = 0.75
 magnitude = 0.0
 
 [node name="Sprite" parent="SpriteMain" index="0"]
@@ -72,9 +74,12 @@ hframes = 4
 frame = 1
 
 [node name="PaletteSprite" parent="SpriteMain/Sprite" index="0" instance=ExtResource( 5 )]
+primary_color_frame_add = 4
+secondary_color_frame_add = 8
+outline_color_frame_add = 12
 
 [node name="Ani" type="AnimationPlayer" parent="SpriteMain" index="2"]
-autoplay = "Large"
+autoplay = "Small"
 anims/Large = SubResource( 3 )
 anims/Small = SubResource( 4 )
 
@@ -86,7 +91,7 @@ collision_mask = 6
 shape = SubResource( 1 )
 
 [node name="LaunchTime" type="Timer" parent="." index="11"]
-wait_time = 1.6
+wait_time = 2.8
 one_shot = true
 autostart = true
 [connection signal="timeout" from="LaunchTime" to="." method="_on_LaunchTime_timeout"]

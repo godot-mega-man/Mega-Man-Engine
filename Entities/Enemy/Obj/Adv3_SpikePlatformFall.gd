@@ -41,6 +41,7 @@ func activate_fall():
 	is_falling = true
 	sprite_ani.play("Shaking")
 	fall_delay_timer.start()
+	FJ_AudioManager.sfx_env_platform_scramble.play()
 
 func hitted_ground():
 	if is_respawning:
@@ -50,6 +51,7 @@ func hitted_ground():
 		die()
 	else:
 		respawn_start()
+	FJ_AudioManager.sfx_env_platform_explode.play()
 
 func respawn_start():
 	var death_effect = explosion_effect.instance()
@@ -65,6 +67,7 @@ func respawn_start():
 func _on_FallDelayTimer_timeout():
 	pf_bhv.INITIAL_STATE = true
 	sprite_ani.play("Falling")
+	FJ_AudioManager.sfx_env_platform_fall.play()
 
 func _on_RespawnTimer_timeout():
 	sprite_ani.play("Respawning")

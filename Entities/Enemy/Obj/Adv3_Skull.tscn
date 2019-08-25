@@ -26,7 +26,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 13, 13 )
 
 [node name="Skull" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )

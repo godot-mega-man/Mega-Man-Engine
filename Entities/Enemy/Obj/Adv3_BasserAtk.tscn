@@ -22,5 +22,5 @@ process_mode = 1
 movement = 1
 wave = SubResource( 1 )
 period = 1.0
-period_offset = 0.5
+period_offset = 0.25
 magnitude = -48.0
