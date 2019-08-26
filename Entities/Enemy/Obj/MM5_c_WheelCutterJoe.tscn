@@ -90,6 +90,8 @@ hframes = 3
 primary_color_frame_add = 3
 secondary_color_frame_add = 6
 outline_color_frame_add = 9
+current_palette_state = 0
+palette_states = [  ]
 
 [node name="Ani" type="AnimationPlayer" parent="SpriteMain" index="2"]
 autoplay = "Producing"
@@ -100,12 +102,12 @@ anims/Producing = SubResource( 3 )
 position = Vector2( -21, 0 )
 
 [node name="PlatformCollisionShape2D" parent="." index="2"]
-visible = true
 position = Vector2( 0, 2 )
 shape = SubResource( 4 )
 disabled = false
 
 [node name="DamageArea2D" type="Area2D" parent="." index="9"]
+visible = false
 collision_layer = 8
 collision_mask = 6
 

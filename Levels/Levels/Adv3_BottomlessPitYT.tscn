@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Levels/Core/Lv_Core.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sounds/Bgm/ShatterHand_Area3_JP.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Assets/Theme/ClassicThemeV2/ClassicTheme_V2.tres" type="Theme" id=3]
 [ext_resource path="res://Assets/Tilesets/BottomlessPitTileset.tres" type="TileSet" id=4]
-[ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Enemy/Obj/MM5_c_WheelCutterJoe.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=7]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "extends CanvasLayer
 
 const TIPTOE_MODE = \"Tip-toe\"
@@ -32,7 +33,7 @@ func _process(delta):
 				get_node(\"Control/ModeLabel\").set_text(TIPTOE_MODE)
 "
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=2]
 script/source = "extends CanvasLayer
 
 const SLIDING = \"Sliding\"
@@ -56,7 +57,7 @@ func _process(delta):
 				get_node(\"Control/ModeLabel\").set_text(SLIDING)
 "
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Node
 
 func _process(delta) -> void:
@@ -66,8 +67,9 @@ func _process(delta) -> void:
 MUSIC = ExtResource( 2 )
 
 [node name="TiptoePreview" type="CanvasLayer" parent="." index="0"]
+editor/display_folded = true
 layer = -1
-script = SubResource( 2 )
+script = SubResource( 1 )
 
 [node name="Control" type="Control" parent="TiptoePreview" index="0"]
 anchor_right = 1.0
@@ -128,8 +130,9 @@ text = "$Mode"
 align = 2
 
 [node name="SlidePreview" type="CanvasLayer" parent="." index="1"]
+editor/display_folded = true
 layer = -1
-script = SubResource( 3 )
+script = SubResource( 2 )
 
 [node name="Control" type="Control" parent="SlidePreview" index="0"]
 anchor_right = 1.0
@@ -184,17 +187,17 @@ text = "Slide Ending"
 align = 2
 
 [node name="HealthBarHiddener" type="Node" parent="." index="2"]
-script = SubResource( 1 )
+script = SubResource( 3 )
 
 [node name="TileMap" parent="." index="3"]
 tile_set = ExtResource( 4 )
-tile_data = PoolIntArray( -262132, 24, 0, -262131, 24, 0, -262130, 24, 0, -262129, 24, 0, -196596, 24, 0, -196595, 24, 0, -196594, 24, 0, -196593, 24, 0, -131068, 24, 0, -131067, 24, 0, -131066, 24, 0, -131065, 24, 0, -131064, 24, 0, -131063, 24, 0, -131062, 24, 0, -131061, 24, 0, -131060, 24, 0, -131059, 24, 0, -131058, 24, 0, -131057, 24, 0, 458766, 24, 0, 458767, 24, 0, 524302, 24, 0, 524303, 24, 0, 589838, 24, 0, 589839, 24, 0, 589842, 24, 0, 589843, 24, 0, 589848, 24, 0, 589849, 24, 0, 589854, 24, 0, 589855, 24, 0, 655360, 24, 0, 655361, 24, 0, 655362, 24, 0, 655363, 24, 0, 655366, 24, 0, 655367, 24, 0, 655368, 24, 0, 655369, 24, 0, 655370, 24, 0, 655371, 24, 0, 655372, 24, 0, 655373, 24, 0, 655374, 24, 0, 655375, 24, 0, 655378, 24, 0, 655379, 24, 0, 655384, 24, 0, 655385, 24, 0, 655390, 24, 0, 655391, 24, 0, 720896, 24, 0, 720897, 24, 0, 720914, 24, 0, 720915, 24, 0, 720920, 24, 0, 720921, 24, 0, 720926, 24, 0, 720927, 24, 0, 786432, 24, 0, 786433, 24, 0, 786434, 24, 0, 786435, 24, 0, 786436, 24, 0, 786437, 24, 0, 786438, 24, 0, 786439, 24, 0, 786440, 24, 0, 786441, 24, 0, 786442, 24, 0, 786443, 24, 0, 786444, 24, 0, 786445, 24, 0, 786446, 24, 0, 786447, 24, 0, 786448, 24, 0, 786449, 24, 0, 786450, 24, 0, 786451, 24, 0, 786452, 24, 0, 786453, 24, 0, 786454, 24, 0, 786455, 24, 0, 786456, 24, 0, 786457, 24, 0, 786458, 24, 0, 786459, 24, 0, 786460, 24, 0, 786461, 24, 0, 786462, 24, 0, 786463, 24, 0, 851968, 24, 0, 851969, 24, 0, 851970, 24, 0, 851971, 24, 0, 851972, 24, 0, 851973, 24, 0, 851974, 24, 0, 851975, 24, 0, 851976, 24, 0, 851977, 24, 0, 851978, 24, 0, 851979, 24, 0, 851980, 24, 0, 851981, 24, 0, 851982, 24, 0, 851983, 24, 0, 851984, 24, 0, 851985, 24, 0, 851986, 24, 0, 851987, 24, 0, 851988, 24, 0, 851989, 24, 0, 851990, 24, 0, 851991, 24, 0, 851992, 24, 0, 851993, 24, 0, 851994, 24, 0, 851995, 24, 0, 851996, 24, 0, 851997, 24, 0, 851998, 24, 0, 851999, 24, 0 )
+tile_data = PoolIntArray( -524280, 24, 0, -524279, 24, 0, -524278, 24, 0, -524277, 24, 0, -327658, 24, 0, -327657, 24, 0, -327656, 24, 0, -327655, 24, 0, -262140, 24, 0, -262139, 24, 0, -262138, 24, 0, -262137, 24, 0, -262136, 24, 0, -262135, 24, 0, -262134, 24, 0, -262133, 24, 0, -262132, 24, 0, -262131, 24, 0, -262130, 24, 0, -262129, 24, 0, -262128, 24, 0, -262127, 24, 0, -262126, 24, 0, -262125, 24, 0, -262122, 24, 0, -262121, 24, 0, -262120, 24, 0, -262119, 24, 0, -262116, 24, 0, -262115, 24, 0, -262114, 24, 0, -262113, 24, 0, -196604, 24, 0, -196599, 24, 0, -196598, 24, 0, -196593, 24, 0, -196592, 24, 0, -196591, 24, 0, -196590, 24, 0, -196589, 24, 0, -196586, 24, 0, -196585, 24, 0, -196584, 24, 0, -196583, 24, 0, -196580, 24, 0, -196579, 24, 0, -196578, 24, 0, -196577, 24, 0, -131068, 24, 0, -131066, 24, 0, -131060, 24, 0, -131059, 24, 0, -131056, 24, 0, -131055, 24, 0, -131054, 24, 0, -131053, 24, 0, -131052, 24, 0, -131051, 24, 0, -131050, 24, 0, -131049, 24, 0, -131048, 24, 0, -131047, 24, 0, -131046, 24, 0, -131045, 24, 0, -131044, 24, 0, -131043, 24, 0, -131042, 24, 0, -131041, 24, 0, 458766, 24, 0, 458767, 24, 0, 524302, 24, 0, 524303, 24, 0, 589838, 24, 0, 589839, 24, 0, 589842, 24, 0, 589843, 24, 0, 589848, 24, 0, 589849, 24, 0, 589854, 24, 0, 589855, 24, 0, 655360, 24, 0, 655361, 24, 0, 655362, 24, 0, 655363, 24, 0, 655366, 24, 0, 655367, 24, 0, 655368, 24, 0, 655369, 24, 0, 655370, 24, 0, 655371, 24, 0, 655372, 24, 0, 655373, 24, 0, 655374, 24, 0, 655375, 24, 0, 655378, 24, 0, 655379, 24, 0, 655384, 24, 0, 655385, 24, 0, 655390, 24, 0, 655391, 24, 0, 720896, 24, 0, 720897, 24, 0, 720914, 24, 0, 720915, 24, 0, 720920, 24, 0, 720921, 24, 0, 720926, 24, 0, 720927, 24, 0, 786432, 24, 0, 786433, 24, 0, 786434, 24, 0, 786435, 24, 0, 786436, 24, 0, 786437, 24, 0, 786438, 24, 0, 786439, 24, 0, 786440, 24, 0, 786441, 24, 0, 786442, 24, 0, 786443, 24, 0, 786444, 24, 0, 786445, 24, 0, 786446, 24, 0, 786447, 24, 0, 786448, 24, 0, 786449, 24, 0, 786450, 24, 0, 786451, 24, 0, 786452, 24, 0, 786453, 24, 0, 786454, 24, 0, 786455, 24, 0, 786456, 24, 0, 786457, 24, 0, 786458, 24, 0, 786459, 24, 0, 786460, 24, 0, 786461, 24, 0, 786462, 24, 0, 786463, 24, 0, 851968, 24, 0, 851969, 24, 0, 851970, 24, 0, 851971, 24, 0, 851972, 24, 0, 851973, 24, 0, 851974, 24, 0, 851975, 24, 0, 851976, 24, 0, 851977, 24, 0, 851978, 24, 0, 851979, 24, 0, 851980, 24, 0, 851981, 24, 0, 851982, 24, 0, 851983, 24, 0, 851984, 24, 0, 851985, 24, 0, 851986, 24, 0, 851987, 24, 0, 851988, 24, 0, 851989, 24, 0, 851990, 24, 0, 851991, 24, 0, 851992, 24, 0, 851993, 24, 0, 851994, 24, 0, 851995, 24, 0, 851996, 24, 0, 851997, 24, 0, 851998, 24, 0, 851999, 24, 0 )
 
 [node name="Player" parent="Iterable" index="1"]
 position = Vector2( 136, -80 )
 
-[node name="ViewContainer" parent="." index="9"]
-visible = false
+[node name="WheelCutterJoe" parent="Iterable" index="2" instance=ExtResource( 5 )]
+position = Vector2( 768, -128 )
 
 [node name="View" parent="ViewContainer" index="0"]
 modulate = Color( 1, 1, 1, 1 )
@@ -202,7 +205,7 @@ margin_top = -232.0
 margin_right = 256.0
 margin_bottom = -8.0
 
-[node name="ScreenTransitor" parent="ViewContainer/View" index="2" instance=ExtResource( 5 )]
+[node name="ScreenTransitor" parent="ViewContainer/View" index="2" instance=ExtResource( 6 )]
 margin_top = 224.0
 margin_right = 64.0
 margin_bottom = 240.0
@@ -210,11 +213,34 @@ target_view = NodePath("../../View2")
 active_view = NodePath("..")
 direction = 3
 
-[node name="View2" parent="ViewContainer" index="1" instance=ExtResource( 6 )]
+[node name="ScreenTransitor2" parent="ViewContainer/View" index="3" instance=ExtResource( 6 )]
+margin_left = 256.0
+margin_right = 272.0
+margin_bottom = 168.0
+target_view = NodePath("../../View3")
+active_view = NodePath("..")
+direction = 1
+
+[node name="View2" parent="ViewContainer" index="1" instance=ExtResource( 7 )]
 margin_top = -8.0
 margin_right = 512.0
 margin_bottom = 216.0
 WARPS_PLAYER_AROUND_UP_DOWN = false
 WARPS_PLAYER_LEFT_RIGHT_SIDE = false
+
+[node name="View3" parent="ViewContainer" index="2" instance=ExtResource( 7 )]
+margin_left = 256.0
+margin_top = -232.0
+margin_right = 512.0
+margin_bottom = -8.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
+
+[node name="ScreenTransitor3" parent="ViewContainer/View3" index="2" instance=ExtResource( 6 )]
+margin_left = -16.0
+margin_right = 0.0
+margin_bottom = 168.0
+target_view = NodePath("../../View")
+active_view = NodePath("..")
 
 [editable path="Camera2D"]
