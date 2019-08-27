@@ -8,53 +8,53 @@
 [ext_resource path="res://Misc/PaletteSpriteCore/SpriteColorPaletteData.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Sounds/Sfx/Combat/MM10_BluesCharge.wav" type="AudioStream" id=7]
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 64, 32 )
 
-[sub_resource type="Resource" id=17]
+[sub_resource type="Resource" id=13]
 resource_name = "ColorPalData"
 script = ExtResource( 6 )
 primary_color = 4214751487
 secondary_color = 4288824831
 outline_color = 255
 
-[sub_resource type="Resource" id=18]
+[sub_resource type="Resource" id=14]
 resource_name = "ColorPalData"
 script = ExtResource( 6 )
 primary_color = 4214751487
 secondary_color = 4288824831
 outline_color = 1362100479
 
-[sub_resource type="Resource" id=19]
+[sub_resource type="Resource" id=15]
 resource_name = "ColorPalData"
 script = ExtResource( 6 )
 primary_color = 4214751487
 secondary_color = 4288824831
 outline_color = 2927427839
 
-[sub_resource type="Resource" id=20]
+[sub_resource type="Resource" id=16]
 resource_name = "ColorPalData"
 script = ExtResource( 6 )
 primary_color = 4214751487
 secondary_color = 4288824831
 outline_color = 4223271167
 
-[sub_resource type="Resource" id=21]
+[sub_resource type="Resource" id=17]
 resource_name = "ColorPalData"
 script = ExtResource( 6 )
 primary_color = 4288824831
 secondary_color = 255
 outline_color = 4214751487
 
-[sub_resource type="Resource" id=22]
+[sub_resource type="Resource" id=18]
 resource_name = "ColorPalData"
 script = ExtResource( 6 )
 primary_color = 255
 secondary_color = 4214751487
 outline_color = 4288824831
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=19]
 resource_name = "Charge1"
 length = 0.06
 loop = true
@@ -72,7 +72,7 @@ tracks/0/keys = {
 "values": [ 1, 0 ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=20]
 resource_name = "Charge2"
 length = 0.06
 loop = true
@@ -90,7 +90,7 @@ tracks/0/keys = {
 "values": [ 2, 0 ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=21]
 resource_name = "Charge3"
 length = 0.06
 loop = true
@@ -108,7 +108,7 @@ tracks/0/keys = {
 "values": [ 3, 0 ]
 }
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=22]
 resource_name = "Charge4"
 length = 0.09
 loop = true
@@ -156,7 +156,7 @@ tracks/0/keys = {
 "values": [ "Charge1", "Charge2", "Charge3" ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=23]
 resource_name = "FullyCharged"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:current_animation")
@@ -171,7 +171,7 @@ tracks/0/keys = {
 "values": [ "Charge4" ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=24]
 resource_name = "NoCharge"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:current_animation")
@@ -186,8 +186,7 @@ tracks/0/keys = {
 "values": [ "NoCharge" ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "Attack"
+[sub_resource type="Animation" id=25]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -213,8 +212,7 @@ tracks/1/keys = {
 "values": [ "Idle" ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "Idle"
+[sub_resource type="Animation" id=26]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -230,15 +228,15 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=27]
 extents = Vector2( 8, 16 )
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 8, 12 )
 
 [node name="PoweredColton" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-sprite_preview_texture = SubResource( 23 )
+sprite_preview_texture = SubResource( 12 )
 damage_area_nodes = [ NodePath("DamageArea2D") ]
 contact_damage = 4.0
 hit_points_base = 6
@@ -258,31 +256,31 @@ frame = 4
 primary_color_frame_add = 5
 secondary_color_frame_add = 10
 outline_color_frame_add = 15
-palette_states = [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ]
+palette_states = [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ]
 
 [node name="PaletteAni" type="AnimationPlayer" parent="SpriteMain/Sprite" index="1"]
 autoplay = "Charge4"
-anims/Charge1 = SubResource( 24 )
-anims/Charge2 = SubResource( 27 )
-anims/Charge3 = SubResource( 28 )
-anims/Charge4 = SubResource( 29 )
+anims/Charge1 = SubResource( 19 )
+anims/Charge2 = SubResource( 20 )
+anims/Charge3 = SubResource( 21 )
+anims/Charge4 = SubResource( 22 )
 anims/NoCharge = SubResource( 10 )
 
 [node name="PaletteAniChanger" type="AnimationPlayer" parent="SpriteMain/Sprite/PaletteAni" index="0"]
 anims/Charging = SubResource( 11 )
-anims/FullyCharged = SubResource( 25 )
-anims/NoCharge = SubResource( 26 )
+anims/FullyCharged = SubResource( 23 )
+anims/NoCharge = SubResource( 24 )
 
 [node name="Ani" type="AnimationPlayer" parent="SpriteMain" index="2"]
 autoplay = "Idle"
-anims/Attack = SubResource( 13 )
-anims/Idle = SubResource( 14 )
+anims/Attack = SubResource( 25 )
+anims/Idle = SubResource( 26 )
 
 [node name="FirePosition" type="Position2D" parent="SpriteMain" index="3"]
 position = Vector2( -16, 0 )
 
 [node name="PlatformCollisionShape2D" parent="." index="2"]
-shape = SubResource( 15 )
+shape = SubResource( 27 )
 disabled = false
 
 [node name="DamageArea2D" type="Area2D" parent="." index="9"]
@@ -291,7 +289,7 @@ collision_layer = 8
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D" index="0"]
-shape = SubResource( 16 )
+shape = SubResource( 28 )
 
 [node name="TurnTowardsTimer" type="Timer" parent="." index="10"]
 wait_time = 0.2
