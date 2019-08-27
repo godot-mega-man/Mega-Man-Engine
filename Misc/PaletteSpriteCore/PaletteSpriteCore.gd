@@ -17,6 +17,7 @@ class_name PaletteSprite
 #####################
 
 const SPRITE_PALETTE_DATA_RES_NAME = "ColorPalData"
+const SIGNAL_PALETTE_STATES_SUB_RES_CHANGED = "_on_PaletteSprite_changed"
 
 #####################
 ### Properties
@@ -47,17 +48,15 @@ func _ready():
 	update_color_palettes()
 
 func _process(delta):
-	if Engine.is_editor_hint():
-		return
-	
 	var parent = get_parent()
 	
 	if parent is Sprite:
-		primary_sprite.frame = parent.frame + primary_color_frame_add
-		second_sprite.frame = parent.frame + secondary_color_frame_add
-		outline_sprite.frame = parent.frame + outline_color_frame_add
+		$Primary.frame = parent.frame + primary_color_frame_add
+		$Secondary.frame = parent.frame + secondary_color_frame_add
+		$Outline.frame = parent.frame + outline_color_frame_add
 	
 	set_subnode_textures() #Set every frame
+	update_color_palettes()
 
 #####################
 ### Public Methods
@@ -67,41 +66,41 @@ func set_subnode_centered():
 	var parent = get_parent()
 	
 	if parent is Sprite:
-		primary_sprite.centered = parent.centered
-		second_sprite.centered = parent.centered
-		outline_sprite.centered = parent.centered
+		$Primary.centered = parent.centered
+		$Secondary.centered = parent.centered
+		$Outline.centered = parent.centered
 
 func set_subnode_textures():
 	var parent = get_parent()
 	
 	if parent is Sprite:
-		primary_sprite.texture = parent.texture
-		second_sprite.texture = parent.texture
-		outline_sprite.texture = parent.texture
+		$Primary.texture = parent.texture
+		$Secondary.texture = parent.texture
+		$Outline.texture = parent.texture
 
 func set_subnode_hframes():
 	var parent = get_parent()
 	
 	if parent is Sprite:
-		primary_sprite.hframes = parent.hframes
-		second_sprite.hframes = parent.hframes
-		outline_sprite.hframes = parent.hframes
+		$Primary.hframes = parent.hframes
+		$Secondary.hframes = parent.hframes
+		$Outline.hframes = parent.hframes
 
 func set_subnode_vframes():
 	var parent = get_parent()
 	
 	if parent is Sprite:
-		primary_sprite.vframes = parent.vframes
-		second_sprite.vframes = parent.vframes
-		outline_sprite.vframes = parent.vframes
+		$Primary.vframes = parent.vframes
+		$Secondary.vframes = parent.vframes
+		$Outline.vframes = parent.vframes
 
 func set_subnode_offsets():
 	var parent = get_parent()
 	
 	if parent is Sprite:
-		primary_sprite.offset = parent.offset
-		second_sprite.offset = parent.offset
-		outline_sprite.offset = parent.offset
+		$Primary.offset = parent.offset
+		$Secondary.offset = parent.offset
+		$Outline.offset = parent.offset
 
 #Update current palette colors using current palette state.
 #Automatically called when current_palette_state is set.
@@ -109,9 +108,12 @@ func update_color_palettes() -> void:
 	if palette_states.empty():
 		return
 	
-	primary_sprite.modulate = Color((palette_states[current_palette_state] as SpriteColorPaletteData).primary_color)
-	second_sprite.modulate = Color((palette_states[current_palette_state] as SpriteColorPaletteData).secondary_color)
-	outline_sprite.modulate = Color((palette_states[current_palette_state] as SpriteColorPaletteData).outline_color)
+	var sprite_color_pal_data = palette_states[current_palette_state] as SpriteColorPaletteData
+	
+	if sprite_color_pal_data != null:
+		$Primary.modulate = Color(sprite_color_pal_data.primary_color)
+		$Secondary.modulate = Color(sprite_color_pal_data.secondary_color)
+		$Outline.modulate = Color(sprite_color_pal_data.outline_color)
 
 #Get resource: SpriteColorPaletteData
 #Pass -1 (default value) to get SpriteColorPaletteData by current_palette_state 
@@ -143,6 +145,7 @@ func set_current_palette_state(val : int) -> void:
 
 func set_palette_states(val : Array) -> void:
 	palette_states = val
+	update_color_palettes()
 	
 	#Insert color palette data set at the last element
 	#of an array.
@@ -157,5 +160,13 @@ func set_palette_states(val : Array) -> void:
 		var sprite_color_pal_data = SpriteColorPaletteData.new()
 		sprite_color_pal_data.set_name(SPRITE_PALETTE_DATA_RES_NAME)
 		
+		#Connect _script_changed to this node so the sprites
+		#can update the palette sprites when it updates.
+		sprite_color_pal_data.connect("changed", self, SIGNAL_PALETTE_STATES_SUB_RES_CHANGED)
+		
 		#Assign a newly created resource at the end of array.
 		val.push_back(sprite_color_pal_data)
+		
+
+func _on_PaletteSprite_changed():
+	update_color_palettes()
