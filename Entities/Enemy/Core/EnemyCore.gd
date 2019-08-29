@@ -55,6 +55,8 @@ export (preset_range_checking_mode) var RANGE_CHECKING_MODE
 
 export var ACTIVE_ON_SCREEN = Vector2(32, 32) #Active/inactive when the enemy is visible on screen by pixels offset
 
+export var DESTROY_OUTSIDE_SCREEN : bool = true
+
 export var PERMA_DEATH_SCENE = true #Die permanently WITHIN SCENE ONLY instead of respawning everytime enemy dies
 
 export var PERMA_DEATH_LEVEL = false #Die permanently within current level. Useful with bosses and mini-bosses
@@ -410,8 +412,9 @@ func is_at_full_health():
 
 #When enemy leaves the screen, the enemy disappear.
 func _on_ActiveVisNotifier_screen_exited():
-	#Reset to initial state for respawning
-	queue_free_start(false)
+	if DESTROY_OUTSIDE_SCREEN:
+		#Reset to initial state for respawning
+		queue_free_start(false)
 
 func save_death_state():
 	var dead_info = DeadEnemyInfo.new()
