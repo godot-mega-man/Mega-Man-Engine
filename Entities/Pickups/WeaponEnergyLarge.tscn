@@ -5,12 +5,11 @@
 [ext_resource path="res://Assets/Sprites/Collectibles/Pickups/Pickups.png" type="Texture" id=3]
 [ext_resource path="res://Misc/PaletteSpriteCore/PaletteSpriteCore.tscn" type="PackedScene" id=4]
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 46, 16, 16 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "New Anim"
+[sub_resource type="Animation" id=2]
 length = 0.24
 loop = true
 step = 0.12
@@ -27,18 +26,18 @@ tracks/0/keys = {
 "values": [ 24, 25 ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 6, 6 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 7, 4 )
 
-[node name="WeaponEnergyLarge" index="0" instance=ExtResource( 1 )]
-position = Vector2( 0, 2 )
+[node name="WeaponEnergyLarge" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-sprite_preview_texture = SubResource( 4 )
+sprite_preview_texture = SubResource( 1 )
 
 [node name="Sprite" parent="SpriteMain" index="0"]
+position = Vector2( 0, 2 )
 texture = ExtResource( 3 )
 vframes = 8
 hframes = 8
@@ -46,7 +45,7 @@ frame = 24
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
 autoplay = "New Anim"
-"anims/New Anim" = SubResource( 1 )
+"anims/New Anim" = SubResource( 2 )
 
 [node name="PaletteSprite" parent="SpriteMain/Sprite" index="1" instance=ExtResource( 4 )]
 primary_color_frame_add = 2
@@ -54,8 +53,12 @@ secondary_color_frame_add = 4
 outline_color_frame_add = 6
 
 [node name="CollisionShape2D" parent="." index="2"]
-shape = SubResource( 2 )
+position = Vector2( 0, 2 )
+shape = SubResource( 3 )
+
+[node name="CollectArea2D" parent="." index="3"]
+position = Vector2( 0, 2 )
 
 [node name="CollisionShape2D" parent="CollectArea2D" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 [connection signal="collected_by_player" from="." to="." method="_on_WeaponEnergyLarge_collected_by_player"]

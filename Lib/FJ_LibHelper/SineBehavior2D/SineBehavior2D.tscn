@@ -2,10 +2,5 @@
 
 [ext_resource path="res://Lib/FJ_LibHelper/SineBehavior2D/SineBehavior2D.gd" type="Script" id=1]
 
-
-
-
-
 [node name="SineBehavior" type="Node"]
 script = ExtResource( 1 )
-

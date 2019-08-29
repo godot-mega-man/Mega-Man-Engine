@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Entities/Enemy/Core/EnemyProjectileCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemy/Obj/MM7_FreezeCracker.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Enemy/Obj/MM7_FreezeDebris.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Effects/IceCrackEffect/IceShardEffect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Enemy/Obj/MM7_Icicle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Sprites/Effects/FreezeProjectiles.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 0.15
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
+[node name="FreezeCracker" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+damage_area_nodes = [ NodePath("Area2D") ]
+contact_damage = 4.0
+can_hit = true
+hit_points_base = 3
+pickups_drop_enabled = false
+debris = ExtResource( 3 )
+ice_shard_effect = ExtResource( 4 )
+icicle = ExtResource( 5 )
+
+[node name="BulletBehavior" parent="." index="0"]
+speed = 400.0
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+texture = ExtResource( 6 )
+vframes = 3
+hframes = 4
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 1 )
+
+[node name="PlatformCollisionShape2D" parent="." index="2"]
+disabled = false
+
+[node name="Area2D" type="Area2D" parent="." index="6"]
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource( 2 )

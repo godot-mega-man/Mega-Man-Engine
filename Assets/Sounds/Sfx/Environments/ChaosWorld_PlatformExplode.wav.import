@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ChaosWorld_PlatformExplode.wav-15654018f3ed149c46a65ebd6a411f14.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Sfx/Environments/ChaosWorld_PlatformExplode.wav"
+dest_files=[ "res://.import/ChaosWorld_PlatformExplode.wav-15654018f3ed149c46a65ebd6a411f14.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

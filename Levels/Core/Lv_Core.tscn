@@ -1,18 +1,19 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Levels/Core/Level.gd" type="Script" id=1]
 [ext_resource path="res://Lib/FJ_LibHelper/SpriteCycling2D/SpriteCycling2D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://GUI/FadeScreen/FadeScreen.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Fonts/Mega Man 10.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://Camera/Camera2D.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Sprites/Icons/Icon_128.png" type="Texture" id=7]
-[ext_resource path="res://Levels/Views/ViewContainer.gd" type="Script" id=8]
-[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Effects/MM_Thiun/ThiunEffectCreator.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI/FadeScreen/FadeScreen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Fonts/Mega Man 10.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Camera/Camera2D.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Sprites/Icons/Icon_128.png" type="Texture" id=8]
+[ext_resource path="res://Levels/Views/ViewContainer.gd" type="Script" id=9]
+[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
-font_data = ExtResource( 5 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="Animation" id=2]
 tracks/0/type = "value"
@@ -58,11 +59,14 @@ position = Vector2( 166.438, 80.0763 )
 level_path = NodePath("../..")
 tilemap_path = NodePath("../../TileMap")
 
+[node name="ThiunEffectCreator" parent="Iterable/Player" instance=ExtResource( 4 )]
+create_target = NodePath("../..")
+
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
-[node name="FadeScreen" parent="." instance=ExtResource( 4 )]
+[node name="FadeScreen" parent="." instance=ExtResource( 5 )]
 
 [node name="ReadyGUI" type="CanvasLayer" parent="."]
 
@@ -87,20 +91,23 @@ align = 1
 autoplay = "New Anim"
 "anims/New Anim" = SubResource( 2 )
 
-[node name="Camera2D" parent="." instance=ExtResource( 6 )]
+[node name="Camera2D" parent="." instance=ExtResource( 7 )]
 editor/display_folded = true
 
 [node name="Sprite" type="Sprite" parent="Camera2D"]
 visible = false
 scale = Vector2( 0.375, 0.375 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="ViewContainer" type="Control" parent="."]
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 default_view = NodePath("View")
 
-[node name="View" parent="ViewContainer" instance=ExtResource( 9 )]
-[connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="." method="_on_TransitionTween_tween_all_completed"]
+[node name="View" parent="ViewContainer" instance=ExtResource( 10 )]
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
+[connection signal="player_die_normally" from="Iterable/Player" to="Iterable/Player/ThiunEffectCreator" method="create"]
 [connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="Iterable/Player" method="_on_TransitionTween_tween_all_completed"]
+[connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="." method="_on_TransitionTween_tween_all_completed"]
 
 [editable path="Camera2D"]

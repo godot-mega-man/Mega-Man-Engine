@@ -176,18 +176,18 @@ func _do_process(delta: float) -> void:
 	
 	if _parent is Node2D:
 		if movement == MOVEMENT_TYPE.HORIZONTAL:
-			_parent.position.x = _init_position.x + calculated_interpolate_wave
+			_parent.position.x = _init_position.x + calculated_interpolate_wave - (magnitude / 2)
 		if movement == MOVEMENT_TYPE.VERTICAL:
-			_parent.position.y = _init_position.y + calculated_interpolate_wave
+			_parent.position.y = _init_position.y + calculated_interpolate_wave - (magnitude / 2)
 		if movement == MOVEMENT_TYPE.ANGLE:
 			_parent.rotation_degrees = calculated_interpolate_wave
 		if movement == MOVEMENT_TYPE.OPACITY:
 			_parent.modulate.a8 = calculated_interpolate_wave
 	if _parent is Control:
 		if movement == MOVEMENT_TYPE.HORIZONTAL:
-			_parent.rect_position.x = _init_position.x + calculated_interpolate_wave
+			_parent.rect_position.x = _init_position.x + calculated_interpolate_wave - (magnitude / 2)
 		if movement == MOVEMENT_TYPE.VERTICAL:
-			_parent.rect_position.y = _init_position.y + calculated_interpolate_wave
+			_parent.rect_position.y = _init_position.y + calculated_interpolate_wave - (magnitude / 2)
 		if movement == MOVEMENT_TYPE.ANGLE:
 			_parent.rect_rotation = calculated_interpolate_wave
 		if movement == MOVEMENT_TYPE.OPACITY:

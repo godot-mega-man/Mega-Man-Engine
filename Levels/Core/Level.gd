@@ -50,7 +50,6 @@ func _player_die():
 	currency_manager.decrease_coins_as_penalty_by_ratio(0.05)
 	player.spawn_death_coins(currency_manager.coin_lost)
 	death_timer.start()
-	FJ_AudioManager.stop_bgm()
 	#Hide controls GUI
 	#Load last saved view
 	print('Level:_player_die() : View updated with saved checkpoint.')

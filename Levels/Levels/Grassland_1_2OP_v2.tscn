@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Levels/Core/Lv_Core.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sounds/Bgm/BBLIR.ogg" type="AudioStream" id=2]
@@ -6,34 +6,50 @@
 [ext_resource path="res://Assets/Tilesets/GrasslandTileset.tres" type="TileSet" id=4]
 [ext_resource path="res://Entities/DeathSpike/DeathSpike.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=6]
-[ext_resource path="res://Entities/Effects/MM_Thiun/ThiunEffectCreator.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Misc/ObjSpawner/ObjSpawner.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Entities/Enemy/Obj/CountBomb.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Entities/Enemy/Obj/MachineGunJoe.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Entities/Enemy/Obj/Metall.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Entities/Enemy/Obj/MetallK1000.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Entities/Enemy/Obj/ObjFanUp.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Entities/Enemy/Obj/TestJunkBlock.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Entities/Enemy/Obj/ShieldAttacker.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Entities/Enemy/Obj/Icicle.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Entities/Enemy/Obj/Hammer.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Entities/Enemy/Obj/100Watton.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Entities/Enemy/Obj/Dompan.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Entities/Pickups/WeaponEnergyLarge.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Entities/Enemy/Obj/PowerSlam.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Entities/Enemy/Obj/DiarnSP.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Entities/Enemy/Obj/Boss_FreezeMan.tscn" type="PackedScene" id=23]
-[ext_resource path="res://Assets/Sounds/Bgm/0-boss.ogg" type="AudioStream" id=24]
-[ext_resource path="res://Entities/CheckpointZone/CheckpointZone.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=26]
-[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=27]
-[ext_resource path="res://Entities/ScreenTransitor/BossDoor.tscn" type="PackedScene" id=28]
-[ext_resource path="res://Entities/BlockChainDestroyer/ChainDestroyController.tscn" type="PackedScene" id=29]
-[ext_resource path="res://Entities/BlockChainDestroyer/AreaChainDestroyer.tscn" type="PackedScene" id=30]
-[ext_resource path="res://Entities/PlayerAreaNotifier/PlayerAreaNotifier.tscn" type="PackedScene" id=31]
-[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBg.png" type="Texture" id=32]
-[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt.png" type="Texture" id=33]
-[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt2.png" type="Texture" id=34]
+[ext_resource path="res://Misc/ObjSpawner/ObjSpawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Enemy/Obj/MM6_CountBomb.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemy/Obj/MM9_c_MachineGunJoe.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_Metall.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Enemy/Obj/MM5_c_MetallK1999.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Enemy/Obj/MM6_ObjFanUp.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Entities/Enemy/Obj/MM3_JunkBlock.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_ShieldAttacker.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Entities/Enemy/Obj/MM7_Icicle.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Entities/Enemy/Obj/IDK_Hammer.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_100Watton.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_Dompan.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Entities/Pickups/WeaponEnergyLarge.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Entities/Enemy/Obj/MM6_PowerSlam.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Entities/Enemy/Obj/MM9_c_DiarnSP.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Entities/Enemy/Obj/MM7_c_Boss_FreezeMan.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Assets/Sounds/Bgm/0-boss.ogg" type="AudioStream" id=23]
+[ext_resource path="res://Entities/CheckpointZone/CheckpointZone.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Entities/ScreenTransitor/BossDoor.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Entities/BlockChainDestroyer/ChainDestroyController.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Entities/BlockChainDestroyer/AreaChainDestroyer.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Entities/PlayerAreaNotifier/PlayerAreaNotifier.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBg.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt2.png" type="Texture" id=33]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends ParallaxBackground
@@ -468,315 +484,311 @@ Extends from
 original level."
 
 [node name="Player" parent="Iterable" index="2"]
-editor/display_folded = true
 position = Vector2( -128, 435 )
 
-[node name="ThiunEffectCreator" parent="Iterable/Player" index="11" instance=ExtResource( 7 )]
-create_target = NodePath("../..")
-
-[node name="CountBomb32" parent="Iterable" index="3" instance=ExtResource( 8 )]
+[node name="CountBomb32" parent="Iterable" index="3" instance=ExtResource( 7 )]
 position = Vector2( 120, 464 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb28" parent="Iterable" index="4" instance=ExtResource( 8 )]
+[node name="CountBomb28" parent="Iterable" index="4" instance=ExtResource( 7 )]
 position = Vector2( 136, 464 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb48" parent="Iterable" index="5" instance=ExtResource( 8 )]
+[node name="CountBomb48" parent="Iterable" index="5" instance=ExtResource( 7 )]
 position = Vector2( 152, 464 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="Joe" parent="Iterable" index="6" instance=ExtResource( 8 )]
+[node name="Joe" parent="Iterable" index="6" instance=ExtResource( 7 )]
 position = Vector2( 384, 416 )
-obj_spawn = ExtResource( 10 )
+obj_spawn = ExtResource( 9 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb29" parent="Iterable" index="7" instance=ExtResource( 8 )]
+[node name="CountBomb29" parent="Iterable" index="7" instance=ExtResource( 7 )]
 position = Vector2( 280, 464 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb30" parent="Iterable" index="8" instance=ExtResource( 8 )]
+[node name="CountBomb30" parent="Iterable" index="8" instance=ExtResource( 7 )]
 position = Vector2( 296, 464 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb31" parent="Iterable" index="9" instance=ExtResource( 8 )]
+[node name="CountBomb31" parent="Iterable" index="9" instance=ExtResource( 7 )]
 position = Vector2( 312, 464 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="Joe5" parent="Iterable" index="10" instance=ExtResource( 7 )]
+position = Vector2( 208, 400 )
 obj_spawn = ExtResource( 9 )
 custom_parameters = {
 
 }
 
-[node name="Joe5" parent="Iterable" index="10" instance=ExtResource( 8 )]
-position = Vector2( 208, 400 )
+[node name="Met11" parent="Iterable" index="11" instance=ExtResource( 7 )]
+position = Vector2( 472, 360 )
 obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="Met11" parent="Iterable" index="11" instance=ExtResource( 8 )]
-position = Vector2( 472, 360 )
-obj_spawn = ExtResource( 11 )
-custom_parameters = {
-
-}
-
-[node name="Met12" parent="Iterable" index="12" instance=ExtResource( 8 )]
+[node name="Met12" parent="Iterable" index="12" instance=ExtResource( 7 )]
 position = Vector2( 488, 360 )
-obj_spawn = ExtResource( 11 )
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="Met13" parent="Iterable" index="13" instance=ExtResource( 8 )]
+[node name="Met13" parent="Iterable" index="13" instance=ExtResource( 7 )]
 position = Vector2( 504, 360 )
-obj_spawn = ExtResource( 11 )
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="Met14" parent="Iterable" index="14" instance=ExtResource( 8 )]
+[node name="Met14" parent="Iterable" index="14" instance=ExtResource( 7 )]
 position = Vector2( 520, 328 )
-obj_spawn = ExtResource( 11 )
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="Met15" parent="Iterable" index="15" instance=ExtResource( 8 )]
+[node name="Met15" parent="Iterable" index="15" instance=ExtResource( 7 )]
 position = Vector2( 440, 312 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="MetK1009" parent="Iterable" index="16" instance=ExtResource( 7 )]
+position = Vector2( 608, 304 )
 obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
 
-[node name="MetK1009" parent="Iterable" index="16" instance=ExtResource( 8 )]
-position = Vector2( 608, 304 )
+[node name="Met2" parent="Iterable" index="17" instance=ExtResource( 7 )]
+position = Vector2( 312, 280 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="Fan9" parent="Iterable" index="18" instance=ExtResource( 7 )]
+position = Vector2( 272, 296 )
 obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
 
-[node name="Met2" parent="Iterable" index="17" instance=ExtResource( 8 )]
-position = Vector2( 312, 280 )
-obj_spawn = ExtResource( 11 )
-custom_parameters = {
-
-}
-
-[node name="Fan9" parent="Iterable" index="18" instance=ExtResource( 8 )]
-position = Vector2( 272, 296 )
-obj_spawn = ExtResource( 13 )
-custom_parameters = {
-
-}
-
-[node name="Joe4" parent="Iterable" index="19" instance=ExtResource( 8 )]
+[node name="Joe4" parent="Iterable" index="19" instance=ExtResource( 7 )]
 position = Vector2( 384, 160 )
-obj_spawn = ExtResource( 10 )
+obj_spawn = ExtResource( 9 )
 custom_parameters = {
 
 }
 
-[node name="Fan10" parent="Iterable" index="20" instance=ExtResource( 8 )]
+[node name="Fan10" parent="Iterable" index="20" instance=ExtResource( 7 )]
 position = Vector2( 496, 200 )
-obj_spawn = ExtResource( 13 )
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
 
-[node name="Met16" parent="Iterable" index="21" instance=ExtResource( 8 )]
+[node name="Met16" parent="Iterable" index="21" instance=ExtResource( 7 )]
 position = Vector2( 520, 168 )
-obj_spawn = ExtResource( 11 )
-custom_parameters = {
-
-}
-
-[node name="Junk" parent="Iterable" index="22" instance=ExtResource( 8 )]
-position = Vector2( 560, 0 )
-obj_spawn = ExtResource( 14 )
-spawn_on = 1
-spawn_interval = 1.2
-autostart = true
-custom_parameters = {
-
-}
-
-[node name="Met3" parent="Iterable" index="23" instance=ExtResource( 8 )]
-position = Vector2( 648, 168 )
-obj_spawn = ExtResource( 11 )
-custom_parameters = {
-
-}
-
-[node name="Met17" parent="Iterable" index="24" instance=ExtResource( 8 )]
-position = Vector2( 856, 200 )
-obj_spawn = ExtResource( 11 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb33" parent="Iterable" index="25" instance=ExtResource( 8 )]
-position = Vector2( 992, 224 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="Junk2" parent="Iterable" index="26" instance=ExtResource( 8 )]
-position = Vector2( 1056, 240 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 1.2
-custom_parameters = {
-
-}
-
-[node name="Junk3" parent="Iterable" index="27" instance=ExtResource( 8 )]
-position = Vector2( 1072, 208 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 1.2
-custom_parameters = {
-
-}
-
-[node name="Junk4" parent="Iterable" index="28" instance=ExtResource( 8 )]
-position = Vector2( 1088, 176 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 1.2
-custom_parameters = {
-
-}
-
-[node name="CountBomb" parent="Iterable" index="29" instance=ExtResource( 8 )]
-position = Vector2( 1176, 656 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb34" parent="Iterable" index="30" instance=ExtResource( 8 )]
-position = Vector2( 1160, 656 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb35" parent="Iterable" index="31" instance=ExtResource( 8 )]
-position = Vector2( 1144, 656 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb36" parent="Iterable" index="32" instance=ExtResource( 8 )]
-position = Vector2( 1080, 664 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb37" parent="Iterable" index="33" instance=ExtResource( 8 )]
-position = Vector2( 1064, 664 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb38" parent="Iterable" index="34" instance=ExtResource( 8 )]
-position = Vector2( 1048, 664 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb39" parent="Iterable" index="35" instance=ExtResource( 8 )]
-position = Vector2( 952, 672 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb41" parent="Iterable" index="36" instance=ExtResource( 8 )]
-position = Vector2( 936, 672 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb42" parent="Iterable" index="37" instance=ExtResource( 8 )]
-position = Vector2( 872, 688 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb43" parent="Iterable" index="38" instance=ExtResource( 8 )]
-position = Vector2( 968, 672 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb44" parent="Iterable" index="39" instance=ExtResource( 8 )]
-position = Vector2( 840, 688 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb45" parent="Iterable" index="40" instance=ExtResource( 8 )]
-position = Vector2( 856, 688 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="ShieldAtk" parent="Iterable" index="41" instance=ExtResource( 8 )]
-position = Vector2( 864, 624 )
-obj_spawn = ExtResource( 15 )
-custom_parameters = {
-
-}
-
-[node name="ShieldAtk2" parent="Iterable" index="42" instance=ExtResource( 8 )]
-position = Vector2( 848, 656 )
-obj_spawn = ExtResource( 15 )
-custom_parameters = {
-
-}
-
-[node name="Met20" parent="Iterable" index="43" instance=ExtResource( 8 )]
-position = Vector2( 904, 616 )
-obj_spawn = ExtResource( 11 )
-custom_parameters = {
-
-}
-
-[node name="Joe2" parent="Iterable" index="44" instance=ExtResource( 8 )]
-position = Vector2( 912, 144 )
 obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="Icicl11" parent="Iterable" index="45" instance=ExtResource( 8 )]
+[node name="Junk" parent="Iterable" index="22" instance=ExtResource( 7 )]
+position = Vector2( 560, 0 )
+obj_spawn = ExtResource( 13 )
+spawn_on = 1
+spawn_interval = 1.2
+autostart = true
+custom_parameters = {
+
+}
+
+[node name="Met3" parent="Iterable" index="23" instance=ExtResource( 7 )]
+position = Vector2( 648, 168 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="Met17" parent="Iterable" index="24" instance=ExtResource( 7 )]
+position = Vector2( 856, 200 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb33" parent="Iterable" index="25" instance=ExtResource( 7 )]
+position = Vector2( 992, 224 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="Junk2" parent="Iterable" index="26" instance=ExtResource( 7 )]
+position = Vector2( 1056, 240 )
+obj_spawn = ExtResource( 13 )
+spawn_interval = 1.2
+custom_parameters = {
+
+}
+
+[node name="Junk3" parent="Iterable" index="27" instance=ExtResource( 7 )]
+position = Vector2( 1072, 208 )
+obj_spawn = ExtResource( 13 )
+spawn_interval = 1.2
+custom_parameters = {
+
+}
+
+[node name="Junk4" parent="Iterable" index="28" instance=ExtResource( 7 )]
+position = Vector2( 1088, 176 )
+obj_spawn = ExtResource( 13 )
+spawn_interval = 1.2
+custom_parameters = {
+
+}
+
+[node name="CountBomb" parent="Iterable" index="29" instance=ExtResource( 7 )]
+position = Vector2( 1176, 656 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb34" parent="Iterable" index="30" instance=ExtResource( 7 )]
+position = Vector2( 1160, 656 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb35" parent="Iterable" index="31" instance=ExtResource( 7 )]
+position = Vector2( 1144, 656 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb36" parent="Iterable" index="32" instance=ExtResource( 7 )]
+position = Vector2( 1080, 664 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb37" parent="Iterable" index="33" instance=ExtResource( 7 )]
+position = Vector2( 1064, 664 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb38" parent="Iterable" index="34" instance=ExtResource( 7 )]
+position = Vector2( 1048, 664 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb39" parent="Iterable" index="35" instance=ExtResource( 7 )]
+position = Vector2( 952, 672 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb41" parent="Iterable" index="36" instance=ExtResource( 7 )]
+position = Vector2( 936, 672 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb42" parent="Iterable" index="37" instance=ExtResource( 7 )]
+position = Vector2( 872, 688 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb43" parent="Iterable" index="38" instance=ExtResource( 7 )]
+position = Vector2( 968, 672 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb44" parent="Iterable" index="39" instance=ExtResource( 7 )]
+position = Vector2( 840, 688 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb45" parent="Iterable" index="40" instance=ExtResource( 7 )]
+position = Vector2( 856, 688 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="ShieldAtk" parent="Iterable" index="41" instance=ExtResource( 7 )]
+position = Vector2( 864, 624 )
+obj_spawn = ExtResource( 14 )
+custom_parameters = {
+
+}
+
+[node name="ShieldAtk2" parent="Iterable" index="42" instance=ExtResource( 7 )]
+position = Vector2( 848, 656 )
+obj_spawn = ExtResource( 14 )
+custom_parameters = {
+
+}
+
+[node name="Met20" parent="Iterable" index="43" instance=ExtResource( 7 )]
+position = Vector2( 904, 616 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="Joe2" parent="Iterable" index="44" instance=ExtResource( 7 )]
+position = Vector2( 912, 144 )
+obj_spawn = ExtResource( 9 )
+custom_parameters = {
+
+}
+
+[node name="Icicl11" parent="Iterable" index="45" instance=ExtResource( 7 )]
 position = Vector2( 952, 512 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.0
 autostart = true
@@ -785,9 +797,9 @@ custom_parameters = {
 
 }
 
-[node name="Icicl15" parent="Iterable" index="46" instance=ExtResource( 8 )]
+[node name="Icicl15" parent="Iterable" index="46" instance=ExtResource( 7 )]
 position = Vector2( 968, 512 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.0
 autostart = true
@@ -796,9 +808,9 @@ custom_parameters = {
 
 }
 
-[node name="Icicl17" parent="Iterable" index="47" instance=ExtResource( 8 )]
+[node name="Icicl17" parent="Iterable" index="47" instance=ExtResource( 7 )]
 position = Vector2( 1048, 512 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.0
 autostart = true
@@ -807,184 +819,184 @@ custom_parameters = {
 
 }
 
-[node name="ShieldAtk3" parent="Iterable" index="48" instance=ExtResource( 8 )]
+[node name="ShieldAtk3" parent="Iterable" index="48" instance=ExtResource( 7 )]
 position = Vector2( 1048, 912 )
-obj_spawn = ExtResource( 15 )
+obj_spawn = ExtResource( 14 )
 custom_parameters = {
 
 }
 
-[node name="ShieldAtk4" parent="Iterable" index="49" instance=ExtResource( 8 )]
+[node name="ShieldAtk4" parent="Iterable" index="49" instance=ExtResource( 7 )]
 position = Vector2( 1104, 880 )
-obj_spawn = ExtResource( 15 )
+obj_spawn = ExtResource( 14 )
 custom_parameters = {
 
 }
 
-[node name="Met5" parent="Iterable" index="50" instance=ExtResource( 8 )]
+[node name="Met5" parent="Iterable" index="50" instance=ExtResource( 7 )]
 position = Vector2( 824, 920 )
-obj_spawn = ExtResource( 11 )
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="Hammer2" parent="Iterable" index="51" instance=ExtResource( 8 )]
+[node name="Hammer2" parent="Iterable" index="51" instance=ExtResource( 7 )]
 position = Vector2( 1000, 808 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer5" parent="Iterable" index="52" instance=ExtResource( 8 )]
-position = Vector2( 1016, 792 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer10" parent="Iterable" index="53" instance=ExtResource( 8 )]
-position = Vector2( 1032, 792 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer11" parent="Iterable" index="54" instance=ExtResource( 8 )]
-position = Vector2( 1048, 792 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer12" parent="Iterable" index="55" instance=ExtResource( 8 )]
-position = Vector2( 1064, 792 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Met18" parent="Iterable" index="56" instance=ExtResource( 8 )]
-position = Vector2( 1096, 888 )
-obj_spawn = ExtResource( 11 )
-custom_parameters = {
-
-}
-
-[node name="Hammer6" parent="Iterable" index="57" instance=ExtResource( 8 )]
-position = Vector2( 1320, 768 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer7" parent="Iterable" index="58" instance=ExtResource( 8 )]
-position = Vector2( 1336, 768 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer13" parent="Iterable" index="59" instance=ExtResource( 8 )]
-position = Vector2( 1352, 768 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer14" parent="Iterable" index="60" instance=ExtResource( 8 )]
-position = Vector2( 1368, 768 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer8" parent="Iterable" index="61" instance=ExtResource( 8 )]
-position = Vector2( 1416, 784 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer9" parent="Iterable" index="62" instance=ExtResource( 8 )]
-position = Vector2( 1848, 840 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer17" parent="Iterable" index="63" instance=ExtResource( 8 )]
-position = Vector2( 1896, 856 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer18" parent="Iterable" index="64" instance=ExtResource( 8 )]
-position = Vector2( 1912, 856 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer19" parent="Iterable" index="65" instance=ExtResource( 8 )]
-position = Vector2( 1960, 808 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer20" parent="Iterable" index="66" instance=ExtResource( 8 )]
-position = Vector2( 1928, 792 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer21" parent="Iterable" index="67" instance=ExtResource( 8 )]
-position = Vector2( 1832, 808 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer22" parent="Iterable" index="68" instance=ExtResource( 8 )]
-position = Vector2( 1976, 808 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer23" parent="Iterable" index="69" instance=ExtResource( 8 )]
-position = Vector2( 2024, 808 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer24" parent="Iterable" index="70" instance=ExtResource( 8 )]
-position = Vector2( 2040, 808 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer25" parent="Iterable" index="71" instance=ExtResource( 8 )]
-position = Vector2( 2056, 808 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Hammer26" parent="Iterable" index="72" instance=ExtResource( 8 )]
-position = Vector2( 2072, 808 )
-obj_spawn = ExtResource( 17 )
-custom_parameters = {
-
-}
-
-[node name="Icicl12" parent="Iterable" index="73" instance=ExtResource( 8 )]
-position = Vector2( 936, 112 )
 obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer5" parent="Iterable" index="52" instance=ExtResource( 7 )]
+position = Vector2( 1016, 792 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer10" parent="Iterable" index="53" instance=ExtResource( 7 )]
+position = Vector2( 1032, 792 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer11" parent="Iterable" index="54" instance=ExtResource( 7 )]
+position = Vector2( 1048, 792 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer12" parent="Iterable" index="55" instance=ExtResource( 7 )]
+position = Vector2( 1064, 792 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Met18" parent="Iterable" index="56" instance=ExtResource( 7 )]
+position = Vector2( 1096, 888 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="Hammer6" parent="Iterable" index="57" instance=ExtResource( 7 )]
+position = Vector2( 1320, 768 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer7" parent="Iterable" index="58" instance=ExtResource( 7 )]
+position = Vector2( 1336, 768 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer13" parent="Iterable" index="59" instance=ExtResource( 7 )]
+position = Vector2( 1352, 768 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer14" parent="Iterable" index="60" instance=ExtResource( 7 )]
+position = Vector2( 1368, 768 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer8" parent="Iterable" index="61" instance=ExtResource( 7 )]
+position = Vector2( 1416, 784 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer9" parent="Iterable" index="62" instance=ExtResource( 7 )]
+position = Vector2( 1848, 840 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer17" parent="Iterable" index="63" instance=ExtResource( 7 )]
+position = Vector2( 1896, 856 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer18" parent="Iterable" index="64" instance=ExtResource( 7 )]
+position = Vector2( 1912, 856 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer19" parent="Iterable" index="65" instance=ExtResource( 7 )]
+position = Vector2( 1960, 808 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer20" parent="Iterable" index="66" instance=ExtResource( 7 )]
+position = Vector2( 1928, 792 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer21" parent="Iterable" index="67" instance=ExtResource( 7 )]
+position = Vector2( 1832, 808 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer22" parent="Iterable" index="68" instance=ExtResource( 7 )]
+position = Vector2( 1976, 808 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer23" parent="Iterable" index="69" instance=ExtResource( 7 )]
+position = Vector2( 2024, 808 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer24" parent="Iterable" index="70" instance=ExtResource( 7 )]
+position = Vector2( 2040, 808 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer25" parent="Iterable" index="71" instance=ExtResource( 7 )]
+position = Vector2( 2056, 808 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Hammer26" parent="Iterable" index="72" instance=ExtResource( 7 )]
+position = Vector2( 2072, 808 )
+obj_spawn = ExtResource( 16 )
+custom_parameters = {
+
+}
+
+[node name="Icicl12" parent="Iterable" index="73" instance=ExtResource( 7 )]
+position = Vector2( 936, 112 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.2
 autostart = true
@@ -993,16 +1005,16 @@ custom_parameters = {
 
 }
 
-[node name="Met6" parent="Iterable" index="74" instance=ExtResource( 8 )]
+[node name="Met6" parent="Iterable" index="74" instance=ExtResource( 7 )]
 position = Vector2( 1400, 856 )
-obj_spawn = ExtResource( 11 )
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="Icicl13" parent="Iterable" index="75" instance=ExtResource( 8 )]
+[node name="Icicl13" parent="Iterable" index="75" instance=ExtResource( 7 )]
 position = Vector2( 1480, 768 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.4
 autostart = true
@@ -1011,9 +1023,9 @@ custom_parameters = {
 
 }
 
-[node name="Icicl16" parent="Iterable" index="76" instance=ExtResource( 8 )]
+[node name="Icicl16" parent="Iterable" index="76" instance=ExtResource( 7 )]
 position = Vector2( 1432, 768 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.6
 autostart = true
@@ -1022,9 +1034,9 @@ custom_parameters = {
 
 }
 
-[node name="Icicl14" parent="Iterable" index="77" instance=ExtResource( 8 )]
+[node name="Icicl14" parent="Iterable" index="77" instance=ExtResource( 7 )]
 position = Vector2( 1576, 768 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.22
 autostart = true
@@ -1033,226 +1045,226 @@ custom_parameters = {
 
 }
 
-[node name="MetK1003" parent="Iterable" index="78" instance=ExtResource( 8 )]
+[node name="MetK1003" parent="Iterable" index="78" instance=ExtResource( 7 )]
 position = Vector2( 1184, 880 )
-obj_spawn = ExtResource( 12 )
-custom_parameters = {
-
-}
-
-[node name="MetK1004" parent="Iterable" index="79" instance=ExtResource( 8 )]
-position = Vector2( 1440, 832 )
-obj_spawn = ExtResource( 12 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb2" parent="Iterable" index="80" instance=ExtResource( 8 )]
-position = Vector2( 1496, 896 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb3" parent="Iterable" index="81" instance=ExtResource( 8 )]
-position = Vector2( 1512, 896 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb40" parent="Iterable" index="82" instance=ExtResource( 8 )]
-position = Vector2( 1528, 896 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb46" parent="Iterable" index="83" instance=ExtResource( 8 )]
-position = Vector2( 1544, 896 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb47" parent="Iterable" index="84" instance=ExtResource( 8 )]
-position = Vector2( 1560, 896 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="ShieldAtk5" parent="Iterable" index="85" instance=ExtResource( 8 )]
-position = Vector2( 1640, 848 )
-obj_spawn = ExtResource( 15 )
-custom_parameters = {
-
-}
-
-[node name="ShieldAtk6" parent="Iterable" index="86" instance=ExtResource( 8 )]
-position = Vector2( 1640, 816 )
-obj_spawn = ExtResource( 15 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb4" parent="Iterable" index="87" instance=ExtResource( 8 )]
-position = Vector2( 2280, 896 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb49" parent="Iterable" index="88" instance=ExtResource( 8 )]
-position = Vector2( 2296, 896 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb50" parent="Iterable" index="89" instance=ExtResource( 8 )]
-position = Vector2( 2312, 864 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb51" parent="Iterable" index="90" instance=ExtResource( 8 )]
-position = Vector2( 2328, 864 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="MetK1010" parent="Iterable" index="91" instance=ExtResource( 8 )]
-position = Vector2( 2288, 864 )
-obj_spawn = ExtResource( 12 )
-custom_parameters = {
-
-}
-
-[node name="MetK1011" parent="Iterable" index="92" instance=ExtResource( 8 )]
-position = Vector2( 2320, 832 )
-obj_spawn = ExtResource( 12 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb5" parent="Iterable" index="93" instance=ExtResource( 8 )]
-position = Vector2( 2344, 864 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb6" parent="Iterable" index="94" instance=ExtResource( 8 )]
-position = Vector2( 2360, 864 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb7" parent="Iterable" index="95" instance=ExtResource( 8 )]
-position = Vector2( 2376, 864 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb8" parent="Iterable" index="96" instance=ExtResource( 8 )]
-position = Vector2( 2392, 864 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb9" parent="Iterable" index="97" instance=ExtResource( 8 )]
-position = Vector2( 2408, 864 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb25" parent="Iterable" index="98" instance=ExtResource( 8 )]
-position = Vector2( 2424, 864 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb10" parent="Iterable" index="99" instance=ExtResource( 8 )]
-position = Vector2( 2520, 832 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb11" parent="Iterable" index="100" instance=ExtResource( 8 )]
-position = Vector2( 2440, 864 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb12" parent="Iterable" index="101" instance=ExtResource( 8 )]
-position = Vector2( 2456, 864 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb13" parent="Iterable" index="102" instance=ExtResource( 8 )]
-position = Vector2( 2472, 864 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="100Wat" parent="Iterable" index="103" instance=ExtResource( 8 )]
-position = Vector2( 2464, 824 )
-obj_spawn = ExtResource( 18 )
-custom_parameters = {
-
-}
-
-[node name="100Wat3" parent="Iterable" index="104" instance=ExtResource( 8 )]
-position = Vector2( 2432, 752 )
-obj_spawn = ExtResource( 18 )
-custom_parameters = {
-
-}
-
-[node name="Dompan4" parent="Iterable" index="105" instance=ExtResource( 8 )]
-position = Vector2( 2624, 896 )
-obj_spawn = ExtResource( 19 )
-custom_parameters = {
-
-}
-
-[node name="Dompan7" parent="Iterable" index="106" instance=ExtResource( 8 )]
-position = Vector2( 2512, 776 )
-obj_spawn = ExtResource( 19 )
-custom_parameters = {
-
-}
-
-[node name="Met7" parent="Iterable" index="107" instance=ExtResource( 8 )]
-position = Vector2( 2584, 904 )
 obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
 
-[node name="MetK1005" parent="Iterable" index="108" instance=ExtResource( 8 )]
-position = Vector2( 2768, 880 )
-obj_spawn = ExtResource( 12 )
+[node name="MetK1004" parent="Iterable" index="79" instance=ExtResource( 7 )]
+position = Vector2( 1440, 832 )
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
 
-[node name="Icicl18" parent="Iterable" index="109" instance=ExtResource( 8 )]
+[node name="CountBomb2" parent="Iterable" index="80" instance=ExtResource( 7 )]
+position = Vector2( 1496, 896 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb3" parent="Iterable" index="81" instance=ExtResource( 7 )]
+position = Vector2( 1512, 896 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb40" parent="Iterable" index="82" instance=ExtResource( 7 )]
+position = Vector2( 1528, 896 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb46" parent="Iterable" index="83" instance=ExtResource( 7 )]
+position = Vector2( 1544, 896 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb47" parent="Iterable" index="84" instance=ExtResource( 7 )]
+position = Vector2( 1560, 896 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="ShieldAtk5" parent="Iterable" index="85" instance=ExtResource( 7 )]
+position = Vector2( 1640, 848 )
+obj_spawn = ExtResource( 14 )
+custom_parameters = {
+
+}
+
+[node name="ShieldAtk6" parent="Iterable" index="86" instance=ExtResource( 7 )]
+position = Vector2( 1640, 816 )
+obj_spawn = ExtResource( 14 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb4" parent="Iterable" index="87" instance=ExtResource( 7 )]
+position = Vector2( 2280, 896 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb49" parent="Iterable" index="88" instance=ExtResource( 7 )]
+position = Vector2( 2296, 896 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb50" parent="Iterable" index="89" instance=ExtResource( 7 )]
+position = Vector2( 2312, 864 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb51" parent="Iterable" index="90" instance=ExtResource( 7 )]
+position = Vector2( 2328, 864 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="MetK1010" parent="Iterable" index="91" instance=ExtResource( 7 )]
+position = Vector2( 2288, 864 )
+obj_spawn = ExtResource( 11 )
+custom_parameters = {
+
+}
+
+[node name="MetK1011" parent="Iterable" index="92" instance=ExtResource( 7 )]
+position = Vector2( 2320, 832 )
+obj_spawn = ExtResource( 11 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb5" parent="Iterable" index="93" instance=ExtResource( 7 )]
+position = Vector2( 2344, 864 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb6" parent="Iterable" index="94" instance=ExtResource( 7 )]
+position = Vector2( 2360, 864 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb7" parent="Iterable" index="95" instance=ExtResource( 7 )]
+position = Vector2( 2376, 864 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb8" parent="Iterable" index="96" instance=ExtResource( 7 )]
+position = Vector2( 2392, 864 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb9" parent="Iterable" index="97" instance=ExtResource( 7 )]
+position = Vector2( 2408, 864 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb25" parent="Iterable" index="98" instance=ExtResource( 7 )]
+position = Vector2( 2424, 864 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb10" parent="Iterable" index="99" instance=ExtResource( 7 )]
+position = Vector2( 2520, 832 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb11" parent="Iterable" index="100" instance=ExtResource( 7 )]
+position = Vector2( 2440, 864 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb12" parent="Iterable" index="101" instance=ExtResource( 7 )]
+position = Vector2( 2456, 864 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb13" parent="Iterable" index="102" instance=ExtResource( 7 )]
+position = Vector2( 2472, 864 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="100Wat" parent="Iterable" index="103" instance=ExtResource( 7 )]
+position = Vector2( 2464, 824 )
+obj_spawn = ExtResource( 17 )
+custom_parameters = {
+
+}
+
+[node name="100Wat3" parent="Iterable" index="104" instance=ExtResource( 7 )]
+position = Vector2( 2432, 752 )
+obj_spawn = ExtResource( 17 )
+custom_parameters = {
+
+}
+
+[node name="Dompan4" parent="Iterable" index="105" instance=ExtResource( 7 )]
+position = Vector2( 2624, 896 )
+obj_spawn = ExtResource( 18 )
+custom_parameters = {
+
+}
+
+[node name="Dompan7" parent="Iterable" index="106" instance=ExtResource( 7 )]
+position = Vector2( 2512, 776 )
+obj_spawn = ExtResource( 18 )
+custom_parameters = {
+
+}
+
+[node name="Met7" parent="Iterable" index="107" instance=ExtResource( 7 )]
+position = Vector2( 2584, 904 )
+obj_spawn = ExtResource( 10 )
+custom_parameters = {
+
+}
+
+[node name="MetK1005" parent="Iterable" index="108" instance=ExtResource( 7 )]
+position = Vector2( 2768, 880 )
+obj_spawn = ExtResource( 11 )
+custom_parameters = {
+
+}
+
+[node name="Icicl18" parent="Iterable" index="109" instance=ExtResource( 7 )]
 position = Vector2( 2568, 752 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 0.7
 autostart = true
@@ -1261,9 +1273,9 @@ custom_parameters = {
 "delay": 1.4
 }
 
-[node name="Icicl19" parent="Iterable" index="110" instance=ExtResource( 8 )]
+[node name="Icicl19" parent="Iterable" index="110" instance=ExtResource( 7 )]
 position = Vector2( 2584, 752 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 0.7
 autostart = true
@@ -1272,9 +1284,9 @@ custom_parameters = {
 "delay": 1.2
 }
 
-[node name="Icicl20" parent="Iterable" index="111" instance=ExtResource( 8 )]
+[node name="Icicl20" parent="Iterable" index="111" instance=ExtResource( 7 )]
 position = Vector2( 2680, 784 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 0.7
 autostart = true
@@ -1283,9 +1295,9 @@ custom_parameters = {
 "delay": 1.0
 }
 
-[node name="Icicl21" parent="Iterable" index="112" instance=ExtResource( 8 )]
+[node name="Icicl21" parent="Iterable" index="112" instance=ExtResource( 7 )]
 position = Vector2( 2664, 784 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 0.7
 autostart = true
@@ -1294,9 +1306,9 @@ custom_parameters = {
 "delay": 0.8
 }
 
-[node name="Icicl22" parent="Iterable" index="113" instance=ExtResource( 8 )]
+[node name="Icicl22" parent="Iterable" index="113" instance=ExtResource( 7 )]
 position = Vector2( 2744, 784 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 0.7
 autostart = true
@@ -1305,9 +1317,9 @@ custom_parameters = {
 "delay": 0.6
 }
 
-[node name="Icicl23" parent="Iterable" index="114" instance=ExtResource( 8 )]
+[node name="Icicl23" parent="Iterable" index="114" instance=ExtResource( 7 )]
 position = Vector2( 2728, 784 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 0.7
 autostart = true
@@ -1316,65 +1328,65 @@ custom_parameters = {
 "delay": 0.4
 }
 
-[node name="CountBomb15" parent="Iterable" index="115" instance=ExtResource( 8 )]
+[node name="CountBomb15" parent="Iterable" index="115" instance=ExtResource( 7 )]
 position = Vector2( 2696, 912 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb16" parent="Iterable" index="116" instance=ExtResource( 8 )]
+[node name="CountBomb16" parent="Iterable" index="116" instance=ExtResource( 7 )]
 position = Vector2( 2712, 912 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb17" parent="Iterable" index="117" instance=ExtResource( 8 )]
+[node name="CountBomb17" parent="Iterable" index="117" instance=ExtResource( 7 )]
 position = Vector2( 2728, 912 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb18" parent="Iterable" index="118" instance=ExtResource( 8 )]
+[node name="CountBomb18" parent="Iterable" index="118" instance=ExtResource( 7 )]
 position = Vector2( 2744, 912 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb19" parent="Iterable" index="119" instance=ExtResource( 8 )]
+[node name="CountBomb19" parent="Iterable" index="119" instance=ExtResource( 7 )]
 position = Vector2( 2760, 912 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb20" parent="Iterable" index="120" instance=ExtResource( 8 )]
+[node name="CountBomb20" parent="Iterable" index="120" instance=ExtResource( 7 )]
 position = Vector2( 2776, 912 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="100Wat2" parent="Iterable" index="121" instance=ExtResource( 8 )]
+[node name="100Wat2" parent="Iterable" index="121" instance=ExtResource( 7 )]
 position = Vector2( 2880, 848 )
-obj_spawn = ExtResource( 18 )
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
 
-[node name="100Wat4" parent="Iterable" index="122" instance=ExtResource( 8 )]
+[node name="100Wat4" parent="Iterable" index="122" instance=ExtResource( 7 )]
 position = Vector2( 3048, 848 )
-obj_spawn = ExtResource( 18 )
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
 
-[node name="Icicl24" parent="Iterable" index="123" instance=ExtResource( 8 )]
+[node name="Icicl24" parent="Iterable" index="123" instance=ExtResource( 7 )]
 position = Vector2( 2824, 768 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.6
 autostart = true
@@ -1383,9 +1395,9 @@ custom_parameters = {
 "delay": 0.0
 }
 
-[node name="Icicl25" parent="Iterable" index="124" instance=ExtResource( 8 )]
+[node name="Icicl25" parent="Iterable" index="124" instance=ExtResource( 7 )]
 position = Vector2( 2840, 768 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.6
 autostart = true
@@ -1394,9 +1406,9 @@ custom_parameters = {
 "delay": 0.4
 }
 
-[node name="Icicl27" parent="Iterable" index="125" instance=ExtResource( 8 )]
+[node name="Icicl27" parent="Iterable" index="125" instance=ExtResource( 7 )]
 position = Vector2( 2856, 768 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.6
 autostart = true
@@ -1405,9 +1417,9 @@ custom_parameters = {
 "delay": 0.8
 }
 
-[node name="Icicl28" parent="Iterable" index="126" instance=ExtResource( 8 )]
+[node name="Icicl28" parent="Iterable" index="126" instance=ExtResource( 7 )]
 position = Vector2( 2904, 752 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.6
 autostart = true
@@ -1416,9 +1428,9 @@ custom_parameters = {
 "delay": 1.2
 }
 
-[node name="Icicl29" parent="Iterable" index="127" instance=ExtResource( 8 )]
+[node name="Icicl29" parent="Iterable" index="127" instance=ExtResource( 7 )]
 position = Vector2( 2920, 752 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.6
 autostart = true
@@ -1427,9 +1439,9 @@ custom_parameters = {
 "delay": 0.0
 }
 
-[node name="Icicl30" parent="Iterable" index="128" instance=ExtResource( 8 )]
+[node name="Icicl30" parent="Iterable" index="128" instance=ExtResource( 7 )]
 position = Vector2( 2936, 752 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.6
 autostart = true
@@ -1438,9 +1450,9 @@ custom_parameters = {
 "delay": 0.4
 }
 
-[node name="Icicl31" parent="Iterable" index="129" instance=ExtResource( 8 )]
+[node name="Icicl31" parent="Iterable" index="129" instance=ExtResource( 7 )]
 position = Vector2( 2984, 752 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.6
 autostart = true
@@ -1449,9 +1461,9 @@ custom_parameters = {
 "delay": 0.8
 }
 
-[node name="Icicl32" parent="Iterable" index="130" instance=ExtResource( 8 )]
+[node name="Icicl32" parent="Iterable" index="130" instance=ExtResource( 7 )]
 position = Vector2( 3000, 752 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.6
 autostart = true
@@ -1460,9 +1472,9 @@ custom_parameters = {
 "delay": 1.2
 }
 
-[node name="Icicl33" parent="Iterable" index="131" instance=ExtResource( 8 )]
+[node name="Icicl33" parent="Iterable" index="131" instance=ExtResource( 7 )]
 position = Vector2( 3048, 752 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.6
 autostart = true
@@ -1471,9 +1483,9 @@ custom_parameters = {
 "delay": 0.0
 }
 
-[node name="Icicl34" parent="Iterable" index="132" instance=ExtResource( 8 )]
+[node name="Icicl34" parent="Iterable" index="132" instance=ExtResource( 7 )]
 position = Vector2( 3064, 752 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.6
 autostart = true
@@ -1482,9 +1494,9 @@ custom_parameters = {
 "delay": 0.4
 }
 
-[node name="Icicl35" parent="Iterable" index="133" instance=ExtResource( 8 )]
+[node name="Icicl35" parent="Iterable" index="133" instance=ExtResource( 7 )]
 position = Vector2( 3096, 752 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.6
 autostart = true
@@ -1493,9 +1505,9 @@ custom_parameters = {
 "delay": 0.8
 }
 
-[node name="Icicl36" parent="Iterable" index="134" instance=ExtResource( 8 )]
+[node name="Icicl36" parent="Iterable" index="134" instance=ExtResource( 7 )]
 position = Vector2( 3112, 752 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 1.6
 autostart = true
@@ -1504,430 +1516,430 @@ custom_parameters = {
 "delay": 1.2
 }
 
-[node name="WeapEnLarge" parent="Iterable" index="135" instance=ExtResource( 8 )]
+[node name="WeapEnLarge" parent="Iterable" index="135" instance=ExtResource( 7 )]
 position = Vector2( 2824, 856 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge2" parent="Iterable" index="136" instance=ExtResource( 8 )]
-position = Vector2( 2840, 856 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge3" parent="Iterable" index="137" instance=ExtResource( 8 )]
-position = Vector2( 2856, 856 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge4" parent="Iterable" index="138" instance=ExtResource( 8 )]
-position = Vector2( 2904, 888 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge5" parent="Iterable" index="139" instance=ExtResource( 8 )]
-position = Vector2( 2920, 888 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge6" parent="Iterable" index="140" instance=ExtResource( 8 )]
-position = Vector2( 2936, 888 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge7" parent="Iterable" index="141" instance=ExtResource( 8 )]
-position = Vector2( 2984, 904 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge8" parent="Iterable" index="142" instance=ExtResource( 8 )]
-position = Vector2( 3000, 904 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge9" parent="Iterable" index="143" instance=ExtResource( 8 )]
-position = Vector2( 3048, 872 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge10" parent="Iterable" index="144" instance=ExtResource( 8 )]
-position = Vector2( 3064, 872 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge11" parent="Iterable" index="145" instance=ExtResource( 8 )]
-position = Vector2( 3096, 840 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge12" parent="Iterable" index="146" instance=ExtResource( 8 )]
-position = Vector2( 3112, 840 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge13" parent="Iterable" index="147" instance=ExtResource( 8 )]
-position = Vector2( 3128, 840 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge14" parent="Iterable" index="148" instance=ExtResource( 8 )]
-position = Vector2( 3144, 840 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="WeapEnLarge15" parent="Iterable" index="149" instance=ExtResource( 8 )]
-position = Vector2( 3160, 840 )
-obj_spawn = ExtResource( 20 )
-custom_parameters = {
-"can_disappear": false
-}
-obj_deletion_by_signals = [ "collected" ]
-
-[node name="100Wat5" parent="Iterable" index="150" instance=ExtResource( 8 )]
-position = Vector2( 3408, 800 )
-obj_spawn = ExtResource( 18 )
-custom_parameters = {
-
-}
-
-[node name="100Wat6" parent="Iterable" index="151" instance=ExtResource( 8 )]
-position = Vector2( 3384, 784 )
-obj_spawn = ExtResource( 18 )
-custom_parameters = {
-
-}
-
-[node name="100Wat7" parent="Iterable" index="152" instance=ExtResource( 8 )]
-position = Vector2( 3360, 800 )
-obj_spawn = ExtResource( 18 )
-custom_parameters = {
-
-}
-
-[node name="100Wat12" parent="Iterable" index="153" instance=ExtResource( 8 )]
-position = Vector2( 3360, 768 )
-obj_spawn = ExtResource( 18 )
-custom_parameters = {
-
-}
-
-[node name="100Wat13" parent="Iterable" index="154" instance=ExtResource( 8 )]
-position = Vector2( 3408, 768 )
-obj_spawn = ExtResource( 18 )
-custom_parameters = {
-
-}
-
-[node name="100Wat14" parent="Iterable" index="155" instance=ExtResource( 8 )]
-position = Vector2( 3392, 776 )
-obj_spawn = ExtResource( 18 )
-custom_parameters = {
-
-}
-
-[node name="100Wat15" parent="Iterable" index="156" instance=ExtResource( 8 )]
-position = Vector2( 3368, 776 )
-obj_spawn = ExtResource( 18 )
-custom_parameters = {
-
-}
-
-[node name="Dompan6" parent="Iterable" index="157" instance=ExtResource( 8 )]
-position = Vector2( 3376, 880 )
 obj_spawn = ExtResource( 19 )
 custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge2" parent="Iterable" index="136" instance=ExtResource( 7 )]
+position = Vector2( 2840, 856 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge3" parent="Iterable" index="137" instance=ExtResource( 7 )]
+position = Vector2( 2856, 856 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge4" parent="Iterable" index="138" instance=ExtResource( 7 )]
+position = Vector2( 2904, 888 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge5" parent="Iterable" index="139" instance=ExtResource( 7 )]
+position = Vector2( 2920, 888 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge6" parent="Iterable" index="140" instance=ExtResource( 7 )]
+position = Vector2( 2936, 888 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge7" parent="Iterable" index="141" instance=ExtResource( 7 )]
+position = Vector2( 2984, 904 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge8" parent="Iterable" index="142" instance=ExtResource( 7 )]
+position = Vector2( 3000, 904 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge9" parent="Iterable" index="143" instance=ExtResource( 7 )]
+position = Vector2( 3048, 872 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge10" parent="Iterable" index="144" instance=ExtResource( 7 )]
+position = Vector2( 3064, 872 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge11" parent="Iterable" index="145" instance=ExtResource( 7 )]
+position = Vector2( 3096, 840 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge12" parent="Iterable" index="146" instance=ExtResource( 7 )]
+position = Vector2( 3112, 840 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge13" parent="Iterable" index="147" instance=ExtResource( 7 )]
+position = Vector2( 3128, 840 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge14" parent="Iterable" index="148" instance=ExtResource( 7 )]
+position = Vector2( 3144, 840 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="WeapEnLarge15" parent="Iterable" index="149" instance=ExtResource( 7 )]
+position = Vector2( 3160, 840 )
+obj_spawn = ExtResource( 19 )
+custom_parameters = {
+"can_disappear": false
+}
+obj_deletion_by_signals = [ "collected" ]
+
+[node name="100Wat5" parent="Iterable" index="150" instance=ExtResource( 7 )]
+position = Vector2( 3408, 800 )
+obj_spawn = ExtResource( 17 )
+custom_parameters = {
 
 }
 
-[node name="CountBomb21" parent="Iterable" index="158" instance=ExtResource( 8 )]
+[node name="100Wat6" parent="Iterable" index="151" instance=ExtResource( 7 )]
+position = Vector2( 3384, 784 )
+obj_spawn = ExtResource( 17 )
+custom_parameters = {
+
+}
+
+[node name="100Wat7" parent="Iterable" index="152" instance=ExtResource( 7 )]
+position = Vector2( 3360, 800 )
+obj_spawn = ExtResource( 17 )
+custom_parameters = {
+
+}
+
+[node name="100Wat12" parent="Iterable" index="153" instance=ExtResource( 7 )]
+position = Vector2( 3360, 768 )
+obj_spawn = ExtResource( 17 )
+custom_parameters = {
+
+}
+
+[node name="100Wat13" parent="Iterable" index="154" instance=ExtResource( 7 )]
+position = Vector2( 3408, 768 )
+obj_spawn = ExtResource( 17 )
+custom_parameters = {
+
+}
+
+[node name="100Wat14" parent="Iterable" index="155" instance=ExtResource( 7 )]
+position = Vector2( 3392, 776 )
+obj_spawn = ExtResource( 17 )
+custom_parameters = {
+
+}
+
+[node name="100Wat15" parent="Iterable" index="156" instance=ExtResource( 7 )]
+position = Vector2( 3368, 776 )
+obj_spawn = ExtResource( 17 )
+custom_parameters = {
+
+}
+
+[node name="Dompan6" parent="Iterable" index="157" instance=ExtResource( 7 )]
+position = Vector2( 3376, 880 )
+obj_spawn = ExtResource( 18 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb21" parent="Iterable" index="158" instance=ExtResource( 7 )]
 position = Vector2( 3240, 896 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb22" parent="Iterable" index="159" instance=ExtResource( 8 )]
+[node name="CountBomb22" parent="Iterable" index="159" instance=ExtResource( 7 )]
 position = Vector2( 3256, 896 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb23" parent="Iterable" index="160" instance=ExtResource( 8 )]
+[node name="CountBomb23" parent="Iterable" index="160" instance=ExtResource( 7 )]
 position = Vector2( 3304, 896 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb24" parent="Iterable" index="161" instance=ExtResource( 8 )]
+[node name="CountBomb24" parent="Iterable" index="161" instance=ExtResource( 7 )]
 position = Vector2( 3320, 896 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb26" parent="Iterable" index="162" instance=ExtResource( 8 )]
+[node name="CountBomb26" parent="Iterable" index="162" instance=ExtResource( 7 )]
 position = Vector2( 3400, 1024 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb27" parent="Iterable" index="163" instance=ExtResource( 8 )]
+[node name="CountBomb27" parent="Iterable" index="163" instance=ExtResource( 7 )]
 position = Vector2( 3416, 1024 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb52" parent="Iterable" index="164" instance=ExtResource( 8 )]
+[node name="CountBomb52" parent="Iterable" index="164" instance=ExtResource( 7 )]
 position = Vector2( 3256, 1120 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb53" parent="Iterable" index="165" instance=ExtResource( 8 )]
+[node name="CountBomb53" parent="Iterable" index="165" instance=ExtResource( 7 )]
 position = Vector2( 3272, 1120 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb54" parent="Iterable" index="166" instance=ExtResource( 8 )]
+[node name="CountBomb54" parent="Iterable" index="166" instance=ExtResource( 7 )]
 position = Vector2( 3288, 1120 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb55" parent="Iterable" index="167" instance=ExtResource( 8 )]
+[node name="CountBomb55" parent="Iterable" index="167" instance=ExtResource( 7 )]
 position = Vector2( 3304, 1120 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb56" parent="Iterable" index="168" instance=ExtResource( 8 )]
+[node name="CountBomb56" parent="Iterable" index="168" instance=ExtResource( 7 )]
 position = Vector2( 3320, 1120 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb57" parent="Iterable" index="169" instance=ExtResource( 8 )]
+[node name="CountBomb57" parent="Iterable" index="169" instance=ExtResource( 7 )]
 position = Vector2( 3336, 1120 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="PowerSlam" parent="Iterable" index="170" instance=ExtResource( 8 )]
+[node name="PowerSlam" parent="Iterable" index="170" instance=ExtResource( 7 )]
 position = Vector2( 3384, 1320 )
+obj_spawn = ExtResource( 20 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb58" parent="Iterable" index="171" instance=ExtResource( 7 )]
+position = Vector2( 3704, 1416 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="CountBomb59" parent="Iterable" index="172" instance=ExtResource( 7 )]
+position = Vector2( 3720, 1416 )
+obj_spawn = ExtResource( 8 )
+custom_parameters = {
+
+}
+
+[node name="DiarnSP" parent="Iterable" index="173" instance=ExtResource( 7 )]
+position = Vector2( 3896, 1320 )
 obj_spawn = ExtResource( 21 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb58" parent="Iterable" index="171" instance=ExtResource( 8 )]
-position = Vector2( 3704, 1416 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb59" parent="Iterable" index="172" instance=ExtResource( 8 )]
-position = Vector2( 3720, 1416 )
-obj_spawn = ExtResource( 9 )
-custom_parameters = {
-
-}
-
-[node name="DiarnSP" parent="Iterable" index="173" instance=ExtResource( 8 )]
-position = Vector2( 3896, 1320 )
-obj_spawn = ExtResource( 22 )
-custom_parameters = {
-
-}
-
-[node name="CountBomb60" parent="Iterable" index="174" instance=ExtResource( 8 )]
+[node name="CountBomb60" parent="Iterable" index="174" instance=ExtResource( 7 )]
 position = Vector2( 3864, 1416 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb61" parent="Iterable" index="175" instance=ExtResource( 8 )]
+[node name="CountBomb61" parent="Iterable" index="175" instance=ExtResource( 7 )]
 position = Vector2( 3880, 1416 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="DiarnSP2" parent="Iterable" index="176" instance=ExtResource( 8 )]
+[node name="DiarnSP2" parent="Iterable" index="176" instance=ExtResource( 7 )]
 position = Vector2( 4168, 1360 )
-obj_spawn = ExtResource( 22 )
+obj_spawn = ExtResource( 21 )
 custom_parameters = {
 
 }
 
-[node name="DiarnSP3" parent="Iterable" index="177" instance=ExtResource( 8 )]
+[node name="DiarnSP3" parent="Iterable" index="177" instance=ExtResource( 7 )]
 position = Vector2( 4528, 1312 )
-obj_spawn = ExtResource( 22 )
+obj_spawn = ExtResource( 21 )
 custom_parameters = {
 
 }
 
-[node name="DiarnSP4" parent="Iterable" index="178" instance=ExtResource( 8 )]
+[node name="DiarnSP4" parent="Iterable" index="178" instance=ExtResource( 7 )]
 position = Vector2( 5008, 1224 )
-obj_spawn = ExtResource( 22 )
+obj_spawn = ExtResource( 21 )
 custom_parameters = {
 
 }
 
-[node name="DiarnSP7" parent="Iterable" index="179" instance=ExtResource( 8 )]
+[node name="DiarnSP7" parent="Iterable" index="179" instance=ExtResource( 7 )]
 position = Vector2( 5184, 1248 )
-obj_spawn = ExtResource( 22 )
+obj_spawn = ExtResource( 21 )
 custom_parameters = {
 
 }
 
-[node name="Fan8" parent="Iterable" index="180" instance=ExtResource( 8 )]
+[node name="Fan8" parent="Iterable" index="180" instance=ExtResource( 7 )]
 position = Vector2( 3632, 1400 )
-obj_spawn = ExtResource( 13 )
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
 
-[node name="Fan" parent="Iterable" index="181" instance=ExtResource( 8 )]
+[node name="Fan" parent="Iterable" index="181" instance=ExtResource( 7 )]
 position = Vector2( 3792, 1416 )
-obj_spawn = ExtResource( 13 )
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
 
-[node name="Fan2" parent="Iterable" index="182" instance=ExtResource( 8 )]
+[node name="Fan2" parent="Iterable" index="182" instance=ExtResource( 7 )]
 position = Vector2( 3952, 1416 )
-obj_spawn = ExtResource( 13 )
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
 
-[node name="MetK1006" parent="Iterable" index="183" instance=ExtResource( 8 )]
+[node name="MetK1006" parent="Iterable" index="183" instance=ExtResource( 7 )]
 position = Vector2( 4080, 1328 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
 
-[node name="Fan3" parent="Iterable" index="184" instance=ExtResource( 8 )]
+[node name="Fan3" parent="Iterable" index="184" instance=ExtResource( 7 )]
 position = Vector2( 4128, 1384 )
-obj_spawn = ExtResource( 13 )
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
 
-[node name="Fan4" parent="Iterable" index="185" instance=ExtResource( 8 )]
+[node name="Fan4" parent="Iterable" index="185" instance=ExtResource( 7 )]
 position = Vector2( 4208, 1384 )
-obj_spawn = ExtResource( 13 )
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
 
-[node name="MetK1007" parent="Iterable" index="186" instance=ExtResource( 8 )]
+[node name="MetK1007" parent="Iterable" index="186" instance=ExtResource( 7 )]
 position = Vector2( 4320, 1328 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
 
-[node name="MetK1013" parent="Iterable" index="187" instance=ExtResource( 8 )]
+[node name="MetK1013" parent="Iterable" index="187" instance=ExtResource( 7 )]
 position = Vector2( 4520, 1328 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
 
-[node name="MetK1014" parent="Iterable" index="188" instance=ExtResource( 8 )]
+[node name="MetK1014" parent="Iterable" index="188" instance=ExtResource( 7 )]
 position = Vector2( 4856, 1232 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
 
-[node name="MetK1012" parent="Iterable" index="189" instance=ExtResource( 8 )]
+[node name="MetK1012" parent="Iterable" index="189" instance=ExtResource( 7 )]
 position = Vector2( 4288, 1360 )
-obj_spawn = ExtResource( 12 )
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
 
-[node name="MetK1008" parent="Iterable" index="190" instance=ExtResource( 8 )]
+[node name="MetK1008" parent="Iterable" index="190" instance=ExtResource( 7 )]
 position = Vector2( 4688, 1328 )
+obj_spawn = ExtResource( 11 )
+custom_parameters = {
+
+}
+
+[node name="Fan5" parent="Iterable" index="191" instance=ExtResource( 7 )]
+position = Vector2( 4432, 1384 )
 obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
 
-[node name="Fan5" parent="Iterable" index="191" instance=ExtResource( 8 )]
-position = Vector2( 4432, 1384 )
-obj_spawn = ExtResource( 13 )
-custom_parameters = {
-
-}
-
-[node name="Fan6" parent="Iterable" index="192" instance=ExtResource( 8 )]
+[node name="Fan6" parent="Iterable" index="192" instance=ExtResource( 7 )]
 position = Vector2( 4592, 1384 )
-obj_spawn = ExtResource( 13 )
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
 
-[node name="Icicl26" parent="Iterable" index="193" instance=ExtResource( 8 )]
+[node name="Icicl26" parent="Iterable" index="193" instance=ExtResource( 7 )]
 position = Vector2( 4488, 1248 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 0.5
 autostart = true
@@ -1936,9 +1948,9 @@ custom_parameters = {
 "delay": 0.0
 }
 
-[node name="Icicl37" parent="Iterable" index="194" instance=ExtResource( 8 )]
+[node name="Icicl37" parent="Iterable" index="194" instance=ExtResource( 7 )]
 position = Vector2( 4520, 1248 )
-obj_spawn = ExtResource( 16 )
+obj_spawn = ExtResource( 15 )
 spawn_on = 1
 spawn_interval = 0.5
 autostart = true
@@ -1947,106 +1959,106 @@ custom_parameters = {
 "delay": 0.25
 }
 
-[node name="Fan7" parent="Iterable" index="195" instance=ExtResource( 8 )]
+[node name="Fan7" parent="Iterable" index="195" instance=ExtResource( 7 )]
 position = Vector2( 4720, 1368 )
-obj_spawn = ExtResource( 13 )
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
 
-[node name="Met8" parent="Iterable" index="196" instance=ExtResource( 8 )]
+[node name="Met8" parent="Iterable" index="196" instance=ExtResource( 7 )]
 position = Vector2( 4856, 1240 )
-obj_spawn = ExtResource( 11 )
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="Met10" parent="Iterable" index="197" instance=ExtResource( 8 )]
+[node name="Met10" parent="Iterable" index="197" instance=ExtResource( 7 )]
 position = Vector2( 4872, 1368 )
-obj_spawn = ExtResource( 11 )
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb62" parent="Iterable" index="198" instance=ExtResource( 8 )]
+[node name="CountBomb62" parent="Iterable" index="198" instance=ExtResource( 7 )]
 position = Vector2( 4952, 1392 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb63" parent="Iterable" index="199" instance=ExtResource( 8 )]
+[node name="CountBomb63" parent="Iterable" index="199" instance=ExtResource( 7 )]
 position = Vector2( 4968, 1392 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb64" parent="Iterable" index="200" instance=ExtResource( 8 )]
+[node name="CountBomb64" parent="Iterable" index="200" instance=ExtResource( 7 )]
 position = Vector2( 5016, 1392 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb65" parent="Iterable" index="201" instance=ExtResource( 8 )]
+[node name="CountBomb65" parent="Iterable" index="201" instance=ExtResource( 7 )]
 position = Vector2( 5032, 1392 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb66" parent="Iterable" index="202" instance=ExtResource( 8 )]
+[node name="CountBomb66" parent="Iterable" index="202" instance=ExtResource( 7 )]
 position = Vector2( 5080, 1392 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="CountBomb67" parent="Iterable" index="203" instance=ExtResource( 8 )]
+[node name="CountBomb67" parent="Iterable" index="203" instance=ExtResource( 7 )]
 position = Vector2( 5096, 1392 )
-obj_spawn = ExtResource( 9 )
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 
 }
 
-[node name="Met9" parent="Iterable" index="204" instance=ExtResource( 8 )]
+[node name="Met9" parent="Iterable" index="204" instance=ExtResource( 7 )]
 position = Vector2( 5144, 1352 )
-obj_spawn = ExtResource( 11 )
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
 
-[node name="FreezeMan" parent="Iterable" index="205" instance=ExtResource( 8 )]
+[node name="FreezeMan" parent="Iterable" index="205" instance=ExtResource( 7 )]
 position = Vector2( 5712, 1368 )
-obj_spawn = ExtResource( 23 )
+obj_spawn = ExtResource( 22 )
 spawn_interval = 1.0
 custom_parameters = {
-"boss_music": ExtResource( 24 )
+"boss_music": ExtResource( 23 )
 }
 
-[node name="CheckpointZone4" parent="." index="5" instance=ExtResource( 25 )]
+[node name="CheckpointZone4" parent="." index="5" instance=ExtResource( 24 )]
 margin_left = 1008.0
 margin_top = 384.0
 margin_right = 1184.0
 margin_bottom = 464.0
 target_view = NodePath("../ViewContainer/View12")
 
-[node name="CheckpointZone" parent="." index="6" instance=ExtResource( 25 )]
+[node name="CheckpointZone" parent="." index="6" instance=ExtResource( 24 )]
 margin_left = 1760.0
 margin_top = 752.0
 margin_right = 1824.0
 margin_bottom = 880.0
 target_view = NodePath("../ViewContainer/View4")
 
-[node name="CheckpointZone2" parent="." index="7" instance=ExtResource( 25 )]
+[node name="CheckpointZone2" parent="." index="7" instance=ExtResource( 24 )]
 margin_left = 3552.0
 margin_top = 1328.0
 margin_right = 3616.0
 margin_bottom = 1392.0
 target_view = NodePath("../ViewContainer/View9")
 
-[node name="CheckpointZone3" parent="." index="8" instance=ExtResource( 25 )]
+[node name="CheckpointZone3" parent="." index="8" instance=ExtResource( 24 )]
 margin_left = 5344.0
 margin_top = 1296.0
 margin_right = 5408.0
@@ -2058,7 +2070,7 @@ margin_left = -256.0
 margin_top = 256.0
 margin_bottom = 480.0
 
-[node name="ScreenTransitor2" parent="ViewContainer/View" index="2" instance=ExtResource( 26 )]
+[node name="ScreenTransitor2" parent="ViewContainer/View" index="2" instance=ExtResource( 25 )]
 margin_left = 256.0
 margin_top = 88.0
 margin_right = 272.0
@@ -2067,11 +2079,11 @@ target_view = NodePath("../../View12")
 active_view = NodePath("..")
 direction = 1
 
-[node name="View12" parent="ViewContainer" index="1" instance=ExtResource( 27 )]
+[node name="View12" parent="ViewContainer" index="1" instance=ExtResource( 26 )]
 margin_right = 1232.0
 margin_bottom = 480.0
 
-[node name="ScreenTransitor" parent="ViewContainer/View12" index="2" instance=ExtResource( 26 )]
+[node name="ScreenTransitor" parent="ViewContainer/View12" index="2" instance=ExtResource( 25 )]
 margin_left = 1136.0
 margin_top = 480.0
 margin_right = 1184.0
@@ -2080,7 +2092,7 @@ target_view = NodePath("../../View2")
 active_view = NodePath("..")
 direction = 3
 
-[node name="ScreenTransitor3" parent="ViewContainer/View12" index="3" instance=ExtResource( 26 )]
+[node name="ScreenTransitor3" parent="ViewContainer/View12" index="3" instance=ExtResource( 25 )]
 margin_left = -16.0
 margin_top = 328.0
 margin_right = 0.0
@@ -2088,13 +2100,13 @@ margin_bottom = 448.0
 target_view = NodePath("../../View")
 active_view = NodePath("..")
 
-[node name="View2" parent="ViewContainer" index="2" instance=ExtResource( 27 )]
+[node name="View2" parent="ViewContainer" index="2" instance=ExtResource( 26 )]
 margin_left = 800.0
 margin_top = 480.0
 margin_right = 1232.0
 margin_bottom = 720.0
 
-[node name="ScreenTransitor2" parent="ViewContainer/View2" index="2" instance=ExtResource( 26 )]
+[node name="ScreenTransitor2" parent="ViewContainer/View2" index="2" instance=ExtResource( 25 )]
 margin_left = 32.0
 margin_top = 240.0
 margin_right = 80.0
@@ -2103,13 +2115,13 @@ target_view = NodePath("../../View3")
 active_view = NodePath("..")
 direction = 3
 
-[node name="View3" parent="ViewContainer" index="3" instance=ExtResource( 27 )]
+[node name="View3" parent="ViewContainer" index="3" instance=ExtResource( 26 )]
 margin_left = 800.0
 margin_top = 720.0
 margin_right = 1664.0
 margin_bottom = 960.0
 
-[node name="ScreenTransitor3" parent="ViewContainer/View3" index="2" instance=ExtResource( 26 )]
+[node name="ScreenTransitor3" parent="ViewContainer/View3" index="2" instance=ExtResource( 25 )]
 margin_left = 864.0
 margin_right = 880.0
 margin_bottom = 160.0
@@ -2117,13 +2129,13 @@ target_view = NodePath("../../View4")
 active_view = NodePath("..")
 direction = 1
 
-[node name="View4" parent="ViewContainer" index="4" instance=ExtResource( 27 )]
+[node name="View4" parent="ViewContainer" index="4" instance=ExtResource( 26 )]
 margin_left = 1664.0
 margin_top = 720.0
 margin_right = 2176.0
 margin_bottom = 960.0
 
-[node name="ScreenTransitor4" parent="ViewContainer/View4" index="2" instance=ExtResource( 26 )]
+[node name="ScreenTransitor4" parent="ViewContainer/View4" index="2" instance=ExtResource( 25 )]
 margin_left = 512.0
 margin_top = 16.0
 margin_right = 528.0
@@ -2132,27 +2144,27 @@ target_view = NodePath("../../View5")
 active_view = NodePath("..")
 direction = 1
 
-[node name="ScreenTransitor5" parent="ViewContainer/View4" index="3" instance=ExtResource( 26 )]
+[node name="ScreenTransitor5" parent="ViewContainer/View4" index="3" instance=ExtResource( 25 )]
 margin_left = -16.0
 margin_right = 0.0
 margin_bottom = 192.0
 target_view = NodePath("../../View3")
 active_view = NodePath("..")
 
-[node name="View5" parent="ViewContainer" index="5" instance=ExtResource( 27 )]
+[node name="View5" parent="ViewContainer" index="5" instance=ExtResource( 26 )]
 margin_left = 2176.0
 margin_top = 720.0
 margin_right = 3200.0
 margin_bottom = 960.0
 
-[node name="ScreenTransitor6" parent="ViewContainer/View5" index="2" instance=ExtResource( 26 )]
+[node name="ScreenTransitor6" parent="ViewContainer/View5" index="2" instance=ExtResource( 25 )]
 margin_left = -16.0
 margin_right = 0.0
 margin_bottom = 160.0
 target_view = NodePath("../../View4")
 active_view = NodePath("..")
 
-[node name="ScreenTransitor7" parent="ViewContainer/View5" index="3" instance=ExtResource( 26 )]
+[node name="ScreenTransitor7" parent="ViewContainer/View5" index="3" instance=ExtResource( 25 )]
 margin_left = 1024.0
 margin_top = 80.0
 margin_right = 1040.0
@@ -2161,13 +2173,13 @@ target_view = NodePath("../../View6")
 active_view = NodePath("..")
 direction = 1
 
-[node name="View6" parent="ViewContainer" index="6" instance=ExtResource( 27 )]
+[node name="View6" parent="ViewContainer" index="6" instance=ExtResource( 26 )]
 margin_left = 3200.0
 margin_top = 720.0
 margin_right = 3456.0
 margin_bottom = 960.0
 
-[node name="ScreenTransitor8" parent="ViewContainer/View6" index="2" instance=ExtResource( 26 )]
+[node name="ScreenTransitor8" parent="ViewContainer/View6" index="2" instance=ExtResource( 25 )]
 margin_left = 192.0
 margin_top = 232.0
 margin_right = 224.0
@@ -2176,13 +2188,13 @@ target_view = NodePath("../../View7")
 active_view = NodePath("..")
 direction = 3
 
-[node name="View7" parent="ViewContainer" index="7" instance=ExtResource( 27 )]
+[node name="View7" parent="ViewContainer" index="7" instance=ExtResource( 26 )]
 margin_left = 3200.0
 margin_top = 960.0
 margin_right = 3456.0
 margin_bottom = 1200.0
 
-[node name="ScreenTransitor9" parent="ViewContainer/View7" index="2" instance=ExtResource( 26 )]
+[node name="ScreenTransitor9" parent="ViewContainer/View7" index="2" instance=ExtResource( 25 )]
 margin_left = 16.0
 margin_top = 232.0
 margin_right = 144.0
@@ -2191,13 +2203,13 @@ target_view = NodePath("../../View8")
 active_view = NodePath("..")
 direction = 3
 
-[node name="View8" parent="ViewContainer" index="8" instance=ExtResource( 27 )]
+[node name="View8" parent="ViewContainer" index="8" instance=ExtResource( 26 )]
 margin_left = 3200.0
 margin_top = 1200.0
 margin_right = 3456.0
 margin_bottom = 1440.0
 
-[node name="ScreenTransitor10" parent="ViewContainer/View8" index="2" instance=ExtResource( 26 )]
+[node name="ScreenTransitor10" parent="ViewContainer/View8" index="2" instance=ExtResource( 25 )]
 margin_left = 256.0
 margin_top = 32.0
 margin_right = 272.0
@@ -2206,14 +2218,14 @@ target_view = NodePath("../../View9")
 active_view = NodePath("..")
 direction = 1
 
-[node name="View9" parent="ViewContainer" index="9" instance=ExtResource( 27 )]
+[node name="View9" parent="ViewContainer" index="9" instance=ExtResource( 26 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 3456.0
 margin_top = 1200.0
 margin_right = 5248.0
 margin_bottom = 1440.0
 
-[node name="ScreenTransitor11" parent="ViewContainer/View9" index="2" instance=ExtResource( 26 )]
+[node name="ScreenTransitor11" parent="ViewContainer/View9" index="2" instance=ExtResource( 25 )]
 margin_left = -16.0
 margin_top = 32.0
 margin_right = 0.0
@@ -2221,7 +2233,7 @@ margin_bottom = 160.0
 target_view = NodePath("../../View8")
 active_view = NodePath("..")
 
-[node name="BossDoor" parent="ViewContainer/View9" index="3" instance=ExtResource( 28 )]
+[node name="BossDoor" parent="ViewContainer/View9" index="3" instance=ExtResource( 27 )]
 margin_left = 1776.0
 margin_top = 96.0
 margin_right = 1808.0
@@ -2230,14 +2242,14 @@ target_view = NodePath("../../View10")
 active_view = NodePath("..")
 transit_duration = Vector2( 1.42, 1 )
 
-[node name="View10" parent="ViewContainer" index="10" instance=ExtResource( 27 )]
+[node name="View10" parent="ViewContainer" index="10" instance=ExtResource( 26 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 5248.0
 margin_top = 1200.0
 margin_right = 5504.0
 margin_bottom = 1440.0
 
-[node name="BossDoor2" parent="ViewContainer/View10" index="2" instance=ExtResource( 28 )]
+[node name="BossDoor2" parent="ViewContainer/View10" index="2" instance=ExtResource( 27 )]
 margin_left = 240.0
 margin_top = 96.0
 margin_right = 272.0
@@ -2246,16 +2258,16 @@ target_view = NodePath("../../View11")
 active_view = NodePath("..")
 transit_duration = Vector2( 1.42, 1 )
 
-[node name="View11" parent="ViewContainer" index="11" instance=ExtResource( 27 )]
+[node name="View11" parent="ViewContainer" index="11" instance=ExtResource( 26 )]
 margin_left = 5504.0
 margin_top = 1200.0
 margin_right = 5760.0
 margin_bottom = 1440.0
 
-[node name="ChainDestroyController" parent="." index="13" instance=ExtResource( 29 )]
+[node name="ChainDestroyController" parent="." index="13" instance=ExtResource( 28 )]
 editor/display_folded = true
 
-[node name="Delayer3" parent="ChainDestroyController" index="1" instance=ExtResource( 30 )]
+[node name="Delayer3" parent="ChainDestroyController" index="1" instance=ExtResource( 29 )]
 margin_left = 5456.0
 margin_top = 1168.0
 margin_right = 5472.0
@@ -2264,7 +2276,7 @@ shake_screen = false
 update_nearby_tiles_bitmap = false
 sfx = 0
 
-[node name="AreaChainDestroyer" parent="ChainDestroyController" index="2" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer" parent="ChainDestroyController" index="2" instance=ExtResource( 29 )]
 margin_left = 5504.0
 margin_top = 1216.0
 margin_right = 5520.0
@@ -2274,7 +2286,7 @@ shake_screen = false
 set_tile_id = 3
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer2" parent="ChainDestroyController" index="3" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer2" parent="ChainDestroyController" index="3" instance=ExtResource( 29 )]
 margin_left = 5520.0
 margin_top = 1216.0
 margin_right = 5536.0
@@ -2284,7 +2296,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer3" parent="ChainDestroyController" index="4" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer3" parent="ChainDestroyController" index="4" instance=ExtResource( 29 )]
 margin_left = 5536.0
 margin_top = 1216.0
 margin_right = 5552.0
@@ -2294,7 +2306,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer4" parent="ChainDestroyController" index="5" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer4" parent="ChainDestroyController" index="5" instance=ExtResource( 29 )]
 margin_left = 5552.0
 margin_top = 1216.0
 margin_right = 5568.0
@@ -2304,7 +2316,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer5" parent="ChainDestroyController" index="6" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer5" parent="ChainDestroyController" index="6" instance=ExtResource( 29 )]
 margin_left = 5568.0
 margin_top = 1216.0
 margin_right = 5584.0
@@ -2314,7 +2326,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer6" parent="ChainDestroyController" index="7" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer6" parent="ChainDestroyController" index="7" instance=ExtResource( 29 )]
 margin_left = 5584.0
 margin_top = 1216.0
 margin_right = 5600.0
@@ -2324,7 +2336,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer7" parent="ChainDestroyController" index="8" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer7" parent="ChainDestroyController" index="8" instance=ExtResource( 29 )]
 margin_left = 5600.0
 margin_top = 1216.0
 margin_right = 5616.0
@@ -2334,7 +2346,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer8" parent="ChainDestroyController" index="9" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer8" parent="ChainDestroyController" index="9" instance=ExtResource( 29 )]
 margin_left = 5616.0
 margin_top = 1216.0
 margin_right = 5632.0
@@ -2344,7 +2356,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer9" parent="ChainDestroyController" index="10" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer9" parent="ChainDestroyController" index="10" instance=ExtResource( 29 )]
 margin_left = 5632.0
 margin_top = 1216.0
 margin_right = 5648.0
@@ -2354,7 +2366,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer10" parent="ChainDestroyController" index="11" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer10" parent="ChainDestroyController" index="11" instance=ExtResource( 29 )]
 margin_left = 5648.0
 margin_top = 1216.0
 margin_right = 5664.0
@@ -2364,7 +2376,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer11" parent="ChainDestroyController" index="12" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer11" parent="ChainDestroyController" index="12" instance=ExtResource( 29 )]
 margin_left = 5664.0
 margin_top = 1216.0
 margin_right = 5680.0
@@ -2374,7 +2386,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer12" parent="ChainDestroyController" index="13" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer12" parent="ChainDestroyController" index="13" instance=ExtResource( 29 )]
 margin_left = 5680.0
 margin_top = 1216.0
 margin_right = 5696.0
@@ -2384,7 +2396,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer13" parent="ChainDestroyController" index="14" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer13" parent="ChainDestroyController" index="14" instance=ExtResource( 29 )]
 margin_left = 5696.0
 margin_top = 1216.0
 margin_right = 5712.0
@@ -2394,7 +2406,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer14" parent="ChainDestroyController" index="15" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer14" parent="ChainDestroyController" index="15" instance=ExtResource( 29 )]
 margin_left = 5712.0
 margin_top = 1216.0
 margin_right = 5728.0
@@ -2404,7 +2416,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer15" parent="ChainDestroyController" index="16" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer15" parent="ChainDestroyController" index="16" instance=ExtResource( 29 )]
 margin_left = 5728.0
 margin_top = 1216.0
 margin_right = 5744.0
@@ -2414,7 +2426,7 @@ shake_screen = false
 set_tile_id = 16
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer16" parent="ChainDestroyController" index="17" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer16" parent="ChainDestroyController" index="17" instance=ExtResource( 29 )]
 margin_left = 5744.0
 margin_top = 1216.0
 margin_right = 5760.0
@@ -2424,10 +2436,10 @@ shake_screen = false
 set_tile_id = 4
 update_nearby_tiles_bitmap = false
 
-[node name="ChainDestroyController2" parent="." index="14" instance=ExtResource( 29 )]
+[node name="ChainDestroyController2" parent="." index="14" instance=ExtResource( 28 )]
 editor/display_folded = true
 
-[node name="Delayer2" parent="ChainDestroyController2" index="1" instance=ExtResource( 30 )]
+[node name="Delayer2" parent="ChainDestroyController2" index="1" instance=ExtResource( 29 )]
 margin_left = 5456.0
 margin_top = 1152.0
 margin_right = 5472.0
@@ -2436,7 +2448,7 @@ shake_screen = false
 update_nearby_tiles_bitmap = false
 sfx = 0
 
-[node name="AreaChainDestroyer" parent="ChainDestroyController2" index="2" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer" parent="ChainDestroyController2" index="2" instance=ExtResource( 29 )]
 margin_left = 5504.0
 margin_top = 1200.0
 margin_right = 5520.0
@@ -2446,7 +2458,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer2" parent="ChainDestroyController2" index="3" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer2" parent="ChainDestroyController2" index="3" instance=ExtResource( 29 )]
 margin_left = 5520.0
 margin_top = 1200.0
 margin_right = 5536.0
@@ -2456,7 +2468,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer3" parent="ChainDestroyController2" index="4" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer3" parent="ChainDestroyController2" index="4" instance=ExtResource( 29 )]
 margin_left = 5536.0
 margin_top = 1200.0
 margin_right = 5552.0
@@ -2466,7 +2478,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer4" parent="ChainDestroyController2" index="5" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer4" parent="ChainDestroyController2" index="5" instance=ExtResource( 29 )]
 margin_left = 5552.0
 margin_top = 1200.0
 margin_right = 5568.0
@@ -2476,7 +2488,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer5" parent="ChainDestroyController2" index="6" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer5" parent="ChainDestroyController2" index="6" instance=ExtResource( 29 )]
 margin_left = 5568.0
 margin_top = 1200.0
 margin_right = 5584.0
@@ -2486,7 +2498,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer6" parent="ChainDestroyController2" index="7" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer6" parent="ChainDestroyController2" index="7" instance=ExtResource( 29 )]
 margin_left = 5584.0
 margin_top = 1200.0
 margin_right = 5600.0
@@ -2496,7 +2508,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer7" parent="ChainDestroyController2" index="8" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer7" parent="ChainDestroyController2" index="8" instance=ExtResource( 29 )]
 margin_left = 5600.0
 margin_top = 1200.0
 margin_right = 5616.0
@@ -2506,7 +2518,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer8" parent="ChainDestroyController2" index="9" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer8" parent="ChainDestroyController2" index="9" instance=ExtResource( 29 )]
 margin_left = 5616.0
 margin_top = 1200.0
 margin_right = 5632.0
@@ -2516,7 +2528,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer9" parent="ChainDestroyController2" index="10" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer9" parent="ChainDestroyController2" index="10" instance=ExtResource( 29 )]
 margin_left = 5632.0
 margin_top = 1200.0
 margin_right = 5648.0
@@ -2526,7 +2538,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer10" parent="ChainDestroyController2" index="11" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer10" parent="ChainDestroyController2" index="11" instance=ExtResource( 29 )]
 margin_left = 5648.0
 margin_top = 1200.0
 margin_right = 5664.0
@@ -2536,7 +2548,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer11" parent="ChainDestroyController2" index="12" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer11" parent="ChainDestroyController2" index="12" instance=ExtResource( 29 )]
 margin_left = 5664.0
 margin_top = 1200.0
 margin_right = 5680.0
@@ -2546,7 +2558,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer12" parent="ChainDestroyController2" index="13" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer12" parent="ChainDestroyController2" index="13" instance=ExtResource( 29 )]
 margin_left = 5680.0
 margin_top = 1200.0
 margin_right = 5696.0
@@ -2556,7 +2568,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer13" parent="ChainDestroyController2" index="14" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer13" parent="ChainDestroyController2" index="14" instance=ExtResource( 29 )]
 margin_left = 5696.0
 margin_top = 1200.0
 margin_right = 5712.0
@@ -2566,7 +2578,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer14" parent="ChainDestroyController2" index="15" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer14" parent="ChainDestroyController2" index="15" instance=ExtResource( 29 )]
 margin_left = 5712.0
 margin_top = 1200.0
 margin_right = 5728.0
@@ -2576,7 +2588,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer15" parent="ChainDestroyController2" index="16" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer15" parent="ChainDestroyController2" index="16" instance=ExtResource( 29 )]
 margin_left = 5728.0
 margin_top = 1200.0
 margin_right = 5744.0
@@ -2586,7 +2598,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaChainDestroyer16" parent="ChainDestroyController2" index="17" instance=ExtResource( 30 )]
+[node name="AreaChainDestroyer16" parent="ChainDestroyController2" index="17" instance=ExtResource( 29 )]
 margin_left = 5744.0
 margin_top = 1200.0
 margin_right = 5760.0
@@ -2596,7 +2608,7 @@ shake_screen = false
 set_tile_id = 11
 update_nearby_tiles_bitmap = false
 
-[node name="AreaNotifier" parent="." index="15" instance=ExtResource( 31 )]
+[node name="AreaNotifier" parent="." index="15" instance=ExtResource( 30 )]
 margin_left = 5520.0
 margin_top = 1376.0
 margin_right = 5552.0
@@ -2611,7 +2623,7 @@ motion_mirroring = Vector2( 256, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
 position = Vector2( 0, -136 )
-texture = ExtResource( 32 )
+texture = ExtResource( 31 )
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
@@ -2621,7 +2633,7 @@ motion_mirroring = Vector2( 256, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="0"]
 position = Vector2( 0, -120 )
-texture = ExtResource( 33 )
+texture = ExtResource( 32 )
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
@@ -2631,9 +2643,8 @@ motion_mirroring = Vector2( 256, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3" index="0"]
 position = Vector2( 0, -120 )
-texture = ExtResource( 34 )
+texture = ExtResource( 33 )
 centered = false
-[connection signal="player_die_normally" from="Iterable/Player" to="Iterable/Player/ThiunEffectCreator" method="create"]
 [connection signal="transition_activated" from="ViewContainer/View8/ScreenTransitor10" to="ParallaxBackground" method="_on_ScreenTransitor10_transition_activated"]
 [connection signal="transition_activated" from="ViewContainer/View9/ScreenTransitor11" to="ParallaxBackground" method="_on_ScreenTransitor10_transition_activated"]
 [connection signal="transition_activated" from="ViewContainer/View9/BossDoor" to="ParallaxBackground" method="_on_BossDoor_transition_activated"]

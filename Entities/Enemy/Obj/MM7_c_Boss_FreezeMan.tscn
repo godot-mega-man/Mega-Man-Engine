@@ -1,0 +1,476 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Entities/Enemy/Core/BossCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemy/Obj/MM7_c_Boss_FreezeMan.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Enemies/MM7_freezeman.png" type="Texture" id=3]
+[ext_resource path="res://Entities/Effects/IceCrackEffect/IceShardEffect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Enemy/Obj/MM7_FreezeCracker.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/MM1_IceSlasher.wav" type="AudioStream" id=7]
+[ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSet.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSetData/ItemSetData.gd" type="Script" id=9]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 96, 48, 48 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 10, 16 )
+
+[sub_resource type="Animation" id=5]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6, 0.75, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 8, 7, 9, 10, 11, 12, 13, 14, 10 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_show_boss_health_bar"
+}, {
+"args": [  ],
+"method": "start_fill_up_health_bar"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 4 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_ice_shard_on_self"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("FreezeManAni")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "BossPose", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 21, 22 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.12 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire_flood_icy_floor"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Sfx_IceSlasher")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.12 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 16 ]
+}
+
+[sub_resource type="Animation" id=9]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 9, 20 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlatformBehavior:JUMP_SPEED")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 600.0, 300.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "jump_high"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 24 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 25 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire_freeze_cracker"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Sfx_IceSlasher")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 26, 27, 26, 27, 29, 30 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire_icicle"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Sfx_IceSlasher")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 3.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.6, 1.7, 1.9, 2, 2.2, 2.3, 2.4, 2.5, 2.9, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 26, 27, 26, 27, 26, 27, 26, 27, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.2, 1.7, 2, 2.3, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire_icicle"
+}, {
+"args": [  ],
+"method": "fire_freeze_cracker"
+}, {
+"args": [  ],
+"method": "fire_freeze_cracker"
+}, {
+"args": [  ],
+"method": "fire_freeze_cracker"
+}, {
+"args": [  ],
+"method": "fire_freeze_cracker"
+}, {
+"args": [ 0.0 ],
+"method": "fire_icicle"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Sfx_IceSlasher")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.2, 1.7, 2, 2.3, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.48
+loop = true
+step = 0.12
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flip/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 17, 18, 19, 18 ]
+}
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 9 )
+item = "res://Assets/Database/Items/Material/RareDiamonda.tres"
+weight = 10
+quantity = 1
+
+[node name="Freeze Man" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+sprite_preview_texture = SubResource( 1 )
+damage_area_nodes = [ NodePath("DamageArea") ]
+contact_damage = 4.0
+stop_music_after_death = true
+vital_bar_secondary_color = 1770717183
+ice_shard_effect = ExtResource( 4 )
+freeze_cracker_proj = ExtResource( 5 )
+
+[node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 6 )]
+WALK_SPEED = 120.0
+JUMP_SPEED = 300.0
+VELOCITY_X_DAMPING = 1.0
+INITIAL_STATE = false
+
+[node name="Flip" type="Node2D" parent="." index="1"]
+
+[node name="Sprite" type="Sprite" parent="Flip" index="0"]
+texture = ExtResource( 3 )
+vframes = 4
+hframes = 8
+frame = 30
+
+[node name="FloodFloorShootPos" type="Position2D" parent="Flip" index="1"]
+position = Vector2( -6, 14 )
+
+[node name="FreezeCrackerShootPos" type="Position2D" parent="Flip" index="2"]
+position = Vector2( -10, 10 )
+
+[node name="LaunchIciclePos" type="Position2D" parent="Flip" index="3"]
+position = Vector2( -5, -3 )
+
+[node name="SpritePreview" type="Sprite" parent="." index="2"]
+visible = false
+texture = SubResource( 2 )
+
+[node name="SpriteMain" parent="." index="3"]
+visible = false
+
+[node name="FlickerAnimationPlayer" parent="SpriteMain" index="1"]
+root_node = NodePath("../../Flip")
+
+[node name="PlatformCollisionShape2D" parent="." index="4"]
+visible = true
+position = Vector2( 0, 8 )
+shape = SubResource( 3 )
+disabled = false
+
+[node name="DamageArea" type="Area2D" parent="." index="8"]
+visible = false
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" index="0"]
+position = Vector2( 0, 8 )
+shape = SubResource( 4 )
+
+[node name="FreezeManAni" type="AnimationPlayer" parent="." index="9"]
+autoplay = "Emerge"
+anims/BossPose = SubResource( 5 )
+anims/Emerge = SubResource( 6 )
+anims/FloodFloor = SubResource( 7 )
+anims/Idle = SubResource( 8 )
+anims/JumpHigh = SubResource( 9 )
+anims/Jumping = SubResource( 9 )
+anims/PrepareFreezeCracker = SubResource( 10 )
+anims/ShootFreezeCracker = SubResource( 11 )
+anims/ThrowIcicle = SubResource( 12 )
+"anims/ThrowIcicle v2" = SubResource( 13 )
+anims/Walking = SubResource( 14 )
+
+[node name="Sfx_IceSlasher" type="AudioStreamPlayer2D" parent="." index="10"]
+stream = ExtResource( 7 )
+
+[node name="DamageSprite" parent="." index="12"]
+position = Vector2( 0, 8 )
+
+[node name="ItemSet" parent="ItemTable" index="0" instance=ExtResource( 8 )]
+items = [ SubResource( 15 ) ]
+[connection signal="boss_done_posing" from="." to="." method="_on_Freeze_Man_boss_done_posing"]
+[connection signal="slain" from="." to="." method="_on_Freeze_Man_slain"]
+[connection signal="animation_finished" from="FreezeManAni" to="." method="_on_FreezeManAni_animation_finished"]
