@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Lib/FJ_NodeExtensions/ButtonPlus/ButtonPlus.gd"
 }, {
+"base": "Camera2D",
+"class": "CameraCustom",
+"language": "GDScript",
+"path": "res://Camera/Camera.gd"
+}, {
 "base": "Node",
 "class": "ChainDestroyController",
 "language": "GDScript",
@@ -369,6 +374,7 @@ _global_script_class_icons={
 "BossCore": "",
 "BossHealthBar": "",
 "ButtonPlus": "",
+"CameraCustom": "",
 "ChainDestroyController": "",
 "ChainDestroyerArea": "",
 "CharacterData": "",

@@ -1,31 +1,32 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Levels/Core/Lv_Core.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sounds/Bgm/ShatterHand_Area4.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Assets/Tilesets/BottomlessPitTileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Entities/DeathSpike/DeathSpike.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Misc/ObjSpawner/ObjSpawner.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Entities/Pickups/WeaponEnergySmall.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Entities/Pickups/WeaponEnergyLarge.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Entities/Enemy/Obj/Adv3_Lobster.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Entities/Enemy/Obj/Adv3_BasserStatic.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Entities/Enemy/Obj/Adv3_Boulder.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Entities/Enemy/Obj/Adv3_BasserMove.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Entities/Enemy/Obj/Adv3_SpikePlatformFall.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Entities/Enemy/Obj/Adv3_BasserAtk.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Entities/Enemy/Obj/Adv3_Skull.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Entities/Pickups/LifeEnergyLarge.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Entities/Enemy/Obj/Adv3_SpikePlatformUpdown.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Entities/Pickups/Life.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Entities/Enemy/Obj/MM6_c_PoweredColton.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Entities/Enemy/Obj/MM5_c_WheelCutterJoe.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Entities/Enemy/Obj/Adv3_Podoboo.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Entities/Pickups/LifeEnergySmall.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Entities/Enemy/Obj/Adv3_Boss_FieryLizard.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=23]
-[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=24]
-[ext_resource path="res://Entities/CheckpointZone/CheckpointZone.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Entities/ScreenTransitor/BossDoor.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Entities/Enemy/NonEnemyObj/CameraBottomScrollerUp.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Pickups/WeaponEnergySmall.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Pickups/WeaponEnergyLarge.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_Lobster.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_BasserStatic.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_Boulder.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_BasserMove.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_SpikePlatformFall.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_BasserAtk.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_Skull.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Entities/Pickups/LifeEnergyLarge.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_SpikePlatformUpdown.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Entities/Pickups/Life.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Entities/Enemy/Obj/MM6_c_PoweredColton.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Entities/Enemy/Obj/MM5_c_WheelCutterJoe.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_Podoboo.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Entities/Pickups/LifeEnergySmall.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Entities/Enemy/Obj/Adv3_Boss_FieryLizard.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Entities/ScreenTransitor/ScreenTransitor.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Levels/Views/View.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Entities/CheckpointZone/CheckpointZone.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Entities/ScreenTransitor/BossDoor.tscn" type="PackedScene" id=27]
 
 [node name="Level" index="0" instance=ExtResource( 1 )]
 BG_COLOR = Color( 0, 0, 0, 1 )
@@ -514,19 +515,31 @@ is_lava = true
 position = Vector2( 6856, -1032 )
 is_lava = true
 
+[node name="CamBottomScroller" parent="TileMap" index="1" instance=ExtResource( 5 )]
+position = Vector2( 3752, 552 )
+obj_spawn = ExtResource( 6 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"distance": 288
+}
+
+[node name="CamBottomScroller2" parent="TileMap" index="2" instance=ExtResource( 5 )]
+position = Vector2( 4088, -1128 )
+obj_spawn = ExtResource( 6 )
+spawn_target_node = NodePath("../../Iterable")
+custom_parameters = {
+"distance": 288
+}
+
+[node name="Iterable" parent="." index="1"]
+editor/display_folded = true
+
 [node name="Player" parent="Iterable" index="1"]
 position = Vector2( 128, 147 )
 
 [node name="WeaponEnSmall" parent="Iterable" index="2" instance=ExtResource( 5 )]
 position = Vector2( 360, 120 )
-obj_spawn = ExtResource( 6 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 7 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -534,14 +547,7 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="WeaponEnSmall2" parent="Iterable" index="3" instance=ExtResource( 5 )]
 position = Vector2( 376, 120 )
-obj_spawn = ExtResource( 6 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 7 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -549,14 +555,7 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="WeaponEnLarge" parent="Iterable" index="4" instance=ExtResource( 5 )]
 position = Vector2( 504, 72 )
-obj_spawn = ExtResource( 7 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -564,629 +563,294 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="Lobster" parent="Iterable" index="5" instance=ExtResource( 5 )]
 position = Vector2( 368, 184 )
-obj_spawn = ExtResource( 8 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 9 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Lobster2" parent="Iterable" index="6" instance=ExtResource( 5 )]
 position = Vector2( 400, 184 )
-obj_spawn = ExtResource( 8 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 9 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Lobster3" parent="Iterable" index="7" instance=ExtResource( 5 )]
 position = Vector2( 464, 184 )
-obj_spawn = ExtResource( 8 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 9 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Lobster4" parent="Iterable" index="8" instance=ExtResource( 5 )]
 position = Vector2( 432, 88 )
-obj_spawn = ExtResource( 8 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 9 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserStatic" parent="Iterable" index="9" instance=ExtResource( 5 )]
 position = Vector2( 624, 120 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Lobster5" parent="Iterable" index="10" instance=ExtResource( 5 )]
 position = Vector2( 688, 136 )
-obj_spawn = ExtResource( 8 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 9 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Boulder" parent="Iterable" index="11" instance=ExtResource( 5 )]
 position = Vector2( 816, 96 )
-obj_spawn = ExtResource( 10 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserStatic2" parent="Iterable" index="12" instance=ExtResource( 5 )]
 position = Vector2( 848, 120 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Lobster6" parent="Iterable" index="13" instance=ExtResource( 5 )]
 position = Vector2( 880, 152 )
-obj_spawn = ExtResource( 8 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 9 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserMove" parent="Iterable" index="14" instance=ExtResource( 5 )]
 position = Vector2( 1072, 104 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserMove2" parent="Iterable" index="15" instance=ExtResource( 5 )]
 position = Vector2( 1208, 80 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserStatic3" parent="Iterable" index="16" instance=ExtResource( 5 )]
 position = Vector2( 1360, 72 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Lobster8" parent="Iterable" index="17" instance=ExtResource( 5 )]
 position = Vector2( 1296, 152 )
-obj_spawn = ExtResource( 8 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 9 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Lobster9" parent="Iterable" index="18" instance=ExtResource( 5 )]
 position = Vector2( 1424, 152 )
-obj_spawn = ExtResource( 8 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 9 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Boulder2" parent="Iterable" index="19" instance=ExtResource( 5 )]
 position = Vector2( 1456, 112 )
-obj_spawn = ExtResource( 10 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserMove3" parent="Iterable" index="20" instance=ExtResource( 5 )]
 position = Vector2( 1296, 360 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserStatic4" parent="Iterable" index="21" instance=ExtResource( 5 )]
 position = Vector2( 1424, 344 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall" parent="Iterable" index="22" instance=ExtResource( 5 )]
 position = Vector2( 1320, 392 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall2" parent="Iterable" index="23" instance=ExtResource( 5 )]
 position = Vector2( 1336, 392 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall3" parent="Iterable" index="24" instance=ExtResource( 5 )]
 position = Vector2( 1352, 392 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall4" parent="Iterable" index="25" instance=ExtResource( 5 )]
 position = Vector2( 1368, 392 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserStatic5" parent="Iterable" index="26" instance=ExtResource( 5 )]
 position = Vector2( 1384, 568 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserAtk" parent="Iterable" index="27" instance=ExtResource( 5 )]
 position = Vector2( 1528, 520 )
-obj_spawn = ExtResource( 13 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 14 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Lobster10" parent="Iterable" index="28" instance=ExtResource( 5 )]
 position = Vector2( 1552, 632 )
-obj_spawn = ExtResource( 8 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 9 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall9" parent="Iterable" index="29" instance=ExtResource( 5 )]
 position = Vector2( 1672, 648 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall10" parent="Iterable" index="30" instance=ExtResource( 5 )]
 position = Vector2( 1688, 648 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull" parent="Iterable" index="31" instance=ExtResource( 5 )]
 position = Vector2( 1792, 608 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull2" parent="Iterable" index="32" instance=ExtResource( 5 )]
 position = Vector2( 1904, 552 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserAtk2" parent="Iterable" index="33" instance=ExtResource( 5 )]
 position = Vector2( 1912, 512 )
-obj_spawn = ExtResource( 13 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 14 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserAtk3" parent="Iterable" index="34" instance=ExtResource( 5 )]
 position = Vector2( 2064, 536 )
-obj_spawn = ExtResource( 13 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 14 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall11" parent="Iterable" index="35" instance=ExtResource( 5 )]
 position = Vector2( 2056, 616 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall12" parent="Iterable" index="36" instance=ExtResource( 5 )]
 position = Vector2( 2072, 616 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall13" parent="Iterable" index="37" instance=ExtResource( 5 )]
 position = Vector2( 2088, 584 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall14" parent="Iterable" index="38" instance=ExtResource( 5 )]
 position = Vector2( 2104, 584 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall15" parent="Iterable" index="39" instance=ExtResource( 5 )]
 position = Vector2( 2120, 552 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall16" parent="Iterable" index="40" instance=ExtResource( 5 )]
 position = Vector2( 2136, 552 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserMove4" parent="Iterable" index="41" instance=ExtResource( 5 )]
 position = Vector2( 2096, 576 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserMove5" parent="Iterable" index="42" instance=ExtResource( 5 )]
 position = Vector2( 2128, 576 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserMove6" parent="Iterable" index="43" instance=ExtResource( 5 )]
 position = Vector2( 2288, 488 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserMove7" parent="Iterable" index="44" instance=ExtResource( 5 )]
 position = Vector2( 2320, 488 )
-obj_spawn = ExtResource( 11 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 12 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserAtk4" parent="Iterable" index="45" instance=ExtResource( 5 )]
 position = Vector2( 2448, 504 )
-obj_spawn = ExtResource( 13 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 14 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="LifeEnLarge" parent="Iterable" index="46" instance=ExtResource( 5 )]
 position = Vector2( 2184, 632 )
-obj_spawn = ExtResource( 15 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 16 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -1194,884 +858,413 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="SpikePlatFall17" parent="Iterable" index="47" instance=ExtResource( 5 )]
 position = Vector2( 2248, 648 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall18" parent="Iterable" index="48" instance=ExtResource( 5 )]
 position = Vector2( 2264, 648 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall19" parent="Iterable" index="49" instance=ExtResource( 5 )]
 position = Vector2( 2280, 648 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall20" parent="Iterable" index="50" instance=ExtResource( 5 )]
 position = Vector2( 2296, 648 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull3" parent="Iterable" index="51" instance=ExtResource( 5 )]
 position = Vector2( 2256, 560 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull4" parent="Iterable" index="52" instance=ExtResource( 5 )]
 position = Vector2( 2320, 560 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull5" parent="Iterable" index="53" instance=ExtResource( 5 )]
 position = Vector2( 2384, 624 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull6" parent="Iterable" index="54" instance=ExtResource( 5 )]
 position = Vector2( 2320, 520 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull7" parent="Iterable" index="55" instance=ExtResource( 5 )]
 position = Vector2( 2448, 624 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Boulder3" parent="Iterable" index="56" instance=ExtResource( 5 )]
 position = Vector2( 2704, 528 )
-obj_spawn = ExtResource( 10 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Boulder4" parent="Iterable" index="57" instance=ExtResource( 5 )]
 position = Vector2( 2736, 528 )
-obj_spawn = ExtResource( 10 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull8" parent="Iterable" index="58" instance=ExtResource( 5 )]
 position = Vector2( 2800, 512 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull9" parent="Iterable" index="59" instance=ExtResource( 5 )]
 position = Vector2( 2832, 560 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull10" parent="Iterable" index="60" instance=ExtResource( 5 )]
 position = Vector2( 2896, 576 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall21" parent="Iterable" index="61" instance=ExtResource( 5 )]
 position = Vector2( 2984, 648 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall22" parent="Iterable" index="62" instance=ExtResource( 5 )]
 position = Vector2( 3000, 648 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall23" parent="Iterable" index="63" instance=ExtResource( 5 )]
 position = Vector2( 3048, 648 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall24" parent="Iterable" index="64" instance=ExtResource( 5 )]
 position = Vector2( 3064, 648 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserAtk5" parent="Iterable" index="65" instance=ExtResource( 5 )]
 position = Vector2( 3016, 488 )
-obj_spawn = ExtResource( 13 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 14 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Boulder5" parent="Iterable" index="66" instance=ExtResource( 5 )]
 position = Vector2( 3120, 624 )
-obj_spawn = ExtResource( 10 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall25" parent="Iterable" index="67" instance=ExtResource( 5 )]
 position = Vector2( 3144, 648 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall26" parent="Iterable" index="68" instance=ExtResource( 5 )]
 position = Vector2( 3160, 648 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall27" parent="Iterable" index="69" instance=ExtResource( 5 )]
 position = Vector2( 3224, 616 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall28" parent="Iterable" index="70" instance=ExtResource( 5 )]
 position = Vector2( 3208, 616 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Boulder7" parent="Iterable" index="71" instance=ExtResource( 5 )]
 position = Vector2( 3248, 560 )
-obj_spawn = ExtResource( 10 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD" parent="Iterable" index="72" instance=ExtResource( 5 )]
 position = Vector2( 3400, 584 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD2" parent="Iterable" index="73" instance=ExtResource( 5 )]
 position = Vector2( 3416, 584 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD3" parent="Iterable" index="74" instance=ExtResource( 5 )]
 position = Vector2( 3432, 584 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD4" parent="Iterable" index="75" instance=ExtResource( 5 )]
 position = Vector2( 3448, 584 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD5" parent="Iterable" index="76" instance=ExtResource( 5 )]
 position = Vector2( 3464, 584 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD6" parent="Iterable" index="77" instance=ExtResource( 5 )]
 position = Vector2( 3480, 584 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD7" parent="Iterable" index="78" instance=ExtResource( 5 )]
 position = Vector2( 3496, 584 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD8" parent="Iterable" index="79" instance=ExtResource( 5 )]
 position = Vector2( 3512, 584 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD9" parent="Iterable" index="80" instance=ExtResource( 5 )]
 position = Vector2( 3816, 584 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD10" parent="Iterable" index="81" instance=ExtResource( 5 )]
 position = Vector2( 3832, 584 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD11" parent="Iterable" index="82" instance=ExtResource( 5 )]
 position = Vector2( 3944, 552 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD12" parent="Iterable" index="83" instance=ExtResource( 5 )]
 position = Vector2( 3960, 552 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD15" parent="Iterable" index="84" instance=ExtResource( 5 )]
 position = Vector2( 4008, 552 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD16" parent="Iterable" index="85" instance=ExtResource( 5 )]
 position = Vector2( 4024, 552 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD17" parent="Iterable" index="86" instance=ExtResource( 5 )]
 position = Vector2( 4040, 520 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD18" parent="Iterable" index="87" instance=ExtResource( 5 )]
 position = Vector2( 4056, 520 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull11" parent="Iterable" index="88" instance=ExtResource( 5 )]
 position = Vector2( 4016, 464 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull12" parent="Iterable" index="89" instance=ExtResource( 5 )]
 position = Vector2( 3824, 384 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Boulder8" parent="Iterable" index="90" instance=ExtResource( 5 )]
 position = Vector2( 3639, 248 )
-obj_spawn = ExtResource( 10 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 "speed": 75.0
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull13" parent="Iterable" index="91" instance=ExtResource( 5 )]
 position = Vector2( 3776, 224 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull14" parent="Iterable" index="92" instance=ExtResource( 5 )]
 position = Vector2( 3952, 136 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall5" parent="Iterable" index="93" instance=ExtResource( 5 )]
 position = Vector2( 3832, 104 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall6" parent="Iterable" index="94" instance=ExtResource( 5 )]
 position = Vector2( 3848, 104 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall7" parent="Iterable" index="95" instance=ExtResource( 5 )]
 position = Vector2( 3976, 152 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall8" parent="Iterable" index="96" instance=ExtResource( 5 )]
 position = Vector2( 3992, 152 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD19" parent="Iterable" index="97" instance=ExtResource( 5 )]
 position = Vector2( 3672, 136 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD20" parent="Iterable" index="98" instance=ExtResource( 5 )]
 position = Vector2( 3656, 136 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD21" parent="Iterable" index="99" instance=ExtResource( 5 )]
 position = Vector2( 3640, 88 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD22" parent="Iterable" index="100" instance=ExtResource( 5 )]
 position = Vector2( 3624, 88 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall29" parent="Iterable" index="101" instance=ExtResource( 5 )]
 position = Vector2( 3720, 40 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall30" parent="Iterable" index="102" instance=ExtResource( 5 )]
 position = Vector2( 3736, 40 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull15" parent="Iterable" index="103" instance=ExtResource( 5 )]
 position = Vector2( 4016, -16 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Boulder9" parent="Iterable" index="104" instance=ExtResource( 5 )]
 position = Vector2( 3640, -232 )
-obj_spawn = ExtResource( 10 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 "speed": 75.0
 }
-obj_deletion_by_signals = [  ]
 
 [node name="1Up2" parent="Iterable" index="105" instance=ExtResource( 5 )]
 position = Vector2( 4016, -88 )
-obj_spawn = ExtResource( 17 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 18 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -2079,719 +1272,336 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="BasserStatic7" parent="Iterable" index="106" instance=ExtResource( 5 )]
 position = Vector2( 3968, -152 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserStatic6" parent="Iterable" index="107" instance=ExtResource( 5 )]
 position = Vector2( 3712, -296 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="PowerColton" parent="Iterable" index="108" instance=ExtResource( 5 )]
 position = Vector2( 3888, -336 )
-obj_spawn = ExtResource( 18 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 19 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD25" parent="Iterable" index="109" instance=ExtResource( 5 )]
 position = Vector2( 3944, -312 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD26" parent="Iterable" index="110" instance=ExtResource( 5 )]
 position = Vector2( 3960, -312 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD29" parent="Iterable" index="111" instance=ExtResource( 5 )]
 position = Vector2( 4008, -312 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD30" parent="Iterable" index="112" instance=ExtResource( 5 )]
 position = Vector2( 4024, -312 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD27" parent="Iterable" index="113" instance=ExtResource( 5 )]
 position = Vector2( 4040, -344 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD28" parent="Iterable" index="114" instance=ExtResource( 5 )]
 position = Vector2( 4056, -344 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="BasserStatic8" parent="Iterable" index="115" instance=ExtResource( 5 )]
 position = Vector2( 3952, -440 )
-obj_spawn = ExtResource( 9 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 10 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="PowerColton2" parent="Iterable" index="116" instance=ExtResource( 5 )]
 position = Vector2( 3920, -432 )
-obj_spawn = ExtResource( 18 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 19 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall31" parent="Iterable" index="117" instance=ExtResource( 5 )]
 position = Vector2( 4040, -424 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall32" parent="Iterable" index="118" instance=ExtResource( 5 )]
 position = Vector2( 4056, -424 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD31" parent="Iterable" index="119" instance=ExtResource( 5 )]
 position = Vector2( 3912, -472 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD32" parent="Iterable" index="120" instance=ExtResource( 5 )]
 position = Vector2( 3928, -472 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall37" parent="Iterable" index="121" instance=ExtResource( 5 )]
 position = Vector2( 3944, -552 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall38" parent="Iterable" index="122" instance=ExtResource( 5 )]
 position = Vector2( 3960, -552 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull16" parent="Iterable" index="123" instance=ExtResource( 5 )]
 position = Vector2( 3856, -528 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull17" parent="Iterable" index="124" instance=ExtResource( 5 )]
 position = Vector2( 3856, -560 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull18" parent="Iterable" index="125" instance=ExtResource( 5 )]
 position = Vector2( 3984, -576 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall39" parent="Iterable" index="126" instance=ExtResource( 5 )]
 position = Vector2( 3944, -632 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall40" parent="Iterable" index="127" instance=ExtResource( 5 )]
 position = Vector2( 3960, -632 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="PowerColton3" parent="Iterable" index="128" instance=ExtResource( 5 )]
 position = Vector2( 3888, -672 )
-obj_spawn = ExtResource( 18 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 19 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull19" parent="Iterable" index="129" instance=ExtResource( 5 )]
 position = Vector2( 3856, -672 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD33" parent="Iterable" index="130" instance=ExtResource( 5 )]
 position = Vector2( 3704, -600 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD34" parent="Iterable" index="131" instance=ExtResource( 5 )]
 position = Vector2( 3688, -600 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD35" parent="Iterable" index="132" instance=ExtResource( 5 )]
 position = Vector2( 3656, -640 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD36" parent="Iterable" index="133" instance=ExtResource( 5 )]
 position = Vector2( 3672, -640 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall41" parent="Iterable" index="134" instance=ExtResource( 5 )]
 position = Vector2( 3624, -728 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall42" parent="Iterable" index="135" instance=ExtResource( 5 )]
 position = Vector2( 3640, -728 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull20" parent="Iterable" index="136" instance=ExtResource( 5 )]
 position = Vector2( 3760, -784 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull21" parent="Iterable" index="137" instance=ExtResource( 5 )]
 position = Vector2( 3664, -816 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="PowerColton4" parent="Iterable" index="138" instance=ExtResource( 5 )]
 position = Vector2( 3824, -880 )
-obj_spawn = ExtResource( 18 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 19 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall43" parent="Iterable" index="139" instance=ExtResource( 5 )]
 position = Vector2( 3784, -792 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall44" parent="Iterable" index="140" instance=ExtResource( 5 )]
 position = Vector2( 3800, -792 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall45" parent="Iterable" index="141" instance=ExtResource( 5 )]
 position = Vector2( 3816, -792 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall46" parent="Iterable" index="142" instance=ExtResource( 5 )]
 position = Vector2( 3832, -792 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall47" parent="Iterable" index="143" instance=ExtResource( 5 )]
 position = Vector2( 3848, -792 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall48" parent="Iterable" index="144" instance=ExtResource( 5 )]
 position = Vector2( 3864, -792 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull22" parent="Iterable" index="145" instance=ExtResource( 5 )]
 position = Vector2( 3888, -832 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull23" parent="Iterable" index="146" instance=ExtResource( 5 )]
 position = Vector2( 3984, -880 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD41" parent="Iterable" index="147" instance=ExtResource( 5 )]
 position = Vector2( 3976, -808 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD42" parent="Iterable" index="148" instance=ExtResource( 5 )]
 position = Vector2( 3992, -808 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD43" parent="Iterable" index="149" instance=ExtResource( 5 )]
 position = Vector2( 4008, -808 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD44" parent="Iterable" index="150" instance=ExtResource( 5 )]
 position = Vector2( 4024, -808 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall49" parent="Iterable" index="151" instance=ExtResource( 5 )]
 position = Vector2( 3880, -936 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall50" parent="Iterable" index="152" instance=ExtResource( 5 )]
 position = Vector2( 3896, -936 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="LifeLarge" parent="Iterable" index="153" instance=ExtResource( 5 )]
 position = Vector2( 4008, -968 )
-obj_spawn = ExtResource( 15 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 16 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -2799,14 +1609,7 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="WeaponEnLarge2" parent="Iterable" index="154" instance=ExtResource( 5 )]
 position = Vector2( 4024, -968 )
-obj_spawn = ExtResource( 7 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 8 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -2814,1353 +1617,642 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="Skull24" parent="Iterable" index="155" instance=ExtResource( 5 )]
 position = Vector2( 3920, -1008 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull25" parent="Iterable" index="156" instance=ExtResource( 5 )]
 position = Vector2( 3888, -1008 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="PowerColton5" parent="Iterable" index="157" instance=ExtResource( 5 )]
 position = Vector2( 3696, -1088 )
-obj_spawn = ExtResource( 18 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 19 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull26" parent="Iterable" index="158" instance=ExtResource( 5 )]
 position = Vector2( 3792, -1120 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull27" parent="Iterable" index="159" instance=ExtResource( 5 )]
 position = Vector2( 3696, -1136 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall33" parent="Iterable" index="160" instance=ExtResource( 5 )]
 position = Vector2( 3640, -968 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall34" parent="Iterable" index="161" instance=ExtResource( 5 )]
 position = Vector2( 3656, -968 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall35" parent="Iterable" index="162" instance=ExtResource( 5 )]
 position = Vector2( 3624, -1016 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall36" parent="Iterable" index="163" instance=ExtResource( 5 )]
 position = Vector2( 3640, -1016 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Skull28" parent="Iterable" index="164" instance=ExtResource( 5 )]
 position = Vector2( 3952, -1136 )
-obj_spawn = ExtResource( 14 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 15 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="PowerColton6" parent="Iterable" index="165" instance=ExtResource( 5 )]
 position = Vector2( 3952, -1088 )
-obj_spawn = ExtResource( 18 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 19 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall53" parent="Iterable" index="166" instance=ExtResource( 5 )]
 position = Vector2( 3880, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall54" parent="Iterable" index="167" instance=ExtResource( 5 )]
 position = Vector2( 3896, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD61" parent="Iterable" index="168" instance=ExtResource( 5 )]
 position = Vector2( 4040, -1064 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD62" parent="Iterable" index="169" instance=ExtResource( 5 )]
 position = Vector2( 4056, -1064 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="WheelCutterJoe" parent="Iterable" index="170" instance=ExtResource( 5 )]
 position = Vector2( 4592, -1136 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 20 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Podoboo" parent="Iterable" index="171" instance=ExtResource( 5 )]
 position = Vector2( 4464, -1016 )
-obj_spawn = ExtResource( 20 )
+obj_spawn = ExtResource( 21 )
 spawn_on = 1
 spawn_interval = 0.8
-one_shot = false
 autostart = true
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Podoboo2" parent="Iterable" index="172" instance=ExtResource( 5 )]
 position = Vector2( 4528, -1016 )
-obj_spawn = ExtResource( 20 )
+obj_spawn = ExtResource( 21 )
 spawn_on = 1
 spawn_interval = 0.8
-one_shot = false
 autostart = true
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall55" parent="Iterable" index="173" instance=ExtResource( 5 )]
 position = Vector2( 4648, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall56" parent="Iterable" index="174" instance=ExtResource( 5 )]
 position = Vector2( 4664, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall57" parent="Iterable" index="175" instance=ExtResource( 5 )]
 position = Vector2( 4680, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall58" parent="Iterable" index="176" instance=ExtResource( 5 )]
 position = Vector2( 4696, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall96" parent="Iterable" index="177" instance=ExtResource( 5 )]
 position = Vector2( 4856, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall63" parent="Iterable" index="178" instance=ExtResource( 5 )]
 position = Vector2( 4712, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall64" parent="Iterable" index="179" instance=ExtResource( 5 )]
 position = Vector2( 4728, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall65" parent="Iterable" index="180" instance=ExtResource( 5 )]
 position = Vector2( 4712, -1128 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall66" parent="Iterable" index="181" instance=ExtResource( 5 )]
 position = Vector2( 4728, -1128 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall67" parent="Iterable" index="182" instance=ExtResource( 5 )]
 position = Vector2( 4744, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall68" parent="Iterable" index="183" instance=ExtResource( 5 )]
 position = Vector2( 4760, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="WheelCutterJoe2" parent="Iterable" index="184" instance=ExtResource( 5 )]
 position = Vector2( 4752, -1152 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 20 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall59" parent="Iterable" index="185" instance=ExtResource( 5 )]
 position = Vector2( 4808, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall60" parent="Iterable" index="186" instance=ExtResource( 5 )]
 position = Vector2( 4824, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall61" parent="Iterable" index="187" instance=ExtResource( 5 )]
 position = Vector2( 4840, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="WheelCutterJoe3" parent="Iterable" index="188" instance=ExtResource( 5 )]
 position = Vector2( 5008, -1104 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 20 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Podoboo3" parent="Iterable" index="189" instance=ExtResource( 5 )]
 position = Vector2( 4848, -1016 )
-obj_spawn = ExtResource( 20 )
+obj_spawn = ExtResource( 21 )
 spawn_on = 1
 spawn_interval = 0.8
-one_shot = false
 autostart = true
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall121" parent="Iterable" index="190" instance=ExtResource( 5 )]
 position = Vector2( 5032, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall122" parent="Iterable" index="191" instance=ExtResource( 5 )]
 position = Vector2( 5048, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall123" parent="Iterable" index="192" instance=ExtResource( 5 )]
 position = Vector2( 5064, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall124" parent="Iterable" index="193" instance=ExtResource( 5 )]
 position = Vector2( 5080, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Podoboo4" parent="Iterable" index="194" instance=ExtResource( 5 )]
 position = Vector2( 5040, -1016 )
-obj_spawn = ExtResource( 20 )
+obj_spawn = ExtResource( 21 )
 spawn_on = 1
 spawn_interval = 0.8
-one_shot = false
 autostart = true
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall69" parent="Iterable" index="195" instance=ExtResource( 5 )]
 position = Vector2( 5224, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall70" parent="Iterable" index="196" instance=ExtResource( 5 )]
 position = Vector2( 5240, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall71" parent="Iterable" index="197" instance=ExtResource( 5 )]
 position = Vector2( 5256, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall72" parent="Iterable" index="198" instance=ExtResource( 5 )]
 position = Vector2( 5272, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall73" parent="Iterable" index="199" instance=ExtResource( 5 )]
 position = Vector2( 5288, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall74" parent="Iterable" index="200" instance=ExtResource( 5 )]
 position = Vector2( 5304, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall75" parent="Iterable" index="201" instance=ExtResource( 5 )]
 position = Vector2( 5320, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall76" parent="Iterable" index="202" instance=ExtResource( 5 )]
 position = Vector2( 5336, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall77" parent="Iterable" index="203" instance=ExtResource( 5 )]
 position = Vector2( 5352, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall78" parent="Iterable" index="204" instance=ExtResource( 5 )]
 position = Vector2( 5368, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall79" parent="Iterable" index="205" instance=ExtResource( 5 )]
 position = Vector2( 5384, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall80" parent="Iterable" index="206" instance=ExtResource( 5 )]
 position = Vector2( 5400, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall81" parent="Iterable" index="207" instance=ExtResource( 5 )]
 position = Vector2( 5416, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall82" parent="Iterable" index="208" instance=ExtResource( 5 )]
 position = Vector2( 5432, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall83" parent="Iterable" index="209" instance=ExtResource( 5 )]
 position = Vector2( 5448, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall84" parent="Iterable" index="210" instance=ExtResource( 5 )]
 position = Vector2( 5464, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall85" parent="Iterable" index="211" instance=ExtResource( 5 )]
 position = Vector2( 5480, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall86" parent="Iterable" index="212" instance=ExtResource( 5 )]
 position = Vector2( 5496, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall87" parent="Iterable" index="213" instance=ExtResource( 5 )]
 position = Vector2( 5512, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall88" parent="Iterable" index="214" instance=ExtResource( 5 )]
 position = Vector2( 5528, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall89" parent="Iterable" index="215" instance=ExtResource( 5 )]
 position = Vector2( 5544, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall90" parent="Iterable" index="216" instance=ExtResource( 5 )]
 position = Vector2( 5560, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall91" parent="Iterable" index="217" instance=ExtResource( 5 )]
 position = Vector2( 5576, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall92" parent="Iterable" index="218" instance=ExtResource( 5 )]
 position = Vector2( 5624, -1096 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall93" parent="Iterable" index="219" instance=ExtResource( 5 )]
 position = Vector2( 5640, -1096 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD63" parent="Iterable" index="220" instance=ExtResource( 5 )]
 position = Vector2( 5656, -1096 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD64" parent="Iterable" index="221" instance=ExtResource( 5 )]
 position = Vector2( 5672, -1096 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD65" parent="Iterable" index="222" instance=ExtResource( 5 )]
 position = Vector2( 5688, -1096 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD66" parent="Iterable" index="223" instance=ExtResource( 5 )]
 position = Vector2( 5736, -1096 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD67" parent="Iterable" index="224" instance=ExtResource( 5 )]
 position = Vector2( 5752, -1096 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD68" parent="Iterable" index="225" instance=ExtResource( 5 )]
 position = Vector2( 5800, -1080 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD70" parent="Iterable" index="226" instance=ExtResource( 5 )]
 position = Vector2( 5816, -1080 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD72" parent="Iterable" index="227" instance=ExtResource( 5 )]
 position = Vector2( 5832, -1160 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD73" parent="Iterable" index="228" instance=ExtResource( 5 )]
 position = Vector2( 5848, -1152 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD74" parent="Iterable" index="229" instance=ExtResource( 5 )]
 position = Vector2( 5864, -1144 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD75" parent="Iterable" index="230" instance=ExtResource( 5 )]
 position = Vector2( 5880, -1144 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD85" parent="Iterable" index="231" instance=ExtResource( 5 )]
 position = Vector2( 5832, -1080 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD86" parent="Iterable" index="232" instance=ExtResource( 5 )]
 position = Vector2( 5848, -1080 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD76" parent="Iterable" index="233" instance=ExtResource( 5 )]
 position = Vector2( 5864, -1080 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD77" parent="Iterable" index="234" instance=ExtResource( 5 )]
 position = Vector2( 5880, -1080 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD78" parent="Iterable" index="235" instance=ExtResource( 5 )]
 position = Vector2( 5896, -1080 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD79" parent="Iterable" index="236" instance=ExtResource( 5 )]
 position = Vector2( 5928, -1112 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD80" parent="Iterable" index="237" instance=ExtResource( 5 )]
 position = Vector2( 5960, -1080 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD81" parent="Iterable" index="238" instance=ExtResource( 5 )]
 position = Vector2( 5992, -1112 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD82" parent="Iterable" index="239" instance=ExtResource( 5 )]
 position = Vector2( 6024, -1080 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD83" parent="Iterable" index="240" instance=ExtResource( 5 )]
 position = Vector2( 6056, -1112 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatUD84" parent="Iterable" index="241" instance=ExtResource( 5 )]
 position = Vector2( 6088, -1080 )
-obj_spawn = ExtResource( 16 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 17 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall94" parent="Iterable" index="242" instance=ExtResource( 5 )]
 position = Vector2( 6136, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall95" parent="Iterable" index="243" instance=ExtResource( 5 )]
 position = Vector2( 6152, -1064 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="LifeLarge2" parent="Iterable" index="244" instance=ExtResource( 5 )]
 position = Vector2( 5208, -1096 )
-obj_spawn = ExtResource( 15 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 16 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -4168,170 +2260,95 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="Boulder10" parent="Iterable" index="245" instance=ExtResource( 5 )]
 position = Vector2( 5360, -1248 )
-obj_spawn = ExtResource( 10 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 11 )
 custom_parameters = {
 "speed": 140.0
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Podoboo6" parent="Iterable" index="246" instance=ExtResource( 5 )]
 position = Vector2( 5712, -1008 )
-obj_spawn = ExtResource( 20 )
+obj_spawn = ExtResource( 21 )
 spawn_on = 1
 spawn_interval = 0.954
-one_shot = false
 autostart = true
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Podoboo7" parent="Iterable" index="247" instance=ExtResource( 5 )]
 position = Vector2( 5768, -1008 )
-obj_spawn = ExtResource( 20 )
+obj_spawn = ExtResource( 21 )
 spawn_on = 1
 spawn_interval = 1.927
-one_shot = false
 autostart = true
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Podoboo9" parent="Iterable" index="248" instance=ExtResource( 5 )]
 position = Vector2( 5912, -1008 )
-obj_spawn = ExtResource( 20 )
+obj_spawn = ExtResource( 21 )
 spawn_on = 1
 spawn_interval = 1.71
-one_shot = false
 autostart = true
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Podoboo10" parent="Iterable" index="249" instance=ExtResource( 5 )]
 position = Vector2( 5976, -1008 )
-obj_spawn = ExtResource( 20 )
+obj_spawn = ExtResource( 21 )
 spawn_on = 1
 spawn_interval = 1.507
-one_shot = false
 autostart = true
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Podoboo11" parent="Iterable" index="250" instance=ExtResource( 5 )]
 position = Vector2( 6008, -1008 )
-obj_spawn = ExtResource( 20 )
+obj_spawn = ExtResource( 21 )
 spawn_on = 1
 spawn_interval = 1.584
-one_shot = false
 autostart = true
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="Podoboo12" parent="Iterable" index="251" instance=ExtResource( 5 )]
 position = Vector2( 6136, -1008 )
-obj_spawn = ExtResource( 20 )
+obj_spawn = ExtResource( 21 )
 spawn_on = 1
 spawn_interval = 1.763
-one_shot = false
 autostart = true
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="WheelCutterJoe4" parent="Iterable" index="252" instance=ExtResource( 5 )]
 position = Vector2( 6208, -1104 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 20 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="WheelCutterJoe5" parent="Iterable" index="253" instance=ExtResource( 5 )]
 position = Vector2( 6320, -1120 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 20 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="WheelCutterJoe6" parent="Iterable" index="254" instance=ExtResource( 5 )]
 position = Vector2( 6320, -1184 )
-obj_spawn = ExtResource( 19 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 20 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="LifeSmall" parent="Iterable" index="255" instance=ExtResource( 5 )]
 position = Vector2( 5640, -1192 )
-obj_spawn = ExtResource( 21 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 22 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -4339,14 +2356,7 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="LifeSmall2" parent="Iterable" index="256" instance=ExtResource( 5 )]
 position = Vector2( 5672, -1192 )
-obj_spawn = ExtResource( 21 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 22 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -4354,14 +2364,7 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="LifeSmall3" parent="Iterable" index="257" instance=ExtResource( 5 )]
 position = Vector2( 5704, -1192 )
-obj_spawn = ExtResource( 21 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 22 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -4369,14 +2372,7 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="LifeSmall4" parent="Iterable" index="258" instance=ExtResource( 5 )]
 position = Vector2( 5736, -1192 )
-obj_spawn = ExtResource( 21 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 22 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -4384,14 +2380,7 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="WeaponEnSmall3" parent="Iterable" index="259" instance=ExtResource( 5 )]
 position = Vector2( 5656, -1192 )
-obj_spawn = ExtResource( 6 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 7 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -4399,14 +2388,7 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="WeaponEnSmall4" parent="Iterable" index="260" instance=ExtResource( 5 )]
 position = Vector2( 5688, -1192 )
-obj_spawn = ExtResource( 6 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 7 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -4414,14 +2396,7 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="WeaponEnSmall5" parent="Iterable" index="261" instance=ExtResource( 5 )]
 position = Vector2( 5720, -1192 )
-obj_spawn = ExtResource( 6 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 7 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -4429,14 +2404,7 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="WeaponEnSmall6" parent="Iterable" index="262" instance=ExtResource( 5 )]
 position = Vector2( 5752, -1192 )
-obj_spawn = ExtResource( 6 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 7 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -4444,14 +2412,7 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="1Up3" parent="Iterable" index="263" instance=ExtResource( 5 )]
 position = Vector2( 6360, -1176 )
-obj_spawn = ExtResource( 17 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 18 )
 custom_parameters = {
 "can_disappear": false
 }
@@ -4459,79 +2420,39 @@ obj_deletion_by_signals = [ "collected" ]
 
 [node name="SpikePlatFall97" parent="Iterable" index="264" instance=ExtResource( 5 )]
 position = Vector2( 6744, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall98" parent="Iterable" index="265" instance=ExtResource( 5 )]
 position = Vector2( 6760, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall99" parent="Iterable" index="266" instance=ExtResource( 5 )]
 position = Vector2( 6808, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="SpikePlatFall100" parent="Iterable" index="267" instance=ExtResource( 5 )]
 position = Vector2( 6824, -1080 )
-obj_spawn = ExtResource( 12 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 13 )
 custom_parameters = {
 "permanent_death": false
 }
-obj_deletion_by_signals = [  ]
 
 [node name="FieryLizard" parent="Iterable" index="268" instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( 6880, -1160 )
-obj_spawn = ExtResource( 22 )
-spawn_interval = 3.0
-one_shot = false
-autostart = false
-activate_only_on_screen = true
-spawn_target_node = NodePath("./..")
-spawn_range = 8.0
-debug_highlight = false
+obj_spawn = ExtResource( 23 )
 custom_parameters = {
 
 }
-obj_deletion_by_signals = [  ]
 
 [node name="AppearPosition" type="Position2D" parent="Iterable/FieryLizard" index="4" groups=[
 "AppearPosition",
@@ -4565,10 +2486,8 @@ smoothing_speed = 0.0
 margin_top = 8.0
 margin_right = 256.0
 margin_bottom = 232.0
-WARPS_PLAYER_AROUND_UP_DOWN = false
-WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor" parent="ViewContainer/View" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor" parent="ViewContainer/View" index="2" instance=ExtResource( 24 )]
 margin_left = 256.0
 margin_top = 40.0
 margin_right = 272.0
@@ -4577,7 +2496,7 @@ target_view = NodePath("../../View2")
 active_view = NodePath("..")
 direction = 1
 
-[node name="View2" parent="ViewContainer" index="1" instance=ExtResource( 24 )]
+[node name="View2" parent="ViewContainer" index="1" instance=ExtResource( 25 )]
 margin_left = 256.0
 margin_top = 8.0
 margin_right = 1536.0
@@ -4585,7 +2504,7 @@ margin_bottom = 232.0
 WARPS_PLAYER_AROUND_UP_DOWN = false
 WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor2" parent="ViewContainer/View2" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor2" parent="ViewContainer/View2" index="2" instance=ExtResource( 24 )]
 margin_left = -16.0
 margin_top = 40.0
 margin_right = 0.0
@@ -4593,7 +2512,7 @@ margin_bottom = 184.0
 target_view = NodePath("../../View")
 active_view = NodePath("..")
 
-[node name="ScreenTransitor3" parent="ViewContainer/View2" index="3" instance=ExtResource( 23 )]
+[node name="ScreenTransitor3" parent="ViewContainer/View2" index="3" instance=ExtResource( 24 )]
 margin_left = 1216.0
 margin_top = 224.0
 margin_right = 1248.0
@@ -4602,7 +2521,7 @@ target_view = NodePath("../../View3")
 active_view = NodePath("..")
 direction = 3
 
-[node name="View3" parent="ViewContainer" index="2" instance=ExtResource( 24 )]
+[node name="View3" parent="ViewContainer" index="2" instance=ExtResource( 25 )]
 margin_left = 1280.0
 margin_top = 232.0
 margin_right = 1536.0
@@ -4610,7 +2529,7 @@ margin_bottom = 456.0
 WARPS_PLAYER_AROUND_UP_DOWN = false
 WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor4" parent="ViewContainer/View3" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor4" parent="ViewContainer/View3" index="2" instance=ExtResource( 24 )]
 margin_left = 32.0
 margin_top = 224.0
 margin_right = 96.0
@@ -4619,7 +2538,7 @@ target_view = NodePath("../../View4")
 active_view = NodePath("..")
 direction = 3
 
-[node name="View4" parent="ViewContainer" index="3" instance=ExtResource( 24 )]
+[node name="View4" parent="ViewContainer" index="3" instance=ExtResource( 25 )]
 margin_left = 1280.0
 margin_top = 456.0
 margin_right = 3328.0
@@ -4627,7 +2546,7 @@ margin_bottom = 680.0
 WARPS_PLAYER_AROUND_UP_DOWN = false
 WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor5" parent="ViewContainer/View4" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor5" parent="ViewContainer/View4" index="2" instance=ExtResource( 24 )]
 margin_left = 2048.0
 margin_top = 32.0
 margin_right = 2064.0
@@ -4636,7 +2555,7 @@ target_view = NodePath("../../View5")
 active_view = NodePath("..")
 direction = 1
 
-[node name="View5" parent="ViewContainer" index="4" instance=ExtResource( 24 )]
+[node name="View5" parent="ViewContainer" index="4" instance=ExtResource( 25 )]
 margin_left = 3328.0
 margin_top = 456.0
 margin_right = 3584.0
@@ -4644,7 +2563,7 @@ margin_bottom = 680.0
 WARPS_PLAYER_AROUND_UP_DOWN = false
 WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor6" parent="ViewContainer/View5" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor6" parent="ViewContainer/View5" index="2" instance=ExtResource( 24 )]
 margin_left = -16.0
 margin_top = 32.0
 margin_right = 0.0
@@ -4652,14 +2571,14 @@ margin_bottom = 120.0
 target_view = NodePath("../../View4")
 active_view = NodePath("..")
 
-[node name="CheckpointZone" parent="ViewContainer/View5" index="3" instance=ExtResource( 25 )]
+[node name="CheckpointZone" parent="ViewContainer/View5" index="3" instance=ExtResource( 26 )]
 margin_left = 104.0
 margin_top = 16.0
 margin_right = 152.0
 margin_bottom = 120.0
 target_view = NodePath("..")
 
-[node name="ScreenTransitor7" parent="ViewContainer/View5" index="4" instance=ExtResource( 23 )]
+[node name="ScreenTransitor7" parent="ViewContainer/View5" index="4" instance=ExtResource( 24 )]
 margin_left = 256.0
 margin_top = 32.0
 margin_right = 272.0
@@ -4668,7 +2587,7 @@ target_view = NodePath("../../View6")
 active_view = NodePath("..")
 direction = 1
 
-[node name="View6" parent="ViewContainer" index="5" instance=ExtResource( 24 )]
+[node name="View6" parent="ViewContainer" index="5" instance=ExtResource( 25 )]
 margin_left = 3584.0
 margin_top = -1240.0
 margin_right = 4352.0
@@ -4676,14 +2595,14 @@ margin_bottom = 680.0
 WARPS_PLAYER_AROUND_UP_DOWN = false
 WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="CheckpointZone2" parent="ViewContainer/View6" index="2" instance=ExtResource( 25 )]
+[node name="CheckpointZone2" parent="ViewContainer/View6" index="2" instance=ExtResource( 26 )]
 margin_left = 608.0
 margin_right = 672.0
 margin_bottom = 120.0
 checkpoint_priority = 1
 target_view = NodePath("..")
 
-[node name="ScreenTransitor8" parent="ViewContainer/View6" index="3" instance=ExtResource( 23 )]
+[node name="ScreenTransitor8" parent="ViewContainer/View6" index="3" instance=ExtResource( 24 )]
 margin_left = 768.0
 margin_right = 784.0
 margin_bottom = 120.0
@@ -4691,7 +2610,7 @@ target_view = NodePath("../../View7")
 active_view = NodePath("..")
 direction = 1
 
-[node name="View7" parent="ViewContainer" index="6" instance=ExtResource( 24 )]
+[node name="View7" parent="ViewContainer" index="6" instance=ExtResource( 25 )]
 margin_left = 4352.0
 margin_top = -1240.0
 margin_right = 5120.0
@@ -4699,14 +2618,14 @@ margin_bottom = -1016.0
 WARPS_PLAYER_AROUND_UP_DOWN = false
 WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="ScreenTransitor9" parent="ViewContainer/View7" index="2" instance=ExtResource( 23 )]
+[node name="ScreenTransitor9" parent="ViewContainer/View7" index="2" instance=ExtResource( 24 )]
 margin_left = -16.0
 margin_right = 0.0
 margin_bottom = 120.0
 target_view = NodePath("../../View6")
 active_view = NodePath("..")
 
-[node name="ScreenTransitor10" parent="ViewContainer/View7" index="3" instance=ExtResource( 23 )]
+[node name="ScreenTransitor10" parent="ViewContainer/View7" index="3" instance=ExtResource( 24 )]
 margin_left = 768.0
 margin_top = 136.0
 margin_right = 784.0
@@ -4715,7 +2634,7 @@ target_view = NodePath("../../View8")
 active_view = NodePath("..")
 direction = 1
 
-[node name="View8" parent="ViewContainer" index="7" instance=ExtResource( 24 )]
+[node name="View8" parent="ViewContainer" index="7" instance=ExtResource( 25 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 5120.0
 margin_top = -1240.0
@@ -4724,7 +2643,7 @@ margin_bottom = -1016.0
 WARPS_PLAYER_AROUND_UP_DOWN = false
 WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="BossDoor" parent="ViewContainer/View8" index="2" instance=ExtResource( 26 )]
+[node name="BossDoor" parent="ViewContainer/View8" index="2" instance=ExtResource( 27 )]
 margin_left = 1264.0
 margin_top = 88.0
 margin_right = 1296.0
@@ -4732,7 +2651,7 @@ margin_bottom = 152.0
 target_view = NodePath("../../View9")
 active_view = NodePath("..")
 
-[node name="View9" parent="ViewContainer" index="8" instance=ExtResource( 24 )]
+[node name="View9" parent="ViewContainer" index="8" instance=ExtResource( 25 )]
 modulate = Color( 1, 1, 1, 1 )
 margin_left = 6400.0
 margin_top = -1240.0
@@ -4741,7 +2660,7 @@ margin_bottom = -1016.0
 WARPS_PLAYER_AROUND_UP_DOWN = false
 WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
-[node name="BossDoor2" parent="ViewContainer/View9" index="2" instance=ExtResource( 26 )]
+[node name="BossDoor2" parent="ViewContainer/View9" index="2" instance=ExtResource( 27 )]
 margin_left = 240.0
 margin_top = 88.0
 margin_right = 272.0
@@ -4750,7 +2669,7 @@ target_view = NodePath("../../View10")
 active_view = NodePath("..")
 hide_after_opened = true
 
-[node name="CheckpointZone3" parent="ViewContainer/View9" index="3" instance=ExtResource( 25 )]
+[node name="CheckpointZone3" parent="ViewContainer/View9" index="3" instance=ExtResource( 26 )]
 margin_left = 96.0
 margin_top = 32.0
 margin_right = 160.0
@@ -4758,7 +2677,7 @@ margin_bottom = 152.0
 checkpoint_priority = 2
 target_view = NodePath("..")
 
-[node name="View10" parent="ViewContainer" index="9" instance=ExtResource( 24 )]
+[node name="View10" parent="ViewContainer" index="9" instance=ExtResource( 25 )]
 margin_left = 6656.0
 margin_top = -1240.0
 margin_right = 6912.0

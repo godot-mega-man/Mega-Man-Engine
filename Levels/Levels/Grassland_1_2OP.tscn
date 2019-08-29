@@ -31,22 +31,6 @@
 [ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Sprites/Background/MM7FreezeBgAlt2.png" type="Texture" id=30]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [sub_resource type="GDScript" id=1]
 script/source = "extends ParallaxBackground
 
@@ -356,6 +340,9 @@ position = Vector2( 4760, 1336 )
 
 [node name="DeathSpike61" parent="TileMap/AddDeathSpikeHere" index="77" instance=ExtResource( 5 )]
 position = Vector2( 4760, 1288 )
+
+[node name="Iterable" parent="." index="3"]
+editor/display_folded = true
 
 [node name="Player" parent="Iterable" index="1"]
 position = Vector2( -128, 435 )
@@ -1117,6 +1104,8 @@ direction = 1
 [node name="View12" parent="ViewContainer" index="1" instance=ExtResource( 23 )]
 margin_right = 1232.0
 margin_bottom = 480.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor" parent="ViewContainer/View12" index="2" instance=ExtResource( 22 )]
 margin_left = 1152.0
@@ -1140,6 +1129,8 @@ margin_left = 800.0
 margin_top = 480.0
 margin_right = 1232.0
 margin_bottom = 720.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor2" parent="ViewContainer/View2" index="2" instance=ExtResource( 22 )]
 margin_left = 32.0
@@ -1155,6 +1146,8 @@ margin_left = 800.0
 margin_top = 720.0
 margin_right = 1664.0
 margin_bottom = 960.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor3" parent="ViewContainer/View3" index="2" instance=ExtResource( 22 )]
 margin_left = 864.0
@@ -1169,6 +1162,8 @@ margin_left = 1664.0
 margin_top = 720.0
 margin_right = 2176.0
 margin_bottom = 960.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor4" parent="ViewContainer/View4" index="2" instance=ExtResource( 22 )]
 margin_left = 512.0
@@ -1191,6 +1186,8 @@ margin_left = 2176.0
 margin_top = 720.0
 margin_right = 3200.0
 margin_bottom = 960.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor6" parent="ViewContainer/View5" index="2" instance=ExtResource( 22 )]
 margin_left = -16.0
@@ -1213,6 +1210,8 @@ margin_left = 3200.0
 margin_top = 720.0
 margin_right = 3456.0
 margin_bottom = 960.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor8" parent="ViewContainer/View6" index="2" instance=ExtResource( 22 )]
 margin_left = 192.0
@@ -1228,6 +1227,8 @@ margin_left = 3200.0
 margin_top = 960.0
 margin_right = 3456.0
 margin_bottom = 1200.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor9" parent="ViewContainer/View7" index="2" instance=ExtResource( 22 )]
 margin_left = 16.0
@@ -1243,6 +1244,8 @@ margin_left = 3200.0
 margin_top = 1200.0
 margin_right = 3456.0
 margin_bottom = 1440.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor10" parent="ViewContainer/View8" index="2" instance=ExtResource( 22 )]
 margin_left = 256.0
@@ -1259,6 +1262,8 @@ margin_left = 3456.0
 margin_top = 1200.0
 margin_right = 5248.0
 margin_bottom = 1440.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ScreenTransitor11" parent="ViewContainer/View9" index="2" instance=ExtResource( 22 )]
 margin_left = -16.0
@@ -1283,6 +1288,8 @@ margin_left = 5248.0
 margin_top = 1200.0
 margin_right = 5504.0
 margin_bottom = 1440.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="BossDoor2" parent="ViewContainer/View10" index="2" instance=ExtResource( 24 )]
 margin_left = 240.0
@@ -1298,6 +1305,8 @@ margin_left = 5504.0
 margin_top = 1200.0
 margin_right = 5760.0
 margin_bottom = 1440.0
+WARPS_PLAYER_AROUND_UP_DOWN = false
+WARPS_PLAYER_LEFT_RIGHT_SIDE = false
 
 [node name="ChainDestroyController" parent="." index="12" instance=ExtResource( 25 )]
 editor/display_folded = true
