@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/eLvlMain_Rbade.ogg-0c3df70523655c34587420d1290e5218.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Bgm/eLvlMain_Rbade.ogg"
+dest_files=[ "res://.import/eLvlMain_Rbade.ogg-0c3df70523655c34587420d1290e5218.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=1.02

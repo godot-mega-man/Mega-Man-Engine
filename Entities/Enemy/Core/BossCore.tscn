@@ -7,9 +7,8 @@
 "Boss",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-
-[node name="HpBar" parent="." index="2"]
-visible = false
-affects_game_settings = false
+hit_points_base = 28
+invincible_enabled = true
+pickups_drop_enabled = false
 [connection signal="slain" from="." to="." method="_on_BossCore_slain"]
 [connection signal="taken_damage" from="." to="." method="_on_BossCore_taken_damage"]

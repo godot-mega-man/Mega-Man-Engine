@@ -101,32 +101,48 @@ onready var sfx_character_enemy_damage : AudioStreamPlayer = $SFX/Character/Sfx_
 onready var sfx_character_player_damage : AudioStreamPlayer = $SFX/Character/Sfx_PlayerDamage
 onready var sfx_character_player_die : AudioStreamPlayer = $SFX/Character/Sfx_PlayerDie
 onready var sfx_character_land : AudioStreamPlayer = $SFX/Character/Sfx_Land
+onready var sfx_character_teleport_in : AudioStreamPlayer = $SFX/Character/Sfx_TeleportIn
+onready var sfx_character_teleport_out : AudioStreamPlayer = $SFX/Character/Sfx_TeleportOut
 
 onready var sfx_collectibles_coin : AudioStreamPlayer = $SFX/Collectibles/Sfx_Coin
 onready var sfx_collectibles_diamond : AudioStreamPlayer = $SFX/Collectibles/Sfx_Diamond
 onready var sfx_collectibles_item : AudioStreamPlayer = $SFX/Collectibles/Sfx_Item
 
 onready var sfx_combat_ballade_cracker_bomb : AudioStreamPlayer = $SFX/Combat/Sfx_BalladeCrackerBomb
+onready var sfx_combat_blues_shot : AudioStreamPlayer = $SFX/Combat/Sfx_BluesShot
+onready var sfx_combat_boulder : AudioStreamPlayer = $SFX/Combat/Sfx_Boulder
 onready var sfx_combat_buster : AudioStreamPlayer = $SFX/Combat/Sfx_Buster
+onready var sfx_combat_buster_fullycharged : AudioStreamPlayer = $SFX/Combat/Sfx_BusterFullyCharged
+onready var sfx_combat_buster_minicharged : AudioStreamPlayer = $SFX/Combat/Sfx_BusterMiniCharged
+onready var sfx_combat_buster_charging : AudioStreamPlayer = $SFX/Combat/Sfx_BusterCharging
 onready var sfx_combat_diarn_sp_shot : AudioStreamPlayer = $SFX/Combat/Sfx_DiarnSPShot
+onready var sfx_combat_fireball : AudioStreamPlayer = $SFX/Combat/Sfx_Fireball
+onready var sfx_combat_flame_burst : AudioStreamPlayer = $SFX/Combat/Sfx_FlameBurst
 onready var sfx_combat_ice_break : AudioStreamPlayer = $SFX/Combat/Sfx_IceBreak
 onready var sfx_combat_ice_make : AudioStreamPlayer = $SFX/Combat/Sfx_IceMake
 onready var sfx_combat_large_explosion : AudioStreamPlayer = $SFX/Combat/Sfx_LargeExplosion
+onready var sfx_combat_large_explosion_mm3 : AudioStreamPlayer = $SFX/Combat/Sfx_LargeExplosionMM3
 onready var sfx_combat_power_fall : AudioStreamPlayer = $SFX/Combat/Sfx_PowerFall
 onready var sfx_combat_power_landing : AudioStreamPlayer = $SFX/Combat/Sfx_PowerLanding
 onready var sfx_combat_power_launch : AudioStreamPlayer = $SFX/Combat/Sfx_PowerLaunch
 onready var sfx_combat_reflect : AudioStreamPlayer = $SFX/Combat/Sfx_Reflect
 onready var sfx_combat_shot : AudioStreamPlayer = $SFX/Combat/Sfx_Shot
+onready var sfx_combat_wheel_cutter : AudioStreamPlayer = $SFX/Combat/Sfx_WheelCutter
+onready var sfx_combat_wheel_cutter_wall : AudioStreamPlayer = $SFX/Combat/Sfx_WheelCutterWall
 
 onready var sfx_env_boss_door : AudioStreamPlayer = $SFX/Environments/Sfx_BossDoor
 onready var sfx_env_coin_landing : AudioStreamPlayer = $SFX/Environments/Sfx_CoinLanding
 onready var sfx_env_diamond_landing : AudioStreamPlayer = $SFX/Environments/Sfx_DiamondLanding
 onready var sfx_env_enter_door : AudioStreamPlayer = $SFX/Environments/Sfx_EnterDoor
 onready var sfx_env_fan : AudioStreamPlayer = $SFX/Environments/Sfx_Fan
+onready var sfx_env_platform_explode : AudioStreamPlayer = $SFX/Environments/Sfx_PlatformExplode
+onready var sfx_env_platform_fall : AudioStreamPlayer = $SFX/Environments/Sfx_PlatformFall
+onready var sfx_env_platform_scramble : AudioStreamPlayer = $SFX/Environments/Sfx_PlatformScramble
 
 onready var sfx_ui_boss_fill_hp : AudioStreamPlayer = $SFX/UI/Sfx_BossFillHp
 onready var sfx_ui_game_start : AudioStreamPlayer = $SFX/UI/Sfx_GameStart
 onready var sfx_ui_level_up : AudioStreamPlayer = $SFX/UI/Sfx_LevelUp
+onready var sfx_ui_one_up : AudioStreamPlayer = $SFX/UI/Sfx_OneUp
 
 onready var sfx_unc_serious_damage : AudioStreamPlayer = $SFX/Uncategorized/Sfx_SeriousDamage
 

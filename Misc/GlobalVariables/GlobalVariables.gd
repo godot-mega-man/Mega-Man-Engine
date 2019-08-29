@@ -1,5 +1,4 @@
 extends Node
-class_name GlobalVariables
 
 #INVENTORY!
 #Item can be stacked while equipment items will be kept
@@ -12,7 +11,10 @@ var saved_dead_enemies : Array
 
 var current_view : String = ""
 
-var one_up = 2
+var current_player_primary_color : Color
+var current_player_secondary_color : Color
+var current_player_outline_color : Color
 
+#Obsolete!
 func add_to_dead_enemies(obj : DeadEnemyInfo):
 	saved_dead_enemies.push_back(obj)

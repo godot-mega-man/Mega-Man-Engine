@@ -15,21 +15,26 @@ signal player_die_normally
 #                   Warp zones may overrides this option.
 export(int, "Auto", "Ignore Teleporters", "Never (Unsafe)") var STARTING_LOCATION = 0
 
-export(NodePath) var level_path
-export(NodePath) var game_gui_path
-export(NodePath) var tilemap_path
+export (NodePath) var level_path
+export (NodePath) var tilemap_path
+export (Resource) var player_character_data_res
+export (int) var CURRENT_PALETTE_STATE #Don't touch this!
 
 #Player's stats
 const HP_BASE : int = 28
 const MP_BASE : int = 20
 const DAMAGE_BASE = 2
-const DEFAULT_INVIS_TIME : float = 1.5
+const DEFAULT_INVIS_TIME : float = 1.4
 const ATTACK_HOTKEY = 'game_action'
 const ATTACK_HOTKEY_1 = 'game_hotkey1'
+const PROJECTILE_ON_SCREEN_LIMIT : float = 3.0
+const CHARGE_MEGABUSTER_STARTING_TIME = 0.6
+const FULLY_CHARGE_MEGABUSTER_STARTING_TIME = 1.6
 const TAKING_DAMAGE_SLIDE_LEFT := -20
 const TAKING_DAMAGE_SLIDE_RIGHT := 20
-const SLIDE_FRAME : float = 25.0
+const SLIDE_FRAME : float = 26.0
 const SLIDE_SPEED : float = 150.0
+const SUICIDE_KEY = KEY_2
 
 #Current stats.
 var current_hp = HP_BASE
@@ -39,19 +44,25 @@ var max_mp = 20
 var attack_power = DAMAGE_BASE
 var is_invincible = false
 var is_attack_ready = true
+var is_fell_into_pit = false
 var attack_cooldown_apply_time = 0.05
 var attack_type = 0 #0:By Pressing action button, 1:Holding action button
+var attack_hold_time = 0 #Increase as the attack button is pressed.
+var mega_buster_charge_lv = 0
 var is_cutscene_mode = false #When true, player won't take damage while in cutscene
 var is_cancel_holding_jump_allowed = true
 var is_taking_damage = false
 var taking_damage_slide_pos := 0 #Use only x-axis!
 var is_sliding = false
 var slide_remaining : float
+var slide_direction_x : float = 0 #-1 and 1 value are used.
+
 
 #Player's child nodes
 onready var pf_bhv := $PlatformBehavior as FJ_PlatformBehavior2D
 onready var area = $Area2D
 onready var area_collision := $Area2D/CollisionShape2D as CollisionShape2D
+onready var area_slide_collision := $Area2D/SlideCollisionShape2D as CollisionShape2D
 onready var collision_shape := $CollisionShape2D as CollisionShape2D
 onready var slide_collision_shape := $SlideCollisionShape2D
 onready var platformer_sprite = $PlatformerSprite
@@ -64,6 +75,9 @@ onready var transition_tween := $TransitionTween as Tween
 onready var damage_sprite = $DamageSprite
 onready var damage_sprite_ani = $DamageSprite/Ani
 onready var slide_dust_pos = $PlatformerSprite/SlideDustPos
+onready var palette_ani_player = $PlatformerSprite/PaletteAniPlayer
+onready var palette_ani_player_changer = $PlatformerSprite/PaletteAniPlayer/PaletteAniChanger
+onready var death_freeze_timer = $DeathFreezeTimer
 
 onready var level_camera := get_node_or_null("/root/Level/Camera2D") as Camera2D
 
@@ -74,11 +88,13 @@ onready var currency_manager = get_node("/root/CurrencyManager")
 onready var player_stats = get_node("/root/PlayerStats")
 
 #Preloading objects... Ex: Bullets.
-var proj_classicBullet = preload("res://Entities/PlayerProjectile/PlayerProjectile_MegaBuster.tscn")
+var proj_megabuster = preload("res://Entities/PlayerProjectile/PlayerProjectile_MegaBuster.tscn")
+var proj_chargedmegabuster1 = preload("res://Entities/PlayerProjectile/PlayerProjectile_ChargedMegaBuster1.tscn")
+var proj_chargedmegabuster2 = preload("res://Entities/PlayerProjectile/PlayerProjectile_ChargedMegaBuster2.tscn")
 var dmg_counter = preload("res://GUI/DamageCounter.tscn")
 var explosion_effect = preload("res://Entities/Effects/Explosion/Explosion.tscn")
 var coin_particles = preload("res://Entities/Effects/Particles/CoinParticles.tscn")
-var vulnerable_effect = preload("res://Assets_ReleaseExcluded/Sprites/Effects/VulnerableEffect.tscn")
+var vulnerable_effect = preload("res://Entities/Effects/VulnerableEffect/VulnerableEffect.tscn")
 var slide_dust_effect = preload("res://Entities/Effects/SlideDust/SlideDust.tscn")
 '''---------------------------------------------------------------------------------'''
 
@@ -96,18 +112,31 @@ func _ready():
 	
 	#Let's the entire scene know that the player is alive.
 	player_stats.is_died = false
+	
+	update_player_sprite_texture()
+	_update_current_character_palette_state(true)
 
 func _process(delta):
-	"""
-	--------Movement--------
-	"""
 	set_vflip_by_keypress()
-	press_attack_check()
+	press_attack_check(delta)
 	check_for_area_collisions()
-	crush_check() #Check if player is crushed
-	check_press_jump_or_sliding() 
+	check_sliding(delta)
+	check_press_jump_or_sliding()
 	check_holding_jump_key()
 	check_taking_damage()
+	update_platformer_sprite_color_palettes()
+
+func _input(event):
+	if event is InputEventKey:
+		if event.get_scancode() == SUICIDE_KEY and event.is_pressed():
+			if !pf_bhv.INITIAL_STATE:
+				return
+			if !pf_bhv.CONTROL_ENABLE:
+				return
+			if current_hp <= 0:
+				return
+			player_death()
+			GameHUD.update_player_vital_bar(0)
 
 #Check if jump key is holding while in the air.
 #Otherwise, resets velocity y
@@ -146,12 +175,14 @@ func set_starting_stats():
 		player_stats.restore_hp_on_load = false
 	else:
 		current_hp = player_stats.current_hp
+	GameHUD.update_player_vital_bar(current_hp)
 
 func _on_PlatformerBehavior_fell_into_pit() -> void:
-	#Spawn damage counter.
 	current_hp = 0
+	is_fell_into_pit = true
+	
 	#Update GUI
-	get_owner().update_game_gui_health()
+	GameHUD.update_player_vital_bar(current_hp)
 	player_death()
 
 func set_vflip_by_keypress():
@@ -160,7 +191,10 @@ func set_vflip_by_keypress():
 	if pf_bhv.walk_right:
 		platformer_sprite.scale.x = 1
 
-func press_attack_check():
+func press_attack_check(delta : float):
+	if !pf_bhv.CONTROL_ENABLE or !pf_bhv.INITIAL_STATE:
+		return
+	
 	#Character will start to shoot/attack when the player pressed "action key"
 	#To be able to attack, all of the following conditions must be met:
 	#  -There is a keypress stroke.
@@ -168,25 +202,49 @@ func press_attack_check():
 	if is_attack_ready:
 		if attack_type == 0:
 			if Input.is_action_just_pressed(ATTACK_HOTKEY):
-				start_launching_attack()
-		else:
-			if Input.is_action_pressed(ATTACK_HOTKEY):
-				attack_cooldown_timer.start(attack_cooldown_apply_time)
-				is_attack_ready = false
-				start_launching_attack()
-			if Input.is_action_pressed(ATTACK_HOTKEY_1):
-				attack_cooldown_timer.start(attack_cooldown_apply_time)
-				is_attack_ready = false
-				start_launching_attack_skill()
+				if not can_spawn_projectile() or is_sliding:
+					return
+				start_launching_attack(proj_megabuster)
+				FJ_AudioManager.sfx_combat_buster.play()
+	
+	#Check if releasing attack button or holding either way
+	if not Input.is_action_pressed(ATTACK_HOTKEY):
+		if not can_spawn_projectile() or is_sliding:
+			return
+		
+		if attack_hold_time > FULLY_CHARGE_MEGABUSTER_STARTING_TIME:
+			start_launching_attack(proj_chargedmegabuster2)
+			FJ_AudioManager.sfx_combat_buster_fullycharged.play()
+			FJ_AudioManager.sfx_combat_buster_charging.call_deferred("stop")
+		elif attack_hold_time > CHARGE_MEGABUSTER_STARTING_TIME:
+			start_launching_attack(proj_chargedmegabuster1)
+			FJ_AudioManager.sfx_combat_buster_minicharged.play()
+			FJ_AudioManager.sfx_combat_buster_charging.call_deferred("stop")
+		
+		attack_hold_time = 0
+		mega_buster_charge_lv = 0
+		palette_ani_player.play("Init")
+		palette_ani_player_changer.stop()
+	else:
+		attack_hold_time += delta
+		
+		if attack_hold_time > CHARGE_MEGABUSTER_STARTING_TIME and not can_spawn_projectile():
+			attack_hold_time = CHARGE_MEGABUSTER_STARTING_TIME
+			return
+		
+		#Charge actions
+		if mega_buster_charge_lv == 0:
+			if attack_hold_time > CHARGE_MEGABUSTER_STARTING_TIME:
+				mega_buster_charge_lv = 1
+				FJ_AudioManager.sfx_combat_buster_charging.play()
+				palette_ani_player_changer.play("Charging")
+		elif mega_buster_charge_lv == 1:
+			if attack_hold_time > FULLY_CHARGE_MEGABUSTER_STARTING_TIME:
+				mega_buster_charge_lv = 2
+				palette_ani_player_changer.play("FullyCharged")
 
-func start_launching_attack() -> void:
-	if get_total_projectile_on_screen_count() > 2:
-		return
-	
-	if !pf_bhv.CONTROL_ENABLE:
-		return
-	
-	var bullet = proj_classicBullet.instance()
+func start_launching_attack(packed_scene : PackedScene) -> void:
+	var bullet = packed_scene.instance()
 	get_parent().add_child(bullet) #Deploy projectile from player.
 	
 	bullet.position = shoot_pos.global_position
@@ -198,15 +256,18 @@ func start_launching_attack() -> void:
 	total_damage = DAMAGE_BASE + bullet.DAMAGE_POWER
 	bullet.DAMAGE_POWER = total_damage #Final damage output
 	
-	
-	#Play sound
-	FJ_AudioManager.sfx_combat_buster.play()
-	
 	#Emit signal
 	emit_signal("launched_attack")
 
-func get_total_projectile_on_screen_count() -> int:
-	return get_tree().get_nodes_in_group("PlayerProjectile").size()
+#Check if the projectile is not above limit
+func can_spawn_projectile() -> bool:
+	var size : float = 0
+	
+	for i in get_tree().get_nodes_in_group("PlayerProjectile"):
+		if i is PlayerProjectile:
+			size += i.projectile_limit_cost
+	
+	return size < PROJECTILE_ON_SCREEN_LIMIT
 
 #OBSOLETED! Will be removed and rewritten to a better one.
 func start_launching_attack_skill() -> void:
@@ -229,12 +290,12 @@ func check_for_area_collisions():
 					#Add coin PERMANENTLY to your bank!!
 					currency_manager.game_coin += coin.COIN_VALUE
 					#Update coin GUI too! Yeah! You've made a progress.
-					update_gui("update_coin")
+#					update_gui("update_coin")
 				elif coin.is_diamond():
 					#Add diamond PERMANENTLY to your bank!!
 					currency_manager.game_diamond += coin.COIN_VALUE
 					#Update coin GUI too! Yeah! You've made a progress.
-					update_gui("update_diamond")
+#					update_gui("update_diamond")
 				#Destroy coin
 				coin.player_collected_coin()
 
@@ -273,7 +334,8 @@ func player_take_damage(damage_amount : int, repel_player : bool = false, repel_
 	invis_timer.start(new_invis_time)
 	
 	#Plays flashing animation
-	damage_sprite_ani.play("Flashing")
+	if current_hp > 0:
+		damage_sprite_ani.play("Flashing")
 	
 	#Spawn damage counter
 	spawn_damage_counter(damage_amount)
@@ -281,25 +343,30 @@ func player_take_damage(damage_amount : int, repel_player : bool = false, repel_
 	#Spawn vulnerable effect
 	spawn_vulnerable_effect()
 	
+	#Stops sliding if possible (no ceiling collision)
+	if not test_normal_check_collision():
+		stop_sliding(true)
+	
 	#Check for death
 	if current_hp <= 0:
 		player_death()
-		emit_signal('player_die_normally')
 		
 	else:
 		FJ_AudioManager.sfx_character_player_damage.play()
 		animation_player.play("Invincible")
 	
-	#Update GUI
-	update_gui("update_gui_bar")
+	GameHUD.update_player_vital_bar(current_hp)
 	
 	is_taking_damage = true
 
 func check_taking_damage():
-	if is_taking_damage:
+	if is_taking_damage and not is_sliding:
 		pf_bhv.velocity.x = taking_damage_slide_pos
 
 func check_press_jump_or_sliding():
+	if !(pf_bhv.INITIAL_STATE and pf_bhv.CONTROL_ENABLE):
+		return
+	
 	if not is_taking_damage:
 		if Input.is_action_just_pressed("game_jump"):
 			if pf_bhv.on_floor:
@@ -307,50 +374,72 @@ func check_press_jump_or_sliding():
 					#To be able to slide, must be on floor and not sliding.
 					#In addition, the player must not be nearby wall
 					#by current direction the player is facing.
-					if not is_sliding:
-						if platformer_sprite.scale.x == -1:
-							if not (test_move(self.get_transform(), Vector2(-4, 0))):
-								start_sliding()
-						else:
-							if not (test_move(self.get_transform(), Vector2(4, 0))):
-								start_sliding()
+					if platformer_sprite.scale.x == 1:
+						if not (is_sliding or test_slide_check_collision(Vector2(1, -1))):
+							start_sliding()
+					else:
+						if not (is_sliding or test_slide_check_collision(Vector2(-1, -1))):
+							start_sliding()
 				else:
-					if pf_bhv.INITIAL_STATE and pf_bhv.CONTROL_ENABLE:
+					#If the player tries to jump while sliding under ceiling,
+					#it would fail.
+					if !(is_sliding and test_normal_check_collision()):
 						pf_bhv.jump_start()
+
+func check_sliding(delta : float):
+	if !(pf_bhv.INITIAL_STATE and pf_bhv.CONTROL_ENABLE):
+		return
+	
+	check_canceling_slide()
 	
 	if is_sliding and (!pf_bhv.on_floor or pf_bhv.on_wall):
 		if pf_bhv.on_wall:
-			pf_bhv.left_right_key_press_time = 0
-		slide_remaining = -1
-		stop_sliding()
+			if not test_normal_check_collision():
+				pf_bhv.left_right_key_press_time = 0
+				stop_sliding() #Stop normally
+		else:
+			stop_sliding(true) #Force stop
+	
+	if is_sliding:
+		slide_direction_x = platformer_sprite.scale.x
+		pf_bhv.velocity.x = SLIDE_SPEED * slide_direction_x * 60 * delta
+		pf_bhv.left_right_key_press_time = 30 #Fix tipping toe glitch
 	
 	#Decrease slide remaining
 	if slide_remaining > 0:
-		if platformer_sprite.scale.x == -1:
-			pf_bhv.velocity.x = -SLIDE_SPEED
-		else:
-			pf_bhv.velocity.x = SLIDE_SPEED
-		slide_remaining -= 1
-		pf_bhv.left_right_key_press_time = 30
-	elif slide_remaining == 0:
-		slide_remaining = -1
+		slide_remaining -= 60 * delta
+	elif slide_remaining < 0 and slide_remaining > -10:
 		stop_sliding()
 
+func check_canceling_slide():
+	if is_sliding:
+		if Input.is_action_just_pressed("game_left"):
+			if slide_direction_x == 1: #Right
+				pf_bhv.left_right_key_press_time = 0
+				stop_sliding()
+		if Input.is_action_just_pressed("game_right"):
+			if slide_direction_x == -1:
+				pf_bhv.left_right_key_press_time = 0
+				stop_sliding()
 
-func change_player_current_hp(var amount):
+func change_player_current_hp(var amount : int):
 	current_hp += amount
 	if current_hp < 0:
 		current_hp = 0
 		player_death()
 	if current_hp > max_hp:
 		current_hp = max_hp
-	
-	#Update GUI
-	update_gui("update_gui_bar")
+	GameHUD.update_player_vital_bar(current_hp)
 
 func heal_to_full_hp():
 	current_hp = max_hp
-	update_gui("update_gui_bar")
+	GameHUD.update_player_vital_bar(current_hp)
+
+func heal(var amount : int):
+	current_hp += abs(amount)
+	if current_hp > max_hp:
+		current_hp = max_hp
+	GameHUD.fill_player_vital_bar(amount)
 
 #When the invincible's timer runs out, player will be able to get hurt again.
 func _on_invis_timer_timeout():
@@ -359,8 +448,7 @@ func _on_invis_timer_timeout():
 	platformer_sprite.visible = true #Due to animation glitch, this will surely fix it.
 
 func repel_player():
-	pf_bhv.velocity.x = 0
-	pf_bhv.velocity.y = -50
+	pf_bhv.velocity = Vector2()
 	if platformer_sprite.scale.x == -1:
 		taking_damage_slide_pos = TAKING_DAMAGE_SLIDE_RIGHT
 	else:
@@ -378,6 +466,9 @@ func spawn_damage_counter(damage, var spawn_offset : Vector2 = Vector2(0,0)):
 	dmg_text.get_node('Label').add_color_override("font_color", Color(1,0,0,1))
 
 func spawn_vulnerable_effect():
+	if current_hp <= 0:
+		return
+	
 	var eff = vulnerable_effect.instance()
 	get_parent().add_child(eff)
 	eff.global_position = self.global_position
@@ -387,21 +478,19 @@ func spawn_vulnerable_effect():
 #Why? The character can die... but that won't affect
 #the main story. You may get a game over screen or lost 1UP.
 func player_death():
-	current_hp = 0
-	#Tell the scene that the player has died
-	emit_signal('player_die')
+	#Stop mega buster charging sound.
+	FJ_AudioManager.sfx_combat_buster_charging.call_deferred("stop")
+	#Stops landing sound
+	FJ_AudioManager.sfx_character_land.call_deferred("stop")
+	#Stops item sound #TODO: remove this if no longer used.
+	FJ_AudioManager.sfx_collectibles_item.stop()
 	
-	#Create Explosion effect
-	var effect = explosion_effect.instance()
-	effect.position = self.global_position
-	get_parent().add_child(effect)
+	#Stop music
+	FJ_AudioManager.stop_bgm()
 	
-	#Play death sound
-	FJ_AudioManager.sfx_character_player_die.play()
-	
-	#Shake the camera (if exists)
-	if level_camera != null:
-		level_camera.shake_camera(0.5, 100, 30)
+#	#Shake the camera (if exists)
+#	if level_camera != null:
+#		level_camera.shake_camera(0.5, 100, 30)
 	
 	#Restore hp on scene load. Because we wanted player to restore health
 	#after the player is respawned.
@@ -409,12 +498,35 @@ func player_death():
 	
 	player_stats.is_died = true #PLAYER IS DEAD!
 	
+	if is_fell_into_pit:
+		die()
+	else:
+		death_freeze_timer.start()
+		get_tree().set_pause(true)
+
+func _on_DeathFreezeTimer_timeout() -> void:
+	die()
+
+func die():
+	current_hp = 0
+	#Tell the scene that the player has died
+	emit_signal('player_die')
+	
+	if not is_fell_into_pit:
+		emit_signal('player_die_normally')
+	
+	#Play death sound
+	FJ_AudioManager.sfx_character_player_die.play()
+	
+	#Reset to initial palette, prevents weapon energy palette glitch
+	CURRENT_PALETTE_STATE = 0
+	update_platformer_sprite_color_palettes(true)
+	
 	#Stop everything
 	#Hide player from view and disable process
 	set_player_disappear(true)
 	
-	#Loses one up!
-	get_node("/root/GlobalVariables").one_up -= 1
+	get_tree().set_pause(false)
 
 #Spawn coins particle 
 #Called by Level.
@@ -439,15 +551,6 @@ func set_control_enable_from_cutscene(enabled : bool):
 	pf_bhv.CONTROL_ENABLE = enabled
 	self.is_cutscene_mode = enabled
 
-#For check if player is stuck (suffocated) in the wall.
-func crush_check():
-	if area.overlaps_body(tile_map):
-		#Spawn damage counter.
-		spawn_damage_counter(current_hp)
-		current_hp = 0
-		#Update GUI
-		update_gui("update_gui_bar")
-		player_death()
 
 func _on_leveled_up():
 	heal_to_full_hp()
@@ -461,24 +564,6 @@ func set_player_disappear(var set : bool) -> void:
 	visible = !set
 	collision_shape.call_deferred("set_disabled", set)
 	area_collision.call_deferred("set_disabled", set)
-
-#Call GameGui to update bar or some sort...
-func update_gui(var method_name : String) -> bool:
-	if get_node_or_null(game_gui_path) != null:
-		if get_node(game_gui_path).has_method(method_name):
-			get_node(game_gui_path).update_gui_bar()
-			return true
-		else:
-			push_warning(
-				str(
-					self.name,
-					": Method ",
-					method_name,
-					" not found! Nothing was done."
-				)
-			)
-	
-	return false
 
 #Start transition between screens. This is done by event.
 func start_screen_transition(normalized_direction : Vector2, duration : float, reset_vel_x : bool, reset_vel_y : bool, start_delay : float, transit_distance : float):
@@ -507,22 +592,20 @@ func start_screen_transition(normalized_direction : Vector2, duration : float, r
 	transition_tween.start()
 	
 	pf_bhv.INITIAL_STATE = false
-	collision_shape.call_deferred("set_disabled", true)
-	area_collision.call_deferred("set_disabled", true)
 	platformer_sprite.animation_paused = true
 	
 	if reset_vel_x:
 		pf_bhv.velocity.x = 0
+		stop_sliding()
 	if reset_vel_y:
 		pf_bhv.velocity.y = 0
+		stop_sliding()
 	
 	invis_timer.paused = true
 	taking_damage_timer.paused = true
 
 #After screen transiting has completed
 func _on_TransitionTween_tween_all_completed() -> void:
-	collision_shape.call_deferred("set_disabled", false)
-	area_collision.call_deferred("set_disabled", false)
 	platformer_sprite.animation_paused = false
 	pf_bhv.INITIAL_STATE = true
 	invis_timer.paused = false
@@ -567,9 +650,103 @@ func start_sliding():
 	get_parent().add_child(inst_slide_effect)
 	inst_slide_effect.global_position = slide_dust_pos.global_position
 	inst_slide_effect.scale.x = platformer_sprite.scale.x
+	
+	#Update player's damage hitbox
+	area_slide_collision.set_disabled(false)
+	area_collision.set_disabled(true)
 
-func stop_sliding():
+
+func stop_sliding(var force_stop : bool = false):
+	#If the collision would occur while stopping slide.
+	if test_normal_check_collision() and !force_stop:
+		 return
+	
 	slide_collision_shape.set_deferred("disabled", true)
 	collision_shape.set_deferred("disabled", false)
 	platformer_sprite.is_sliding = false
 	is_sliding = false
+	slide_remaining = -10
+	
+	#Update player's damage hitbox
+	area_slide_collision.set_disabled(true)
+	area_collision.set_disabled(false)
+
+func test_normal_check_collision(vel_rel := Vector2(0, -1)) -> bool:
+	var result : bool
+	var last_collision_shape : bool = collision_shape.disabled
+	var last_slide_collision_shape : bool = slide_collision_shape.disabled
+	
+	collision_shape.disabled = false
+	slide_collision_shape.disabled = true
+	result = test_move(self.get_transform(), vel_rel)
+	collision_shape.disabled = last_collision_shape
+	slide_collision_shape.disabled = last_slide_collision_shape
+	
+	return result
+
+func test_slide_check_collision(vel_rel := Vector2(0, -1)) -> bool:
+	var result : bool
+	var last_collision_shape : bool = collision_shape.disabled
+	var last_slide_collision_shape : bool = slide_collision_shape.disabled
+	
+	collision_shape.disabled = true
+	slide_collision_shape.disabled = false
+	result = test_move(self.get_transform(), vel_rel)
+	collision_shape.disabled = last_collision_shape
+	slide_collision_shape.disabled = last_slide_collision_shape
+	
+	return result
+
+func update_platformer_sprite_color_palettes(force_update : bool = false):
+	_update_current_character_palette_state(force_update)
+	
+	platformer_sprite.palette_sprite.primary_sprite.modulate = global_var.current_player_primary_color
+	platformer_sprite.palette_sprite.second_sprite.modulate = global_var.current_player_secondary_color
+	platformer_sprite.palette_sprite.outline_sprite.modulate = global_var.current_player_outline_color
+
+func _update_current_character_palette_state(force_update : bool = false):
+	if player_character_data_res == null:
+		return
+	if (!pf_bhv.INITIAL_STATE or !pf_bhv.CONTROL_ENABLE) and !force_update:
+		return
+	
+	if player_character_data_res is CharacterData:
+		match CURRENT_PALETTE_STATE:
+			0:
+				global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
+				global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
+				global_var.current_player_outline_color = Color(player_character_data_res.outline_color)
+			1:
+				global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
+				global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
+				global_var.current_player_outline_color = Color(player_character_data_res.outline_color_charge1)
+			2:
+				global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
+				global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
+				global_var.current_player_outline_color = Color(player_character_data_res.outline_color_charge2)
+			3:
+				global_var.current_player_primary_color = Color(player_character_data_res.primary_color)
+				global_var.current_player_secondary_color = Color(player_character_data_res.secondary_color)
+				global_var.current_player_outline_color = Color(player_character_data_res.outline_color_charge3)
+			4:
+				global_var.current_player_primary_color = Color(player_character_data_res.secondary_color)
+				global_var.current_player_secondary_color = Color(player_character_data_res.outline_color)
+				global_var.current_player_outline_color = Color(player_character_data_res.primary_color)
+			5:
+				global_var.current_player_primary_color = Color(player_character_data_res.outline_color)
+				global_var.current_player_secondary_color = Color(player_character_data_res.primary_color)
+				global_var.current_player_outline_color = Color(player_character_data_res.secondary_color)
+
+func update_player_sprite_texture():
+	if player_character_data_res == null:
+		return
+	
+	if player_character_data_res is CharacterData:
+		platformer_sprite.set_texture(player_character_data_res.character_spritesheet)
+
+func play_teleport_in_sound():
+	FJ_AudioManager.sfx_character_teleport_in.play()
+
+func play_teleport_out_sound():
+	FJ_AudioManager.sfx_character_teleport_out.play()
+

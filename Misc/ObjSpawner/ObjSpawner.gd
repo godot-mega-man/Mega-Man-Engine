@@ -67,6 +67,10 @@ export (bool) var debug_highlight = false setget set_debug_highlight
 #be sure to check all available variables that the object offers.
 export (Dictionary) var custom_parameters : Dictionary
 
+#Deletes obj count on this node when a spawned object emits a signal
+#by name. Useful when you want make an object deleted permanently.
+export (Array, String) var obj_deletion_by_signals : Array
+
 
 ###################
 ### Child Nodes ###
@@ -146,6 +150,9 @@ func _update_sprite_preview():
 		if inst_object is EnemyCore:
 			if get_node_or_null("SpritePreview") != null:
 				get_node("SpritePreview").texture = inst_object.sprite_preview_texture
+		if inst_object is Pickups:
+			if get_node_or_null("SpritePreview") != null:
+				get_node("SpritePreview").texture = inst_object.sprite_preview_texture
 
 #This will immediately instance a packed scene and add child.
 func spawn_object(var check : bool = true):
@@ -186,6 +193,13 @@ func spawn_object(var check : bool = true):
 		if !obj_inst.is_connected("tree_exited", self, "_on_my_spawned_obj_exited"):
 			obj_inst.connect("tree_exited", self, "_on_my_spawned_obj_exited")
 		
+		#Connect to spawned obj to notify me if you were destroyed
+		#to decrease object count.
+		for i in obj_deletion_by_signals:
+			i = i as String
+			if not obj_inst.is_connected(i, self, "_on_obj_emitted_signal_for_deletion"):
+				obj_inst.connect(i, self, "_on_obj_emitted_signal_for_deletion")
+		
 		emit_signal("spawned", obj_inst)
 		
 		my_obj_count += 1
@@ -206,6 +220,8 @@ func _set_custom_parameters(var obj : Object):
 func is_my_obj_exist() -> bool:
 	return bool(my_obj_count)
 
+
+
 #Connect from signalings--------------------------
 func _on_SpawnTimer_timeout():
 	if get_node("/root/BitFlagsComparator").is_bit_enabled(spawn_on, 0):
@@ -215,3 +231,5 @@ func _on_SpawnRange_screen_entered() -> void:
 		spawn_object()
 func _on_my_spawned_obj_exited():
 	my_obj_count -= 1
+func _on_obj_emitted_signal_for_deletion():
+	my_obj_count += 1

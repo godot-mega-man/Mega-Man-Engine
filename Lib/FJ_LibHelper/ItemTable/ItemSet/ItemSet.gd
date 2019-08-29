@@ -44,7 +44,7 @@ func _replace_last_with_empty_item_set_data():
 		items.append(new_item_set_data)
 
 
-func get_an_item() -> ItemSetData:
+func get_an_item():
 	#ไม่ต้องทำอะไรถ้าในเซตไม่มีไอเท็มโดยคืนค่า null ไป
 	if items.size() == 0:
 		return null
@@ -63,7 +63,7 @@ func get_an_item() -> ItemSetData:
 	for i in items:
 		if i is ItemSetData:
 			if within_numbers(val, _temp_current + 1, _temp_current + i.weight):
-				return i 
+				return i
 			_temp_current += i.weight
 	
 	return null

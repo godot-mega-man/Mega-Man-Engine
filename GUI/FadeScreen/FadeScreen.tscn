@@ -60,6 +60,7 @@ tracks/1/keys = {
 }
 
 [node name="FadeScreen" type="CanvasLayer"]
+layer = 5
 script = ExtResource( 1 )
 
 [node name="Control" type="Control" parent="."]

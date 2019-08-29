@@ -30,12 +30,21 @@ export (float, 0, 1) var start_delay = 0
 #Adds up delay time in seconds after the screen finishes transiting.
 export (float, 0, 1) var finish_delay = 0
 
+#If false, transiting is disallowed if at least one boss is still exist.
+export (bool) var allow_while_boss_fight = false
 
 onready var level := get_node_or_null("/root/Level") as Level
 
 #On player enters area...
 func _on_AreaNotifier_entered_area() -> void:
+	if !allow_while_boss_fight:
+		#Return if there is at least one boss on screen.
+		if not get_tree().get_nodes_in_group("Boss").empty():
+			return
+	
 	if level != null:
+		if level.is_screen_transiting:
+			return
 		if get_node_or_null(target_view) == null:
 			push_warning("Target view is null. Can't transit!")
 			return

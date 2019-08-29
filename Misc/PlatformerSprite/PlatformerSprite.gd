@@ -30,6 +30,8 @@ onready var character_platformer_animation = $CharacterPlatformerAnimation
 #to non-attacking state.
 onready var normal_attack_cooldown = $NormalAttackCooldown
 
+onready var palette_sprite := $PaletteSprite as PaletteSprite
+
 #Temp
 var is_path_to_platformer_behavior_valid : bool = false
 var casted_plat_bhv : FJ_PlatformBehavior2D #Casted Platformer Behavior. For use in _process().

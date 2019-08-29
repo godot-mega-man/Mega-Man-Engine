@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Sprites/Characters/Darkwing_Duck.png" type="Texture" id=1]
+[ext_resource path="res://DatabaseCore/CharacterData/Core/CharacterData.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+character_spritesheet = ExtResource( 1 )
+primary_color = 1766195199
+secondary_color = 2591685631
+outline_color = 255
+outline_color_charge1 = 2852135167
+outline_color_charge2 = 3875559935
+outline_color_charge3 = 4216953599

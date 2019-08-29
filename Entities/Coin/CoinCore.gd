@@ -100,7 +100,7 @@ func _ready():
 	collect_ready_timer.start(COLLECT_READY_TIME)
 	
 	#Set velocity
-	velocity = Vector2(rand_range(-SWAY_X_RANGE, SWAY_X_RANGE), rand_range(GEYSER_Y_RANGE_MIN, GEYSER_Y_RANGE_MAX))
+	velocity = Vector2(0, rand_range(GEYSER_Y_RANGE_MIN, GEYSER_Y_RANGE_MAX))
 	
 	#Load current item data from item_data variable.
 	load_current_item_data()
@@ -186,11 +186,9 @@ func player_collected_coin():
 		#Play floating text animation
 		counter.animation_player.play("CoinCounter")
 		
-		level.game_gui.update_coin()
-		
 		if get_node_or_null("/root/Level/Iterable/Player") != null:
 			var player = get_node("/root/Level/Iterable/Player")
-			player.change_player_current_hp(1)
+			player.heal(1)
 	elif is_item():
 		#Unused
 #		#Create item counter effect.
@@ -215,8 +213,6 @@ func player_collected_coin():
 		counter.get_node("Label").text = "+" + str(COIN_VALUE) #Set text
 		#Play floating text animation
 		counter.animation_player.play("DiamondCounter")
-		
-		level.game_gui.update_diamond()
 	
 	#Create coin counter effect
 	var sparkling = coin_sparkling_effect.instance()

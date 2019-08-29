@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Entities/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_100Watton.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Enemies/Mm4_100watton.png" type="Texture" id=3]
+[ext_resource path="res://Entities/Enemy/Obj/MM4_100WattonBomb.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Effects/100WattonSmokeEffect/100WattonSmokeEffect.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Lib/FJ_LibHelper/BulletBehavior2D/BulletBehavior2D.tscn" type="PackedScene" id=6]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="Animation" id=3]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 10, 12 )
+
+[node name="100Watton" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+sprite_preview_texture = SubResource( 1 )
+damage_area_nodes = [ NodePath("DamageArea") ]
+contact_damage = 6.0
+hit_points_base = 1
+launch_projectile = ExtResource( 4 )
+launch_smoke_effect = ExtResource( 5 )
+
+[node name="BulletBehavior" parent="." index="0" instance=ExtResource( 6 )]
+speed = 72.0
+
+[node name="AttackTimer" type="Timer" parent="." index="1"]
+process_mode = 0
+wait_time = 1.2
+one_shot = true
+autostart = true
+
+[node name="AttackWaitTimer" type="Timer" parent="." index="2"]
+process_mode = 0
+wait_time = 0.3
+one_shot = true
+
+[node name="BombLauncherPosition" type="Position2D" parent="." index="3"]
+position = Vector2( 0, -12 )
+
+[node name="SmokeLauncherPosition" type="Position2D" parent="." index="4"]
+position = Vector2( 0, -10 )
+
+[node name="SpritePreview" type="Sprite" parent="." index="5"]
+visible = false
+texture = SubResource( 2 )
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+texture = ExtResource( 3 )
+hframes = 3
+
+[node name="Ani" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
+autoplay = "New Anim"
+playback_speed = 1.6
+"anims/New Anim" = SubResource( 3 )
+
+[node name="DamageArea" type="Area2D" parent="." index="8"]
+visible = false
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" index="0"]
+position = Vector2( 0, 3 )
+shape = SubResource( 4 )
+
+[node name="LaunchSmokeEffectTimer" type="Timer" parent="." index="9"]
+wait_time = 0.6
+autostart = true
+[connection signal="slain" from="." to="." method="_on_100Watton_slain"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="AttackWaitTimer" to="." method="_on_AttackWaitTimer_timeout"]
+[connection signal="timeout" from="LaunchSmokeEffectTimer" to="." method="_on_LaunchSmokeEffectTimer_timeout"]

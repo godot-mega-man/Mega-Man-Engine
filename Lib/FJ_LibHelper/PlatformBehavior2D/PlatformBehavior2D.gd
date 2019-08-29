@@ -66,13 +66,13 @@ export(float) var WALK_SPEED = 250 # pixels/sec
 export(float) var JUMP_SPEED = 360
 export(float) var SIDING_CHANGE_SPEED = 10
 export(float) var VELOCITY_X_DAMPING = 0.1
-export(float) var MAX_FALL_SPEED = 600
+export(float) var MAX_FALL_SPEED = 360
 
 export var FLOOR_NORMAL = Vector2(0, -1)
 
 export(bool) var INITIAL_STATE = true
-export(bool) var CONTROL_ENABLE = true
-export(bool) var IS_PREVENT_OUTSIDE_SCREEN = true
+export(bool) var CONTROL_ENABLE = false
+export(bool) var IS_PREVENT_OUTSIDE_SCREEN = false
 export(int) var PREVENT_OUTSIDE_SCREEN_OFFSET = 12 #Won't work if WARPS_LEFT_RIGHT_SIDE is on.
 export(bool) var USE_TIP_TOE_MOVEMENT = false
 export(float) var MAX_TIP_TOE_FRAME = 7
@@ -98,7 +98,14 @@ onready var level_view_container := get_node_or_null("/root/Level/ViewContainer"
 onready var parent : Node = get_parent()
 
 #Temp variables
+
+#Current velocity reported after move_and_slide or
+#move_and_collided on parent node is called.
+#Note that if you want to get velocity report before
+#move_and_slide or move_and_collide is called, use
+#velocity_before_move_and_slide instead.
 var velocity := Vector2()
+
 var on_air_time : float = 0
 var jumping = false
 var midair_jump_left = 0
@@ -119,6 +126,13 @@ var on_wall = false
 var jump = false #Init... once
 var move_direction : int #-1 = moving left, 1 = moving right, 0 = still.
 var left_right_key_press_time : float = 0
+
+#Velocity before move_and_slide or move_and_collide is called.
+#Useful if you want to get velocity report when landed, hit by wall,
+#or hit by ceiling.
+#Note that the variable name was changed. So you might want to use
+#get_velocity_before_move_and_slide() instead.
+var velocity_before_move_and_slide := Vector2() setget ,get_velocity_before_move_and_slide
 
 func _ready():
 	if !is_validate():
@@ -154,6 +168,10 @@ func _physics_process(delta):
 					if walk_right:
 						velocity.x = 60
 				
+		
+		#Set velocity before move and slide. For more info,
+		#please see its variable.
+		set_velocity_before_move_and_slide(velocity)
 		
 		velocity = custom_move_and_slide(velocity, FLOOR_NORMAL)
 	elif move_type == MOVE_TYPE_PRESET.MOVE_AND_COLLIDE:
@@ -319,3 +337,15 @@ func is_validate(var print_errors : bool = false) -> bool:
 		is_all_valid = false
 	
 	return is_all_valid
+
+
+
+##########################
+### Getter/Setter
+##########################
+
+func set_velocity_before_move_and_slide(val : Vector2) -> void:
+	velocity_before_move_and_slide = val
+
+func get_velocity_before_move_and_slide() -> Vector2:
+	return velocity_before_move_and_slide
