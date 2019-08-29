@@ -310,9 +310,13 @@ func check_falling_into_pit():
 	if level_view_container.WARPS_OBJECTS_AROUND_UP_DOWN:
 		return
 	
-	var limit_bottom = level_view_container.CAMERA_LIMIT_BOTTOM + WARP_OFFSET.y
-	if parent.position.y > limit_bottom:
-		emit_signal("fell_into_pit")
+	#Find a camera by group name lookup.
+	var cam_obj = get_tree().get_nodes_in_group("CameraCustom").back()
+	
+	if cam_obj is CameraCustom:
+		var limit_bottom = cam_obj.limit_bottom + WARP_OFFSET.y
+		if parent.position.y > limit_bottom:
+			emit_signal("fell_into_pit")
 
 func check_left_right_key_press_time(delta):
 	if not(walk_left or walk_right): #If not currently doing either one of these

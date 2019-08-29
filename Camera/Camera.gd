@@ -1,5 +1,7 @@
 extends Camera2D
 
+class_name CameraCustom
+
 #Follow to target node when there is at least one.
 #If there are 2 or more, the camera will use relative path to
 #all adjacent node's position. 

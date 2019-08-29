@@ -2,7 +2,9 @@
 
 [ext_resource path="res://Camera/Camera.gd" type="Script" id=1]
 
-[node name="Camera2D" type="Camera2D"]
+[node name="Camera2D" type="Camera2D" groups=[
+"CameraCustom",
+]]
 pause_mode = 2
 current = true
 process_mode = 0
