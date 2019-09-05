@@ -257,4 +257,6 @@ one_shot = true
 primary_color_frame_add = 29
 secondary_color_frame_add = 58
 outline_color_frame_add = 87
+current_palette_state = 0
+palette_states = [  ]
 [connection signal="timeout" from="NormalAttackCooldown" to="." method="_on_NormalAttackCooldown_timeout"]

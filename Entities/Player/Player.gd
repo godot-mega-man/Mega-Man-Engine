@@ -501,6 +501,9 @@ func player_death():
 	if is_fell_into_pit:
 		die()
 	else:
+		platformer_sprite.set_frame(13)
+		platformer_sprite.animation_paused = true
+		platformer_sprite.character_platformer_animation.stop()
 		death_freeze_timer.start()
 		get_tree().set_pause(true)
 

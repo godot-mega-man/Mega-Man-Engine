@@ -286,6 +286,7 @@ USE_TIP_TOE_MOVEMENT = true
 DEFAULT_CONTROL_JUMP = ""
 
 [node name="PlatformerSprite" parent="." instance=ExtResource( 4 )]
+pause_mode = 2
 offset = Vector2( 0, 2 )
 path_to_platformer_behavior = NodePath("../PlatformBehavior")
 animation_paused = true
@@ -308,6 +309,7 @@ anims/Charging = SubResource( 6 )
 anims/FullyCharged = SubResource( 7 )
 
 [node name="TeleportPlayer" type="AnimationPlayer" parent="PlatformerSprite"]
+pause_mode = 1
 autoplay = "TeleportIn"
 playback_speed = 0.8
 anims/TeleportIn = SubResource( 8 )
