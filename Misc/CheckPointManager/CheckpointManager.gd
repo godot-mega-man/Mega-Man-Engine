@@ -39,7 +39,7 @@ func update_checkpoint_position(var new_position : Vector2, var scene : String, 
 func override_saved_player_position():
 	saved_player_position = current_checkpoint_position
 
-func has_checkpoint() -> bool:
+func has_checkpoint():
 	return current_checkpoint_position != Vector2(0, 0)
 
 func clear_checkpoint() -> void:
