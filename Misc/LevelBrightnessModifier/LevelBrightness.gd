@@ -8,8 +8,6 @@
 
 extends Node
 
-class_name LevelBrightness
-
 class LvBrightToggleType:
 	const BLACKOUT = 0
 	const BRIGHTEN = 1

@@ -83,7 +83,6 @@ onready var level_camera := get_node_or_null("/root/Level/Camera2D") as Camera2D
 
 onready var global_var = get_node("/root/GlobalVariables")
 onready var tile_map = get_node("/root/Level/TileMap")
-onready var checkpoint_manager = get_node("/root/CheckpointManager")
 onready var currency_manager = get_node("/root/CurrencyManager")
 onready var player_stats = get_node("/root/PlayerStats")
 
@@ -148,24 +147,24 @@ func check_holding_jump_key():
 
 func set_starting_location():
 	#First, get data from checkpoint manager.
-	var is_default_location = checkpoint_manager.saved_player_position == Vector2(0, 0)
+	var is_default_location = CheckpointManager.saved_player_position == Vector2(0, 0)
 	#Update checkpoint's position if not set.
-	if !checkpoint_manager.has_checkpoint():
-		checkpoint_manager.update_checkpoint_position(global_position, get_tree().get_current_scene().get_filename(), global_var.current_view)
+	if !CheckpointManager.has_checkpoint():
+		CheckpointManager.update_checkpoint_position(global_position, get_tree().get_current_scene().get_filename(), global_var.current_view)
 		print(self.name, ': No checkpoint available. Automatically updated.')
 	
 	if STARTING_LOCATION == 0: #Auto
 		if !is_default_location:
-			global_position = checkpoint_manager.saved_player_position
+			global_position = CheckpointManager.saved_player_position
 	if STARTING_LOCATION == 2: #Never (Unsafe)
-		global_position = checkpoint_manager.saved_player_position
+		global_position = CheckpointManager.saved_player_position
 		if is_default_location:
 			push_warning(str(self) + str(name) + ': Default starting location for a player is not configured!')
 	
 	#If player died last time, checkpoint will be used
 	#and set current player's position.
 	if player_stats.is_died:
-		global_position = checkpoint_manager.current_checkpoint_position
+		global_position = CheckpointManager.current_checkpoint_position
 
 func set_starting_stats():
 	#When player enters scene for the first time (Enter level, died last time),

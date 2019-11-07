@@ -1,7 +1,5 @@
 extends Node
 
-class_name CheckpointManager
-
 #Persistent variables
 var saved_player_position : Vector2
 var saved_view_name : String

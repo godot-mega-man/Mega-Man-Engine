@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "BitFlagsComparator",
-"language": "GDScript",
-"path": "res://Misc/Libraries/Utils/BitFlagsComparator/BitFlagsComparator.gd"
-}, {
 "base": "EnemyCore",
 "class": "BossCore",
 "language": "GDScript",
@@ -48,11 +43,6 @@ _global_script_classes=[ {
 "class": "CharacterData",
 "language": "GDScript",
 "path": "res://DatabaseCore/CharacterData/Core/CharacterData.gd"
-}, {
-"base": "Node",
-"class": "CheckpointManager",
-"language": "GDScript",
-"path": "res://Misc/CheckPointManager/CheckpointManager.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "CoinCore",
@@ -305,11 +295,6 @@ _global_script_classes=[ {
 "path": "res://Levels/Core/Level.gd"
 }, {
 "base": "Node",
-"class": "LevelBrightness",
-"language": "GDScript",
-"path": "res://Misc/LevelBrightnessModifier/LevelBrightness.gd"
-}, {
-"base": "Node",
 "class": "LevelBrightnessModifier",
 "language": "GDScript",
 "path": "res://Misc/LevelBrightnessModifier/LevelBrightnessModifier.gd"
@@ -370,7 +355,6 @@ _global_script_classes=[ {
 "path": "res://Misc/PaletteSpriteCore/SpriteColorPaletteData.gd"
 } ]
 _global_script_class_icons={
-"BitFlagsComparator": "",
 "BossCore": "",
 "BossHealthBar": "",
 "ButtonPlus": "",
@@ -378,7 +362,6 @@ _global_script_class_icons={
 "ChainDestroyController": "",
 "ChainDestroyerArea": "",
 "CharacterData": "",
-"CheckpointManager": "",
 "CoinCore": "",
 "CurvePlus": "",
 "DamageCounter": "",
@@ -429,7 +412,6 @@ _global_script_class_icons={
 "ItemTable": "",
 "Iterable": "",
 "Level": "",
-"LevelBrightness": "",
 "LevelBrightnessModifier": "",
 "LevelView": "",
 "LevelViewContainer": "",
@@ -459,7 +441,7 @@ GlobalVariables="*res://Misc/GlobalVariables/GlobalVariables.tscn"
 Debug="*res://Misc/Debug.gd"
 FJ_AudioManager="*res://Lib/FJ_LibHelper/AudioManager/AudioManager.tscn"
 InventoryManager="*res://Misc/InventoryCore/InventoryManager.gd"
-CheckpointManager="res://Misc/CheckPointManager/CheckpointManager.gd"
+CheckpointManager="*res://Misc/CheckPointManager/CheckpointManager.gd"
 CurrencyManager="res://Misc/CurrencyManager/CurrencyManager.gd"
 PlayerStats="res://Misc/PlayerStats/PlayerStats.gd"
 NumberSimplifier="*res://Misc/Libraries/Utils/NumberSimplifier/NumberSimplifier.gd"
@@ -593,6 +575,5 @@ quality/shading/force_vertex_shading=true
 quality/shading/force_lambert_over_burley.mobile=false
 quality/shading/force_blinn_over_ggx.mobile=false
 quality/filters/use_nearest_mipmap_filter=true
-quality/voxel_cone_tracing/high_quality=false
 quality/depth/hdr=false
 quality/dynamic_fonts/use_oversampling=false

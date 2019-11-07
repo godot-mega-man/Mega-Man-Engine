@@ -463,6 +463,7 @@ func get_player_distance() -> float:
 			return abs(self.global_position.y - actual_player.global_position.y)
 	
 	assert(false) #Mode error!
+	return 0.0
 
 func get_sprite_main_direction() -> float:
 	return sprite_main.scale.x

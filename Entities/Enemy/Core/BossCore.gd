@@ -40,9 +40,9 @@ export (bool) var show_boss_health_bar = true
 export (float) var fill_up_health_bar_duration = 2.0
 export (bool) var stop_music_after_death #If false, the game music will resume.
 export (bool) var destroy_all_enemies_on_death = true
-export (NESColorPalette.NesColor) var vital_bar_primary_color = NESColorPalette.NesColor.WHITE4
-export (NESColorPalette.NesColor) var vital_bar_secondary_color = NESColorPalette.NesColor.TOMATO2
-export (NESColorPalette.NesColor) var vital_bar_outline_color = NESColorPalette.NesColor.BLACK1
+export (NESColorPalette.NesColor) var vital_bar_primary_color
+export (NESColorPalette.NesColor) var vital_bar_secondary_color
+export (NESColorPalette.NesColor) var vital_bar_outline_color
 
 var thiuns = preload("res://Entities/Effects/MM_Thiun/Thiun.tscn")
 

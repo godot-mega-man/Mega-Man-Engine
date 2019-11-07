@@ -15,7 +15,6 @@
 # 110        = 6
 
 extends Node
-class_name BitFlagsComparator
 
 static func is_bit_enabled(mask : int, index : int) -> bool:
 	return mask & (1 << index) != 0

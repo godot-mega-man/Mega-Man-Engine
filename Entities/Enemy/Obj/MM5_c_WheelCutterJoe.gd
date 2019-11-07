@@ -1,8 +1,8 @@
 extends EnemyCore
 
-export (NESColorPalette.NesColor) var primary_color = NESColorPalette.NesColor.WHITE1
-export (NESColorPalette.NesColor) var secondary_color = NESColorPalette.NesColor.WHITE4
-export (NESColorPalette.NesColor) var outline_color = NESColorPalette.NesColor.BLACK1
+export (NESColorPalette.NesColor) var primary_color
+export (NESColorPalette.NesColor) var secondary_color
+export (NESColorPalette.NesColor) var outline_color
 
 onready var spawn_wheel_pos = $SpriteMain/SpawnWheelPos
 onready var palette_sprite = $SpriteMain/Sprite/PaletteSprite
