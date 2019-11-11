@@ -16,7 +16,7 @@ func _ready():
 
 func _process(delta):
 	if is_on_wall():
-		pf_bhv.velocity.y -= VEL_Y_ON_WALL
+		pf_bhv.velocity.y -= VEL_Y_ON_WALL * 60 * delta
 
 func set_move_direction(dir : int):
 	move_direction = dir

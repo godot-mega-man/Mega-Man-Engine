@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "BitFlagsComparator",
-"language": "GDScript",
-"path": "res://Misc/Libraries/Utils/BitFlagsComparator/BitFlagsComparator.gd"
-}, {
 "base": "EnemyCore",
 "class": "BossCore",
 "language": "GDScript",
@@ -300,11 +295,6 @@ _global_script_classes=[ {
 "path": "res://Levels/Core/Level.gd"
 }, {
 "base": "Node",
-"class": "LevelBrightness",
-"language": "GDScript",
-"path": "res://Misc/LevelBrightnessModifier/LevelBrightness.gd"
-}, {
-"base": "Node",
 "class": "LevelBrightnessModifier",
 "language": "GDScript",
 "path": "res://Misc/LevelBrightnessModifier/LevelBrightnessModifier.gd"
@@ -365,7 +355,6 @@ _global_script_classes=[ {
 "path": "res://Misc/PaletteSpriteCore/SpriteColorPaletteData.gd"
 } ]
 _global_script_class_icons={
-"BitFlagsComparator": "",
 "BossCore": "",
 "BossHealthBar": "",
 "ButtonPlus": "",
@@ -423,7 +412,6 @@ _global_script_class_icons={
 "ItemTable": "",
 "Iterable": "",
 "Level": "",
-"LevelBrightness": "",
 "LevelBrightnessModifier": "",
 "LevelView": "",
 "LevelViewContainer": "",
