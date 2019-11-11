@@ -401,7 +401,7 @@ func check_sliding(delta : float):
 	
 	if is_sliding:
 		slide_direction_x = platformer_sprite.scale.x
-		pf_bhv.velocity.x = SLIDE_SPEED * slide_direction_x * 60 * delta
+		pf_bhv.velocity.x = SLIDE_SPEED * slide_direction_x
 		pf_bhv.left_right_key_press_time = 30 #Fix tipping toe glitch
 	
 	#Decrease slide remaining
