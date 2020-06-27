@@ -153,6 +153,8 @@ func _update_sprite_preview():
 		if inst_object is Pickups:
 			if get_node_or_null("SpritePreview") != null:
 				get_node("SpritePreview").texture = inst_object.sprite_preview_texture
+		
+		inst_object.queue_free()
 
 #This will immediately instance a packed scene and add child.
 func spawn_object(var check : bool = true):
