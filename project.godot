@@ -456,7 +456,6 @@ gdscript/completion/autocomplete_setters_and_getters=true
 gdscript/warnings/unassigned_variable=false
 gdscript/warnings/unassigned_variable_op_assign=false
 gdscript/warnings/unused_variable=false
-gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
@@ -564,7 +563,6 @@ common/enable_object_picking=false
 
 [rendering]
 
-quality/2d/gles2_use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 quality/2d/use_pixel_snap=true
@@ -577,3 +575,4 @@ quality/shading/force_blinn_over_ggx.mobile=false
 quality/filters/use_nearest_mipmap_filter=true
 quality/depth/hdr=false
 quality/dynamic_fonts/use_oversampling=false
+quality/2d/gles2_use_nvidia_rect_flicker_workaround=true
