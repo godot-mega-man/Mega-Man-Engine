@@ -639,6 +639,10 @@ func _on_TakingDamageTimer_timeout() -> void:
 	
 	#Stops flashing animation.
 	damage_sprite_ani.play("StopFlashin")
+	
+	#Continues moving from tipping toe if either left or right key is being held
+	if Input.is_action_pressed("game_left") or Input.is_action_pressed("game_right"):
+		pf_bhv.left_right_key_press_time = pf_bhv.MAX_TIP_TOE_FRAME
 
 func start_sliding():
 	slide_collision_shape.set_deferred("disabled", false)
