@@ -286,7 +286,7 @@ USE_TIP_TOE_MOVEMENT = true
 DEFAULT_CONTROL_JUMP = ""
 
 [node name="PlatformerSprite" parent="." instance=ExtResource( 4 )]
-pause_mode = 2
+pause_mode = 1
 offset = Vector2( 0, 2 )
 path_to_platformer_behavior = NodePath("../PlatformBehavior")
 animation_paused = true
@@ -358,7 +358,6 @@ anims/Invincible = SubResource( 13 )
 [node name="TransitionTween" type="Tween" parent="."]
 
 [node name="DamageSprite" type="Sprite" parent="."]
-editor/display_folded = true
 visible = false
 texture = ExtResource( 5 )
 

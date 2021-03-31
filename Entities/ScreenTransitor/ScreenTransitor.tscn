@@ -4,10 +4,14 @@
 [ext_resource path="res://Entities/PlayerAreaNotifier/PlayerAreaNotifier.tscn" type="PackedScene" id=2]
 
 [node name="ScreenTransitor" type="ReferenceRect"]
+pause_mode = 2
 margin_right = 16.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 8, 8 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 transit_duration = Vector2( 1.065, 0.94 )
 
 [node name="AreaNotifier" parent="." instance=ExtResource( 2 )]

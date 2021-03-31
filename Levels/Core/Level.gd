@@ -97,8 +97,15 @@ func _on_TransitionTween_tween_all_completed() -> void:
 func init_screen_transition(direction : Vector2, duration : float, target_view, reset_vel_x : bool, reset_vel_y : bool, start_delay : float, finish_delay : float, transit_distance : float) -> void:
 	start_screen_transition()
 	camera.start_screen_transition(direction, duration, start_delay, finish_delay)
-	player.start_screen_transition(direction, duration, reset_vel_x, reset_vel_y, start_delay, transit_distance)
+	player.start_screen_transition(direction, duration, reset_vel_x, reset_vel_y, 0, transit_distance)
 	get_node("/root/GlobalVariables").current_view = target_view.name
+	get_tree().paused = true
+	yield(get_tree().create_timer(start_delay), "timeout")
+	get_tree().paused = false
+	yield(get_tree().create_timer(duration), "timeout")
+	get_tree().paused = true
+	yield(get_tree().create_timer(finish_delay), "timeout")
+	get_tree().paused = false
 
 func delete_all_objects_by_group_name(group_name : String):
 	for i in get_tree().get_nodes_in_group(group_name):
