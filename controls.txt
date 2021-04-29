@@ -1,0 +1,20 @@
+--- In-game Controls ---
+
+WASD - Move
+/    - Jump
+.    - Shoot
+,    - Slide  (or using [D + /] will also do the trick)
+Q    - Switch Weapon Left
+E    - Switch Weapon Right
+
+
+--- UI Controls ---
+
+For UI control, you may need to use arrow keys and Enter button instead of the default keys provided above.
+
+Arrow Keys - Move
+Enter      - Accept
+Space      - Accept
+Esc        - Cancel
+F1-F4      - Change the screen size to corresponding F-number
+F5         - Toggle Fullscreen on/off
