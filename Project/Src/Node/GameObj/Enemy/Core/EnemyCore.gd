@@ -124,9 +124,6 @@ func _ready():
 	if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
 		contact_damage *= 2
 	
-	#Connect to GameSettings to set hp bar visible/invisible on updated.
-	GameSettings.gameplay.connect("show_enemy_hp_bars_changed", self, "_on_setting_show_enemy_hp_bars_changed")
-	
 	init_temp_variables()
 
 func init_temp_variables():
