@@ -1,0 +1,18 @@
+Known bugs:
+- Configuration made will never be saved. This is not yet implemented.
+- Some looping audio may not stop completely (such as chain looping sound).
+
+
+Bugs that the player misunderstood:
+- Sometime the player can shoot through a shielded enemy at point blank range to deal damage. This may or may not be a bug as this is actually a coincidence feature.
+- While charging Mega Buster and entering the boss room, the player may already release the fire button which results in firing an uncharged or fully-charged Mega Buster accidentally. This can be manually fixed by keep holding the fire button before the boss begins posing.
+- A strange blue-box near the entrance of the interior castle is unbreakable. This is intended because there is nothing coded in there.
+- Sometimes the enemy is permanently killed and will never return. This is used to avoid back-attacking frustation issue.
+- Some enemies do spawn and do not spawn at all in some difficulty.
+
+
+Features that are not yet implemented:
+- Keyboard Configuration
+- Ladder Climbing (you may not see any ladders in the game yet)
+- Player Menu that allows the player to select a weapon and pauses the game at the same time
+- Rush Coil (a very common starting weapon from the Mega Man series)
