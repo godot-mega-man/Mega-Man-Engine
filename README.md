@@ -1,16 +1,19 @@
-# Godot - ​Mega Man Engine
+> NOTE:
+> Mega Man Engine was written in 2019. The code was written very quickly to provide a playable demo that lets people see how the game is supposed to be like. So, I'm the only one who exactly know what would need to be done in order to get the code refactored and well optimized in the current state.
 
-Here is a showcase of platformer 2D demo game made with Godot engine.
+# Firstject ​Mega Man Engine v2 (Work-In-Progress)
 
-# Who can use this?
+A platformer 2D game demo showcase made with Godot engine.
 
-Anyone is free to use this or any portion of it so long as it is for a non-commercial cause. Commercial applications are strictly forbidden.
+## Project Installation
 
-# Contributions policy
+**Note: This is compatible only with Godot 3.2 or later.**
 
-Capcom assets notwithstanding, all contributors implicitly agree that they created their contributions themselves or have the permission of the creators to submit it to the repository. Capcom assets notwithstanding, all content in the repository must be available for anyone to use free and open-source, so long as it is used non-commerically.
+Simply download or clone this repository and open the project with [Godot Engine](https://godotengine.org/)
 
-# How to contribute?
+```
+git clone https://github.com/godot-mega-man/Mega-Man-Engine.git
+cd Mega-Man-Engine
+git checkout v2.0
+```
 
-This project is not yet ready for any contribution. In the meantime, we will improve the code and change the game structures.
-In short: Too many hard-coded.
