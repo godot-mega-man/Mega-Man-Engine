@@ -1,0 +1,421 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Src/Scenes/Levels/Core/Level.gd" type="Script" id=1]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/SpriteCycling2D/SpriteCycling2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Src/Node/GameObj/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Src/Node/GameObj/Effects/MM_Thiun/ThiunEffectCreator.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Node/GUI/FadeScreen/FadeScreen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Fonts/Mega Man 10.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Src/Node/Camera/Camera2D.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Sprites/Icons/Icon_128.png" type="Texture" id=8]
+[ext_resource path="res://Src/Scenes/Levels/Views/ViewContainer.gd" type="Script" id=9]
+[ext_resource path="res://Src/Scenes/Levels/Views/View.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=11]
+[ext_resource path="res://Assets/Sprites/cursor.png" type="Texture" id=12]
+[ext_resource path="res://Src/Node/Extensible/MenuList.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/Scenes/Levels/Core/LevelPauseMenuList.gd" type="Script" id=14]
+[ext_resource path="res://Src/Scenes/Levels/Core/PauseMenu.gd" type="Script" id=15]
+[ext_resource path="res://Src/Node/Camera/CameraShaker.gd" type="Script" id=16]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Hide"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("./Control:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fade:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Fade:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Resume"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("./Control:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fade:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Fade:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("./Control:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fade:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Fade:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=5]
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false, true, false ]
+}
+
+[node name="Level" type="Node"]
+script = ExtResource( 1 )
+BG_COLOR = Color( 0.231373, 0.741176, 1, 1 )
+
+[node name="TileMap" type="TileMap" parent="." groups=[
+"Tile",
+]]
+light_mask = 0
+z_as_relative = false
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 4
+collision_friction = 0.0
+collision_mask = 6
+occluder_light_mask = 0
+format = 1
+
+[node name="AddDeathSpikeHere" type="Node2D" parent="TileMap"]
+
+[node name="Iterable" type="Node2D" parent="."]
+z_index = 999
+z_as_relative = false
+
+[node name="SpriteCycling" parent="Iterable" instance=ExtResource( 2 )]
+
+[node name="Player" parent="Iterable" instance=ExtResource( 3 )]
+position = Vector2( 166.438, 80.0763 )
+level_path = NodePath("../..")
+tilemap_path = NodePath("../../TileMap")
+
+[node name="ThiunEffectCreator" parent="Iterable/Player" instance=ExtResource( 4 )]
+create_target = NodePath("../..")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="FadeScreen" parent="." instance=ExtResource( 5 )]
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 2
+script = ExtResource( 15 )
+
+[node name="Control" type="Control" parent="PauseMenu"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Bg" type="ColorRect" parent="PauseMenu/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.270588, 0.156863, 0.745098, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PauseBox" type="ColorRect" parent="PauseMenu/Control"]
+margin_left = 24.0
+margin_top = 8.0
+margin_right = 232.0
+margin_bottom = 32.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="ReferenceRect" parent="PauseMenu/Control/PauseBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+border_color = Color( 1, 1, 1, 1 )
+border_width = 2.0
+editor_only = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shadow" type="ColorRect" parent="PauseMenu/Control/PauseBox"]
+modulate = Color( 1, 1, 1, 0.203922 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 8.0
+margin_bottom = 8.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="PauseMenu/Control/PauseBox"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -4.0
+margin_right = 60.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 11 )
+text = "GAME PAUSED"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Box" type="ColorRect" parent="PauseMenu/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = 48.0
+margin_right = -24.0
+margin_bottom = -24.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shadow2" type="ColorRect" parent="PauseMenu/Control/Box"]
+modulate = Color( 1, 1, 1, 0.203922 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 8.0
+margin_bottom = 8.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelPauseMenuList" parent="PauseMenu/Control" instance=ExtResource( 13 )]
+margin_left = 48.0
+margin_top = 56.0
+margin_right = 216.0
+margin_bottom = 104.0
+script = ExtResource( 14 )
+disabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Control/LevelPauseMenuList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Resume" type="Label" parent="PauseMenu/Control/LevelPauseMenuList/VBoxContainer"]
+margin_right = 168.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 11 )
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="PauseMenu/Control/LevelPauseMenuList/VBoxContainer"]
+margin_top = 16.0
+margin_right = 168.0
+margin_bottom = 27.0
+custom_fonts/font = ExtResource( 11 )
+text = "Return to Title"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Label" parent="PauseMenu/Control/LevelPauseMenuList/VBoxContainer"]
+margin_top = 32.0
+margin_right = 168.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 11 )
+text = "Exit App"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cursor" type="TextureRect" parent="PauseMenu/Control/LevelPauseMenuList"]
+modulate = Color( 0.870588, 0.160784, 0, 1 )
+margin_left = -16.0
+margin_right = -6.0
+margin_bottom = 10.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fade" type="ColorRect" parent="PauseMenu"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="PauseMenu"]
+anims/Hide = SubResource( 1 )
+anims/Resume = SubResource( 2 )
+anims/Show = SubResource( 3 )
+
+[node name="ReadyGUI" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="ReadyGUI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -5.5
+margin_right = 24.0
+margin_bottom = 5.5
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+text = "READY"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ReadyGUI/Label"]
+autoplay = "New Anim"
+playback_speed = 0.4
+"anims/New Anim" = SubResource( 5 )
+
+[node name="Camera2D" parent="." instance=ExtResource( 7 )]
+follow_on_path = NodePath("../Iterable/Player")
+
+[node name="CameraShaker" type="Node" parent="Camera2D"]
+script = ExtResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="Camera2D"]
+visible = false
+scale = Vector2( 0.375, 0.375 )
+texture = ExtResource( 8 )
+
+[node name="ViewContainer" type="Control" parent="."]
+script = ExtResource( 9 )
+default_view = NodePath("View")
+
+[node name="View" parent="ViewContainer" instance=ExtResource( 10 )]
+
+[node name="VictoryStartTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="player_die_normally" from="Iterable/Player" to="Iterable/Player/ThiunEffectCreator" method="create"]
+[connection signal="selected" from="PauseMenu/Control/LevelPauseMenuList" to="." method="_on_LevelPauseMenuList_selected"]
+[connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="Iterable/Player" method="_on_TransitionTween_tween_all_completed"]
+[connection signal="tween_all_completed" from="Camera2D/TransitionTween" to="." method="_on_TransitionTween_tween_all_completed"]
+[connection signal="timeout" from="VictoryStartTimer" to="." method="_on_VictoryStartTimer_timeout"]
+
+[editable path="Camera2D"]

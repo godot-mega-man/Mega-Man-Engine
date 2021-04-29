@@ -1,0 +1,162 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Src/Node/GameObj/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Node/GameObj/Enemy/Obj/MM6_KnightManChainEdit.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Enemies/MM6_KnightMan.png" type="Texture" id=3]
+[ext_resource path="res://Src/Node/GameObj/ProjectileReflector/ProjectileReflector.tscn" type="PackedScene" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 64, 48 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Activate"
+length = 0.7
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06, 0.12, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 4, 5, 6, 7 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "make_switches_activated"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ShieldArea2D/ProjectileReflector:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Init"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ShieldArea2D/ProjectileReflector:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "JumpOff"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.5 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 128 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8, 12 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 3, 6 )
+
+[node name="MM6_KnightManChainEdit" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+sprite_preview_texture = SubResource( 1 )
+damage_area_nodes = [ NodePath("SpriteMain/DamageArea2D"), NodePath("SpriteMain/ShieldArea2D") ]
+explosion_effect = null
+death_sound = 3
+hit_points_base = 8
+RANGE_CHECKING_MODE = 1
+DESTROY_OUTSIDE_SCREEN = false
+show_invincible_sprite = true
+pickups_drop_enabled = false
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+texture = ExtResource( 3 )
+hframes = 10
+
+[node name="Anim" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
+autoplay = "Init"
+anims/Activate = SubResource( 2 )
+anims/Init = SubResource( 3 )
+anims/JumpOff = SubResource( 4 )
+
+[node name="DamageArea2D" type="Area2D" parent="SpriteMain" index="2"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteMain/DamageArea2D" index="0"]
+shape = SubResource( 5 )
+
+[node name="ShieldArea2D" type="Area2D" parent="SpriteMain" index="3"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteMain/ShieldArea2D" index="0"]
+position = Vector2( -13, 3 )
+shape = SubResource( 6 )
+
+[node name="ProjectileReflector" parent="SpriteMain/ShieldArea2D" index="1" instance=ExtResource( 4 )]
+enabled = false
+
+[node name="WanderTimer" type="Timer" parent="." index="8"]
+wait_time = 0.8
+autostart = true
+
+[connection signal="slain" from="." to="." method="_on_MM6_KnightManChainEdit_slain"]
+[connection signal="timeout" from="WanderTimer" to="." method="_on_WanderTimer_timeout"]

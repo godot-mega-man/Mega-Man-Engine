@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Src/Misc/ObjSpawner/ObjSpawner.gd" type="Script" id=1]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/AutoQueueFree/AutoQueueFree.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/PreciseVisibilityNotifier2D/PreciseVisibilityNotifier2D.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Highlight"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpritePreview:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="ObjSpawner" type="Node2D" groups=[
+"ObjSpawner",
+]]
+script = ExtResource( 1 )
+spawn_on = 2
+obj_exist_limit = 1
+custom_parameters = {
+}
+
+[node name="SpritePreview" type="Sprite" parent="."]
+
+[node name="AutoQueueFree" parent="SpritePreview" instance=ExtResource( 2 )]
+allow_signal_connect_call = false
+
+[node name="DebugVisualHighlighter" type="AnimationPlayer" parent="."]
+anims/Highlight = SubResource( 1 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="PreciseVisibilityNotifier2D" parent="." instance=ExtResource( 3 )]
+detection_box_size = Vector2( 8, 8 )
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="visibility_entered" from="PreciseVisibilityNotifier2D" to="." method="_on_PreciseVisibilityNotifier2D_visibility_entered"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Src/Lib/FJ_LibHelper/PreciseVisibilityNotifier2D/PreciseVisibilityNotifier2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/BulletBehavior2D/BulletBehavior2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Sprites/Effects/Thiun.png" type="Texture" id=3]
+[ext_resource path="res://Src/Node/GameObj/Effects/MM_Thiun/Thiun.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 0.25
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[node name="Thiun" type="Sprite" groups=[
+"Enemy",
+]]
+texture = ExtResource( 3 )
+hframes = 5
+script = ExtResource( 4 )
+
+[node name="BulletBehavior" parent="." instance=ExtResource( 2 )]
+process_mode = 0
+speed = 100.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 1 )
+
+[node name="PreciseVisibilityNotifier2D" parent="." instance=ExtResource( 1 )]
+
+[connection signal="visibility_exited" from="PreciseVisibilityNotifier2D" to="." method="_on_PreciseVisibilityNotifier2D_visibility_exited"]

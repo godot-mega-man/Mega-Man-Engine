@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MM3_ShadowBlade.wav-96eecccb423b2f9ad50926ce9e46b853.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Sfx/Combat/MM3_ShadowBlade.wav"
+dest_files=[ "res://.import/MM3_ShadowBlade.wav-96eecccb423b2f9ad50926ce9e46b853.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,145 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Src/Node/GUI/FadeScreen/FadeScreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Src/Scenes/Disclaimer.gd" type="Script" id=3]
+[ext_resource path="res://Src/Node/Misc/InputActionCallback.tscn" type="PackedScene" id=4]
+
+[node name="Disclaimer" type="Node"]
+script = ExtResource( 3 )
+
+[node name="InputActionCallback" parent="." instance=ExtResource( 4 )]
+
+[node name="Bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.0
+margin_top = -48.0
+margin_right = 96.0
+margin_bottom = -37.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Mega Man and"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.0
+margin_top = -32.0
+margin_right = 96.0
+margin_bottom = -21.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "all related content"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.0
+margin_top = -16.0
+margin_right = 96.0
+margin_bottom = -5.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "(C) Capcom 2019-2021"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.0
+margin_top = 16.0
+margin_right = 96.0
+margin_bottom = 27.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Mega Man is a non-profit"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.0
+margin_top = 32.0
+margin_right = 96.0
+margin_bottom = 43.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "fan game created by"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.0
+margin_top = 48.0
+margin_right = 96.0
+margin_bottom = 59.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Peeranut Rumthungsakul"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeScreen" parent="." instance=ExtResource( 2 )]
+
+[node name="NextSceneTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="just_pressed" from="InputActionCallback" to="." method="_on_InputActionCallback_just_pressed"]
+[connection signal="timeout" from="NextSceneTimer" to="." method="_on_NextSceneTimer_timeout"]

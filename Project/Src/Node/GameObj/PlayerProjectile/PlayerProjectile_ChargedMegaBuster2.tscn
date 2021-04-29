@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Src/Node/GameObj/PlayerProjectile/PlayerProjectile_ChargedMegaBuster2.gd" type="Script" id=1]
+[ext_resource path="res://Src/Node/GameObj/PlayerProjectile/PlayerProjectileCore.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Src/Misc/PaletteSpriteCore/PaletteSpriteCore.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Sprites/Projectiles/ChargedMegaBuster2.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 0.16
+loop = true
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 16 )
+
+[node name="FullyChargedMegaBuster" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+projectile_name = "buster"
+DAMAGE_POWER = 1.0
+DESTROY_ON_COLLIDE_TYPE = 1
+projectile_limit_cost = 3.0
+destroy_on_overkill = false
+
+[node name="BulletBehavior" parent="." index="0"]
+root_node = NodePath("./..")
+active = true
+process_mode = 1
+speed = 300.0
+speed_limit = false
+min_speed = 0.0
+max_speed = 150.0
+acceleration = 0.0
+gravity = 0.0
+max_fall_speed = 900.0
+angle_in_degrees = 0.0
+kbody_move_and_collide = false
+allow_negative_speed = false
+signal_on_distance_travelled = 500.0
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 4 )
+hframes = 4
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 1 )
+
+[node name="PaletteSprite" parent="Sprite" index="1" instance=ExtResource( 3 )]
+primary_color_frame_add = 4
+secondary_color_frame_add = 8
+outline_color_frame_add = 12
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource( 2 )

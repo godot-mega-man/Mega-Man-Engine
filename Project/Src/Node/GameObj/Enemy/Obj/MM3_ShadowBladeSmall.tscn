@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Src/Node/GameObj/Enemy/Core/EnemyProjectileCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/Enemies/MM3_ShadowBladeSmall.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Blade"
+length = 0.14
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6, 6 )
+
+[node name="MM3_ShadowBladeSmall" instance=ExtResource( 1 )]
+damage_area_nodes = [ NodePath("Area2D") ]
+
+[node name="BulletBehavior" parent="." index="0"]
+root_node = NodePath("./..")
+active = true
+process_mode = 1
+speed = 300.0
+speed_limit = false
+min_speed = 0.0
+max_speed = 150.0
+acceleration = 0.0
+gravity = 0.0
+max_fall_speed = 900.0
+angle_in_degrees = 0.0
+kbody_move_and_collide = false
+allow_negative_speed = false
+signal_on_distance_travelled = 500.0
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+texture = ExtResource( 2 )
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
+autoplay = "Blade"
+anims/Blade = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="." index="6"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource( 2 )

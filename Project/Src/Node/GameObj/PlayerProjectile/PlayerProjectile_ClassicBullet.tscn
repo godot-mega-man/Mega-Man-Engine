@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Src/Node/GameObj/PlayerProjectile/PlayerProjectileCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/Projectiles/PlayerClassicProjectile.png" type="Texture" id=2]
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "Reflected"
+length = 0.06
+loop = true
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="ClassicBullet" instance=ExtResource( 1 )]
+DESTROY_ON_COLLIDE_TYPE = 1
+
+[node name="BulletBehavior" parent="." index="0"]
+speed = 280.0
+signal_on_distance_travelled = 200.0
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )
+
+[node name="ReflectAnimation" parent="." index="4"]
+anims/Reflected = SubResource( 1 )
+[connection signal="distance_travelled_reached" from="BulletBehavior" to="." method="queue_free_start"]

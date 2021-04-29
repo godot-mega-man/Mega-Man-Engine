@@ -1,0 +1,171 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Src/Node/GameObj/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Node/GameObj/Enemy/Obj/MM6_PowerSlam.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Enemies/MM6_PowerSlam.png" type="Texture" id=3]
+[ext_resource path="res://Src/Node/GameObj/Effects/LargeExplosion/LargeExplosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="Animation" id=2]
+length = 0.1
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Landing"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 0, 2, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finish_landing"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 2 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "turn_toward_player"
+}, {
+"args": [  ],
+"method": "hover_forward"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stomp"
+} ]
+}
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 19.7765
+height = 8.28698
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 19, 24 )
+
+[node name="PowerSlam" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+sprite_preview_texture = SubResource( 1 )
+damage_area_nodes = [ NodePath("DamageArea2D") ]
+explosion_effect = ExtResource( 4 )
+death_sound = 1
+contact_damage = 5.0
+hit_points_base = 15
+RANGE_CHECKING_MODE = 1
+DESTROY_OUTSIDE_SCREEN = false
+
+[node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 5 )]
+GRAVITY_VEC = Vector2( 0, 0 )
+WALK_SPEED = 120.0
+VELOCITY_X_DAMPING = 1.0
+snap_floor_pixel = Vector2( 0, 0 )
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+texture = ExtResource( 3 )
+hframes = 3
+frame = 2
+
+[node name="Ani" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
+autoplay = "Launch"
+anims/Hovering = SubResource( 2 )
+anims/Landing = SubResource( 3 )
+anims/Launch = SubResource( 4 )
+anims/Stomping = SubResource( 5 )
+
+[node name="PlatformCollisionShape2D" parent="." index="2"]
+visible = true
+shape = SubResource( 6 )
+disabled = false
+
+[node name="DamageArea2D" type="Area2D" parent="." index="7"]
+visible = false
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D" index="0"]
+shape = SubResource( 7 )
+
+[connection signal="hit_ceiling" from="PlatformBehavior" to="." method="_on_PlatformBehavior_hit_ceiling"]
+[connection signal="landed" from="PlatformBehavior" to="." method="_on_PlatformBehavior_landed"]

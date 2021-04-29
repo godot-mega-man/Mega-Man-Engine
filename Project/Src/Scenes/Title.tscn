@@ -1,0 +1,375 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Sprites/megaman_logo.png" type="Texture" id=2]
+[ext_resource path="res://Src/Node/GUI/FadeScreen/FadeScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Src/Scenes/Title.gd" type="Script" id=4]
+[ext_resource path="res://Src/Scenes/TitleDifficultyMenuList.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Fonts/RpgRoll.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Assets/Sprites/cursor.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/world.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sounds/Bgm/title.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Src/Node/Extensible/MenuList.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Src/Scenes/TitleMainMenuList.gd" type="Script" id=12]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Appear"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.247059, 0.247059, 0.247059, 1 ), Color( 0.498039, 0.498039, 0.498039, 1 ), Color( 0.74902, 0.74902, 0.74902, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "ToDifficulty"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleMainMenuList:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleDifficultyMenuList:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TitleDifficultyMenuList:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.254902, 0.254902, 0.254902, 1 ), Color( 0.498039, 0.498039, 0.498039, 1 ), Color( 0.74902, 0.74902, 0.74902, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "ToMain"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleDifficultyMenuList:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleMainMenuList:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TitleMainMenuList:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.254902, 0.254902, 0.254902, 1 ), Color( 0.498039, 0.498039, 0.498039, 1 ), Color( 0.74902, 0.74902, 0.74902, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Title" type="Node"]
+script = ExtResource( 4 )
+bgm = ExtResource( 10 )
+
+[node name="Bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="TextureRect" parent="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -96.0
+margin_top = 24.0
+margin_right = 96.0
+margin_bottom = 88.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Logo"]
+margin_left = 8.0
+margin_right = 48.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0.45098, 0.937255, 1 )
+text = "Firstject"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control/Logo"]
+margin_left = 128.0
+margin_top = 40.0
+margin_right = 176.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "ENGINE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Control/Logo"]
+margin_left = 160.0
+margin_top = 48.0
+margin_right = 176.0
+margin_bottom = 62.0
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "v2"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Logo/Label3"]
+margin_left = 24.0
+margin_right = 64.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 6 )
+text = "(WIP)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="World" type="TextureRect" parent="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_top = 96.0
+margin_right = 128.0
+margin_bottom = 188.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="Control/World"]
+autoplay = "Appear"
+anims/Appear = SubResource( 1 )
+
+[node name="TitleMainMenuList" parent="Control" instance=ExtResource( 11 )]
+margin_left = 48.0
+margin_top = 136.0
+margin_bottom = 192.0
+script = ExtResource( 12 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TitleMainMenuList"]
+margin_right = 80.0
+margin_bottom = 64.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Label" parent="Control/TitleMainMenuList/VBoxContainer"]
+margin_right = 80.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 1 )
+text = "NEW GAME"
+
+[node name="Config" type="Label" parent="Control/TitleMainMenuList/VBoxContainer"]
+margin_top = 16.0
+margin_right = 80.0
+margin_bottom = 27.0
+custom_fonts/font = ExtResource( 1 )
+text = "OPTIONS"
+
+[node name="Exit" type="Label" parent="Control/TitleMainMenuList/VBoxContainer"]
+margin_top = 32.0
+margin_right = 80.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 1 )
+text = "EXIT"
+
+[node name="Cursor" type="TextureRect" parent="Control/TitleMainMenuList"]
+modulate = Color( 0.870588, 0.160784, 0, 1 )
+margin_left = -16.0
+margin_right = -6.0
+margin_bottom = 10.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleDifficultyMenuList" parent="Control" instance=ExtResource( 11 )]
+visible = false
+margin_left = 48.0
+margin_top = 120.0
+margin_right = 136.0
+margin_bottom = 184.0
+script = ExtResource( 5 )
+disabled = true
+
+[node name="Diff" type="Label" parent="Control/TitleDifficultyMenuList"]
+modulate = Color( 0, 0.92549, 0.862745, 1 )
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 80.0
+margin_bottom = -5.0
+custom_fonts/font = ExtResource( 1 )
+text = "-Difficulty-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TitleDifficultyMenuList"]
+margin_right = 80.0
+margin_bottom = 64.0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Diff1" type="Label" parent="Control/TitleDifficultyMenuList/VBoxContainer"]
+margin_right = 80.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 1 )
+text = "Newcomer"
+uppercase = true
+
+[node name="Diff2" type="Label" parent="Control/TitleDifficultyMenuList/VBoxContainer"]
+margin_top = 13.0
+margin_right = 80.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+text = "Casual"
+uppercase = true
+
+[node name="Diff3" type="Label" parent="Control/TitleDifficultyMenuList/VBoxContainer"]
+margin_top = 26.0
+margin_right = 80.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 1 )
+text = "Normal"
+uppercase = true
+
+[node name="Diff4" type="Label" parent="Control/TitleDifficultyMenuList/VBoxContainer"]
+margin_top = 39.0
+margin_right = 80.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 1 )
+text = "Superhero"
+uppercase = true
+
+[node name="Back" type="Label" parent="Control/TitleDifficultyMenuList/VBoxContainer"]
+margin_top = 52.0
+margin_right = 80.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 1 )
+text = "< Back"
+
+[node name="Cursor" type="TextureRect" parent="Control/TitleDifficultyMenuList"]
+modulate = Color( 0.870588, 0.160784, 0, 1 )
+margin_left = -16.0
+margin_right = -6.0
+margin_bottom = 10.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Footer" type="Control" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="Control/Footer"]
+margin_left = 16.0
+margin_top = 200.0
+margin_right = 240.0
+margin_bottom = 214.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Created by Peeranut 2019-2021"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control/Footer"]
+margin_left = 16.0
+margin_top = 208.0
+margin_right = 240.0
+margin_bottom = 222.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Made with Godot Engine"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UiAnim" type="AnimationPlayer" parent="Control"]
+anims/ToDifficulty = SubResource( 2 )
+anims/ToMain = SubResource( 3 )
+
+[node name="FadeScreen" parent="." instance=ExtResource( 3 )]
+
+[connection signal="entering_config" from="Control/TitleMainMenuList" to="." method="_on_TitleMainMenuList_entering_config"]
+[connection signal="entering_exit" from="Control/TitleMainMenuList" to="." method="_on_TitleMainMenuList_entering_exit"]
+[connection signal="entering_start" from="Control/TitleMainMenuList" to="." method="_on_TitleMainMenuList_entering_start"]
+[connection signal="canceled" from="Control/TitleDifficultyMenuList" to="." method="_on_TitleDifficultyMenuList_canceled"]
+[connection signal="difficulty_selected" from="Control/TitleDifficultyMenuList" to="." method="_on_TitleDifficultyMenuList_difficulty_selected"]
+[connection signal="visibility_changed" from="Control/TitleDifficultyMenuList" to="Control/TitleDifficultyMenuList" method="_on_TitleDifficultyMenuList_visibility_changed"]

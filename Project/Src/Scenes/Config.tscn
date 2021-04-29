@@ -1,0 +1,251 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Src/Scenes/Config.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Sounds/Bgm/menu.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Src/Node/GUI/FadeScreen/FadeScreen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sprites/cursor.png" type="Texture" id=5]
+[ext_resource path="res://Src/Node/Extensible/MenuList.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/Scenes/ConfigMenuList.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Fonts/RpgRoll.tres" type="DynamicFont" id=9]
+
+[node name="Config" type="Node"]
+script = ExtResource( 1 )
+bgm = ExtResource( 3 )
+
+[node name="Bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.12549, 0, 0.352941, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label9" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -96.0
+margin_top = 16.0
+margin_right = 96.0
+margin_bottom = 27.0
+custom_fonts/font = ExtResource( 2 )
+text = "-OPTIONS-"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfigMenuList" parent="Control" instance=ExtResource( 6 )]
+margin_left = 32.0
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 208.0
+script = ExtResource( 7 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ConfigMenuList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Keyboard" type="Label" parent="Control/ConfigMenuList/VBoxContainer"]
+modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
+margin_right = 192.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 2 )
+text = "Configure Keyboard (wIP)"
+uppercase = true
+
+[node name="Scale" type="Label" parent="Control/ConfigMenuList/VBoxContainer"]
+margin_top = 16.0
+margin_right = 192.0
+margin_bottom = 27.0
+custom_fonts/font = ExtResource( 2 )
+text = "Screen Scale"
+uppercase = true
+
+[node name="Value" type="Label" parent="Control/ConfigMenuList/VBoxContainer/Scale"]
+modulate = Color( 0.235294, 0.745098, 1, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -16.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 2 )
+text = "3x"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullScreenToggle" type="Label" parent="Control/ConfigMenuList/VBoxContainer"]
+margin_top = 32.0
+margin_right = 192.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 2 )
+text = "Toggle Fullscreen"
+uppercase = true
+
+[node name="BgmVol" type="Label" parent="Control/ConfigMenuList/VBoxContainer"]
+margin_top = 48.0
+margin_right = 192.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 2 )
+text = "BGM Volume"
+uppercase = true
+
+[node name="Value" type="Label" parent="Control/ConfigMenuList/VBoxContainer/BgmVol"]
+modulate = Color( 0.235294, 0.745098, 1, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 2 )
+text = "100%"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SfxVol" type="Label" parent="Control/ConfigMenuList/VBoxContainer"]
+margin_top = 64.0
+margin_right = 192.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 2 )
+text = "SFX Volume"
+uppercase = true
+
+[node name="Value" type="Label" parent="Control/ConfigMenuList/VBoxContainer/SfxVol"]
+modulate = Color( 0.235294, 0.745098, 1, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 2 )
+text = "100%"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dmg" type="Label" parent="Control/ConfigMenuList/VBoxContainer"]
+margin_top = 80.0
+margin_right = 192.0
+margin_bottom = 91.0
+custom_fonts/font = ExtResource( 2 )
+text = "Damage Popup"
+uppercase = true
+
+[node name="Value" type="Label" parent="Control/ConfigMenuList/VBoxContainer/Dmg"]
+modulate = Color( 0.235294, 0.745098, 1, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 2 )
+text = "On"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ObjOverlap" type="Label" parent="Control/ConfigMenuList/VBoxContainer"]
+margin_top = 96.0
+margin_right = 192.0
+margin_bottom = 107.0
+custom_fonts/font = ExtResource( 2 )
+text = "Obj Overlap Flicker"
+uppercase = true
+
+[node name="Value" type="Label" parent="Control/ConfigMenuList/VBoxContainer/ObjOverlap"]
+modulate = Color( 0.235294, 0.745098, 1, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 2 )
+text = "On"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NesSlowdown" type="Label" parent="Control/ConfigMenuList/VBoxContainer"]
+margin_top = 112.0
+margin_right = 192.0
+margin_bottom = 123.0
+custom_fonts/font = ExtResource( 2 )
+text = "Simulate NES LIMITS"
+uppercase = true
+
+[node name="Value" type="Label" parent="Control/ConfigMenuList/VBoxContainer/NesSlowdown"]
+modulate = Color( 0.235294, 0.745098, 1, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 2 )
+text = "Off"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Warn" type="Label" parent="Control/ConfigMenuList/VBoxContainer/NesSlowdown"]
+modulate = Color( 1, 0.635294, 0.270588, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.0
+margin_top = 8.0
+margin_bottom = 19.0
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 9 )
+text = "This implementation is not very accurate.
+Please proceed with caution!"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Empty" type="ReferenceRect" parent="Control/ConfigMenuList/VBoxContainer"]
+margin_top = 128.0
+margin_right = 192.0
+margin_bottom = 152.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Label" parent="Control/ConfigMenuList/VBoxContainer"]
+margin_top = 157.0
+margin_right = 192.0
+margin_bottom = 168.0
+custom_fonts/font = ExtResource( 2 )
+text = "Save & Exit"
+uppercase = true
+
+[node name="Cursor" type="TextureRect" parent="Control/ConfigMenuList"]
+modulate = Color( 0.870588, 0.160784, 0, 1 )
+margin_left = -16.0
+margin_right = -6.0
+margin_bottom = 10.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeScreen" parent="." instance=ExtResource( 4 )]
+
+[connection signal="confirmed" from="Control/ConfigMenuList" to="." method="_on_ConfigMenuList_confirmed"]

@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Src/Node/GUI/FadeScreen/FadeScreen.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Fade In"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BlackRectBottom:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.74902 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0.247059 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BlackRectBottom:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.247059 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0.74902 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="FadeScreen" type="CanvasLayer"]
+layer = 5
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BlackRectBottom" type="ColorRect" parent="Control"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 1 )
+
+[node name="FadePlayer" type="AnimationPlayer" parent="Control"]
+pause_mode = 2
+autoplay = "Fade In"
+playback_speed = 2.0
+method_call_mode = 1
+"anims/Fade In" = SubResource( 1 )
+"anims/Fade Out" = SubResource( 2 )
+
+[connection signal="animation_finished" from="Control/FadePlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="Control/FadePlayer" to="." method="_on_AnimationPlayer_animation_started"]

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://Entities/Effects/Particles/ParticlesMaterial_Explosion.tres" type="Material" id=1]
-
-[node name="ExplosionParticles" type="Particles2D"]
-emitting = false
-one_shot = true
-explosiveness = 1.0
-process_material = ExtResource( 1 )

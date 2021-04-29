@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Src/Node/GameObj/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Node/GameObj/Enemy/NonEnemyObj/ChainTilemapController.gd" type="Script" id=2]
+
+
+[node name="ChainTilemapController" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+explosion_effect = null
+pickup_obj_weapon_large = null
+pickup_obj_weapon_small = null
+pickup_obj_life_large = null
+pickup_obj_life_small = null
+pickup_obj_life = null

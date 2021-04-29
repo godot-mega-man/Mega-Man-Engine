@@ -1,0 +1,544 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Sprites/weaponget_screen.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sounds/Sfx/UI/GameStart.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/Sfx/Character/Collapse6.wav" type="AudioStream" id=4]
+[ext_resource path="res://Src/Scenes/WeaponGet.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Fonts/RpgRoll.tres" type="DynamicFont" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 8.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/MegaMan:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 128, 280 ), Vector2( 128, 112 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/MegaMan/MegaManAnim:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 2,
+"values": [ "Stand", "Fire" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/Flash:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2.45, 2.55, 2.65, 2.75, 3.25, 3.3, 3.35, 3.4, 3.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.247059 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0.745098 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.741176 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0.25098 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/Flash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.45 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/MegaMan:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 3.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Control/ThankYou:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Control/ThankYou/Label:percent_visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 3.5, 4.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Control/ThankYou:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 3.5, 4.8, 5.1 ),
+"transitions": PoolRealArray( 1, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 128, 120 ), Vector2( 128, 120 ), Vector2( 128, 32 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Control/ClearTime:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 5.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Control/DetailHBox/ScrollAnim:current_animation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 6.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 2,
+"values": [ "", "Scroll" ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Control/DetailHBox:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Control/ClearTime:rect_position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 5.2, 6.55, 6.8 ),
+"transitions": PoolRealArray( 1, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 128, 128 ), Vector2( 128, 128 ), Vector2( 128, 104 ) ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath("Control/ClearTime/Start")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 5.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Control/ClearTime/DiffHint:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 6.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Control/Bg2:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 3.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fire"
+length = 0.9
+step = 0.06
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.6, 0.66, 0.72, 0.78 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 5, 4, 6, 7 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Shoot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.78 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Stand"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Flash"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 0, 1, 0.0156863, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0.937255, 0, 1 ), Color( 0, 1, 0.952941, 1 ), Color( 1, 0, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "No Flash"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.490196, 0.490196, 0.490196, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 8.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 3.5, 4.5, 7.5, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 256, 171 ), Vector2( 0, 171 ), Vector2( 0, 171 ), Vector2( -512, 171 ), Vector2( -512, 171 ), Vector2( -768, 171 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.979592 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bgm:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1.56917, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+
+[node name="WeaponGet" type="CanvasLayer"]
+script = ExtResource( 6 )
+
+[node name="MainAnim" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 1 )
+
+[node name="Bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0.979592 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MegaMan" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 128, 112 )
+texture = ExtResource( 2 )
+hframes = 4
+vframes = 3
+frame = 7
+
+[node name="Shoot" type="AudioStreamPlayer" parent="Control/MegaMan"]
+stream = ExtResource( 4 )
+bus = "SFX"
+
+[node name="MegaManAnim" type="AnimationPlayer" parent="Control/MegaMan"]
+anims/Fire = SubResource( 2 )
+anims/Stand = SubResource( 3 )
+
+[node name="Bg2" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.00392157, 0, 0.419608, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Flash" type="ColorRect" parent="Control"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ThankYou" type="Control" parent="Control"]
+margin_left = 128.0
+margin_top = 32.0
+margin_right = 128.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/ThankYou"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.0
+margin_top = -8.0
+margin_right = 96.0
+margin_bottom = 6.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Thank you for playing!!"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClearTime" type="Control" parent="Control"]
+margin_left = 128.0
+margin_top = 104.0
+margin_right = 128.0
+margin_bottom = 104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Control/ClearTime"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -7.5
+margin_right = 44.0
+margin_bottom = 3.5
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Clear time:"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="Control/ClearTime"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = 8.0
+margin_right = 44.0
+margin_bottom = 19.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "0:00:00"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlashingAnim" type="AnimationPlayer" parent="Control/ClearTime/Time"]
+playback_speed = 0.5
+anims/Flash = SubResource( 4 )
+"anims/No Flash" = SubResource( 5 )
+
+[node name="DiffHint" type="Label" parent="Control/ClearTime"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = 24.0
+margin_right = 46.0
+margin_bottom = 38.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 7 )
+text = "Try - difficulty!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="AudioStreamPlayer" parent="Control/ClearTime"]
+stream = ExtResource( 3 )
+bus = "SFX"
+
+[node name="DetailHBox" type="HBoxContainer" parent="Control"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -53.0
+margin_right = 768.0
+margin_bottom = -5.0
+custom_constants/separation = 256
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameBy" type="Label" parent="Control/DetailHBox"]
+margin_top = 9.0
+margin_right = 256.0
+margin_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 0
+rect_min_size = Vector2( 256, 0 )
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 1 )
+text = "Mega Man is A non-profit fan
+game created by
+Peeranut Rumthungsakul"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DisclaimerLabel" type="Label" parent="Control/DetailHBox"]
+margin_left = 512.0
+margin_top = 23.0
+margin_right = 768.0
+margin_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 0
+rect_min_size = Vector2( 256, 0 )
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 1 )
+text = "Mega Man and all related
+are the property of Capcom(c)"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollAnim" type="AnimationPlayer" parent="Control/DetailHBox"]
+playback_speed = 0.5
+anims/Scroll = SubResource( 6 )
+
+[node name="FadeAnim" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 7 )
+
+[node name="Bgm" type="AudioStreamPlayer" parent="."]
+bus = "BGM"

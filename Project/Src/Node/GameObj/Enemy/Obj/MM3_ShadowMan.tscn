@@ -1,0 +1,378 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Src/Node/GameObj/Enemy/Core/BossCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Node/GameObj/Enemy/Obj/MM3_ShadowMan.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Enemies/MM3_ShadowMan.png" type="Texture" id=3]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sprites/Enemies/MM3_ShadowManPalette.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sounds/Bgm/boss.ogg" type="AudioStream" id=6]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 48 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Dash"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Flee"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -256 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "FleeReturn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 2, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, -256 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("..:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5, 1.6, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.74902, 0.74902, 0.74902, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Hiding"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 1, 1.55, 1.6, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.752941, 0.752941, 0.752941, 1 ), Color( 0.498039, 0.498039, 0.498039, 1 ), Color( 0.247059, 0.247059, 0.247059, 1 ), Color( 0, 0, 0, 1 ), Color( 0.247059, 0.247059, 0.247059, 1 ), Color( 0.498039, 0.498039, 0.498039, 1 ), Color( 0.752941, 0.752941, 0.752941, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "blink"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=8]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 2.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.68 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 128 ), Vector2( 0, -32 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.68 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../..:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("..:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.05, 2.15, 2.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.329412, 0.329412, 0.329412, 1 ), Color( 0.682353, 0.682353, 0.682353, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=12]
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 6, 7 ]
+}
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 8, 12 )
+
+[node name="MM3_ShadowMan" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+sprite_preview_texture = SubResource( 1 )
+damage_area_nodes = [ NodePath("DamageArea2D") ]
+contact_damage = 4.0
+intro_music = ExtResource( 6 )
+stop_music_after_death = true
+
+[node name="PlatformBehavior" parent="." index="0" instance=ExtResource( 4 )]
+GRAVITY_VEC = Vector2( 0, 1200 )
+VELOCITY_X_DAMPING = 1.0
+snap_floor_pixel = Vector2( 0, 0 )
+
+[node name="SpriteMain" parent="." index="1"]
+modulate = Color( 0.74902, 0.74902, 0.74902, 1 )
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+texture = ExtResource( 3 )
+hframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
+anims/Dash = SubResource( 2 )
+anims/Flee = SubResource( 3 )
+anims/FleeReturn = SubResource( 4 )
+anims/Hiding = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+anims/Jump = SubResource( 7 )
+anims/JumpAttack = SubResource( 8 )
+anims/Pose = SubResource( 9 )
+anims/PoseAppear = SubResource( 10 )
+anims/Throw = SubResource( 11 )
+anims/Throwing = SubResource( 12 )
+
+[node name="Palette" type="Sprite" parent="SpriteMain/Sprite" index="1"]
+texture = ExtResource( 5 )
+hframes = 10
+
+[node name="PlatformCollisionShape2D" parent="." index="2"]
+visible = true
+position = Vector2( 0, 8 )
+shape = SubResource( 13 )
+disabled = false
+
+[node name="PreciseVisibilityNotifier2D" parent="." index="3"]
+visible = false
+
+[node name="DamageArea2D" type="Area2D" parent="." index="7"]
+visible = false
+position = Vector2( 0, 4 )
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D" index="0"]
+shape = SubResource( 14 )
+
+[node name="FireBladesDelayTimer" type="Timer" parent="." index="8"]
+wait_time = 0.15
+one_shot = true
+
+[node name="Phase1RestartTimer" type="Timer" parent="." index="9"]
+wait_time = 0.03
+one_shot = true
+
+[node name="Phase1HideTimer" type="Timer" parent="." index="10"]
+wait_time = 1.7
+one_shot = true
+
+[node name="DashTimer" type="Timer" parent="." index="11"]
+wait_time = 0.03
+one_shot = true
+
+[node name="Phase2StandTimer" type="Timer" parent="." index="12"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Phase2HideTimer" type="Timer" parent="." index="13"]
+one_shot = true
+
+[node name="FireBladeDirectDelayTimer" type="Timer" parent="." index="14"]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="dying" from="." to="." method="_on_MM3_ShadowMan_dying"]
+[connection signal="taken_damage" from="." to="." method="_on_MM3_ShadowMan_taken_damage"]
+[connection signal="taking_damage" from="." to="." method="_on_MM3_ShadowMan_taking_damage"]
+[connection signal="by_wall" from="PlatformBehavior" to="." method="_on_PlatformBehavior_by_wall"]
+[connection signal="timeout" from="FireBladesDelayTimer" to="." method="_on_FireBladesDelayTimer_timeout"]
+[connection signal="timeout" from="Phase1RestartTimer" to="." method="_on_Phase1RestartTimer_timeout"]
+[connection signal="timeout" from="Phase1HideTimer" to="." method="_on_Phase1HideTimer_timeout"]
+[connection signal="timeout" from="Phase2StandTimer" to="." method="_on_Phase2StandTimer_timeout"]
+[connection signal="timeout" from="Phase2HideTimer" to="." method="_on_Phase2HideTimer_timeout"]
+[connection signal="timeout" from="FireBladeDirectDelayTimer" to="." method="_on_FireBladeDirectDelayTimer_timeout"]

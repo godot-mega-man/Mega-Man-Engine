@@ -1,0 +1,186 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Sprites/cursor.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/gameover_bg.png" type="Texture" id=3]
+[ext_resource path="res://Src/Node/Extensible/MenuList.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sounds/Bgm/gameover.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Src/Scenes/GameOverMenuList.gd" type="Script" id=6]
+[ext_resource path="res://Src/Scenes/GameOver.gd" type="Script" id=7]
+[ext_resource path="res://Src/Node/GUI/FadeScreen/FadeScreen.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "GOverThenMenu"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameOverMenuList:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1.18921 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Title:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GameOverMenuList:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Title:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.3, 1.4, 1.5, 1.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.745098, 0.745098, 0.745098, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.247059, 0.247059, 0.247059, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("GameOverMenuList:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.7, 1.8, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.74902, 0.74902, 0.74902, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="GameOver" type="Node"]
+script = ExtResource( 7 )
+
+[node name="Bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.34902, 0.984314, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverBg" type="TextureRect" parent="."]
+margin_top = 48.0
+margin_right = 256.0
+margin_bottom = 176.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_top = 104.0
+margin_right = 64.0
+margin_bottom = 115.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Game Over!"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverMenuList" parent="Control" instance=ExtResource( 4 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = -128.0
+margin_right = 48.0
+margin_bottom = -96.0
+rect_pivot_offset = Vector2( -296, -160 )
+script = ExtResource( 6 )
+disabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GameOverMenuList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Retry" type="Label" parent="Control/GameOverMenuList/VBoxContainer"]
+margin_right = 80.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 1 )
+text = "Continue"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Control/GameOverMenuList/VBoxContainer"]
+margin_top = 15.0
+margin_right = 80.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 1 )
+text = "to menu"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cursor" type="TextureRect" parent="Control/GameOverMenuList"]
+modulate = Color( 0.870588, 0.160784, 0, 1 )
+margin_left = -16.0
+margin_right = -6.0
+margin_bottom = 10.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="Control"]
+autoplay = "GOverThenMenu"
+playback_speed = 1.15
+anims/GOverThenMenu = SubResource( 1 )
+
+[node name="FadeScreen" parent="." instance=ExtResource( 8 )]
+
+[node name="Bgm" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 5 )
+autoplay = true
+bus = "BGM"
+
+[connection signal="selected" from="Control/GameOverMenuList" to="." method="_on_GameOverMenuList_selected"]

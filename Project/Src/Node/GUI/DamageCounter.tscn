@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Fonts/FontOutline.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Src/Node/GUI/DamageCounter.gd" type="Script" id=2]
+
+[node name="DamageCounter" type="Node2D" groups=[
+"DamageCounter",
+]]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteTimer" type="Timer" parent="."]

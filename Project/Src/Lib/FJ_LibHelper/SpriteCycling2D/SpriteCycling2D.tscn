@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Src/Lib/FJ_LibHelper/SpriteCycling2D/SpriteCycling2D.gd" type="Script" id=1]
+
+[node name="SpriteCycling" type="Node" groups=[
+"SpriteCycling",
+]]
+pause_mode = 2
+script = ExtResource( 1 )

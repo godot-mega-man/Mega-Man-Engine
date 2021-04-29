@@ -1,0 +1,188 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Src/Node/GameObj/Pickups/LifeEnergySmall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Node/GameObj/Pickups/Life.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Src/Node/GameObj/Pickups/WeaponEnergyLarge.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Src/Node/GameObj/Effects/Explosion/Explosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/Node/GameObj/Pickups/WeaponEnergySmall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/Node/GameObj/Pickups/LifeEnergyLarge.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/ItemTable/ItemTable.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/PreciseVisibilityNotifier2D/PreciseVisibilityNotifier2D.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Sprites/Effects/Damage.png" type="Texture" id=10]
+[ext_resource path="res://Src/Node/GameObj/Enemy/Core/EnemyCore.gd" type="Script" id=11]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/ItemTable/ItemSet/ItemSetData/ItemSetData.gd" type="Script" id=12]
+
+[sub_resource type="Animation" id=1]
+length = 0.12
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.08
+loop = true
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "NoLongerDamage"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 12 )
+item = ""
+weight = 78
+quantity = 1
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 12 )
+item = "WeaponEnergySmall"
+weight = 25
+quantity = 1
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 12 )
+item = "LifeEnergySmall"
+weight = 15
+quantity = 1
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 12 )
+item = "WeaponEnergyLarge"
+weight = 5
+quantity = 1
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 12 )
+item = "LifeEnergyLarge"
+weight = 4
+quantity = 1
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 12 )
+item = "Life"
+weight = 1
+quantity = 1
+
+[sub_resource type="Animation" id=11]
+length = 0.06
+loop = true
+step = 0.03
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=12]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="EnemyCore" type="KinematicBody2D" groups=[
+"Enemy",
+]]
+collision_layer = 0
+collision_mask = 65
+script = ExtResource( 11 )
+explosion_effect = ExtResource( 4 )
+pickup_obj_weapon_large = ExtResource( 3 )
+pickup_obj_weapon_small = ExtResource( 6 )
+pickup_obj_life_large = ExtResource( 7 )
+pickup_obj_life_small = ExtResource( 1 )
+pickup_obj_life = ExtResource( 2 )
+
+[node name="SpriteMain" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="SpriteMain"]
+
+[node name="FlickerAnimationPlayer" type="AnimationPlayer" parent="SpriteMain"]
+anims/Damage = SubResource( 1 )
+anims/Damage_Loop = SubResource( 2 )
+anims/NoLongerDamage = SubResource( 3 )
+
+[node name="PlatformCollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 4 )
+disabled = true
+
+[node name="PreciseVisibilityNotifier2D" parent="." instance=ExtResource( 9 )]
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+visible = false
+pause_animations = false
+freeze_bodies = false
+pause_particles = false
+pause_animated_sprites = false
+
+[node name="PickupsDropSet" parent="." instance=ExtResource( 5 )]
+items = [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ]
+
+[node name="InvisTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="DamageSprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 10 )
+
+[node name="Ani" type="AnimationPlayer" parent="DamageSprite"]
+anims/Flashing = SubResource( 11 )
+anims/StopFlashing = SubResource( 12 )
+
+[node name="ItemTable" parent="." instance=ExtResource( 8 )]
+
+[connection signal="visibility_exited" from="PreciseVisibilityNotifier2D" to="." method="_on_PreciseVisibilityNotifier2D_visibility_exited"]
+[connection signal="timeout" from="InvisTimer" to="." method="_on_InvisTimer_timeout"]

@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Sprites/capcom.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sounds/Sfx/UI/capcom.wav" type="AudioStream" id=3]
+[ext_resource path="res://Src/Node/GUI/FadeScreen/FadeScreen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Scenes/Capcom.gd" type="Script" id=5]
+[ext_resource path="res://Src/Node/Misc/InputActionCallback.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Flash"
+step = 0.06
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "New Anim"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/AnimationPlayer:current_animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "Flash" ]
+}
+
+[node name="Capcom" type="Node"]
+script = ExtResource( 5 )
+
+[node name="InputActionCallback" parent="." instance=ExtResource( 6 )]
+
+[node name="Bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 128, 128 )
+texture = ExtResource( 2 )
+hframes = 4
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/Flash = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 64.0
+margin_top = 104.0
+margin_right = 192.0
+margin_bottom = 118.0
+custom_fonts/font = ExtResource( 1 )
+text = "Inspired By"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Capcom" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 3 )
+autoplay = true
+bus = "SFX"
+
+[node name="FadeScreen" parent="." instance=ExtResource( 4 )]
+
+[node name="MainAnim" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 2 )
+
+[node name="NextSceneTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="just_pressed" from="InputActionCallback" to="." method="_on_InputActionCallback_just_pressed"]
+[connection signal="timeout" from="NextSceneTimer" to="." method="_on_NextSceneTimer_timeout"]

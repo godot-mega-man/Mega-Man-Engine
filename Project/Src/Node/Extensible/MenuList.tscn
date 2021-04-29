@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Src/Node/Extensible/MenuList.gd" type="Script" id=1]
+[ext_resource path="res://Src/Node/Misc/InputActionCallback.tscn" type="PackedScene" id=2]
+
+[node name="MenuList" type="Control"]
+margin_right = 128.0
+margin_bottom = 128.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputActionCallback" parent="." instance=ExtResource( 2 )]
+
+[connection signal="just_pressed" from="InputActionCallback" to="." method="_on_InputActionCallback_just_pressed"]

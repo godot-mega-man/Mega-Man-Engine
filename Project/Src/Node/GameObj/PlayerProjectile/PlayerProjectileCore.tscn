@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Src/Node/GameObj/PlayerProjectile/PlayerProjectileCore.gd" type="Script" id=1]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/PreciseVisibilityNotifier2D/PreciseVisibilityNotifier2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/BulletBehavior2D/BulletBehavior2D.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Reflected"
+length = 0.034
+loop = true
+step = 0.017
+tracks/0/type = "value"
+tracks/0/path = NodePath("./Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.017 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="PlayerProjectileCore" type="Area2D" groups=[
+"PlayerProjectile",
+]]
+collision_layer = 4
+collision_mask = 91
+script = ExtResource( 1 )
+
+[node name="BulletBehavior" parent="." instance=ExtResource( 3 )]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="ReflectedDestroyTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ReflectAnimation" type="AnimationPlayer" parent="."]
+anims/Reflected = SubResource( 1 )
+
+[node name="PreciseVisibilityNotifier2D" parent="." instance=ExtResource( 2 )]
+detection_box_size = Vector2( 8, 8 )
+
+[connection signal="timeout" from="ReflectedDestroyTimer" to="." method="queue_free_start"]
+[connection signal="visibility_exited" from="PreciseVisibilityNotifier2D" to="." method="_on_PreciseVisibilityNotifier2D_visibility_exited"]

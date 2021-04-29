@@ -1,0 +1,196 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Src/Node/GameObj/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/Enemies/MM5_KoukerQ.png" type="Texture" id=2]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/BulletBehavior2D/BulletBehavior2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Node/GameObj/Enemy/Obj/MM5_KoukerQ.gd" type="Script" id=5]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 48 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "Flying"
+length = 0.14
+loop = true
+step = 0.07
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.07 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../BulletBehavior:active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../PlatformBehavior:INITIAL_STATE")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Stall"
+length = 5.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ShakeAnim:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "Stop" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../BulletBehavior:active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../PlatformBehavior:INITIAL_STATE")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.35 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fall"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "New Anim"
+length = 0.1
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Stop"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 10, 16 )
+
+[node name="KoukerQ" instance=ExtResource( 1 )]
+collision_mask = 0
+script = ExtResource( 5 )
+sprite_preview_texture = SubResource( 6 )
+damage_area_nodes = [ NodePath("DamageArea2D") ]
+contact_damage = 4.0
+hit_points_base = 1
+RANGE_CHECKING_MODE = 1
+
+[node name="BulletBehavior" parent="." index="0" instance=ExtResource( 4 )]
+root_node = NodePath("..")
+speed = 60.0
+angle_in_degrees = 180.0
+
+[node name="PlatformBehavior" parent="." index="1" instance=ExtResource( 3 )]
+GRAVITY_VEC = Vector2( 0, 1300 )
+INITIAL_STATE = false
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="Anim" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
+autoplay = "Flying"
+anims/Flying = SubResource( 1 )
+anims/Stall = SubResource( 4 )
+
+[node name="ShakeAnim" type="AnimationPlayer" parent="SpriteMain/Sprite" index="1"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 2 )
+anims/Stop = SubResource( 3 )
+
+[node name="DamageArea2D" type="Area2D" parent="." index="3"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D" index="0"]
+shape = SubResource( 5 )

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Src/Node/GameObj/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Node/GameObj/Effects/LargeExplosion/LargeExplosion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Src/Node/GameObj/Enemy/Obj/MM3_LargeExplosion.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 25.0
+
+[node name="LargeExplosionEnemy" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+damage_area_nodes = [ NodePath("DamageArea") ]
+
+[node name="LargeExplosion" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="DamageArea" type="Area2D" parent="." index="1"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" index="0"]
+shape = SubResource( 1 )
+
+[node name="DamageAreaDeactivationTimer" type="Timer" parent="." index="8"]
+wait_time = 0.15
+autostart = true
+
+[node name="QueueFreeTimer" type="Timer" parent="." index="9"]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="DamageAreaDeactivationTimer" to="." method="_on_DamageAreaDeactivationTimer_timeout"]
+[connection signal="timeout" from="QueueFreeTimer" to="." method="_on_QueueFreeTimer_timeout"]
