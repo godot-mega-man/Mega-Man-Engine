@@ -4,7 +4,7 @@ A platformer 2D game demo showcase made with Godot engine.
 
 ## Project Installation
 
-**Note: This is compatible only with Godot 3.2 or later.**
+**Note: This is compatible only with Godot 3.3 or later.**
 
 Simply download or clone this repository and open the project with [Godot Engine](https://godotengine.org/)
 
