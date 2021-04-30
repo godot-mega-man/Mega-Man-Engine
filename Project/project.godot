@@ -262,6 +262,7 @@ GameResetter="*res://Src/Autoload/GameResetter.gd"
 Life="*res://Src/Autoload/Life.gd"
 ScreenSizeInput="*res://Src/Autoload/ScreenSizeInput.gd"
 ScreenSizeSetter="*res://Src/Autoload/ScreenSizeSetter.gd"
+UnfocusVolumeLowerer="*res://Src/Autoload/UnfocusVolumeLowerer.gd"
 
 [debug]
 
