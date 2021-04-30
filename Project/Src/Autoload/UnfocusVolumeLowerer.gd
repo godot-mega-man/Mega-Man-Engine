@@ -19,8 +19,14 @@ func _notification(what: int) -> void:
 
 
 func lower():
+	if disabled:
+		return
+	
 	AudioServer.set_bus_volume_db(0, VOLUME_dB_LOWER)
 
 
 func reset():
+	if disabled:
+		return
+	
 	AudioServer.set_bus_volume_db(0, VOLUME_dB_NORMAL)
