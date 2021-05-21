@@ -383,8 +383,6 @@ func drop_item_start():
 func drop_pickups_start():
 	if not pickups_drop_enabled:
 		return
-	if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
-		return
 	
 	var pickup = pickups_drop_set.get_an_item()
 	if pickup is ItemSetData:
