@@ -246,13 +246,13 @@ func press_attack_check(delta : float):
 						return
 					
 					var angles_add = [25, -25]
-					for a in angles_add:
-						if GameHUD.player_weapon_bar.frame < ammo_cost[curr_weapon_idx]:
-							break
+					var consume_ammo_on_hold = [true, false]
+					GameHUD.player_weapon_bar.frame -= ammo_cost[curr_weapon_idx]
+					for i in angles_add.size():
 						var proj = start_launching_attack(proj_ring_boomerang)
 						proj.projectile_owner = self
-						proj.bullet_behavior.angle_in_degrees += a
-						GameHUD.player_weapon_bar.frame -= ammo_cost[curr_weapon_idx]
+						proj.bullet_behavior.angle_in_degrees += angles_add[i]
+						proj.consume_ammo_on_hold = consume_ammo_on_hold[i]
 					if not FJ_AudioManager.sfx_character_enemy_damage.is_playing():
 						FJ_AudioManager.sfx_combat_ring_boomerang.play()
 	

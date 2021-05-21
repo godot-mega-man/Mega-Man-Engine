@@ -6,6 +6,8 @@ var state : int
 var projectile_owner : Node2D
 var destroy_distance_owner = 4
 var pickups_grab_range = 16
+var consume_ammo_on_hold : bool = true
+
 
 func _physics_process(delta: float) -> void:
 	if is_reflected:
@@ -24,7 +26,6 @@ func _physics_process(delta: float) -> void:
 		_angle_toward_player()
 		
 		if self.global_position.distance_to(projectile_owner.global_position) < destroy_distance_owner:
-			refund_energy()
 			queue_free()
 	
 	grab_pickups()
@@ -33,15 +34,15 @@ func _on_FireDurationTimer_timeout() -> void:
 	bullet_behavior.active = false
 	state = 1
 	$PlatformKineBody/CollisionShape2D.disabled = false
-	$HoldAmmoConsumeInterval.start(0.5)
+	$HoldAmmoConsumeInterval.start()
 
 func _on_HoldAmmoConsumeInterval_timeout() -> void:
 	if state != 1:
 		return
 	
-	if GameHUD.player_weapon_bar.frame > 0:
+	if GameHUD.player_weapon_bar.frame > 0 and consume_ammo_on_hold:
 		GameHUD.player_weapon_bar.frame -= 1
-	else:
+	if GameHUD.player_weapon_bar.frame <= 0:
 		bullet_behavior.active = true
 		$PlatformKineBody/CollisionShape2D.disabled = true
 		state = 2
@@ -54,12 +55,6 @@ func grab_pickups():
 			i.global_position = global_position + PICKUP_GRAB_SHIFT
 			i.pf_bhv.velocity = Vector2.ZERO
 
-func refund_energy():
-	if randi() % 6 == 0:
-		return
-	
-	if GameHUD.player_weapon_bar.frame < 28:
-		GameHUD.player_weapon_bar.frame += 1
 
 func is_player_dead() -> bool:
 	for i in get_tree().get_nodes_in_group("Player"):
