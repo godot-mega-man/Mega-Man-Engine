@@ -1,6 +1,21 @@
 extends EnemyCore
 
 
+func _ready() -> void:
+	if Difficulty.difficulty == Difficulty.DIFF_NEWCOMER:
+		$SubObj/MM10_TricastleEyesMiddle.current_hp = 9
+		$SubObj/MM10_TricastleEyesTowerLeft.current_hp = 4
+		$SubObj/MM10_TricastleEyesTowerRight.current_hp = 4
+	if Difficulty.difficulty == Difficulty.DIFF_CASUAL:
+		$SubObj/MM10_TricastleEyesMiddle.current_hp = 12
+		$SubObj/MM10_TricastleEyesTowerLeft.current_hp = 6
+		$SubObj/MM10_TricastleEyesTowerRight.current_hp = 6
+	if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
+		$SubObj/MM10_TricastleEyesMiddle.current_hp = 40
+		$SubObj/MM10_TricastleEyesTowerLeft.current_hp = 12
+		$SubObj/MM10_TricastleEyesTowerRight.current_hp = 12
+
+
 func initiate_battle_process():
 	_make_eyes_uninvul()
 	$TricastleAttackPattern.start()
