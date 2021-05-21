@@ -6,7 +6,7 @@ const PLATFORM = preload("res://Src/Node/GameObj/Enemy/Obj/MM10_TricastlePlatfor
 const PLATFORM_SPAWN_INITIAL_DELAY = 1.1
 const PLATFORM_SPAWN_INTERVAL = 0.6
 const PLATFORM_SPAWN_OFFSETS = [Vector2(0, 8), Vector2(0, -8)]
-const PLATFORM_SPEEDS = [150, 180]
+const PLATFORM_SPEEDS = [120, 180]
 
 
 func spawn():
