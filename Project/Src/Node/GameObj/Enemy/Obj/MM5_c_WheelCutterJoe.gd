@@ -20,8 +20,6 @@ func _ready():
 		rest_timer.wait_time = 1.4
 	if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
 		current_hp = 5
-		launch_timer.wait_time = 0.8
-		rest_timer.wait_time = 0.5
 	
 	palette_sprite.primary_sprite.modulate = Color(primary_color)
 	palette_sprite.second_sprite.modulate = Color(secondary_color)
