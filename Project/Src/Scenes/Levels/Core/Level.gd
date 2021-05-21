@@ -121,7 +121,7 @@ func victory():
 	player.teleport_out()
 	yield(get_tree().create_timer(1.0), "timeout")
 	
-	if Difficulty.difficulty < Difficulty.DIFF_NORMAL:
+	if Difficulty.difficulty < Difficulty.DIFF_CASUAL:
 		go_to_scene("res://Src/Scenes/WeaponGet.tscn")
 	else:
 		go_to_scene("res://Src/Scenes/Credits.tscn")

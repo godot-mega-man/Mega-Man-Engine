@@ -101,7 +101,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 68 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 224 ), Vector2( 0, -1872 ) ]
+"values": [ Vector2( 0, 224 ), Vector2( 0, -1800 ) ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -827,166 +827,135 @@ margin_right = 256.0
 margin_bottom = 1170.0
 rect_min_size = Vector2( 0, 16 )
 
-[node name="Label39" type="Label" parent="CreditsVBox"]
+[node name="Label55" type="Label" parent="CreditsVBox"]
 margin_top = 1175.0
 margin_right = 256.0
 margin_bottom = 1186.0
-custom_fonts/font = ExtResource( 2 )
-text = "Get a Weapon! (result 2)"
-align = 1
-
-[node name="Label40" type="Label" parent="CreditsVBox"]
-margin_top = 1191.0
-margin_right = 256.0
-margin_bottom = 1202.0
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.65098, 0.65098, 0.65098, 1 )
-text = "Rushjet1"
-align = 1
-
-[node name="Label41" type="Label" parent="CreditsVBox"]
-margin_top = 1207.0
-margin_right = 256.0
-margin_bottom = 1218.0
-custom_fonts/font = ExtResource( 2 )
-text = "Mega Man 3 Remade"
-align = 1
-
-[node name="ReferenceRect27" type="ReferenceRect" parent="CreditsVBox"]
-margin_top = 1223.0
-margin_right = 256.0
-margin_bottom = 1239.0
-rect_min_size = Vector2( 0, 16 )
-
-[node name="Label55" type="Label" parent="CreditsVBox"]
-margin_top = 1244.0
-margin_right = 256.0
-margin_bottom = 1255.0
 custom_fonts/font = ExtResource( 2 )
 text = "Staff Roll"
 align = 1
 
 [node name="Label56" type="Label" parent="CreditsVBox"]
-margin_top = 1260.0
+margin_top = 1191.0
 margin_right = 256.0
-margin_bottom = 1271.0
+margin_bottom = 1202.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.65098, 0.65098, 0.65098, 1 )
 text = "Golden Shades"
 align = 1
 
 [node name="Label57" type="Label" parent="CreditsVBox"]
-margin_top = 1276.0
+margin_top = 1207.0
 margin_right = 256.0
-margin_bottom = 1287.0
+margin_bottom = 1218.0
 custom_fonts/font = ExtResource( 2 )
 text = "Mega Man 4 Voyage"
 align = 1
 
 [node name="ReferenceRect22" type="ReferenceRect" parent="CreditsVBox"]
-margin_top = 1292.0
+margin_top = 1223.0
 margin_right = 256.0
-margin_bottom = 1308.0
+margin_bottom = 1239.0
 rect_min_size = Vector2( 0, 16 )
 
 [node name="Label42" type="Label" parent="CreditsVBox"]
-margin_top = 1313.0
+margin_top = 1244.0
 margin_right = 256.0
-margin_bottom = 1324.0
+margin_bottom = 1255.0
 custom_fonts/font = ExtResource( 2 )
 text = "Title Screen"
 align = 1
 
 [node name="Label43" type="Label" parent="CreditsVBox"]
-margin_top = 1329.0
+margin_top = 1260.0
 margin_right = 256.0
-margin_bottom = 1340.0
+margin_bottom = 1271.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.65098, 0.65098, 0.65098, 1 )
 text = "Firstject"
 align = 1
 
 [node name="Label46" type="Label" parent="CreditsVBox"]
-margin_top = 1345.0
+margin_top = 1276.0
 margin_right = 256.0
-margin_bottom = 1356.0
+margin_bottom = 1287.0
 custom_fonts/font = ExtResource( 2 )
 text = "Mega Man 6"
 align = 1
 
 [node name="ReferenceRect24" type="ReferenceRect" parent="CreditsVBox"]
-margin_top = 1361.0
+margin_top = 1292.0
 margin_right = 256.0
-margin_bottom = 1377.0
+margin_bottom = 1308.0
 rect_min_size = Vector2( 0, 16 )
 
 [node name="Label48" type="Label" parent="CreditsVBox"]
-margin_top = 1382.0
+margin_top = 1313.0
 margin_right = 256.0
-margin_bottom = 1407.0
+margin_bottom = 1338.0
 custom_fonts/font = ExtResource( 2 )
 text = "Password Theme (Flower Duet, Delibes)"
 align = 1
 autowrap = true
 
 [node name="Label49" type="Label" parent="CreditsVBox"]
-margin_top = 1412.0
+margin_top = 1343.0
 margin_right = 256.0
-margin_bottom = 1423.0
+margin_bottom = 1354.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.65098, 0.65098, 0.65098, 1 )
 text = "Chips 'N Cellos"
 align = 1
 
 [node name="Label50" type="Label" parent="CreditsVBox"]
-margin_top = 1428.0
+margin_top = 1359.0
 margin_right = 256.0
-margin_bottom = 1439.0
+margin_bottom = 1370.0
 custom_fonts/font = ExtResource( 2 )
 text = "Compose Man"
 align = 1
 
 [node name="ReferenceRect23" type="ReferenceRect" parent="CreditsVBox"]
-margin_top = 1444.0
+margin_top = 1375.0
 margin_right = 256.0
-margin_bottom = 1460.0
+margin_bottom = 1391.0
 rect_min_size = Vector2( 0, 16 )
 
 [node name="Label44" type="Label" parent="CreditsVBox"]
-margin_top = 1465.0
+margin_top = 1396.0
 margin_right = 256.0
-margin_bottom = 1476.0
+margin_bottom = 1407.0
 custom_fonts/font = ExtResource( 2 )
 text = "Password (Game Over)"
 align = 1
 
 [node name="Label45" type="Label" parent="CreditsVBox"]
-margin_top = 1481.0
+margin_top = 1412.0
 margin_right = 256.0
-margin_bottom = 1492.0
+margin_bottom = 1423.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.65098, 0.65098, 0.65098, 1 )
 text = "Firstject"
 align = 1
 
 [node name="Label47" type="Label" parent="CreditsVBox"]
-margin_top = 1497.0
+margin_top = 1428.0
 margin_right = 256.0
-margin_bottom = 1508.0
+margin_bottom = 1439.0
 custom_fonts/font = ExtResource( 2 )
 text = "Mega Man 3"
 align = 1
 
 [node name="ReferenceRect26" type="ReferenceRect" parent="CreditsVBox"]
-margin_top = 1513.0
+margin_top = 1444.0
 margin_right = 256.0
-margin_bottom = 1529.0
+margin_bottom = 1460.0
 rect_min_size = Vector2( 0, 16 )
 
 [node name="Label54" type="Label" parent="CreditsVBox"]
-margin_top = 1534.0
+margin_top = 1465.0
 margin_right = 256.0
-margin_bottom = 1573.0
+margin_bottom = 1504.0
 custom_fonts/font = ExtResource( 2 )
 text = "...
 All music credits can be
@@ -995,171 +964,171 @@ align = 1
 uppercase = true
 
 [node name="ReferenceRect6" type="ReferenceRect" parent="CreditsVBox"]
-margin_top = 1578.0
+margin_top = 1509.0
 margin_right = 256.0
-margin_bottom = 1594.0
+margin_bottom = 1525.0
 rect_min_size = Vector2( 0, 16 )
 
 [node name="Label12" type="Label" parent="CreditsVBox"]
 modulate = Color( 0.235294, 0.745098, 1, 1 )
-margin_top = 1599.0
+margin_top = 1530.0
 margin_right = 256.0
-margin_bottom = 1610.0
+margin_bottom = 1541.0
 custom_fonts/font = ExtResource( 2 )
 text = "-External software-"
 align = 1
 uppercase = true
 
 [node name="Label13" type="Label" parent="CreditsVBox"]
-margin_top = 1615.0
+margin_top = 1546.0
 margin_right = 256.0
-margin_bottom = 1626.0
+margin_bottom = 1557.0
 custom_fonts/font = ExtResource( 2 )
 text = "Audacity"
 align = 1
 
 [node name="Label14" type="Label" parent="CreditsVBox"]
-margin_top = 1631.0
+margin_top = 1562.0
 margin_right = 256.0
-margin_bottom = 1642.0
+margin_bottom = 1573.0
 custom_fonts/font = ExtResource( 2 )
 text = "0cc-Famitracker"
 align = 1
 
 [node name="Label15" type="Label" parent="CreditsVBox"]
-margin_top = 1647.0
+margin_top = 1578.0
 margin_right = 256.0
-margin_bottom = 1658.0
+margin_bottom = 1589.0
 custom_fonts/font = ExtResource( 2 )
 text = "Aseprite"
 align = 1
 
 [node name="ReferenceRect7" type="ReferenceRect" parent="CreditsVBox"]
-margin_top = 1663.0
+margin_top = 1594.0
 margin_right = 256.0
-margin_bottom = 1679.0
+margin_bottom = 1610.0
 rect_min_size = Vector2( 0, 16 )
 
 [node name="Label16" type="Label" parent="CreditsVBox"]
 modulate = Color( 0.34902, 0.984314, 0.603922, 1 )
-margin_top = 1684.0
+margin_top = 1615.0
 margin_right = 256.0
-margin_bottom = 1695.0
+margin_bottom = 1626.0
 custom_fonts/font = ExtResource( 2 )
 text = "Special Thanks"
 align = 1
 uppercase = true
 
 [node name="Label17" type="Label" parent="CreditsVBox"]
-margin_top = 1700.0
+margin_top = 1631.0
 margin_right = 256.0
-margin_bottom = 1711.0
+margin_bottom = 1642.0
 custom_fonts/font = ExtResource( 2 )
 text = "All Mega Man Fans"
 align = 1
 uppercase = true
 
 [node name="ReferenceRect16" type="ReferenceRect" parent="CreditsVBox"]
-margin_top = 1716.0
+margin_top = 1647.0
 margin_right = 256.0
-margin_bottom = 1732.0
+margin_bottom = 1663.0
 rect_min_size = Vector2( 0, 16 )
 
 [node name="Label18" type="Label" parent="CreditsVBox"]
-margin_top = 1737.0
+margin_top = 1668.0
 margin_right = 256.0
-margin_bottom = 1748.0
+margin_bottom = 1679.0
 custom_fonts/font = ExtResource( 2 )
 text = "Everyone else who"
 align = 1
 uppercase = true
 
 [node name="Label19" type="Label" parent="CreditsVBox"]
-margin_top = 1753.0
+margin_top = 1684.0
 margin_right = 256.0
-margin_bottom = 1764.0
+margin_bottom = 1695.0
 custom_fonts/font = ExtResource( 2 )
 text = "supported the project."
 align = 1
 uppercase = true
 
 [node name="Label20" type="Label" parent="CreditsVBox"]
-margin_top = 1769.0
+margin_top = 1700.0
 margin_right = 256.0
-margin_bottom = 1780.0
+margin_bottom = 1711.0
 custom_fonts/font = ExtResource( 2 )
 text = "I can't thank you enough!"
 align = 1
 uppercase = true
 
 [node name="ReferenceRect9" type="ReferenceRect" parent="CreditsVBox"]
-margin_top = 1785.0
+margin_top = 1716.0
 margin_right = 256.0
-margin_bottom = 1801.0
+margin_bottom = 1732.0
 rect_min_size = Vector2( 0, 16 )
 
 [node name="Label21" type="Label" parent="CreditsVBox"]
-margin_top = 1806.0
+margin_top = 1737.0
 margin_right = 256.0
-margin_bottom = 1817.0
+margin_bottom = 1748.0
 custom_fonts/font = ExtResource( 2 )
 text = "Mega man is the property"
 align = 1
 uppercase = true
 
 [node name="Label22" type="Label" parent="CreditsVBox"]
-margin_top = 1822.0
+margin_top = 1753.0
 margin_right = 256.0
-margin_bottom = 1833.0
+margin_bottom = 1764.0
 custom_fonts/font = ExtResource( 2 )
 text = "of capcom (c)"
 align = 1
 uppercase = true
 
 [node name="ReferenceRect10" type="ReferenceRect" parent="CreditsVBox"]
-margin_top = 1838.0
+margin_top = 1769.0
 margin_right = 256.0
-margin_bottom = 1934.0
+margin_bottom = 1865.0
 rect_min_size = Vector2( 0, 96 )
 
 [node name="Label26" type="Label" parent="CreditsVBox"]
-margin_top = 1939.0
+margin_top = 1870.0
 margin_right = 256.0
-margin_bottom = 1950.0
+margin_bottom = 1881.0
 custom_fonts/font = ExtResource( 2 )
 text = "Thank you for playing!"
 align = 1
 uppercase = true
 
 [node name="ReferenceRect11" type="ReferenceRect" parent="CreditsVBox"]
-margin_top = 1955.0
+margin_top = 1886.0
 margin_right = 256.0
-margin_bottom = 1971.0
+margin_bottom = 1902.0
 rect_min_size = Vector2( 0, 16 )
 
 [node name="Label23" type="Label" parent="CreditsVBox"]
 modulate = Color( 0.984314, 0.47451, 0.984314, 1 )
-margin_top = 1976.0
+margin_top = 1907.0
 margin_right = 256.0
-margin_bottom = 1987.0
+margin_bottom = 1918.0
 custom_fonts/font = ExtResource( 2 )
 text = "Presented by"
 align = 1
 uppercase = true
 
 [node name="Label25" type="Label" parent="CreditsVBox"]
-margin_top = 1992.0
+margin_top = 1923.0
 margin_right = 256.0
-margin_bottom = 2003.0
+margin_bottom = 1934.0
 custom_fonts/font = ExtResource( 2 )
 text = "Peeranut Rumthungsakul"
 align = 1
 uppercase = true
 
 [node name="Label24" type="Label" parent="CreditsVBox"]
-margin_top = 2008.0
+margin_top = 1939.0
 margin_right = 256.0
-margin_bottom = 2019.0
+margin_bottom = 1950.0
 custom_fonts/font = ExtResource( 2 )
 text = "(firstject)"
 align = 1

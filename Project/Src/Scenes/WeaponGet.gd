@@ -2,7 +2,6 @@ extends CanvasLayer
 
 
 const BGM_VICTORY_NEWCOMER = preload("res://Assets/Sounds/Bgm/weapon_get2.ogg")
-const BGM_VICTORY_CASUAL = preload("res://Assets/Sounds/Bgm/weapon_get.ogg")
 
 
 export var next_scene = "res://Src/Scenes/Disclaimer.tscn"
@@ -17,13 +16,9 @@ func _ready() -> void:
 	$Control/ClearTime/Time.text = Playtime.get_playtime_string()
 	_update_difficulty_hint()
 	
-	if Difficulty.difficulty == Difficulty.DIFF_NEWCOMER:
-		$Bgm.stream = BGM_VICTORY_NEWCOMER
-		$Control/ClearTime/Time/FlashingAnim.play("No Flash")
-		$Control/Bg2.color = Color.black
-	else:
-		$Bgm.stream = BGM_VICTORY_CASUAL
-		$Control/ClearTime/Time/FlashingAnim.play("Flash")
+	$Bgm.stream = BGM_VICTORY_NEWCOMER
+	$Control/ClearTime/Time/FlashingAnim.play("Flash")
+	$Control/Bg2.color = Color.black
 	
 	$Bgm.play()
 
