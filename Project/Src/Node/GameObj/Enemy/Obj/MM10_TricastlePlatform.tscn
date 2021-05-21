@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Src/Node/GameObj/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Lib/FJ_LibHelper/BulletBehavior2D/BulletBehavior2D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Sprites/Enemies/MM10_CastlePlatform.png" type="Texture" id=3]
+[ext_resource path="res://Src/Node/GameObj/Effects/LargeExplosion/LargeExplosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Node/GameObj/Enemy/Obj/MM10_TricastlePlatform.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Spin Loop"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Anim"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/AnimationPlayer:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "Spin Loop" ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 4 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16, 4 )
+
+[node name="MM10_TricastlePlatform" groups=[
+"TricastlePlatform",
+] instance=ExtResource( 1 )]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource( 5 )
+damage_area_nodes = [ NodePath("DamageArea2D") ]
+explosion_effect = ExtResource( 4 )
+death_sound = 1
+contact_damage = 3.0
+can_hit = false
+eat_player_projectile = false
+pickups_drop_enabled = false
+
+[node name="BulletBehavior" parent="." index="0" instance=ExtResource( 2 )]
+root_node = NodePath("..")
+active = false
+
+[node name="ActivisionTimer" type="Timer" parent="." index="1"]
+wait_time = 0.8
+one_shot = true
+autostart = true
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+texture = ExtResource( 3 )
+hframes = 4
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
+"anims/Spin Loop" = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteMain" index="2"]
+autoplay = "Anim"
+anims/Anim = SubResource( 2 )
+
+[node name="DamageArea2D" type="Area2D" parent="." index="3"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D" index="0"]
+position = Vector2( 0, 4 )
+shape = SubResource( 3 )
+
+[node name="PlatformCollisionShape2D" parent="." index="4"]
+visible = true
+position = Vector2( 0, -4 )
+shape = SubResource( 4 )
+disabled = false
+one_way_collision = true
+
+[connection signal="timeout" from="ActivisionTimer" to="." method="_on_ActivisionTimer_timeout"]

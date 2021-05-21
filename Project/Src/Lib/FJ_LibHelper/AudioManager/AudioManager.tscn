@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Src/Lib/FJ_LibHelper/AudioManager/AudioManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sounds/Sfx/Character/Collapse6.wav" type="AudioStream" id=2]
@@ -60,6 +60,7 @@
 [ext_resource path="res://Assets/Sounds/Sfx/Combat/MM4_Hop.wav" type="AudioStream" id=58]
 [ext_resource path="res://Assets/Sounds/Sfx/Combat/Buster.wav" type="AudioStream" id=59]
 [ext_resource path="res://Assets/Sounds/Sfx/Combat/Fall.wav" type="AudioStream" id=60]
+[ext_resource path="res://Assets/Sounds/Sfx/Combat/Beat.wav" type="AudioStream" id=61]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dim"
@@ -305,6 +306,12 @@ bus = "SFX"
 [node name="Sfx_LargeExplosionMM3" type="AudioStreamPlayer" parent="SFX/Combat"]
 stream = ExtResource( 25 )
 volume_db = -4.0
+bus = "SFX"
+
+[node name="Sfx_Peat" type="AudioStreamPlayer" parent="SFX/Combat"]
+stream = ExtResource( 61 )
+volume_db = 5.0
+pitch_scale = 0.85
 bus = "SFX"
 
 [node name="Sfx_PowerFall" type="AudioStreamPlayer" parent="SFX/Combat"]

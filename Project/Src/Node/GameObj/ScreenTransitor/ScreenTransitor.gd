@@ -17,7 +17,7 @@ export (int, "Left", "Right", "Up", "Down") var direction
 export (Vector2) var transit_duration := Vector2(1.8, 2)
 
 #Transit distance in pixels.
-export (float) var transit_distance = 24
+export (float) var transit_distance = 36
 
 #Resets player's velocity after the screen is transited.
 #When true, the player's velocity_x or y becomes zero.

@@ -22,8 +22,8 @@ func _ready() -> void:
 	if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
 		$BulletBehaviorUp.speed *= 2
 	
-	sprite_main.hide()
 	RANGE_CHECKING_MODE = 1
+	$SpriteMain/Sprite/AnimationPlayer.play("Initial")
 
 func _physics_process(delta: float) -> void:
 	if state == State.READY:
@@ -32,7 +32,6 @@ func _physics_process(delta: float) -> void:
 			state = State.UP
 			RANGE_CHECKING_MODE = 2
 			sprite_main.show()
-			$SpriteMain/Sprite/AnimationPlayer.play("Initial")
 	if state == State.UP:
 		if get_player_distance() < DETECT_RANGE_Y:
 			$BulletBehaviorUp.active = false
@@ -40,7 +39,7 @@ func _physics_process(delta: float) -> void:
 			state = State.ATTACKING
 	if state == State.FALLING:
 		if global_position.y > initial_gpos.y:
-			sprite_main.hide()
+			$SpriteMain/Sprite/AnimationPlayer.play("Initial")
 			$BulletBehaviorDown.active = false
 			state = State.HIDING
 			RANGE_CHECKING_MODE = 1

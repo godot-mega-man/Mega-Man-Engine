@@ -4,14 +4,14 @@
 [ext_resource path="res://Assets/Sprites/Enemies/MM4_Switch.png" type="Texture" id=2]
 [ext_resource path="res://Src/Node/GameObj/Enemy/Obj/MM4_Switch.gd" type="Script" id=3]
 
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Activated"
-length = 0.2
+length = 0.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -23,6 +23,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.25, 0.45 ),
+"transitions": PoolRealArray( 0.5, -2, -2, 1 ),
+"update": 0,
+"values": [ 0.0, 45.0, -15.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=3]

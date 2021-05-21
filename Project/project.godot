@@ -198,6 +198,11 @@ _global_script_classes=[ {
 "class": "SpriteColorPaletteData",
 "language": "GDScript",
 "path": "res://Src/Misc/PaletteSpriteCore/SpriteColorPaletteData.gd"
+}, {
+"base": "EnemyCore",
+"class": "TricastleEyes",
+"language": "GDScript",
+"path": "res://Src/Node/GameObj/Enemy/Obj/MM10_TricastleEyes.gd"
 } ]
 _global_script_class_icons={
 "ActiveVisibilityNotifier2D": "",
@@ -237,7 +242,8 @@ _global_script_class_icons={
 "ProjectileReflector": "",
 "RectCentralizer": "",
 "ScreenTransitor": "",
-"SpriteColorPaletteData": ""
+"SpriteColorPaletteData": "",
+"TricastleEyes": ""
 }
 
 [application]

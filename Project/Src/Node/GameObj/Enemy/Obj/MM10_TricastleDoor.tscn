@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Src/Node/GameObj/Enemy/Core/EnemyCore.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/Enemies/MM10_CastleDoor.png" type="Texture" id=2]
+[ext_resource path="res://Src/Node/GameObj/Enemy/Obj/MM10_TricastleDoor.gd" type="Script" id=3]
+[ext_resource path="res://Src/Node/GameObj/Effects/LargeExplosion/LargeExplosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sounds/Sfx/Environments/BossDoor.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Open"
+length = 3.0
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 2.56, 2.64, 2.72, 2.8, 2.88 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 4, 3, 2, 1, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../SfxDoor")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.56 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[node name="MM10_TricastleDoor" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+explosion_effect = ExtResource( 4 )
+death_sound = 2
+pickups_drop_enabled = false
+
+[node name="Sprite" parent="SpriteMain" index="0"]
+position = Vector2( 4, 8 )
+texture = ExtResource( 2 )
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteMain" index="2"]
+anims/Open = SubResource( 2 )
+
+[node name="SfxDoor" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource( 5 )
+volume_db = 1.0
+bus = "SFX"

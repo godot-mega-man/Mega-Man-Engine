@@ -316,8 +316,8 @@ func die():
 	#Create death animation effect
 	if explosion_effect != null:
 		var effect = explosion_effect.instance()
-		effect.position = self.global_position
 		get_parent().add_child(effect)
+		effect.global_position = self.global_position
 	
 	#Drop coin when dies
 	drop_item_start()

@@ -68,7 +68,6 @@ shape = SubResource( 2 )
 [node name="Sprite" parent="SpriteMain" index="0"]
 texture = ExtResource( 2 )
 hframes = 3
-frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteMain/Sprite" index="0"]
 anims/Initial = SubResource( 3 )
