@@ -9,6 +9,8 @@ script = ExtResource( 1 )
 
 [node name="Gameplay" type="Node" parent="."]
 script = ExtResource( 2 )
+damage_popup_player = false
+damage_popup_enemy = false
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource( 3 )
