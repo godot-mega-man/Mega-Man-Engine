@@ -40,6 +40,7 @@ func await_attack():
 	state = State.WAITING
 	$AwaitAttackTimer.start()
 	turn_toward_player()
+	$SpriteMain/Sprite/Anim.set_speed_scale(2.0)
 
 
 func dive_toward_player():
@@ -48,6 +49,7 @@ func dive_toward_player():
 	$BulletBehavior.speed = DIVE_SPEED
 	$BulletBehavior.angle_in_degrees = rad2deg(get_angle_to(player.global_position))
 	turn_toward_player()
+	$SpriteMain/Sprite/Anim.play("Dive")
 
 
 func get_rise_duration() -> float:
