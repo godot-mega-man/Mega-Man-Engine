@@ -80,7 +80,7 @@ func phase_1_process():
 			platform_bhv.simulate_walk_left = false
 			platform_bhv.simulate_walk_right = true
 		if platform_bhv.on_floor:
-			if randi() % 6 == 0:
+			if randi() % 7 == 0:
 				phase_1_state = Phase1State.HIDING
 			else:
 				phase_1_state = Phase1State.RESTARTING
@@ -176,6 +176,8 @@ func fire_blades():
 		blt2.bullet_behavior.angle_in_degrees = directions[1]
 		blt2.bullet_behavior.allow_negative_speed = true
 		blt2.bullet_behavior.acceleration = -550
+	
+	fling_hoohoo_bomb(-600, false)
 
 
 func blink():
@@ -195,6 +197,70 @@ func blink():
 	
 	global_position.x = rand_range(lim_x_min.global_position.x, lim_x_max.global_position.x)
 	turn_toward_player()
+
+
+func fling_hoohoo_bomb(velocity_y : float, _hittable := true):
+	# Flings hoohoo bomb upward
+	var bomb = HOOHOO_BOMB.instance()
+	bomb.contact_damage = 5
+	get_parent().add_child(bomb)
+	bomb.global_position = self.global_position
+	bomb.pf_bhv.velocity.y = velocity_y
+	bomb.pf_bhv.INITIAL_STATE = true
+	bomb.pickups_drop_enabled = false
+	bomb.explode_countdown()
+	bomb.DESTROY_OUTSIDE_SCREEN = false
+	bomb.can_hit = _hittable
+
+
+func fire_blades_direct():
+	anim.play("JumpAttack")
+	FJ_AudioManager.sfx_combat_shadow_blade.play()
+	
+	# Flings blade toward player
+	var ag_adds = [0]
+	
+	if current_hp < 13:
+		if Difficulty.difficulty == Difficulty.DIFF_NORMAL:
+			ag_adds.append(50)
+			ag_adds.append(-50)
+		if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
+			ag_adds.append(40)
+			ag_adds.append(-40)
+	if current_hp < 8:
+		ag_adds.append(80)
+		ag_adds.append(-80)
+	
+	for a in ag_adds:
+		var ag_tw_player = self.global_position.angle_to_point(player.global_position)
+		var blt = SHADOW_BLADE.instance()
+		blt.contact_damage = 5
+		get_parent().add_child(blt)
+		blt.global_position = self.global_position
+		blt.explode_on_hit = true
+		if player != null:
+			ag_tw_player = self.global_position.angle_to_point(player.global_position)
+			blt.bullet_behavior.angle_in_degrees = rad2deg(ag_tw_player) - 180
+		else:
+			blt.bullet_behavior.angle_in_degrees = -get_sprite_main_direction() * 180
+		blt.bullet_behavior.angle_in_degrees += a
+		
+		if Difficulty.difficulty == Difficulty.DIFF_NEWCOMER:
+			blt.bullet_behavior.speed = 240
+		if Difficulty.difficulty == Difficulty.DIFF_CASUAL:
+			blt.bullet_behavior.speed = 300
+		if Difficulty.difficulty == Difficulty.DIFF_NORMAL:
+			blt.bullet_behavior.speed = 360
+		if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
+			blt.bullet_behavior.speed = 420
+	
+	fling_hoohoo_bomb(-200)
+	
+	# Make invisible as it breaks the invisibility to attack
+	sprite_main.modulate = Color.white
+	can_hit = true
+	can_damage = true
+	eat_player_projectile = true
 
 
 func _flee_if_player_dies():
@@ -246,63 +312,7 @@ func flee():
 
 
 func _on_FireBladeDirectDelayTimer_timeout() -> void:
-	anim.play("JumpAttack")
-	FJ_AudioManager.sfx_combat_shadow_blade.play()
-	
-	# Flings blade toward player
-	var ag_adds = [0]
-	
-	if current_hp < 13:
-		if Difficulty.difficulty == Difficulty.DIFF_NORMAL:
-			ag_adds.append(50)
-			ag_adds.append(-50)
-		if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
-			ag_adds.append(40)
-			ag_adds.append(-40)
-	if current_hp < 8:
-		if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
-			ag_adds.append(80)
-			ag_adds.append(-80)
-	
-	for a in ag_adds:
-		var ag_tw_player = self.global_position.angle_to_point(player.global_position)
-		var blt = SHADOW_BLADE.instance()
-		blt.contact_damage = 5
-		get_parent().add_child(blt)
-		blt.global_position = self.global_position
-		blt.explode_on_hit = true
-		if player != null:
-			ag_tw_player = self.global_position.angle_to_point(player.global_position)
-			blt.bullet_behavior.angle_in_degrees = rad2deg(ag_tw_player) - 180
-		else:
-			blt.bullet_behavior.angle_in_degrees = -get_sprite_main_direction() * 180
-		blt.bullet_behavior.angle_in_degrees += a
-		
-		if Difficulty.difficulty == Difficulty.DIFF_NEWCOMER:
-			blt.bullet_behavior.speed = 240
-		if Difficulty.difficulty == Difficulty.DIFF_CASUAL:
-			blt.bullet_behavior.speed = 300
-		if Difficulty.difficulty == Difficulty.DIFF_NORMAL:
-			blt.bullet_behavior.speed = 360
-		if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
-			blt.bullet_behavior.speed = 420
-	
-	# Flings hoohoo bomb upward
-	if current_hp < 13:
-		var bomb = HOOHOO_BOMB.instance()
-		bomb.contact_damage = 5
-		get_parent().add_child(bomb)
-		bomb.global_position = self.global_position
-		bomb.pf_bhv.velocity.y = -200
-		bomb.pf_bhv.INITIAL_STATE = true
-		bomb.pickups_drop_enabled = false
-		bomb.explode_countdown()
-	
-	# Make invisible as it breaks the invisibility to attack
-	sprite_main.modulate = Color.white
-	can_hit = true
-	can_damage = true
-	eat_player_projectile = true
+	fire_blades_direct()
 
 func _on_PlatformBehavior_by_wall() -> void:
 	sprite_main.scale.x = -sprite_main.scale.x
@@ -345,12 +355,8 @@ func _on_MM3_ShadowMan_taking_damage(value, target, player_proj_source) -> void:
 		if curr_phase == 1:
 			if Difficulty.difficulty == Difficulty.DIFF_NEWCOMER:
 				event_damage = 3
-			if Difficulty.difficulty == Difficulty.DIFF_CASUAL:
+			else:
 				event_damage = 2
-			if Difficulty.difficulty == Difficulty.DIFF_NORMAL:
-				event_damage = 1.5
-			if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
-				event_damage = 1
 			
 			player_proj_source.invis_time_apply = 0.2
 		if curr_phase == 2:
@@ -375,14 +381,14 @@ func _on_Phase2StandTimer_timeout() -> void:
 	hide()
 	
 	if current_hp < 13:
-		if Difficulty.difficulty < Difficulty.DIFF_SUPERHERO:
+		if Difficulty.difficulty < Difficulty.DIFF_NORMAL:
 			$Phase2HideTimer.wait_time = rand_range(0.7, 1.3)
-		if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
-			$Phase2HideTimer.wait_time = rand_range(0.2, 0.6)
+		if Difficulty.difficulty >= Difficulty.DIFF_NORMAL:
+			$Phase2HideTimer.wait_time = rand_range(0.1, 0.3)
 	else:
-		if Difficulty.difficulty < Difficulty.DIFF_SUPERHERO:
+		if Difficulty.difficulty < Difficulty.DIFF_NORMAL:
 			$Phase2HideTimer.wait_time = rand_range(1.3, 2)
-		if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
+		if Difficulty.difficulty >= Difficulty.DIFF_NORMAL:
 			$Phase2HideTimer.wait_time = rand_range(0.4, 0.9)
 	
 	$Phase2HideTimer.start()
@@ -405,8 +411,7 @@ func _on_Phase2HideTimer_timeout() -> void:
 	turn_toward_player()
 	sprite_main.modulate = Color.black
 	is_invincible = false
-	can_hit = true
-	eat_player_projectile = true
+	eat_player_projectile = false
 	blink()
 	show()
 	

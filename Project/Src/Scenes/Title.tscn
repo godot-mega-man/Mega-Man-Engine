@@ -152,14 +152,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="Control/Logo"]
-margin_left = 128.0
-margin_top = 40.0
-margin_right = 176.0
-margin_bottom = 54.0
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "ENGINE"
+[node name="Label4" type="Label" parent="Control/Logo"]
+margin_left = 120.0
+margin_top = 38.0
+margin_right = 206.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 6 )
+text = "Implementation"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -178,9 +177,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Control/Logo/Label3"]
+[node name="Label5" type="Label" parent="Control/Logo/Label3"]
 margin_left = 24.0
-margin_right = 64.0
+margin_right = 48.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 6 )
 text = "(WIP)"
@@ -340,7 +339,7 @@ margin_right = 240.0
 margin_bottom = 214.0
 grow_horizontal = 2
 custom_fonts/font = ExtResource( 1 )
-text = "Created by Peeranut 2019-2021"
+text = "Created by Peeranut 2019"
 align = 1
 uppercase = true
 __meta__ = {

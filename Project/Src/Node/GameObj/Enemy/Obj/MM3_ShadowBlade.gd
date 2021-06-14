@@ -18,10 +18,9 @@ func _collision_tile():
 	
 	var bodies = dmg_area.get_overlapping_bodies()
 	
-	for i in bodies:
-		if i is TileMap:
-			explode()
-			exploded = true
+	if not bodies.empty():
+		explode()
+		exploded = true
 
 func explode():
 	var e = LARGE_EXPLOSION.instance()
