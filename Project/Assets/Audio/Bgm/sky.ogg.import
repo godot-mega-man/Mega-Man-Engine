@@ -12,4 +12,4 @@ dest_files=[ "res://.import/sky.ogg-e4a5a14128860cdd14cc026880f44019.oggstr" ]
 [params]
 
 loop=true
-loop_offset=0.0
+loop_offset=6.906

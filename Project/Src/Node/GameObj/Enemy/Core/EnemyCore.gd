@@ -343,7 +343,7 @@ func queue_free_start(by_dying : bool):
 func play_death_sfx():
 	match death_sound:
 		dead_sfx.COLLAPSE:
-			Audio.play_sfx("enemy_dead")
+			Audio.play_sfx("enemy_damage")
 		dead_sfx.LARGE_EXPLOSION:
 			Audio.play_sfx("explosion")
 		dead_sfx.LARGE_EXPLOSION_MM3:

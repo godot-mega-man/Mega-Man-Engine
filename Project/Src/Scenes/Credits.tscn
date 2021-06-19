@@ -677,7 +677,7 @@ margin_top = 830.0
 margin_right = 256.0
 margin_bottom = 841.0
 custom_fonts/font = ExtResource( 2 )
-text = "Chopin Spring Waltz (Stage)"
+text = "Knight Man"
 align = 1
 
 [node name="Label28" type="Label" parent="CreditsVBox"]
@@ -686,7 +686,7 @@ margin_right = 256.0
 margin_bottom = 857.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.65098, 0.65098, 0.65098, 1 )
-text = "Chips 'N Cellos"
+text = "CAPCOM"
 align = 1
 
 [node name="Label29" type="Label" parent="CreditsVBox"]
@@ -694,7 +694,7 @@ margin_top = 862.0
 margin_right = 256.0
 margin_bottom = 873.0
 custom_fonts/font = ExtResource( 2 )
-text = "Mega Man Style 8-bit Mix"
+text = "Mega Man 6"
 align = 1
 
 [node name="ReferenceRect18" type="ReferenceRect" parent="CreditsVBox"]
@@ -708,7 +708,7 @@ margin_top = 899.0
 margin_right = 256.0
 margin_bottom = 910.0
 custom_fonts/font = ExtResource( 2 )
-text = "Identity Believer (Boss)"
+text = "Boss"
 align = 1
 
 [node name="Label31" type="Label" parent="CreditsVBox"]
@@ -717,7 +717,7 @@ margin_right = 256.0
 margin_bottom = 926.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.65098, 0.65098, 0.65098, 1 )
-text = "Sunsoft"
+text = "CAPCOM"
 align = 1
 
 [node name="Label32" type="Label" parent="CreditsVBox"]
@@ -725,7 +725,7 @@ margin_top = 931.0
 margin_right = 256.0
 margin_bottom = 942.0
 custom_fonts/font = ExtResource( 2 )
-text = "Gimmick!"
+text = "Street Fighter X Mega Man"
 align = 1
 
 [node name="ReferenceRect19" type="ReferenceRect" parent="CreditsVBox"]

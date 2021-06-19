@@ -43,7 +43,9 @@ func manage_about_to_play(audio_name : String, sfx_order : Sfxes.SfxOrder):
 			Audio.stop_all_sfx()
 		"player_die":
 			Audio.stop_all_sfx()
-		
+		"energy_fill":
+			# Stops if that sound is not playing
+			sfx_order.stop = Audio.is_sfx_playing("energy_fill")
 
 
 func _try_stop_weapon_fire_sound(weapon_name : String, sfx_order : Sfxes.SfxOrder):

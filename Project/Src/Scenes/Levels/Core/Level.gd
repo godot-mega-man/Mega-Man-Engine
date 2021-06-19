@@ -113,9 +113,9 @@ func victory():
 	Playtime.stop()
 	
 	if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
-		Audio.play_bgm(victory_music)
-	else:
 		Audio.play_bgm(victory_music_epic)
+	else:
+		Audio.play_bgm(victory_music)
 	
 	yield(get_tree().create_timer(4.0), "timeout")
 	player.teleport_out()
