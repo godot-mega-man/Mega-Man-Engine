@@ -90,3 +90,8 @@ func _on_PlatformerBehavior_landed() -> void:
 func _on_ProjectileReflector_reflected() -> void:
 	anim.stop()
 	anim.play("Shielded")
+
+
+func _on_PlatformBehavior_crushed() -> void:
+	current_hp = 0
+	check_for_death()

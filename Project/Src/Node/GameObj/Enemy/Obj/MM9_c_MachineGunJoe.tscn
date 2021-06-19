@@ -222,6 +222,7 @@ disabled = false
 wait_time = 0.5
 autostart = true
 
+[connection signal="crushed" from="PlatformBehavior" to="." method="_on_PlatformBehavior_crushed"]
 [connection signal="landed" from="PlatformBehavior" to="." method="_on_PlatformerBehavior_landed"]
 [connection signal="animation_finished" from="Anim" to="." method="_on_Anim_animation_finished"]
 [connection signal="reflected" from="SpriteMain/ShieldArea2D/ProjectileReflector" to="." method="_on_ProjectileReflector_reflected"]
