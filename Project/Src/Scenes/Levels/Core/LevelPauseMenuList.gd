@@ -27,14 +27,14 @@ func init():
 
 func press():
 	emit_signal("selected", cursor_position)
-	FJ_AudioManager.sfx_ui_game_start.play()
+	Audio.play_sfx("start")
 
 
 func move_cursor(direction : int):
 	cursor_position += direction
 	cursor_position = fposmod(cursor_position, get_menu_button_count())
-	FJ_AudioManager.sfx_ui_select.play()
 	_update_cursor_position()
+	Audio.play_sfx("select")
 
 
 func get_menu_button_count() -> int:

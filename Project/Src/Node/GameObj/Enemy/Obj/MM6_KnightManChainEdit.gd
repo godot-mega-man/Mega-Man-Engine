@@ -30,7 +30,7 @@ func activate_switch_and_flee():
 # Make all switches activated
 func make_switches_activated():
 	get_tree().call_group("MM4Switch", "activate")
-	FJ_AudioManager.sfx_combat_crash_bomb.play()
+	Audio.play_sfx("crash_bomb")
 	
 	fasten_chain_tilemap()
 
@@ -62,7 +62,7 @@ func create_thuin() -> void:
 			eff.get_node("BulletBehavior").speed = i
 			eff.global_position = self.global_position
 	
-	FJ_AudioManager.sfx_character_player_die.play()
+	Audio.play_sfx("player_dead")
 
 
 func can_alert():

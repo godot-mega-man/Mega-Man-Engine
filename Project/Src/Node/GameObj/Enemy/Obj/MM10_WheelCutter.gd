@@ -38,7 +38,7 @@ func release():
 
 
 func _on_PlatformBehavior_by_wall():
-	FJ_AudioManager.sfx_combat_wheel_cutter_wall.play()
+	Audio.play_sfx("wheel_cutter_wall")
 	pf_bhv.velocity.y = 0
 
 func _on_PlatformBehavior_landed():

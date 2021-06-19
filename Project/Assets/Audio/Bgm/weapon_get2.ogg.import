@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/weapon_get2.ogg-63470272e77c6d61d70ac34159cfd926.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Bgm/weapon_get2.ogg"
+dest_files=[ "res://.import/weapon_get2.ogg-63470272e77c6d61d70ac34159cfd926.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

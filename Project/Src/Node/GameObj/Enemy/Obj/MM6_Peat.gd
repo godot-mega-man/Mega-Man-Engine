@@ -31,7 +31,7 @@ func rise():
 	$BulletBehavior.active = true
 	$RiseDuration.start()
 	RANGE_CHECKING_MODE = preset_range_checking_mode.Vertical
-	FJ_AudioManager.sfx_combat_peat.play()
+	Audio.play_sfx("beat")
 	turn_toward_player()
 
 
@@ -69,6 +69,3 @@ func _peat_process():
 func _on_AwaitAttackTimer_timeout() -> void:
 	dive_toward_player()
 
-
-func _on_Peat_slain(target) -> void:
-	FJ_AudioManager.sfx_combat_peat.stop()

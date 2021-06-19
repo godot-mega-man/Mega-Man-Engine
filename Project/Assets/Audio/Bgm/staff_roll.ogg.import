@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/staff_roll.ogg-ee8156161d09dfdfea0650045614d50d.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Bgm/staff_roll.ogg"
+dest_files=[ "res://.import/staff_roll.ogg-ee8156161d09dfdfea0650045614d50d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=5.871

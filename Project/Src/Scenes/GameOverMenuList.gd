@@ -25,13 +25,13 @@ func _action_pressed(action): # Overrides
 
 func press():
 	emit_signal("selected", cursor_position)
-	FJ_AudioManager.sfx_ui_game_start.play()
+	Audio.play_sfx("start")
 
 
 func move_cursor(direction : int):
 	cursor_position += direction
 	cursor_position = fposmod(cursor_position, get_menu_button_count())
-	FJ_AudioManager.sfx_ui_select.play()
+	Audio.play_sfx("select")
 	_update_cursor_position()
 
 

@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Sprites/weaponget_screen.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sounds/Sfx/UI/GameStart.wav" type="AudioStream" id=3]
-[ext_resource path="res://Assets/Sounds/Sfx/Character/Collapse6.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Audio/Sfx/start.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Audio/Sfx/enemy_dead.wav" type="AudioStream" id=4]
 [ext_resource path="res://Src/Scenes/WeaponGet.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Fonts/RpgRoll.tres" type="DynamicFont" id=7]
 

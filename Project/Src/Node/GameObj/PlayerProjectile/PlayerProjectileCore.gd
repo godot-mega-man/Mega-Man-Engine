@@ -70,7 +70,7 @@ func reflected():
 	bullet_behavior.current_distance_traveled = 0.0
 	bullet_behavior.current_gravity = 0.0
 	
-	FJ_AudioManager.sfx_combat_reflect.play()
+	Audio.play_sfx("reflect")
 	reflect_animation.play("Reflected")
 	reflected_destroy_timer.start()
 	

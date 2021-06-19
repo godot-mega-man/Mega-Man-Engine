@@ -4,7 +4,8 @@
 [ext_resource path="res://Assets/Sprites/Enemies/MM10_CastleDoor.png" type="Texture" id=2]
 [ext_resource path="res://Src/Node/GameObj/Enemy/Obj/MM10_TricastleDoor.gd" type="Script" id=3]
 [ext_resource path="res://Src/Node/GameObj/Effects/LargeExplosion/LargeExplosion.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Sounds/Sfx/Environments/BossDoor.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Audio/Sfx/boss_door.wav" type="AudioStream" id=5]
+
 
 [sub_resource type="Animation" id=2]
 resource_name = "Open"

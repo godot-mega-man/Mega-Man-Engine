@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/powerlaunch.wav-a1eb947d7f5b5710e9e6f6753629ea3a.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sfx/powerlaunch.wav"
+dest_files=[ "res://.import/powerlaunch.wav-a1eb947d7f5b5710e9e6f6753629ea3a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

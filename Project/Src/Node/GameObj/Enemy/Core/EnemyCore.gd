@@ -297,19 +297,16 @@ func heal(amount_of_hp_to_restore : float):
 #Check whether this enemy can die.
 #If its hit points drop below zero, DIE!~
 func check_for_death():
-	if FJ_AudioManager.sfx_combat_buster.is_playing():
-		FJ_AudioManager.sfx_combat_buster.call_deferred("stop")
-	if FJ_AudioManager.sfx_combat_buster_minicharged.is_playing():
-		FJ_AudioManager.sfx_combat_buster_minicharged.call_deferred("stop")
-	if FJ_AudioManager.sfx_combat_buster_fullycharged.is_playing():
-		FJ_AudioManager.sfx_combat_buster_fullycharged.call_deferred("stop")
+	Audio.stop_sfx("buster")
+	Audio.stop_sfx("buster_minishot")
+	Audio.stop_sfx("buster_fullshot")
 	
 	if !death_immunity && current_hp <= 0:
 		play_death_sfx()
 		emit_signal("dying")
 		die()
 	else:
-		FJ_AudioManager.sfx_character_enemy_damage.play()
+		Audio.play_sfx("enemy_damage")
 	
 
 func die():
@@ -346,19 +343,15 @@ func queue_free_start(by_dying : bool):
 func play_death_sfx():
 	match death_sound:
 		dead_sfx.COLLAPSE:
-			FJ_AudioManager.sfx_character_enemy_collapse.play()
+			Audio.play_sfx("enemy_dead")
 		dead_sfx.LARGE_EXPLOSION:
-			FJ_AudioManager.sfx_combat_large_explosion.play()
+			Audio.play_sfx("explosion")
 		dead_sfx.LARGE_EXPLOSION_MM3:
-			FJ_AudioManager.sfx_combat_large_explosion_mm3.play()
+			Audio.play_sfx("explosion2")
 		_:
-			FJ_AudioManager.sfx_character_enemy_damage.stop()
+			pass
 	
-	FJ_AudioManager.sfx_character_enemy_damage.stop()
-	FJ_AudioManager.sfx_combat_buster.stop()
-	FJ_AudioManager.sfx_combat_ring_boomerang.stop()
-	FJ_AudioManager.sfx_combat_fall.stop()
-	
+
 
 func spawn_damage_counter(damage, offset : Vector2 = Vector2(0, 0)):
 	if !GameSettings.gameplay.damage_popup_enemy:

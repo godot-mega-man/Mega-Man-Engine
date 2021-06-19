@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/landing.wav-76974ba0e12db0fd3617eacc21d4063b.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sfx/landing.wav"
+dest_files=[ "res://.import/landing.wav-76974ba0e12db0fd3617eacc21d4063b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

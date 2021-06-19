@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Fonts/Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Sprites/capcom.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sounds/Sfx/UI/capcom.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Audio/Sfx/capcom.wav" type="AudioStream" id=3]
 [ext_resource path="res://Src/Node/GUI/FadeScreen/FadeScreen.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Src/Scenes/Capcom.gd" type="Script" id=5]
 [ext_resource path="res://Src/Node/Misc/InputActionCallback.tscn" type="PackedScene" id=6]

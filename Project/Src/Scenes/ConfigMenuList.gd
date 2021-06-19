@@ -82,7 +82,7 @@ func adjust(direction : int):
 		else:
 			return
 	
-	FJ_AudioManager.sfx_ui_game_start.play()
+	Audio.play_sfx("start")
 	_update_texts()
 
 
@@ -101,14 +101,14 @@ func press():
 	else:
 		return
 	
-	FJ_AudioManager.sfx_ui_game_start.play()
+	Audio.play_sfx("start")
 	_update_texts()
 
 
 func move_cursor(direction : int):
 	cursor_position += direction
 	cursor_position = fposmod(cursor_position, get_menu_button_count())
-	FJ_AudioManager.sfx_ui_select.play()
+	Audio.play_sfx("select")
 	_update_cursor_position()
 
 

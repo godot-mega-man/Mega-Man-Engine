@@ -46,14 +46,14 @@ func initiate_stomping_process():
 
 
 func hover_forward():
-	FJ_AudioManager.sfx_combat_power_launch.play()
+	Audio.play_sfx("powerlaunch")
 	sprite_ani.play("Hovering")
 	is_hover_attacking = true
 
 
 #Sets fallspeed to max
 func stomp():
-	FJ_AudioManager.sfx_combat_power_fall.play()
+	Audio.play_sfx("powerfall")
 	set_fall_speed_to_max()
 
 
@@ -69,8 +69,7 @@ func _on_PlatformBehavior_landed() -> void:
 	sprite_ani.play("Landing")
 	
 	#Stops falling sound
-	FJ_AudioManager.sfx_combat_power_fall.call_deferred("stop")
-	FJ_AudioManager.sfx_combat_power_landing.play()
+	Audio.play_sfx("powerlanding")
 	
 	# On normal difficulty,
 	# Causes a stun to all players standing on the ground

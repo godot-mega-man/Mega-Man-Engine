@@ -36,7 +36,7 @@ func _on_LaunchTimer_timeout():
 		my_wheel.release()
 	my_wheel = null
 	
-	FJ_AudioManager.sfx_combat_wheel_cutter.play()
+	Audio.play_sfx("wheel_cutter")
 
 #Spawn wheel cutter..
 #Set delay timer for wheel cutter

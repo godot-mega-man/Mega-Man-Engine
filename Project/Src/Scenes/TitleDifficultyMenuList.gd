@@ -26,7 +26,7 @@ func _action_pressed(action): # Overrides
 		press()
 	if action == "ui_cancel":
 		emit_signal("canceled")
-		FJ_AudioManager.sfx_ui_weapon_switch.play()
+		Audio.sfx_ui_weapon_switch.play()
 
 
 func press():
@@ -34,16 +34,16 @@ func press():
 		emit_signal("difficulty_selected", cursor_position)
 	if cursor_position == 4:
 		emit_signal("canceled")
-		FJ_AudioManager.sfx_ui_game_start.play()
+		Audio.play_sfx("start")
 		return
 	
-	FJ_AudioManager.sfx_ui_game_start.play()
+	Audio.play_sfx("start")
 
 
 func move_cursor(direction : int):
 	cursor_position += direction
 	cursor_position = fposmod(cursor_position, get_menu_button_count())
-	FJ_AudioManager.sfx_ui_select.play()
+	Audio.play_sfx("select")
 	_update_cursor_position()
 
 

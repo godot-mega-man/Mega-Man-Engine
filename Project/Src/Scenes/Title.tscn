@@ -8,7 +8,7 @@
 [ext_resource path="res://Assets/Fonts/RpgRoll.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Assets/Sprites/cursor.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Sprites/world.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sounds/Bgm/title.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Audio/Bgm/title.ogg" type="AudioStream" id=10]
 [ext_resource path="res://Src/Node/Extensible/MenuList.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Src/Scenes/TitleMainMenuList.gd" type="Script" id=12]
 

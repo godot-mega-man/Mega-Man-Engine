@@ -20,7 +20,7 @@ func _on_ScreenTransitor_transition_activated() -> void:
 	
 	door_close_timer.start(delay)
 	
-	FJ_AudioManager.sfx_env_boss_door.play()
+	Audio.play_sfx("boss_door")
 
 
 func _on_DoorCloseTimer_timeout() -> void:
@@ -29,6 +29,6 @@ func _on_DoorCloseTimer_timeout() -> void:
 	else:
 		rect_position.x -= 16 
 	
-	FJ_AudioManager.sfx_env_boss_door.play()
+	Audio.play_sfx("boss_door")
 	
 	get_tree().paused = true

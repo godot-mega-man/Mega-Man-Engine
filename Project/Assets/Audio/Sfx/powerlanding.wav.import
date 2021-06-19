@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/powerlanding.wav-669a58ea2fd63cf539d53b2c6afe7052.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sfx/powerlanding.wav"
+dest_files=[ "res://.import/powerlanding.wav-669a58ea2fd63cf539d53b2c6afe7052.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

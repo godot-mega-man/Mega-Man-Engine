@@ -6,6 +6,8 @@ signal transit_completed
 
 export(Color) var BG_COLOR = Color(0.23, 0.74, 1)
 export(AudioStreamOGGVorbis) var MUSIC
+export (AudioStreamOGGVorbis) var victory_music
+export (AudioStreamOGGVorbis) var victory_music_epic
 
 #Child nodes:
 onready var player = $Iterable/Player
@@ -39,7 +41,7 @@ func _ready():
 	GameHUD.boss_vital_bar.set_visible(false)
 	GameHUD.update_life()
 	Playtime.start()
-	FJ_AudioManager.play_bgm(MUSIC)
+	Audio.play_bgm(MUSIC)
 	
 	_try_refill_player_ammo()
 
@@ -60,9 +62,7 @@ func pause_game():
 	if is_screen_transiting:
 		return
 	
-	FJ_AudioManager.sfx_ui_pause.play()
-	FJ_AudioManager.sfx_combat_buster_charging.stop()
-	FJ_AudioManager.sfx_env_chain_loop.stop()
+	Audio.play_sfx("pause")
 	
 	$PauseMenu.show_pause_menu()
 	get_tree().paused = true
@@ -113,9 +113,9 @@ func victory():
 	Playtime.stop()
 	
 	if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
-		FJ_AudioManager.play_bgm(preload("res://Assets/Sounds/Bgm/victory_epic.ogg"))
+		Audio.play_bgm(victory_music)
 	else:
-		FJ_AudioManager.play_bgm(preload("res://Assets/Sounds/Bgm/victory.ogg"))
+		Audio.play_bgm(victory_music_epic)
 	
 	yield(get_tree().create_timer(4.0), "timeout")
 	player.teleport_out()

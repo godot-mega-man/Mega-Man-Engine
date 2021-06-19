@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 
-const BGM_VICTORY_NEWCOMER = preload("res://Assets/Sounds/Bgm/weapon_get2.ogg")
+const BGM_VICTORY_NEWCOMER = preload("res://Assets/Audio/Bgm/weapon_get2.ogg")
 
 
 export var next_scene = "res://Src/Scenes/Disclaimer.tscn"

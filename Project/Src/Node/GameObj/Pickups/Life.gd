@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _on_Life_collected_by_player(player_obj) -> void:
 	if player_obj is Player:
-		FJ_AudioManager.sfx_ui_one_up.play()
+		Audio.play_sfx("oneup")
 		player_obj.heal(HLTH)
 		Life.add_extra_life()
 		GameHUD.update_life()

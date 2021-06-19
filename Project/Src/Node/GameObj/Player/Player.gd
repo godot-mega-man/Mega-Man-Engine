@@ -204,7 +204,7 @@ func _on_PlatformerBehavior_fell_into_pit() -> void:
 		is_invincible = true
 		
 		if current_hp > 0:
-			FJ_AudioManager.sfx_character_player_damage.play()
+			Audio.play_sfx("player_damage")
 			return
 	
 	current_hp = 0
@@ -236,11 +236,7 @@ func press_attack_check(delta : float):
 				
 				if curr_weapon_idx == 0:
 					var blt = start_launching_attack(proj_megabuster)
-					if not (
-						FJ_AudioManager.sfx_character_enemy_damage.is_playing() or
-						FJ_AudioManager.sfx_character_enemy_collapse.is_playing()
-						):
-						FJ_AudioManager.sfx_combat_buster.play()
+					Audio.play_sfx("buster")
 				if curr_weapon_idx == 1:
 					if GameHUD.player_weapon_bar.frame < ammo_cost[curr_weapon_idx]:
 						return
@@ -253,8 +249,8 @@ func press_attack_check(delta : float):
 						proj.projectile_owner = self
 						proj.bullet_behavior.angle_in_degrees += angles_add[i]
 						proj.consume_ammo_on_hold = consume_ammo_on_hold[i]
-					if not FJ_AudioManager.sfx_character_enemy_damage.is_playing():
-						FJ_AudioManager.sfx_combat_ring_boomerang.play()
+					
+					Audio.play_sfx("ring_boomerang")
 	
 	if curr_weapon_idx != 0:
 		return
@@ -266,12 +262,10 @@ func press_attack_check(delta : float):
 		
 		if attack_hold_time > FULLY_CHARGE_MEGABUSTER_STARTING_TIME:
 			start_launching_attack(proj_chargedmegabuster2)
-			FJ_AudioManager.sfx_combat_buster_fullycharged.play()
-			FJ_AudioManager.sfx_combat_buster_charging.call_deferred("stop")
+			Audio.play_sfx("buster_fullshot")
 		elif attack_hold_time > CHARGE_MEGABUSTER_STARTING_TIME:
 			start_launching_attack(proj_chargedmegabuster1)
-			FJ_AudioManager.sfx_combat_buster_minicharged.play()
-			FJ_AudioManager.sfx_combat_buster_charging.call_deferred("stop")
+			Audio.play_sfx("buster_minishot")
 		
 		attack_hold_time = 0
 		mega_buster_charge_lv = 0
@@ -288,7 +282,7 @@ func press_attack_check(delta : float):
 		if mega_buster_charge_lv == 0:
 			if attack_hold_time > CHARGE_MEGABUSTER_STARTING_TIME:
 				mega_buster_charge_lv = 1
-				FJ_AudioManager.sfx_combat_buster_charging.play()
+				Audio.play_sfx("buster_charging")
 				palette_ani_player_changer.play("Charging")
 		elif mega_buster_charge_lv == 1:
 			if attack_hold_time > FULLY_CHARGE_MEGABUSTER_STARTING_TIME:
@@ -386,7 +380,7 @@ func player_take_damage(damage_amount : int, repel_player : bool = false, repel_
 	if current_hp <= 0:
 		player_death()
 	else:
-		FJ_AudioManager.sfx_character_player_damage.play()
+		Audio.play_sfx("player_damage")
 		animation_player.play("Invincible")
 	
 	GameHUD.update_player_vital_bar(current_hp)
@@ -522,19 +516,8 @@ func spawn_vulnerable_effect():
 #Why? The character can die... but that won't affect
 #the main story. You may get a game over screen or lost 1UP.
 func player_death():
-	#Stop mega buster charging sound.
-	FJ_AudioManager.sfx_combat_buster_charging.stop()
-	#Stops landing sound
-	FJ_AudioManager.sfx_character_land.stop()
-	#Stops item sound #TODO: remove this if no longer used.
-	FJ_AudioManager.sfx_env_chain_loop.stop()
-	
-	#Stop music
-	FJ_AudioManager.stop_bgm()
-	
-#	#Shake the camera (if exists)
-#	if level_camera != null:
-#		level_camera.shake_camera(0.5, 100, 30)
+	Audio.stop_all_sfx()
+	Audio.stop_bgm()
 	
 	#Restore hp on scene load. Because we wanted player to restore health
 	#after the player is respawned.
@@ -562,8 +545,7 @@ func die():
 	if not is_fell_into_pit:
 		emit_signal('player_die_normally')
 	
-	#Play death sound
-	FJ_AudioManager.sfx_character_player_die.play()
+	Audio.play_sfx("player_dead")
 	
 	#Reset to initial palette, prevents weapon energy palette glitch
 	CURRENT_PALETTE_STATE = 0
@@ -673,7 +655,7 @@ func _on_PlatformBehavior_jumped_by_keypress() -> void:
 
 func _on_PlatformBehavior_landed() -> void:
 	if not current_hp <= 0 and not is_taking_damage:
-		FJ_AudioManager.sfx_character_land.play()
+		Audio.play_sfx("landing")
 	is_cancel_holding_jump_allowed = true
 
 #Regains control when timer of being knocked back is out.
@@ -809,10 +791,10 @@ func update_player_sprite_texture():
 		platformer_sprite.set_texture(player_character_data_res.character_spritesheet)
 
 func play_teleport_in_sound():
-	FJ_AudioManager.sfx_character_teleport_in.play()
+	Audio.play_sfx("teleport_in")
 
 func play_teleport_out_sound():
-	FJ_AudioManager.sfx_character_teleport_out.play()
+	Audio.play_sfx("teleport_out")
 
 func _on_TeleportPlayer_animation_finished(anim_name: String) -> void:
 	GameHUD.player_vital_bar.show()
@@ -841,9 +823,8 @@ func weapon_process():
 	
 
 func _weapon_switched():
-	FJ_AudioManager.sfx_ui_select.play()
-	FJ_AudioManager.sfx_combat_buster_charging.stop()
-	FJ_AudioManager.sfx_combat_buster_fullycharged.stop()
+	Audio.play_sfx("cursor_sw")
+	
 	attack_hold_time = 0
 	
 	get_tree().call_group("PlayerProjectile", "queue_free")

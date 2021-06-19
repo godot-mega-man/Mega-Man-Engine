@@ -21,4 +21,4 @@ func stall():
 func fall():
 	$BulletBehavior.active = false
 	$PlatformBehavior.INITIAL_STATE = true
-	FJ_AudioManager.sfx_combat_fall.play()
+	Audio.play_sfx("fall")

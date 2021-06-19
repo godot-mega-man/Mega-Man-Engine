@@ -42,7 +42,7 @@ func fire():
 			var ag_tw_player = self.global_position.angle_to_point(player.global_position)
 			bullet.bullet_behavior.angle_in_degrees = rad2deg(ag_tw_player) - 180
 	
-	FJ_AudioManager.sfx_combat_shot.play()
+	Audio.play_sfx("enemy_shot")
 
 
 func attack_done():

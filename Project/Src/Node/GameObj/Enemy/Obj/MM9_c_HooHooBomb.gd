@@ -21,7 +21,7 @@ func explode():
 	en.global_position = self.global_position
 	en.contact_damage = self.contact_damage
 	
-	FJ_AudioManager.sfx_combat_large_explosion.play()
+	Audio.play_sfx("explosion")
 	
 	if Difficulty.difficulty >= Difficulty.DIFF_NORMAL:
 		split_shadow_blades()
@@ -58,7 +58,7 @@ func _on_PlatformBehavior_landed() -> void:
 	if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
 		explode()
 	
-	FJ_AudioManager.sfx_combat_hop.play()
+	Audio.play_sfx("hop")
 
 
 func _on_MM9_c_HooHooBomb_taking_damage(value, target, player_proj_source) -> void:

@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Sprites/Enemies/MM3_ShadowMan.png" type="Texture" id=3]
 [ext_resource path="res://Src/Lib/FJ_LibHelper/PlatformBehavior2D/PlatformBehavior2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Sprites/Enemies/MM3_ShadowManPalette.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sounds/Bgm/boss.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Audio/Bgm/boss.ogg" type="AudioStream" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )

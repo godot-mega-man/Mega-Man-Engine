@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chain_end.wav-c935a517c4dff01d4945340e83e18867.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sfx/chain_end.wav"
+dest_files=[ "res://.import/chain_end.wav-c935a517c4dff01d4945340e83e18867.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

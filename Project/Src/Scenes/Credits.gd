@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 
 func show_clear_time():
 	$ClearTime.show()
-	FJ_AudioManager.sfx_ui_game_start.play()
+	Audio.play_sfx("start")
 
 
 func show_metalls():

@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Src/Lib/FJ_LibHelper/PreciseVisibilityNotifier2D/PreciseVisibilityNotifier2D.gd"
 }, {
+"base": "AnimationPlayer",
+"class": "BgmEffectAnim",
+"language": "GDScript",
+"path": "res://Src/Autoload/Audio/BgmEffectAnim.gd"
+}, {
+"base": "Node",
+"class": "BgmPlayer",
+"language": "GDScript",
+"path": "res://Src/Autoload/Audio/BgmPlayer.gd"
+}, {
 "base": "EnemyCore",
 "class": "BossCore",
 "language": "GDScript",
@@ -194,6 +204,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Src/Node/GameObj/ScreenTransitor/ScreenTransitor.gd"
 }, {
+"base": "Node",
+"class": "Sfxes",
+"language": "GDScript",
+"path": "res://Src/Autoload/Audio/Sfxes.gd"
+}, {
 "base": "Resource",
 "class": "SpriteColorPaletteData",
 "language": "GDScript",
@@ -206,6 +221,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "ActiveVisibilityNotifier2D": "",
+"BgmEffectAnim": "",
+"BgmPlayer": "",
 "BossCore": "",
 "BrightnessShader": "",
 "ButtonPlus": "",
@@ -242,6 +259,7 @@ _global_script_class_icons={
 "ProjectileReflector": "",
 "RectCentralizer": "",
 "ScreenTransitor": "",
+"Sfxes": "",
 "SpriteColorPaletteData": "",
 "TricastleEyes": ""
 }
@@ -254,8 +272,8 @@ config/quit_on_go_back=false
 
 [autoload]
 
+Audio="*res://Src/Autoload/Audio/Audio.tscn"
 GlobalVariables="*res://Src/Misc/GlobalVariables/GlobalVariables.tscn"
-FJ_AudioManager="*res://Src/Lib/FJ_LibHelper/AudioManager/AudioManager.tscn"
 CheckpointManager="*res://Src/Misc/CheckPointManager/CheckpointManager.gd"
 PlayerStats="res://Src/Misc/PlayerStats/PlayerStats.gd"
 NumberSimplifier="*res://Src/Misc/Libraries/Utils/NumberSimplifier/NumberSimplifier.gd"

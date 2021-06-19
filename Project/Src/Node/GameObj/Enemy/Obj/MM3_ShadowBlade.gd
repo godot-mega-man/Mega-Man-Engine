@@ -27,8 +27,7 @@ func explode():
 	get_parent().add_child(e)
 	e.global_position = global_position
 	e.can_damage = false
-	FJ_AudioManager.sfx_combat_thunder.play()
-	FJ_AudioManager.sfx_combat_shadow_blade.stop()
+	Audio.play_sfx("thunder")
 	
 	bullet_behavior.angle_in_degrees = -90 + rand_range(-15, 15)
 	bullet_behavior.speed = 180

@@ -62,7 +62,7 @@ func create_explosion():
 	get_parent().add_child(eff)
 	eff.global_position = global_position
 	eff.position += Vector2(64, 32) * rand_range(-1, 1)
-	FJ_AudioManager.sfx_combat_large_explosion_mm3.play()
+	Audio.play_sfx("explosion2")
 
 
 func create_collapse_effects():
@@ -74,7 +74,7 @@ func create_collapse_effects():
 		eff.global_position = $SpriteMain/CollapseEffPos.global_position
 		eff.position += Vector2(64, 0) * rand_range(-1, 1)
 		
-		FJ_AudioManager.sfx_combat_boulder.play()
+		Audio.play_sfx("boulder")
 		yield(get_tree().create_timer(0.15), "timeout")
 
 

@@ -8,7 +8,7 @@ var cursor_position : int
 
 
 func _ready() -> void:
-	FJ_AudioManager.play_bgm(bgm)
+	Audio.play_bgm(bgm)
 
 
 func _on_ConfigMenuList_confirmed() -> void:

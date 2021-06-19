@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/buster_charging.wav-09cda528f40dd71a617ffe979079b367.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sfx/buster_charging.wav"
+dest_files=[ "res://.import/buster_charging.wav-09cda528f40dd71a617ffe979079b367.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

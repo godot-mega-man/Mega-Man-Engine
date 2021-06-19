@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/energy_fill.wav-e8e13a7de0c1bdb440cc6948ae59f1a3.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sfx/energy_fill.wav"
+dest_files=[ "res://.import/energy_fill.wav-e8e13a7de0c1bdb440cc6948ae59f1a3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

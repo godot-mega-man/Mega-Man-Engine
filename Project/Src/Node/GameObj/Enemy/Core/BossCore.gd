@@ -59,7 +59,7 @@ func create_thuin() -> void:
 			eff.get_node("BulletBehavior").speed = i
 			eff.global_position = self.global_position
 	
-	FJ_AudioManager.sfx_character_player_die.play()
+	Audio.play_sfx("player_dead")
 
 #Is posing : Posing boss is a state where the boss won't attack while this happens.
 var is_posing = true
@@ -69,7 +69,7 @@ func _ready():
 	start_intro_music_or_regular_music()
 	stop_player_controls()
 	GameHUD.connect("boss_vital_bar_fully_filled", self, "_on_boss_vital_bar_fully_filled")
-	FJ_AudioManager.sfx_combat_buster_charging.stream_paused = true
+	Audio.stop_sfx("buster_charging")
 
 #Start intro music (if specified). Otherwise, boss music will be
 #used instead.
@@ -77,9 +77,9 @@ func start_intro_music_or_regular_music():
 	#If start music on spawn enabled, plays the intro music.
 	if start_music_on_spawn:
 		if intro_music == null:
-			FJ_AudioManager.play_bgm(boss_music)
+			Audio.play_bgm(boss_music)
 		else:
-			FJ_AudioManager.play_bgm(intro_music)
+			Audio.play_bgm(intro_music)
 
 #Stop player's control
 func stop_player_controls():
@@ -98,12 +98,11 @@ func start_fill_up_health_bar():
 #Fill up bar to max... Start playing music.
 func _on_boss_vital_bar_fully_filled():
 	if boss_music != null:
-		FJ_AudioManager.play_bgm(boss_music)
+		Audio.play_bgm(boss_music)
 	if player != null:
 		player.set_control_enable(true)
 	emit_signal("boss_done_posing")
 	is_posing = false
-	FJ_AudioManager.sfx_combat_buster_charging.stream_paused = false
 
 func update_current_boss_bar_colors():
 	GameHUD.boss_vital_bar_palette.primary_sprite.modulate = vital_bar_primary_color
@@ -119,11 +118,11 @@ func _on_BossCore_taken_damage(value, target, player_proj_source) -> void:
 func _on_BossCore_slain(target) -> void:
 	destroy_all_enemies()
 	if stop_music_after_death:
-		FJ_AudioManager.stop_bgm()
+		Audio.stop_bgm()
 		level.begin_victory_process()
 	else:
 		if level != null:
-			FJ_AudioManager.play_bgm(level.MUSIC)
+			Audio.play_bgm(level.MUSIC)
 	
 	create_thuin()
 

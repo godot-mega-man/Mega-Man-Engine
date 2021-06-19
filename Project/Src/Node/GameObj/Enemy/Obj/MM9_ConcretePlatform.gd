@@ -47,9 +47,9 @@ func _on_DetectArea2D_area_entered(area: Area2D) -> void:
 
 func play_sound():
 	if down:
-		FJ_AudioManager.sfx_env_concrete_down.play()
+		Audio.play_sfx("concrete_down")
 	else:
-		FJ_AudioManager.sfx_env_concrete_up.play()
+		Audio.play_sfx("concrete_up")
 
 
 func _on_CollideArea2D_body_entered(body: Node) -> void:

@@ -158,7 +158,7 @@ func fire_blades():
 	var directions = [180, 115] if sprite_main.scale.x == 1 else [0, 65] # 2nd index is for shooting downward
 	
 	anim.play("JumpAttack")
-	FJ_AudioManager.sfx_combat_shadow_blade.play()
+	Audio.play_sfx("shadowblade")
 	
 	# Forward
 	var blt = SHADOW_BLADE.instance()
@@ -215,7 +215,7 @@ func fling_hoohoo_bomb(velocity_y : float, _hittable := true):
 
 func fire_blades_direct():
 	anim.play("JumpAttack")
-	FJ_AudioManager.sfx_combat_shadow_blade.play()
+	Audio.play_sfx("shadowblade")
 	
 	# Flings blade toward player
 	var ag_adds = [0]
@@ -282,7 +282,7 @@ func flee():
 			get_parent().add_child(eff)
 			eff.global_position = self.global_position + Vector2(rand_range(-32, 32), rand_range(-32, 32))
 		
-		FJ_AudioManager.sfx_combat_buster_minicharged.play()
+		Audio.play_sfx("buster_minishot")
 		
 		if times == 7:
 			anim.play("Flee")
@@ -332,8 +332,6 @@ func _on_Phase1HideTimer_timeout() -> void:
 	eat_player_projectile = true
 
 func _on_MM3_ShadowMan_taken_damage(value, target, player_proj_source) -> void:
-	FJ_AudioManager.sfx_combat_shadow_blade.stop()
-	
 	if current_hp <= 1 and curr_phase == 1 and Difficulty.difficulty > Difficulty.DIFF_NEWCOMER:
 		current_hp = 1
 		GameHUD.update_boss_vital_bar(current_hp)
@@ -345,9 +343,9 @@ func _update_palette():
 
 
 func _on_MM3_ShadowMan_dying() -> void:
-	FJ_AudioManager.sfx_combat_shadow_blade.stop()
-	FJ_AudioManager.sfx_combat_thunder.stop()
-	FJ_AudioManager.sfx_combat_large_explosion.stop()
+	Audio.stop_sfx("shadowblade")
+	Audio.stop_sfx("thunder")
+	Audio.stop_sfx("explosion")
 
 
 func _on_MM3_ShadowMan_taking_damage(value, target, player_proj_source) -> void:

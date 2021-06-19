@@ -74,7 +74,7 @@ func fire():
 		blt.bullet_behavior.speed = BULLET_SPEED
 		blt.bullet_behavior.angle_in_degrees = i
 	
-	FJ_AudioManager.sfx_combat_shot.play()
+	Audio.play_sfx("enemy_shot")
 
 func prepare_new_state():
 	yield(get_tree().create_timer(HIDE_COOLDOWN), "timeout")

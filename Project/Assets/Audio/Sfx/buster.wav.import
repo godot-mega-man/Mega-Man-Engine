@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/buster.wav-cd8aa6291199b63cfbf9f1881a27098e.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sfx/buster.wav"
+dest_files=[ "res://.import/buster.wav-cd8aa6291199b63cfbf9f1881a27098e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
