@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Src/Scenes/Levels/Core/Lv_Core.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Tilesets/CastleTileset.tres" type="TileSet" id=2]
@@ -32,6 +32,8 @@
 [ext_resource path="res://Src/Node/GameObj/Enemy/Obj/MM5_KoukerQ.tscn" type="PackedScene" id=30]
 [ext_resource path="res://Src/Node/GameObj/Enemy/Obj/MM6_Peat.tscn" type="PackedScene" id=31]
 [ext_resource path="res://Src/Node/GameObj/Enemy/Obj/MM10_TriCastle.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Assets/Audio/Bgm/victory_epic.ogg" type="AudioStream" id=33]
+[ext_resource path="res://Assets/Audio/Bgm/victory.ogg" type="AudioStream" id=34]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Loop"
@@ -165,6 +167,8 @@ tracks/0/keys = {
 script = ExtResource( 25 )
 BG_COLOR = Color( 0, 0.254902, 0.34902, 1 )
 MUSIC = ExtResource( 10 )
+victory_music = ExtResource( 34 )
+victory_music_epic = ExtResource( 33 )
 
 [node name="Layer0" type="Node2D" parent="." index="0"]
 
@@ -1232,25 +1236,7 @@ spawn_range = 0.0
 custom_parameters = {
 }
 
-[node name="ShieldAtk5" parent="Spawners" index="69" instance=ExtResource( 8 )]
-position = Vector2( 2680, 576 )
-obj_spawn = ExtResource( 13 )
-spawn_target_node = NodePath("../../Iterable")
-spawn_range = 0.0
-custom_parameters = {
-}
-difficulty_exclude = 7
-
-[node name="ShieldAtk4" parent="Spawners" index="70" instance=ExtResource( 8 )]
-position = Vector2( 2800, 576 )
-obj_spawn = ExtResource( 13 )
-spawn_target_node = NodePath("../../Iterable")
-spawn_range = 0.0
-custom_parameters = {
-}
-difficulty_exclude = 7
-
-[node name="ShieldAtk6" parent="Spawners" index="71" instance=ExtResource( 8 )]
+[node name="ShieldAtk6" parent="Spawners" index="69" instance=ExtResource( 8 )]
 position = Vector2( 2880, 624 )
 obj_spawn = ExtResource( 13 )
 spawn_target_node = NodePath("../../Iterable")
@@ -1258,7 +1244,7 @@ spawn_range = 0.0
 custom_parameters = {
 }
 
-[node name="ShieldAtk7" parent="Spawners" index="72" instance=ExtResource( 8 )]
+[node name="ShieldAtk7" parent="Spawners" index="70" instance=ExtResource( 8 )]
 position = Vector2( 3472, 560 )
 obj_spawn = ExtResource( 13 )
 spawn_target_node = NodePath("../../Iterable")
@@ -1267,7 +1253,7 @@ custom_parameters = {
 }
 difficulty_exclude = 7
 
-[node name="ShieldAtk8" parent="Spawners" index="73" instance=ExtResource( 8 )]
+[node name="ShieldAtk8" parent="Spawners" index="71" instance=ExtResource( 8 )]
 position = Vector2( 3744, 624 )
 obj_spawn = ExtResource( 13 )
 spawn_target_node = NodePath("../../Iterable")
@@ -1276,21 +1262,21 @@ custom_parameters = {
 }
 difficulty_exclude = 7
 
-[node name="Detarnayappa6" parent="Spawners" index="74" instance=ExtResource( 8 )]
+[node name="Detarnayappa6" parent="Spawners" index="72" instance=ExtResource( 8 )]
 position = Vector2( 2960, 672 )
 obj_spawn = ExtResource( 12 )
 spawn_target_node = NodePath("../../Iterable")
 custom_parameters = {
 }
 
-[node name="Detarnayappa7" parent="Spawners" index="75" instance=ExtResource( 8 )]
+[node name="Detarnayappa7" parent="Spawners" index="73" instance=ExtResource( 8 )]
 position = Vector2( 3056, 672 )
 obj_spawn = ExtResource( 12 )
 spawn_target_node = NodePath("../../Iterable")
 custom_parameters = {
 }
 
-[node name="Detarnayappa8" parent="Spawners" index="76" instance=ExtResource( 8 )]
+[node name="Detarnayappa8" parent="Spawners" index="74" instance=ExtResource( 8 )]
 position = Vector2( 3152, 672 )
 obj_spawn = ExtResource( 12 )
 spawn_target_node = NodePath("../../Iterable")
@@ -1298,14 +1284,14 @@ custom_parameters = {
 }
 difficulty_exclude = 1
 
-[node name="Detarnayappa10" parent="Spawners" index="77" instance=ExtResource( 8 )]
+[node name="Detarnayappa10" parent="Spawners" index="75" instance=ExtResource( 8 )]
 position = Vector2( 3280, 672 )
 obj_spawn = ExtResource( 12 )
 spawn_target_node = NodePath("../../Iterable")
 custom_parameters = {
 }
 
-[node name="ChainCtrlerEnd" parent="Spawners" index="78" instance=ExtResource( 8 )]
+[node name="ChainCtrlerEnd" parent="Spawners" index="76" instance=ExtResource( 8 )]
 position = Vector2( 3839, 592 )
 obj_spawn = ExtResource( 15 )
 spawn_target_node = NodePath("../../Iterable")
@@ -1317,7 +1303,7 @@ custom_parameters = {
 }
 obj_deletion_by_signals = [ "tree_exited" ]
 
-[node name="Switch" parent="Spawners" index="79" instance=ExtResource( 8 )]
+[node name="Switch" parent="Spawners" index="77" instance=ExtResource( 8 )]
 position = Vector2( 3376, 640 )
 obj_spawn = ExtResource( 26 )
 spawn_target_node = NodePath("../../Iterable")
@@ -1326,7 +1312,7 @@ custom_parameters = {
 "DESTROY_OUTSIDE_SCREEN": false
 }
 
-[node name="KnightManChainEdit" parent="Spawners" index="80" instance=ExtResource( 8 )]
+[node name="KnightManChainEdit" parent="Spawners" index="78" instance=ExtResource( 8 )]
 position = Vector2( 3400, 640 )
 obj_spawn = ExtResource( 27 )
 spawn_target_node = NodePath("../../Iterable")
@@ -1335,7 +1321,7 @@ custom_parameters = {
 }
 obj_deletion_by_signals = [ "tree_exited" ]
 
-[node name="Powerslam" parent="Spawners" index="81" instance=ExtResource( 8 )]
+[node name="Powerslam" parent="Spawners" index="79" instance=ExtResource( 8 )]
 position = Vector2( 4056, 584 )
 obj_spawn = ExtResource( 18 )
 spawn_target_node = NodePath("../../Iterable")
@@ -1343,7 +1329,7 @@ spawn_range = 0.0
 custom_parameters = {
 }
 
-[node name="ShadowManNoMusic" parent="Spawners" index="82" instance=ExtResource( 8 )]
+[node name="ShadowManNoMusic" parent="Spawners" index="80" instance=ExtResource( 8 )]
 position = Vector2( 4560, 624 )
 obj_spawn = ExtResource( 20 )
 spawn_target_node = NodePath("../../Iterable")

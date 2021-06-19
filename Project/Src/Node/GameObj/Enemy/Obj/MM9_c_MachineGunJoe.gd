@@ -35,12 +35,8 @@ func fire():
 	get_parent().add_child(bullet)
 	bullet.global_position = fire_bullet.global_position
 	if bullet.has_node("BulletBehavior"):
-		# Shoot straight on non-hero difficulty
-		if Difficulty.difficulty < Difficulty.DIFF_SUPERHERO:
-			bullet.bullet_behavior.angle_in_degrees = 0 if sprite_main.scale.x == -1 else 180
-		if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
-			var ag_tw_player = self.global_position.angle_to_point(player.global_position)
-			bullet.bullet_behavior.angle_in_degrees = rad2deg(ag_tw_player) - 180
+		# Shoot straight
+		bullet.bullet_behavior.angle_in_degrees = 0 if sprite_main.scale.x == -1 else 180
 	
 	Audio.play_sfx("enemy_shot")
 

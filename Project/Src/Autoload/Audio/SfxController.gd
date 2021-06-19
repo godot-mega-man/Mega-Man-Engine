@@ -49,6 +49,8 @@ func manage_about_to_play(audio_name : String, sfx_order : Sfxes.SfxOrder):
 func _try_stop_weapon_fire_sound(weapon_name : String, sfx_order : Sfxes.SfxOrder):
 	if not (
 		Audio.is_sfx_playing("enemy_damage") or 
+		Audio.is_sfx_playing("explosion") or 
+		Audio.is_sfx_playing("explosion2") or 
 		Audio.is_sfx_playing("enemy_dead")
 	):
 		return

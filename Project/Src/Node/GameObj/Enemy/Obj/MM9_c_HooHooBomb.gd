@@ -1,5 +1,6 @@
 extends EnemyCore
 
+
 const BULLET_DAMAGE = 2
 const SHADOW_BLADE = preload("res://Src/Node/GameObj/Enemy/Obj/MM3_ShadowBladeSmall.tscn")
 const BULLET = preload("res://Src/Node/GameObj/Enemy/Obj/MM2_Bullet.tscn")
@@ -12,8 +13,10 @@ onready var dmg_area = $DamageArea
 
 var landed : bool
 
+
 func explode_countdown():
 	$ExplodeTimer.start()
+
 
 func explode():
 	var en = enemy_explosion.instance()
@@ -28,12 +31,9 @@ func explode():
 	
 	queue_free_start(false)
 
+
 func split_shadow_blades():
 	var angles : Array = [-105, -75]
-	
-	if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
-		angles.append(-120)
-		angles.append(-60)
 	
 	for i in angles:
 		var blt = SHADOW_BLADE.instance()
@@ -51,13 +51,12 @@ func _on_ExplodeTimer_timeout() -> void:
 	$ExplodeFlashTimer.start(explode_countdown_time)
 	$SpriteMain/Sprite/Anim.play("Flashing")
 
+
 func _on_ExplodeFlashTimer_timeout() -> void:
 	explode()
 
+
 func _on_PlatformBehavior_landed() -> void:
-	if Difficulty.difficulty == Difficulty.DIFF_SUPERHERO:
-		explode()
-	
 	Audio.play_sfx("hop")
 
 
