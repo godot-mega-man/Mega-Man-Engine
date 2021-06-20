@@ -6,6 +6,9 @@ const ANIM_JUMP = "Jump"
 const ANIM_SHIELDED = "Shielded"
 const ANIM_SHOOT = "Shoot"
 
+const SUICIDE_SHIFT_OFFSET = Vector2(0, -128)
+const ONE_UP = preload("res://Src/Node/GameObj/Pickups/Life.tscn")
+
 
 export(PackedScene) var shoot_projectile
 export(float) var attack_range = 130
@@ -15,7 +18,6 @@ export var always_jump : bool
 onready var anim = $Anim
 onready var platformer_behavior = $PlatformBehavior
 onready var fire_bullet = $SpriteMain/FireBullet
-onready var attack_cooldown_timer = $AttackCooldownTimer
 onready var projectile_reflector = $SpriteMain/ShieldArea2D/ProjectileReflector
 
 
@@ -66,6 +68,22 @@ func jump():
 	platformer_behavior.jump_start()
 
 
+func suicide_with_1up():
+	# Create effect at the current position before the enemy moves
+	var effect = explosion_effect.instance()
+	get_parent().add_child(effect)
+	effect.global_position = self.global_position
+	
+	pickups_drop_enabled = false
+	current_hp = 0
+	global_position += SUICIDE_SHIFT_OFFSET
+	check_for_death()
+	
+	var life_en = ONE_UP.instance()
+	get_parent().add_child(life_en)
+	life_en.global_position = global_position
+
+
 func _on_Anim_animation_finished(anim_name: String) -> void:
 	match anim_name:
 		ANIM_IDLE:
@@ -93,5 +111,4 @@ func _on_ProjectileReflector_reflected() -> void:
 
 
 func _on_PlatformBehavior_crushed() -> void:
-	current_hp = 0
-	check_for_death()
+	suicide_with_1up()

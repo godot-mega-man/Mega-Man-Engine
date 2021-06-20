@@ -78,45 +78,45 @@ func prepare():
 
 
 func open_door():
-	get_node(platform_spawner).spawn()
+	get_node_or_null(platform_spawner).spawn()
 	
-	if get_node(eyes_middle) != null:
-		get_node(eyes_middle).set_peek_target(get_node(door))
-		get_node(door).open()
+	if get_node_or_null(eyes_middle) != null:
+		get_node_or_null(eyes_middle).set_peek_target(get_node_or_null(door))
+		get_node_or_null(door).open()
 		yield(get_tree().create_timer(ATTACK_MID_PEEK_DURATION), "timeout")
 	
-	if get_node(eyes_middle) != null:
-		get_node(eyes_middle).set_peek_target(null)
+	if get_node_or_null(eyes_middle) != null:
+		get_node_or_null(eyes_middle).set_peek_target(null)
 		yield(get_tree().create_timer(ATTACK_MID_AWAIT_DURATION), "timeout")
 	
 	state = State.RIGHT_TOWER_ATTACK
 
 
 func tower_attack(eyes_tower_path : NodePath, next_state : int):
-	if get_node(eyes_tower_path) == null:
+	if get_node_or_null(eyes_tower_path) == null:
 		yield(get_tree().create_timer(ATTACK_TOWER_SKIP_DURATION), "timeout")
 		state = next_state
 		return
 	
-	if get_node(eyes_middle) != null and get_node(eyes_tower_path) != null:
-		get_node(eyes_tower_path).blink()
-		get_node(eyes_middle).blink()
+	if get_node_or_null(eyes_middle) != null and get_node_or_null(eyes_tower_path) != null:
+		get_node_or_null(eyes_tower_path).blink()
+		get_node_or_null(eyes_middle).blink()
 		yield(get_tree().create_timer(ATTACK_ANIMATION_DELAY), "timeout")
-	if get_node(eyes_middle) != null and get_node(eyes_tower_path) != null:
-		get_node(eyes_tower_path).set_peek_target(get_node(eyes_middle))
-		get_node(eyes_middle).set_peek_target(get_node(eyes_tower_path))
-		get_node(eyes_tower_path).release_bird()
+	if get_node_or_null(eyes_middle) != null and get_node_or_null(eyes_tower_path) != null:
+		get_node_or_null(eyes_tower_path).set_peek_target(get_node_or_null(eyes_middle))
+		get_node_or_null(eyes_middle).set_peek_target(get_node_or_null(eyes_tower_path))
+		get_node_or_null(eyes_tower_path).release_bird()
 		yield(get_tree().create_timer(ATTACK_TOWER_PEEK_DURATION), "timeout")
-	if get_node(eyes_middle) != null and get_node(eyes_tower_path) != null:
-		get_node(eyes_tower_path).set_peek_target(null)
-		get_node(eyes_middle).set_peek_target(null)
+	if get_node_or_null(eyes_middle) != null and get_node_or_null(eyes_tower_path) != null:
+		get_node_or_null(eyes_tower_path).set_peek_target(null)
+		get_node_or_null(eyes_middle).set_peek_target(null)
 	
-	if get_node(eyes_middle) == null and get_node(eyes_tower_path) != null:
-		get_node(eyes_tower_path).release_bird()
-		get_node(eyes_tower_path).set_peek_target(player)
+	if get_node_or_null(eyes_middle) == null and get_node_or_null(eyes_tower_path) != null:
+		get_node_or_null(eyes_tower_path).release_bird()
+		get_node_or_null(eyes_tower_path).set_peek_target(player)
 		yield(get_tree().create_timer(ATTACK_TOWER_PEEK_DURATION * 2), "timeout")
-	if get_node(eyes_middle) == null and get_node(eyes_tower_path) != null:
-		get_node(eyes_tower_path).set_peek_target(null)
+	if get_node_or_null(eyes_middle) == null and get_node_or_null(eyes_tower_path) != null:
+		get_node_or_null(eyes_tower_path).set_peek_target(null)
 	
 	state = next_state
 
@@ -124,9 +124,9 @@ func tower_attack(eyes_tower_path : NodePath, next_state : int):
 func repeat_sequence():
 	var duration_modifier = 0.2
 	
-	if get_node(eyes_tower_left) == null:
+	if get_node_or_null(eyes_tower_left) == null:
 		duration_modifier += 0.4
-	if get_node(eyes_tower_right) == null:
+	if get_node_or_null(eyes_tower_right) == null:
 		duration_modifier += 0.4
 	
 	yield(get_tree().create_timer(ATTACK_SEQUENCE_REPEAT_AWAIT_DURATION * duration_modifier), "timeout")
