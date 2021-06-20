@@ -293,10 +293,9 @@ func flee():
 		return
 	
 	# Drops Life pickups
-	if Difficulty.difficulty < Difficulty.DIFF_NORMAL:
-		var life_en = LIFE_EN_LARGE.instance()
-		get_parent().add_child(life_en)
-		life_en.global_position = global_position
+	var life_en = LIFE_EN_LARGE.instance()
+	get_parent().add_child(life_en)
+	life_en.global_position = global_position
 	
 	yield(anim, "animation_finished")
 	GameHUD.boss_vital_bar_palette.second_sprite.modulate = NESColorPalette.CYAN2
