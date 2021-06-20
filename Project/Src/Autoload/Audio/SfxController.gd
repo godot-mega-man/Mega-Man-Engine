@@ -36,9 +36,13 @@ func manage_playing(audio_name : String):
 func manage_about_to_play(audio_name : String, sfx_order : Sfxes.SfxOrder):
 	match audio_name:
 		"buster":
-			_try_stop_weapon_fire_sound("buster", sfx_order)
+			_try_stop_specific_sound("buster", sfx_order)
+		"landing":
+			_try_stop_specific_sound("landing", sfx_order)
 		"ring_boomerang":
-			_try_stop_weapon_fire_sound("ring_boomerang", sfx_order)
+			_try_stop_specific_sound("ring_boomerang", sfx_order)
+		"ring_boomerang":
+			_try_stop_specific_sound("ring_boomerang", sfx_order)
 		"pause":
 			Audio.stop_all_sfx()
 		"player_die":
@@ -48,8 +52,9 @@ func manage_about_to_play(audio_name : String, sfx_order : Sfxes.SfxOrder):
 			sfx_order.stop = Audio.is_sfx_playing("energy_fill")
 
 
-func _try_stop_weapon_fire_sound(weapon_name : String, sfx_order : Sfxes.SfxOrder):
+func _try_stop_specific_sound(sfx_name : String, sfx_order : Sfxes.SfxOrder):
 	if not (
+		Audio.is_sfx_playing("boulder") or 
 		Audio.is_sfx_playing("enemy_damage") or 
 		Audio.is_sfx_playing("explosion") or 
 		Audio.is_sfx_playing("explosion2") or 
@@ -57,7 +62,7 @@ func _try_stop_weapon_fire_sound(weapon_name : String, sfx_order : Sfxes.SfxOrde
 	):
 		return
 	
-	Audio.stop_sfx(weapon_name)
+	Audio.stop_sfx(sfx_name)
 	sfx_order.stop = true
 
 

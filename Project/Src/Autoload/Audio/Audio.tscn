@@ -270,7 +270,7 @@ bus = "SFX"
 
 [node name="landing" type="AudioStreamPlayer" parent="Sfxes"]
 stream = ExtResource( 24 )
-volume_db = -3.0
+volume_db = -6.0
 bus = "SFX"
 
 [node name="oneup" type="AudioStreamPlayer" parent="Sfxes"]
