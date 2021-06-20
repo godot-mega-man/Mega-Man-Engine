@@ -26,7 +26,7 @@ func _action_pressed(action): # Overrides
 		press()
 	if action == "ui_cancel":
 		emit_signal("canceled")
-		Audio.sfx_ui_weapon_switch.play()
+		Audio.play_sfx("cursor_sw")
 
 
 func press():
