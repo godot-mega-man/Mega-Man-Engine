@@ -1,8 +1,7 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Src/Autoload/Audio/Audio.gd" type="Script" id=1]
 [ext_resource path="res://Src/Autoload/Audio/SfxController.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Audio/Sfx/enemy_dead.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Audio/Sfx/enemy_damage.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Audio/Sfx/buster_fullshot.wav" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Audio/Sfx/buster_minishot.wav" type="AudioStream" id=6]
@@ -238,7 +237,7 @@ stream = ExtResource( 4 )
 bus = "SFX"
 
 [node name="enemy_dead" type="AudioStreamPlayer" parent="Sfxes"]
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
 bus = "SFX"
 
 [node name="enemy_shot" type="AudioStreamPlayer" parent="Sfxes"]
