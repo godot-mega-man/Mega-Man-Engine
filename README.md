@@ -1,4 +1,4 @@
-# Firstject ​Mega Man Engine v2 (Work-In-Progress)
+# ​Mega Man Implementation v2 (Work-In-Progress)
 
 A platformer 2D game demo showcase made with Godot engine.
 
