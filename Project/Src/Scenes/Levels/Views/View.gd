@@ -1,18 +1,15 @@
-#Game Views
-#Code by: First
-
-# Description is missing. Please contact developer head directly.
-
 tool
-extends ReferenceRect
+class_name LevelView extends ReferenceRect
 
-class_name LevelView
 
 export (bool) var WARPS_PLAYER_AROUND_UP_DOWN := false
+
 export (bool) var WARPS_PLAYER_LEFT_RIGHT_SIDE := false
+
 
 func _ready() -> void:
 	_on_View_resized()
+	
 
 func _on_View_resized() -> void:
 	if has_node("Label"):

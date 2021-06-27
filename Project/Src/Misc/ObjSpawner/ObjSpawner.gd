@@ -1,21 +1,13 @@
 # Object Spawner
-# Code by: First
-
+# 
 # This node is mainly for spawning object within the level scene
 # by various events. This usually used in many levels for object
 # placements, such as: Enemy, Falling Block, Minions Spawner, etc.
 
-# How to use?
-# - Instance this node to /root/Level/Iterable/...
-# - Set Obj Spawn parameter. The PackedScene can be any. If you're
-#   going to place EnemyCore or something like that inherits from,
-#   go ahead!
-# - For 'Spawn On', choose one or both simultaneously.
-# - You're all set! For other variables, please see each of its
-#   variable's description.
 
 tool
 extends Node2D
+
 
 signal spawned(inst_obj)
 
@@ -73,7 +65,9 @@ export (int, FLAGS, "Newcomer", "Casual", "Normal", "Superhero") var difficulty_
 
 
 onready var spawn_range_vis = $PreciseVisibilityNotifier2D
+
 onready var spawn_timer = $SpawnTimer as Timer
+
 onready var sprite_preview = $SpritePreview as Sprite
 
 onready var level := get_node_or_null("/root/Level") as Level

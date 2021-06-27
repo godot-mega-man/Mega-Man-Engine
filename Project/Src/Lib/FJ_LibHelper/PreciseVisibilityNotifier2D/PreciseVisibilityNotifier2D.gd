@@ -1,22 +1,11 @@
 # ActiveVisibilityNotifier2D
+#
+# An extended built-in node of VisibilityNotifier2D. Has almost the same
+# functionality of the base class, but with more precise visibility detection
+# at the cost of performance.
 
-extends VisibilityNotifier2D
+class_name ActiveVisibilityNotifier2D extends VisibilityNotifier2D
 
-class_name ActiveVisibilityNotifier2D
-
-"""
-	An extended built-in node of VisibilityNotifier2D. Has almost the same
-	functionality of the base class, but with more precise visibility detection
-	at the cost of performance.
-"""
-
-#-------------------------------------------------
-#      Classes
-#-------------------------------------------------
-
-#-------------------------------------------------
-#      Signals
-#-------------------------------------------------
 
 # Emitted when the VisibilityNotifier2D enters the visible viewport rect.
 signal visibility_entered
@@ -24,18 +13,12 @@ signal visibility_entered
 # Emitted when the VisibilityNotifier2D exits the visible viewport rect.
 signal visibility_exited
 
-#-------------------------------------------------
-#      Constants
-#-------------------------------------------------
 
 # Type during the processing step of the main loop
 enum ProcessType {IDLE, PHYSICS}
 
 enum DetectionType {POINT, BOX}
 
-#-------------------------------------------------
-#      Properties
-#-------------------------------------------------
 
 # If false, the behavior is in disabled state and won't do anything.
 export (bool) var active = true
@@ -70,9 +53,6 @@ var vis_exit_emitted : bool
 
 var inside : bool
 
-#-------------------------------------------------
-#      Notifications
-#-------------------------------------------------
 
 func _process(delta: float) -> void:
 	call_deferred("_add_frame_counter") # Call at the end of the frame
@@ -88,17 +68,6 @@ func _physics_process(delta: float) -> void:
 	
 	_do_process()
 
-#-------------------------------------------------
-#      Virtual Methods
-#-------------------------------------------------
-
-#-------------------------------------------------
-#      Override Methods
-#-------------------------------------------------
-
-#-------------------------------------------------
-#      Public Methods
-#-------------------------------------------------
 
 func is_inside_visible_viewport_rect() -> bool:
 	var result : bool
@@ -113,6 +82,7 @@ func is_inside_visible_viewport_rect() -> bool:
 	
 	return result
 
+
 func get_camera() -> Camera2D:
 	for i in get_tree().get_nodes_in_group("CameraCustom"):
 		if i is Camera2D:
@@ -120,13 +90,6 @@ func get_camera() -> Camera2D:
 	
 	return null
 
-#-------------------------------------------------
-#      Connections
-#-------------------------------------------------
-
-#-------------------------------------------------
-#      Private Methods
-#-------------------------------------------------
 
 func _do_process() -> void:
 	if _is_first_frame():
@@ -145,12 +108,10 @@ func _do_process() -> void:
 			vis_exit_emitted = true
 			emit_signal("visibility_exited")
 
+
 func _is_first_frame() -> bool:
 	return _frame == 0
 
+
 func _add_frame_counter() -> void:
 	_frame += 1
-
-#-------------------------------------------------
-#      Setters & Getters
-#-------------------------------------------------

@@ -1,58 +1,28 @@
 # BrightnessShader
-# Written by: First
+#
+# Adds option for a parent node of CanvasItem to change the brightness at
+# runtime. It uses a shader resource of Brightness.shader in order for this
+# to work.
 
-extends Node
+class_name BrightnessShader extends Node
 
-class_name BrightnessShader
 
-"""
-	Add option for a parent node of CanvasItem to change the brightness.
-	It uses a shader resource of Brightness.shader
-	
-	Note that this will not make shader work on the editor.
-"""
-
-#-------------------------------------------------
-#      Classes
-#-------------------------------------------------
-
-#-------------------------------------------------
-#      Signals
-#-------------------------------------------------
-
-#-------------------------------------------------
-#      Constants
-#-------------------------------------------------
-
-const BRIGHTNESS_SHADER = preload("res://Lib/FJ_LibHelper/BrightnessShader/BrightnessShader.shader")
-
-#-------------------------------------------------
-#      Properties
-#-------------------------------------------------
+const BRIGHTNESS_SHADER = preload("res://Src/Lib/FJ_LibHelper/BrightnessShader/BrightnessShader.shader")
 
 export (float) var brightness = 0 setget set_brightness
 
 onready var s_material : ShaderMaterial
 
-#-------------------------------------------------
-#      Notifications
-#-------------------------------------------------
 
 func _ready():
 	_init_shader_material()
 	update_current_parent_brightness()
 
-#-------------------------------------------------
-#      Virtual Methods
-#-------------------------------------------------
 
-#-------------------------------------------------
-#      Override Methods
-#-------------------------------------------------
+func set_brightness(val : float) -> void:
+	brightness = val
+	update_current_parent_brightness()
 
-#-------------------------------------------------
-#      Public Methods
-#-------------------------------------------------
 
 func update_current_parent_brightness():
 	if s_material == null:
@@ -60,13 +30,6 @@ func update_current_parent_brightness():
 	
 	s_material.set_shader_param("bright_amount", brightness)
 
-#-------------------------------------------------
-#      Connections
-#-------------------------------------------------
-
-#-------------------------------------------------
-#      Private Methods
-#-------------------------------------------------
 
 func _init_shader_material() -> void:
 	var p = get_parent()
@@ -77,10 +40,3 @@ func _init_shader_material() -> void:
 		
 		p.set_material(s_material)
 
-#-------------------------------------------------
-#      Setters & Getters
-#-------------------------------------------------
-
-func set_brightness(val : float) -> void:
-	brightness = val
-	update_current_parent_brightness()

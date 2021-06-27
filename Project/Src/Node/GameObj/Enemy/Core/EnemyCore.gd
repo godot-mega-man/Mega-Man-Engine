@@ -1,13 +1,23 @@
+# EnemyCore
+# TODO: Remove magic numbers and a ton of NONSENSE CODES
+
 class_name EnemyCore extends KinematicBody2D
 
 
 signal taking_damage(value, target, player_proj_source)
+
 signal taken_damage(value, target, player_proj_source)
+
 signal dropped_item(item_data, quantity)
+
 signal dropped_diamond
+
 signal damage_counter_released(value, target)
+
 signal slain(target)
+
 signal despawned(by_dying)
+
 signal dying
 
 
@@ -24,11 +34,17 @@ enum dead_sfx {
 }
 
 const PICKUP_NONE = ""
+
 const PICKUP_WEAPON_ENERGY_SMALL = "WeaponEnergySmall"
+
 const PICKUP_LIFE_ENERGY_SMALL = "LifeEnergySmall"
+
 const PICKUP_WEAPON_ENERGY_LARGE = "WeaponEnergyLarge"
+
 const PICKUP_LIFE_ENERGY_LARGE = "LifeEnergyLarge"
+
 const PICKUP_LIFE = "Life"
+
 
 export (Texture) var sprite_preview_texture
 
@@ -38,20 +54,30 @@ export (PackedScene) var explosion_effect
 
 export (dead_sfx) var death_sound = dead_sfx.COLLAPSE
 
-#Database
 export (float) var contact_damage = 1 #Deals damage when collided with player.
+
 export var death_immunity = false #When true, enemy cannot die normally.
+
 export var can_hit = true #When true, enemy won't take any damage from any sources.
+
 export var damage_taken_minimum = 0 #Minimum damage taken from player's projectile
+
 export var eat_player_projectile = true #When on, enemy can attempt to destroy the player's bullet.
+
 export var can_damage = true #If false, player can collide with enemy without taking damage.
+
 export var damage_custom_invis_enabled = false #If on, player will have a custom invisibility time after damage is taken.
+
 export var damage_custom_invis_timer = 0.1 #How long the player will be able to take damage again.
+
 export (int, 1, 2147483647) var hit_points_base = 40 #Initial maximum hit points.
+
 export var repel_player_enabled = true #Repel player away when damage is applied
+
 export var repel_power = 300 #Strength to push player away when collided with enemy.
 
 export var DEATH_SHAKE_STRENGTH = 3
+
 #Range checking mode. Used when calling method within_player_range()
 export (preset_range_checking_mode) var RANGE_CHECKING_MODE
 
@@ -82,36 +108,54 @@ export (PackedScene) var pickup_obj_life_small : PackedScene
 
 export (PackedScene) var pickup_obj_life : PackedScene
 
-#Child nodes:
+
 onready var flicker_anim = $SpriteMain/FlickerAnimationPlayer
+
 onready var sprite_main = $SpriteMain
+
 onready var sprite = $SpriteMain/Sprite
+
 onready var platform_collision_shape = $PlatformCollisionShape2D as CollisionShape2D
+
 onready var level_camera = get_node("/root/Level/Camera2D")
+
 onready var pickups_drop_set = $PickupsDropSet as ItemSet
+
 onready var damage_sprite_ani = $DamageSprite/Ani
+
 onready var invis_timer = $InvisTimer
+
 onready var item_table = $ItemTable
 
 onready var player = $"/root/Level/Iterable/Player"
 
 onready var global_var = $"/root/GlobalVariables"
+
 onready var fade_screen = $"/root/Level/FadeScreen"
+
 onready var level := get_node_or_null("/root/Level") as Level
+
 onready var player_stats = get_node("/root/PlayerStats")
 
-#Temp variables
+
 var current_hp
+
 var initialy_inactive = false
+
 var is_fresh_respawn = false
+
 var is_reset_state_called = false #Call once
+
 var is_coin_dropped = false
+
 var is_invincible = false
+
 var event_damage : float
 
-#Preloaded scenes
 var dmg_counter = preload("res://Src/Node/GUI/DamageCounter.tscn")
+
 var explosion_particles = preload("res://Src/Node/GameObj/Effects/Particles/ExplosionParticles.tscn")
+
 
 func _ready():
 	if is_perma_dead():
@@ -126,15 +170,19 @@ func _ready():
 	
 	init_temp_variables()
 
+
 func init_temp_variables():
 	current_hp = hit_points_base
+
 
 func _process(delta):
 	_check_for_area_collisions()
 
+
 func _physics_process(delta: float) -> void:
 	#Check for my collision that overlapping areas
 	_check_for_area_collisions()
+
 
 func hit_by_player_projectile(var damage : float, var player_proj_source : PlayerProjectile) -> bool:
 	var condition : bool #Init a return value
@@ -182,6 +230,7 @@ func hit_by_player_projectile(var damage : float, var player_proj_source : Playe
 		condition = false
 	
 	return condition
+
 
 func _check_for_area_collisions():
 	for i in damage_area_nodes:
@@ -254,6 +303,7 @@ func _check_for_area_collisions():
 				if destroy_bullet_at_the_end:
 					projectile.queue_free_start()
 
+
 #Calculates damage, return the damage output value.
 func calculate_damage_output(var raw_damage : float) -> float:
 	var damage_result = 0
@@ -267,17 +317,20 @@ func calculate_damage_output(var raw_damage : float) -> float:
 	
 	return damage_result
 
+
 #Use calculated damage value to apply damage to enemy.
 #Ignores invisibility time.
 func apply_damage(var calculated_damage, var update_hp_bar = true):
 	#Subtracting HP.
 	current_hp -= calculated_damage
 
+
 func can_be_damaged() -> bool:
 	if (current_hp <= 0 and !death_immunity) or !eat_player_projectile:
 		return false
 	
 	return true
+
 
 #Check if hit points exceeds limit, normalize it.
 #Optional to cut decimal hp value.
@@ -289,10 +342,12 @@ func normalize_hp(cut_float_value : bool = false) -> void:
 	if cut_float_value: #Round down hp (Optional)
 		floor(current_hp)
 
+
 #Restores hit points
 func heal(amount_of_hp_to_restore : float):
 	current_hp += amount_of_hp_to_restore
 	normalize_hp()
+
 
 #Check whether this enemy can die.
 #If its hit points drop below zero, DIE!~
@@ -307,7 +362,7 @@ func check_for_death():
 		die()
 	else:
 		Audio.play_sfx("enemy_damage")
-	
+
 
 func die():
 	#Create death animation effect
@@ -330,6 +385,7 @@ func die():
 	#Emit signal
 	emit_signal("slain", self)
 
+
 #Start queue freeing.
 func queue_free_start(by_dying : bool):
 	if !is_reset_state_called: #Called once
@@ -338,6 +394,7 @@ func queue_free_start(by_dying : bool):
 		emit_signal("despawned", by_dying)
 		
 		queue_free()
+
 
 #Play death sound defined in export variable.
 func play_death_sfx():
@@ -350,7 +407,6 @@ func play_death_sfx():
 			Audio.play_sfx("explosion2")
 		_:
 			pass
-	
 
 
 func spawn_damage_counter(damage, offset : Vector2 = Vector2(0, 0)):
@@ -365,6 +421,7 @@ func spawn_damage_counter(damage, offset : Vector2 = Vector2(0, 0)):
 	
 	emit_signal("damage_counter_released", damage, self)
 
+
 func drop_item_start():
 	var drop_items : Array = item_table.get_items()
 	
@@ -372,6 +429,7 @@ func drop_item_start():
 	for i in drop_items:
 		if i is ItemSetData:
 			call_deferred("spawn_items_by_amount", i.item, i.quantity)
+
 
 func drop_pickups_start():
 	if not pickups_drop_enabled:
@@ -409,8 +467,10 @@ func spawn_pickup_by_name(pickup_name : String):
 			get_parent().add_child(pickup_object)
 			pickup_object.global_position = global_position
 
+
 func is_at_full_health():
 	return current_hp >= hit_points_base
+
 
 #When enemy leaves the screen, the enemy disappear.
 func _on_PreciseVisibilityNotifier2D_visibility_exited():
@@ -422,6 +482,7 @@ func _on_PreciseVisibilityNotifier2D_visibility_exited():
 func is_perma_dead() -> bool:
 	return false
 
+
 #Turn towards player. Flips SpriteMain so it'll
 #have its scale.x fliped to either value of 1 or -1
 func turn_toward_player():
@@ -431,6 +492,7 @@ func turn_toward_player():
 			sprite_main.scale.x = 1
 		else:
 			sprite_main.scale.x = -1
+
 
 #Check whether player is within enemy's radius.
 #Distance value is calculated by pixels.
@@ -443,6 +505,7 @@ func within_player_range(var rang : float) -> bool:
 			return true
 	
 	return false
+
 
 #Get distance between player by pixels.
 func get_player_distance() -> float:
@@ -459,8 +522,10 @@ func get_player_distance() -> float:
 	
 	return 0.0
 
+
 func get_sprite_main_direction() -> float:
 	return sprite_main.scale.x
+
 
 func _on_InvisTimer_timeout() -> void:
 	is_invincible = false

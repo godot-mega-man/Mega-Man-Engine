@@ -1,6 +1,5 @@
 # Number Simplifier
-# Code by: First
-
+#
 # NumberSimplifier allows turning a long number into a simplified
 # text number. Ex: floating value of 2500 will become 2K, 3200021
 # will be 3M, 555555 will be 555K, etc.
@@ -10,6 +9,7 @@ extends Node
 class AbbreviatedLetters:
 	const K = "K"
 	const M = "M"
+
 
 static func get_simplified_number(number : float) -> String:
 	var million : float = 1000000

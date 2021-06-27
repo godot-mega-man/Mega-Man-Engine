@@ -1,27 +1,39 @@
-extends Node
-class_name Level
+class_name Level extends Node
+
 
 signal spawned(node)
+
 signal transit_completed
 
+
 export(Color) var BG_COLOR = Color(0.23, 0.74, 1)
+
 export(AudioStreamOGGVorbis) var MUSIC
+
 export (AudioStreamOGGVorbis) var victory_music
+
 export (AudioStreamOGGVorbis) var victory_music_epic
 
-#Child nodes:
+
 onready var player = $Iterable/Player
+
 onready var camera = $Camera2D
+
 onready var death_timer = $DeathTimer
+
 onready var fade_screen = $FadeScreen
+
 onready var view_container := $ViewContainer
 
 onready var checkpoint_manager = get_node_or_null("/root/CheckpointManager")
+
 onready var currency_manager = get_node_or_null("/root/CurrencyManager")
+
 onready var player_stats = get_node_or_null("/root/PlayerStats") 
 
-#Temp variables
+
 var is_screen_transiting = false
+
 
 func _ready():
 	player.connect('player_die', self, '_player_die')
@@ -80,7 +92,6 @@ func start_screen_transition():
 	
 	#Hide boss's health bar if present
 	GameHUD.boss_vital_bar.set_visible(false)
-
 
 
 func init_screen_transition(direction : Vector2, duration : float, target_view, reset_vel_x : bool, reset_vel_y : bool, start_delay : float, finish_delay : float, transit_distance : float) -> void:

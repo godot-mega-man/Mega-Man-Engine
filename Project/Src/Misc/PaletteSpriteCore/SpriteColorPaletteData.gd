@@ -1,10 +1,10 @@
-#Sprite Color Palette Data
-#Code by: First
+# Sprite Color Palette Data
 
-extends Resource
+class_name SpriteColorPaletteData extends Resource
 
-class_name SpriteColorPaletteData
 
 export (NESColorPalette.NesColor) var primary_color
+
 export (NESColorPalette.NesColor) var secondary_color
+
 export (NESColorPalette.NesColor) var outline_color

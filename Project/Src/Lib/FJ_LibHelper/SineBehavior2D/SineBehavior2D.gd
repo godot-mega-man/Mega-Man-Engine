@@ -1,8 +1,5 @@
 # Sine Behavior
-# CR: Construct 2
-# By Okanar, First
-# ---------------
-
+#
 # The Sine behavior can adjust an object's properties 
 # (like its position, size or angle) back and forth 
 # according to an oscillating sine wave. This can be used
@@ -10,8 +7,8 @@
 # alternative wave functions like 'Triangle' can also be
 # selected to create different effects.
 
-extends Node
-class_name FJ_SineBehavior2D
+class_name FJ_SineBehavior2D extends Node
+
 
 enum MOVEMENT_TYPE {
 	HORIZONTAL,
@@ -25,119 +22,52 @@ enum PROCESS_TYPE {
 	PHYSICS
 }
 
-# -Active on start-
-#
 # Enable behaviour at the beginning of the layout.
 # If No, the behavior will have no effect until the Set active action is used.
 export(bool) var active_on_start = true setget set_active, is_active
 
-# -Process mode-
-#
 # The process how the object moves from a chosen behavior:
 # - Idle: Update once per frame.
 # - Physics: Update and sync with physics.
 export(PROCESS_TYPE) var process_mode = 0 setget set_process_mode
 
-# -Movement-
 export(MOVEMENT_TYPE) var movement = 0
 
-# -Wave-
-#
 # The wave function used to calculate the movement.
 export(Curve) var wave : Curve setget set_wave
 
-# -Period-
-#
 # The duration, in seconds, of one complete back-and-forth cycle.
 export(float) var period = 2 setget set_period
 
-# -Period random-
-#
 # A random number of seconds added to the period for each instance. This can
 # help vary the appearance when a lot of instances are using the Sine behavior.
 export(float, 0, 1) var period_random = 0
 
-# -Period offset-
-#
 # The initial time in seconds through the cycle. For example, if the period is
 # 2 seconds and the period offset is 1 second, the sine behavior starts
 # half way through a cycle.
 export(float) var period_offset = 0
 
-# -Period offset random-
-#
 # A random number of seconds added to the period offset for each instance.
 # This can help vary the appearance when a lot of instances are using the
 # Sine behavior.
 export(float, 0, 1) var period_offset_random = 0
 
-# -Magnitude-
-#
 # The maximum change in the object's position, size or angle. This is in
 # pixels for position or size modes, or degrees for the angle mode.
 export(float) var magnitude = 64 setget set_magnitude
 
-# -Magnitude random-
-#
 # A random value to add to the magnitude for each instance.
 # This can help vary the appearance when a lot of instances are using
 # the Sine behavior.
 export(float, 0, 1) var magnitude_random = 0
 
+
 var _init_position : Vector2
+
 var _current_cycle : float
 
-#-------------------------------------------------
-#       Sine Conditions
-#-------------------------------------------------
 
-#True if the behavior is active.
-func is_active() -> bool:
-	return active_on_start
-
-#-------------------------------------------------
-#       Sine Actions
-#-------------------------------------------------
-
-# Enable or disable the behavior. When disabled, the behavior does not
-# affect the object at all.
-func set_active(var value : bool) -> void:
-	active_on_start = value
-
-# Set process how the object moves from a chosen behavior:
-# - Idle: Update once per frame.
-# - Physics: Update and sync with physics.
-func set_process_mode(var value : int) -> void:
-	process_mode = value
-
-# Set the progress through one cycle of the chosen wave, from 0
-# (the beginning of the cycle) to 1 (the end of the cycle). For example
-# setting the cycle position to 0.5 will put it half way through the
-# repeating motion.
-func set_cycle_position(var value : float) -> void:
-	_current_cycle = value
-
-# Set the current magnitude of the cycle. This is in pixels when modifying 
-# the size or position, and degrees when modifying the angle.
-func set_magnitude(var value : float) -> void:
-	magnitude = value
-
-# Change the movement type of the behavior, e.g. from Horizontal to Vertical.
-func set_movement(var value : int) -> void:
-	movement = value
-
-# Set the duration of a single complete back-and-forth cycle, in seconds.
-func set_period(var value : float) -> void:
-	period = value
-
-# Change the wave property of the behavior, choosing a different wave 
-# function to be used to calculate the movement.
-func set_wave(var resource : Curve) -> void:
-	wave = resource
-
-#-------------------------------------------------
-#       Initialization using Ready function
-#-------------------------------------------------
 func _ready() -> void:
 	var _parent = get_parent()
 	
@@ -154,16 +84,63 @@ func _ready() -> void:
 	if wave == null:
 		push_warning(str(self.get_path(), " Curve's property is not specified. No action was taken."))
 
-#-------------------------------------------------
-#       Process
-#-------------------------------------------------
+
 func _process(delta: float) -> void:
 	if process_mode == PROCESS_TYPE.IDLE:
 		_do_process(delta)
 
+
 func _physics_process(delta: float) -> void:
 	if process_mode == PROCESS_TYPE.PHYSICS:
 		_do_process(delta)
+
+
+func is_active() -> bool:
+	return active_on_start
+
+
+# Enable or disable the behavior. When disabled, the behavior does not
+# affect the object at all.
+func set_active(var value : bool) -> void:
+	active_on_start = value
+
+
+# Set process how the object moves from a chosen behavior:
+# - Idle: Update once per frame.
+# - Physics: Update and sync with physics.
+func set_process_mode(var value : int) -> void:
+	process_mode = value
+
+
+# Set the progress through one cycle of the chosen wave, from 0
+# (the beginning of the cycle) to 1 (the end of the cycle). For example
+# setting the cycle position to 0.5 will put it half way through the
+# repeating motion.
+func set_cycle_position(var value : float) -> void:
+	_current_cycle = value
+
+
+# Set the current magnitude of the cycle. This is in pixels when modifying 
+# the size or position, and degrees when modifying the angle.
+func set_magnitude(var value : float) -> void:
+	magnitude = value
+
+
+# Change the movement type of the behavior, e.g. from Horizontal to Vertical.
+func set_movement(var value : int) -> void:
+	movement = value
+
+
+# Set the duration of a single complete back-and-forth cycle, in seconds.
+func set_period(var value : float) -> void:
+	period = value
+
+
+# Change the wave property of the behavior, choosing a different wave 
+# function to be used to calculate the movement.
+func set_wave(var resource : Curve) -> void:
+	wave = resource
+
 
 func _do_process(delta: float) -> void:
 	var _parent = get_parent()

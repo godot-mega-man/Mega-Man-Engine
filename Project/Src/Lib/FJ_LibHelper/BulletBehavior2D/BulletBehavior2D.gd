@@ -1,30 +1,17 @@
 # BulletBehavior2D
+#
+# The Bullet behavior simply moves parent object forwards at an angle. However,
+# it provides extra options like gravity and angle in degrees that allow it to
+# also be used. Like the name suggests it is ideal for projectiles like bullets,
+# but it is also useful for automatically controlling other types of objects
+# like enemies which move forwards continuously.
+# 
+# This will work on any parent node having 'position' property. Place it under
+# parent node.
 
 tool # Used for configuration warnings
-extends Node
+class_name FJ_BulletBehavior extends Node
 
-class_name FJ_BulletBehavior
-
-"""
-	The Bullet behavior simply moves parent object forwards at
-	an angle. However, it provides extra options like gravity
-	and angle in degrees that allow it to also be used.
-	Like the name suggests it is ideal for projectiles like
-	bullets, but it is also useful for automatically 
-	controlling other types of objects like enemies
-	which move forwards continuously.
-	
-	This will work on any parent node having 'position' property.
-	Place it under parent node and start configuring.
-"""
-
-#-------------------------------------------------
-#      Classes
-#-------------------------------------------------
-
-#-------------------------------------------------
-#      Signals
-#-------------------------------------------------
 
 signal distance_travelled_reached
 
@@ -35,9 +22,6 @@ signal stopped_moving
 # `kbody_move_and_collide` to on.
 signal kbody_collided(kinematic_collision_2d)
 
-#-------------------------------------------------
-#      Constants
-#-------------------------------------------------
 
 # The process how the object moves from a chosen behavior:
 #
@@ -49,9 +33,6 @@ enum PROCESS_TYPE {
 	PHYSICS
 }
 
-#-------------------------------------------------
-#      Properties
-#-------------------------------------------------
 
 # The node you want to have this behavior applied.
 export (NodePath) var root_node = "./.." setget set_root_node, get_root_node
@@ -113,19 +94,22 @@ export (bool) var allow_negative_speed = false
 export (float) var signal_on_distance_travelled = 500
 
 
-# Temp variables
 var _init_position := Vector2()
+
 var current_acceleration : float = 0
+
 var current_gravity : float = 0
+
 var current_distance_traveled : float = 0
+
 var vec_angle : Vector2
+
 var velocity : Vector2
 
+var _is_signal_distance_travelled_reached_emitted : bool
 
+var _is_signal_stopped_moving_emitted : bool 
 
-#-------------------------------------------------
-#      Notifications
-#-------------------------------------------------
 
 func _get_configuration_warning() -> String:
 	var warning : String = ""
@@ -158,16 +142,6 @@ func _physics_process(delta: float) -> void:
 		_do_process(delta)
 		_check_and_emit_signals()
 
-
-
-
-#-------------------------------------------------
-#      Public Methods
-#-------------------------------------------------
-
-#-------------------------------------------------
-#      Private Methods
-#-------------------------------------------------
 
 func _do_process(delta: float) -> void:
 	var _fetched_root_node = get_node(root_node)
@@ -216,10 +190,9 @@ func _do_process(delta: float) -> void:
 	current_gravity += gravity * delta
 	current_distance_traveled += prev_position.distance_to(_fetched_root_node.position)
 
+
 # Check all emit-able signals. If there's one that can be emitted,
 # start one.
-var _is_signal_distance_travelled_reached_emitted : bool = false
-var _is_signal_stopped_moving_emitted : bool = false
 func _check_and_emit_signals():
 	if (current_distance_traveled >= signal_on_distance_travelled and !_is_signal_distance_travelled_reached_emitted):
 		emit_signal("distance_travelled_reached")
@@ -233,11 +206,6 @@ func _check_and_emit_signals():
 	else:
 		_is_signal_stopped_moving_emitted = false
 
-
-
-#-------------------------------------------------
-#      Setters & Getters
-#-------------------------------------------------
 
 func set_root_node(val) -> void:
 	root_node = val

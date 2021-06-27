@@ -9,7 +9,6 @@
 [ext_resource path="res://Src/Scenes/ConfigMenuList.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Fonts/RpgRoll.tres" type="DynamicFont" id=9]
 
-
 [node name="Config" type="Node"]
 script = ExtResource( 1 )
 bgm = ExtResource( 3 )

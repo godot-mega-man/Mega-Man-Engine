@@ -1,6 +1,5 @@
 # NES Color Palette
-# Code by First
-
+#
 # If you want to create graphics for the NES, you're stuck using this
 # color palette. Below you will find the palette in several formats
 # to use in your favorite editor.
@@ -151,9 +150,8 @@
 # 251, 251, 251
 # 255, 255, 255
 
-extends Node
+class_name NESColorPalette extends Node
 
-class_name NESColorPalette
 
 const NesColor = {
 	BLACK1 = Color("000000"),

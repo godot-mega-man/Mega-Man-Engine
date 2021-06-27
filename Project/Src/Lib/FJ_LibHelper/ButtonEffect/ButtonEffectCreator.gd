@@ -1,23 +1,22 @@
-#Button Effect Creator
-#Code by: First
+# Button Effect Creator
+# 
+# Creates effect for the button whether the button is pressed.
 
-#HOW TO USE?
-#Place this node under texture_button and this will
-#automatically works by connecting parent node's signals:
-#where button is pressed, the effect will be created.
+class_name FJ_ButtonEffectCreator1 extends Node
 
-extends Node
-class_name FJ_ButtonEffectCreator1
 
 export var effect_color : Color = Color('ffffff')
+
 export (float, 0.01, 16.0, 0.01) var effect_speed = 1.0
+
 export (int, "Horizontal Open", "Vertical Open", "Expand_From_Center") var effect_type = 0
 
-#Child nodes
+
 onready var parent_node
 
-#Preloading nodes
-var effect = preload("res://Lib/FJ_LibHelper/ButtonEffect/ButtonEffect.tscn")
+
+var effect = preload("res://Src/Lib/FJ_LibHelper/ButtonEffect/ButtonEffect.tscn")
+
 
 func _ready():
 	parent_node = get_parent()
@@ -29,8 +28,10 @@ func _ready():
 	else:
 		self.queue_free()
 
+
 func is_parent_node_valid() -> bool:
 	return parent_node is Button
+
 
 #When button is pressed, the button touch effect will be created.
 #Also check if button touch effect is still exists (playing),

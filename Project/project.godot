@@ -34,11 +34,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Src/Lib/FJ_LibHelper/BrightnessShader/BrightnessShader.gd"
 }, {
-"base": "Button",
-"class": "ButtonPlus",
-"language": "GDScript",
-"path": "res://Src/Lib/FJ_NodeExtensions/ButtonPlus/ButtonPlus.gd"
-}, {
 "base": "Node",
 "class": "CameraShaker",
 "language": "GDScript",
@@ -48,11 +43,6 @@ _global_script_classes=[ {
 "class": "CharacterData",
 "language": "GDScript",
 "path": "res://Src/DatabaseCore/CharacterData/Core/CharacterData.gd"
-}, {
-"base": "Curve",
-"class": "CurvePlus",
-"language": "GDScript",
-"path": "res://Src/Lib/FJ_ResExtensions/CurvePlus/CurvePlus.gd"
 }, {
 "base": "Node2D",
 "class": "DamageCounter",
@@ -225,10 +215,8 @@ _global_script_class_icons={
 "BgmPlayer": "",
 "BossCore": "",
 "BrightnessShader": "",
-"ButtonPlus": "",
 "CameraShaker": "",
 "CharacterData": "",
-"CurvePlus": "",
 "DamageCounter": "",
 "DeathSpike": "",
 "EnemyCore": "",

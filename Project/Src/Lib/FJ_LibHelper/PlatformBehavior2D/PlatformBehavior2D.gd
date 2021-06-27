@@ -1,12 +1,11 @@
-#PlatformBehavior2D
-#Code by: First
-
+# PlatformBehavior2D
+#
 # The Platform behavior applies the parent node of
 # KinematicBody2d a side-view "jump and run" style
 # movement. By default the Platform movement is
 # controlled by the ui_left and ui_right keys and
 # ui_up to jump.
-
+#
 # To set up custom controls, you
 # can do so by setting export variables:
 #    DEFAULT_CONTROL_LEFT = 'ui_left'
@@ -20,8 +19,8 @@
 # While any of the above is true (e.g. 
 # simulate_walk_left), the parent node will
 # move itself as if it was holding left button.
-
-  ###Usage###
+#
+#  Usage:
 # Instance PlatformBehavior2D (from /Lib) or
 # adding child node as
 # User_PlatformBehavior2D (PlatformBehavior2D.gd)
@@ -29,77 +28,97 @@
 # behavior enabled. When attached, it's ready
 # to be used!
 
-#PROs:
-# - No need to attach script and write it over
-#   on every KinematicBody2D objects.
-# - Can be used on every object that's
-#   KinematicBody2D.
-#CONs:
-# - Quite complex to use.
-# - The script is currently very complicated to 
-#   understand if you plan to improve it.
+class_name FJ_PlatformBehavior2D extends Node
 
-extends Node
-
-class_name FJ_PlatformBehavior2D
 
 signal move_direction_changed(number)
+
 signal move_and_collided(kinematic_collision)
+
 signal landed
+
 signal jumped
+
 signal jumped_by_keypress
+
 signal hit_ceiling
+
 signal by_wall
+
 signal warped_updown
+
 signal warped_leftright
+
 signal fell_into_pit
+
 signal crushed
+
 signal collided(kinematic_collision_2d)
+
 
 enum MOVE_TYPE_PRESET {
 	MOVE_AND_SLIDE,
 	MOVE_AND_COLLIDE
 }
 
+
 export(MOVE_TYPE_PRESET) var move_type = 0
+
 export(Vector2) var GRAVITY_VEC = Vector2(0, 900.0) # pixels/second/second
+
 export(float) var WALK_SPEED = 250 # pixels/sec
+
 export(float) var JUMP_SPEED = 360
+
 export(float) var SIDING_CHANGE_SPEED = 10
+
 export(float) var VELOCITY_X_DAMPING = 0.1
+
 export(float) var MAX_FALL_SPEED = 360
 
 export var FLOOR_NORMAL = Vector2(0, -1)
 
 export(bool) var INITIAL_STATE = true
+
 export(bool) var CONTROL_ENABLE = false
+
 export(bool) var IS_PREVENT_OUTSIDE_SCREEN = false
+
 export(int) var PREVENT_OUTSIDE_SCREEN_OFFSET = 12 #Won't work if WARPS_LEFT_RIGHT_SIDE is on.
+
 export(bool) var USE_TIP_TOE_MOVEMENT = false
+
 export(float) var MAX_TIP_TOE_FRAME = 7
 
 export(String) var DEFAULT_CONTROL_LEFT = 'game_left'
+
 export(String) var DEFAULT_CONTROL_RIGHT = 'game_right'
+
 export(String) var DEFAULT_CONTROL_JUMP = 'game_jump'
 
 #Below only works if the level is defined to work with this.
 export (bool) var WARPS_AROUND_UP_DOWN = true
+
 export (bool) var WARPS_LEFT_RIGHT_SIDE = true
+
 export (Vector2) var WARP_OFFSET := Vector2(4, 24)
+
 export (Vector2) var snap_floor_pixel = Vector2(0, 2)
 
 #Define NodePath.
 #If not defined, some features will not be used.
 export(NodePath) var level_path
 
+
 #lookup nodes
 onready var audio_manager = get_node_or_null("/root/AudioManager")
+
 onready var level = get_node_or_null("/root/Level")
+
 onready var level_view_container := get_node_or_null("/root/Level/ViewContainer") as LevelViewContainer
 
 onready var parent : Node = get_parent()
 
-#Temp variables
 
 #Current velocity reported after move_and_slide or
 #move_and_collided on parent node is called.
@@ -109,24 +128,41 @@ onready var parent : Node = get_parent()
 var velocity := Vector2()
 
 var on_air_time : float = 0
+
 var jumping = false
+
 var midair_jump_left = 0
+
 var prev_jump_pressed = false
+
 var is_just_landed = true
+
 var is_just_hit_ceiling = false
+
 var is_just_by_wall
+
 #Simulate control where it can be toggled.
 #While on, the object will keep moving until toggled off.
 var simulate_walk_left = false
+
 var simulate_walk_right = false
+
 var simulate_jump = false
-var walk_left = false #Init... once
-var walk_right = false #Init... once
+
+var walk_left = false
+
+var walk_right = false
+
 var on_floor = true
+
 var on_ceiling = false
+
 var on_wall = false
-var jump = false #Init... once
+
+var jump = false
+
 var move_direction : int #-1 = moving left, 1 = moving right, 0 = still.
+
 var left_right_key_press_time : float = 0
 
 #Velocity before move_and_slide or move_and_collide is called.
@@ -136,17 +172,16 @@ var left_right_key_press_time : float = 0
 #get_velocity_before_move_and_slide() instead.
 var velocity_before_move_and_slide := Vector2() setget ,get_velocity_before_move_and_slide
 
+
 func _ready():
 	if !is_validate():
 		return
 
 func _physics_process(delta):
-	#Won't work if parent node is not KinematicBody2D.
 	if !is_validate():
 		return
 	parent = parent as KinematicBody2D
 	
-	#Check for initial state
 	if !INITIAL_STATE:
 		return
 	
@@ -171,8 +206,7 @@ func _physics_process(delta):
 						velocity.x = 60
 				
 		
-		#Set velocity before move and slide. For more info,
-		#please see its variable.
+		# Sets velocity before move and slide
 		set_velocity_before_move_and_slide(velocity)
 		
 		velocity = custom_move_and_slide(velocity, FLOOR_NORMAL)
@@ -180,6 +214,7 @@ func _physics_process(delta):
 		var kinematic_collision = parent.move_and_collide(GRAVITY_VEC * delta)
 		if kinematic_collision != null:
 			emit_signal("move_and_collided", kinematic_collision)
+	
 	# Detect if we are on floor - only works if called *after* move_and_slide
 	on_floor = parent.is_on_floor()
 	on_ceiling = parent.is_on_ceiling()
@@ -191,7 +226,6 @@ func _physics_process(delta):
 	else:
 		on_air_time = 0
 	
-	#Checks
 	if velocity.y > MAX_FALL_SPEED: #Limits fall speeds
 		velocity.y = MAX_FALL_SPEED
 	if on_floor: #Emit signal on landed once.
@@ -245,8 +279,7 @@ func _physics_process(delta):
 			cam.limit_right
 		)
 	
-	#Move Direction
-	#DEV NOTE: Removed check if on_floor.
+	# Move Direction
 	if velocity.x < -SIDING_CHANGE_SPEED:
 		move_direction = -1
 	if velocity.x > SIDING_CHANGE_SPEED:
@@ -258,9 +291,9 @@ func _physics_process(delta):
 	check_left_right_key_press_time(delta) #Resetter
 
 
-#The same as calling parent: move_and_slidec
-#This also emit signal the collision's information.
-#Sets velocity after move_and_slide() on parent node is called.
+# The same as calling parent: move_and_slidec
+# This also emit signal the collision's information.
+# Sets velocity after move_and_slide() on parent node is called.
 func custom_move_and_slide(custom_velocity, custom_floor_normal) -> Vector2:
 	if parent is KinematicBody2D:
 		var vel : Vector2
@@ -288,7 +321,7 @@ func custom_move_and_slide(custom_velocity, custom_floor_normal) -> Vector2:
 	
 	return Vector2()
 
-#Controls
+
 func jump_start(var check_condition = true) -> void:
 	if check_condition:
 		if !on_floor:
@@ -300,6 +333,7 @@ func jump_start(var check_condition = true) -> void:
 				emit_signal("jumped_by_keypress")
 	
 	velocity.y = -JUMP_SPEED
+
 
 func check_warp_around_up_down():
 	if level_view_container == null:
@@ -313,6 +347,7 @@ func check_warp_around_up_down():
 			parent.position.y = limit_top
 			emit_signal("warped_updown")
 
+
 func check_warp_around_left_right():
 	if level_view_container == null:
 		return
@@ -325,6 +360,7 @@ func check_warp_around_left_right():
 		if parent.position.x > level_view_container.CAMERA_LIMIT_RIGHT + WARP_OFFSET.x:
 			parent.position.x = level_view_container.CAMERA_LIMIT_LEFT - WARP_OFFSET.x
 		emit_signal("warped_leftright")
+
 
 func check_falling_into_pit():
 	if level_view_container == null:
@@ -340,14 +376,14 @@ func check_falling_into_pit():
 	if parent.position.y > limit_bottom:
 		emit_signal("fell_into_pit")
 
+
 func check_left_right_key_press_time(delta):
 	if not(walk_left or walk_right): #If not currently doing either one of these
 		left_right_key_press_time = 0
 	else:
 		left_right_key_press_time += 60 * delta
 
-#Check if this node will work. Return false if not.
-#An optional parameter can be passed to print for specific errors.
+
 func is_validate(var print_errors : bool = false) -> bool:
 	var is_all_valid = true
 	
@@ -365,13 +401,9 @@ func is_validate(var print_errors : bool = false) -> bool:
 	return is_all_valid
 
 
-
-##########################
-### Getter/Setter
-##########################
-
 func set_velocity_before_move_and_slide(val : Vector2) -> void:
 	velocity_before_move_and_slide = val
+
 
 func get_velocity_before_move_and_slide() -> Vector2:
 	return velocity_before_move_and_slide

@@ -1,5 +1,6 @@
 extends TileMap
 
+
 enum State {
 	RAISING,
 	FALLING,
@@ -7,13 +8,19 @@ enum State {
 	DISABLED
 }
 
+
 const MAX_EXTEND_Y = -64
 
+
 export (float) var raise_speed = 240
+
 export (float) var fall_speed = 15
+
 export (float) var fall_end_speed = 300
 
+
 var state = State.DISABLED
+
 
 func _physics_process(delta: float) -> void:
 	if state == State.RAISING:
@@ -33,6 +40,7 @@ func _physics_process(delta: float) -> void:
 			state = State.DISABLED
 			Audio.play_sfx("chain_end")
 
+
 func start():
 	if is_player_dead():
 		Audio.play_sfx("chain_end")
@@ -43,8 +51,10 @@ func start():
 	Audio.play_sfx("chain_loop")
 	state = State.RAISING
 
+
 func stop():
 	state = State.FALL_ENDING
+
 
 func is_player_dead() -> bool:
 	for i in get_tree().get_nodes_in_group("Player"):
@@ -52,6 +62,7 @@ func is_player_dead() -> bool:
 			return true
 	
 	return false
+
 
 func _exit_tree() -> void:
 	Audio.stop_sfx("chain_end")

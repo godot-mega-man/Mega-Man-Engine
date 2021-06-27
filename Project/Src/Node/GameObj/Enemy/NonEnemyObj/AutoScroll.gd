@@ -1,12 +1,17 @@
 extends EnemyCore
 
+
 export (float) var frame_wait = 2
 
+
 var curr_frame : float
+
 var limit : int
+
 
 func _ready() -> void:
 	init_camera_limits()
+
 
 func _process(delta: float) -> void:
 	if player.current_hp <= 0:
@@ -33,6 +38,7 @@ func _process(delta: float) -> void:
 	if cam.limit_right >= limit:
 		queue_free()
 
+
 func get_camera() -> Camera2D:
 	var cams = get_tree().get_nodes_in_group("CameraCustom")
 	
@@ -40,6 +46,7 @@ func get_camera() -> Camera2D:
 		return null
 	
 	return cams.back()
+
 
 func init_camera_limits():
 	limit = get_camera().limit_right

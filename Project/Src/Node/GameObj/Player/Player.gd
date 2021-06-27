@@ -1,3 +1,7 @@
+# Player
+# TODO: Remove magic numbers and a ton of NONSENSE CODES (probably the worst
+#       code ever made here)
+
 extends KinematicBody2D
 class_name Player
 

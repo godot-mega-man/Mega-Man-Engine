@@ -1,10 +1,11 @@
 extends Camera2D
 
-#Follow to target node.
+
 export (NodePath) var follow_on_path
 
 
 onready var camera_shaker : CameraShaker = $CameraShaker
+
 onready var transition_tween = $TransitionTween
 
 onready var level := get_node_or_null("/root/Level") as Level

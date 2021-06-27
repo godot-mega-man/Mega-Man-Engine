@@ -1,8 +1,12 @@
 extends EnemyCore
 
+
 var stop : bool # If true, stops as soon as this obj spawned
+
 var view_container : NodePath
+
 var new_level_view : NodePath
+
 
 func _ready() -> void:
 	if stop:
@@ -25,11 +29,14 @@ func _ready() -> void:
 	
 	queue_free()
 
+
 func start():
 	get_tree().call_group("ChainTilemap", "start")
 
+
 func stop():
 	get_tree().call_group("ChainTilemap", "stop")
+
 
 func get_camera() -> Camera2D:
 	for i in get_tree().get_nodes_in_group("CameraCustom"):

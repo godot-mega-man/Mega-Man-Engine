@@ -1,10 +1,8 @@
-extends ReferenceRect
+class_name ScreenTransitor extends ReferenceRect
 
-class_name ScreenTransitor
 
 signal transition_activated
 
-### EXPORT VARIABLES ### 
 
 #Change to what view when transiting.
 export (NodePath) var target_view
@@ -14,6 +12,7 @@ export (NodePath) var active_view
 
 #Which direction the screen transits.
 export (int, "Left", "Right", "Up", "Down") var direction
+
 export (Vector2) var transit_duration := Vector2(1.8, 2)
 
 #Transit distance in pixels.
@@ -22,6 +21,7 @@ export (float) var transit_distance = 36
 #Resets player's velocity after the screen is transited.
 #When true, the player's velocity_x or y becomes zero.
 export (bool) var reset_velocity_x = false
+
 export (bool) var reset_velocity_y = false
 
 #Adds up delay time in seconds before the screen begins transiting.

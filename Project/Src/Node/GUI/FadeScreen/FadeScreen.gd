@@ -1,15 +1,22 @@
-extends CanvasLayer
-class_name FadeScreen
+# TODO: Make it singleton rather than individually placed nodes
+# FadeScreen
+
+class_name FadeScreen extends CanvasLayer
 
 signal changing_scene
+
 signal fading_finished
+
 signal fading_started
 
-#Child nodes
+
 onready var fade_player = $Control/FadePlayer
 
+
 var scene_to_go : String
+
 var is_reload_scene_call = false
+
 
 func go_to_scene(var target : String):
 	scene_to_go = target
@@ -19,6 +26,7 @@ func go_to_scene(var target : String):
 	
 	emit_signal("changing_scene")
 
+
 func reload_scene():
 	fade_player.play("Fade Out")
 	get_tree().paused = true
@@ -26,6 +34,7 @@ func reload_scene():
 	print('Reloading scene: ' + str(get_tree().current_scene.get_path()))
 	
 	emit_signal("changing_scene")
+
 
 func _on_AnimationPlayer_animation_finished(anim_name : String):
 	if anim_name == "Fade Out":
@@ -38,6 +47,7 @@ func _on_AnimationPlayer_animation_finished(anim_name : String):
 		get_tree().paused = false
 	
 	emit_signal("fading_finished")
+
 
 func _on_AnimationPlayer_animation_started(anim_name : String):
 	if anim_name == "Fade In":

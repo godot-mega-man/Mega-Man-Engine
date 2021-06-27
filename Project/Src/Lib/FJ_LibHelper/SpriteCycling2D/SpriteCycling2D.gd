@@ -1,52 +1,34 @@
-#Sprite Cycling
-#Code by: First
-
-#Sprite Cycling turns all children within the parent node
-#to draw sprites in forward order one frame and
-#backward order the next when two sprites are
-#overlapping each other.
-
-# USE CASES:
-#   There are two items with similiar image size
-#   that are overlapping at the same spot, which
-#   makes either item A or B can barely be seen.
-#   How about if we swap both item A and B
-#   cycling back and forth so some part of their
-#   sprites can be seen? Wouldn't be that great
-#   to not confusing player with item A is
-#   being hidden by item B? This is called
-#   "Faking Transparency".
-
-# USAGE: Can be used anywhere. Place it within the parent node.
-# Example:
+# Sprite Cycling
 #
-# Root
-# ┖╴Node2D
-#   ┠╴Iterable
-#   ┠╴Sprite          <- Affects by iterable.
-#   ┠╴Kinematic2d     <- Affects by iterable.
-#   ┠╴Label           <- No effect.
-#   ┖╴Node2D          <- Affects by iterable.  
-#     ┠╴Label          <- No effect, but affected to parent.
-#     ┖╴Sprite         <- No effect, but affected to parent.
-#
-# COMPATIBILITY: Node2D
+# Sprite Cycling turns all children within the parent node
+# to draw sprites in forward order one frame and
+# backward order the next when two sprites are
+# overlapping each other.
 
-#tool #Remove this line if you do not wish this script to work in the editor.
-extends Node
-class_name Iterable
+
+class_name Iterable extends Node
+
+
+const MAX_LOOPABLE = 10
+
 
 export(bool) var enabled = true
-export(Array, int) var frames_per_iterate = [0, 1] #Array length should be power of n. e.g. 1, 2, 4, or 8, ..
-												#this will wait for n frames before iterate starts.
-												#there is a pointer that will move to the next of an array
-												#once iteration is done in said frame.
-var z_swapping = 0 #Increment every frames. Resets on reaching frames_per_iterate[pointer]
-var pointer = 0 #Pointer on array of frames_per_iterate
-var swap_mode = 0 #0 = no iterate, other than 0 = iterate
+
+# Array length should be power of n. e.g. 1, 2, 4, or 8, ..
+# this will wait for n frames before iterate starts.
+# there is a pointer that will move to the next of an array
+# once iteration is done in said frame.
+export(Array, int) var frames_per_iterate = [0, 1] 
+
+
+var z_swapping = 0 # Increment every frames. Resets on reaching frames_per_iterate[pointer]
+
+var pointer = 0 # Pointer on array of frames_per_iterate
+
+var swap_mode = 0 # 0 = no iterate, other than 0 = iterate
 
 var nes_slow_down : bool = false
-const MAX_LOOPABLE = 10
+
 var current_loop = 0
 
 
@@ -61,7 +43,6 @@ func _process(delta : float) -> void:
 		_do_sprite_swap_process()
 	if GameSettings.gameplay.nes_slowdown:
 		_do_nes_slowdown_process()
-	
 
 
 func get_iterable_nodes():
