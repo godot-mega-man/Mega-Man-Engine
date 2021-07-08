@@ -1,14 +1,25 @@
 # Player
-# TODO: Remove magic numbers and a ton of NONSENSE CODES (probably the worst
-#       code ever made here)
 
-extends KinematicBody2D
-class_name Player
+# NOTE: This was created but is unintended to make the player to do everything
+# in the way the code badly optimizes.
+# NOTE2: This script has received feedbacks prior to the player script by
+# university students and will be refactored to make the code easier to read.
+#
+# TODO: Remove magic numbers
+# TODO: Refactor the player to the base of Entity class (Entity is a class
+#       that has base stats such as HP, Collision damage, etc.)
+# TODO: Change the player to not do every single things in one script
+
+
+
+class_name Player extends KinematicBody2D
+
 
 signal player_die
 signal launched_attack
 signal player_die_normally
 signal took_damage
+
 
 #Starting location:
 #  -Auto: Uses current location as a starting point. If a player
@@ -95,7 +106,6 @@ onready var global_var = get_node("/root/GlobalVariables")
 onready var tile_map = get_node("/root/Level/TileMap")
 onready var player_stats = get_node("/root/PlayerStats")
 
-#Preloading objects... Ex: Bullets.
 var proj_megabuster = preload("res://Src/Node/GameObj/PlayerProjectile/PlayerProjectile_MegaBuster.tscn")
 var proj_chargedmegabuster1 = preload("res://Src/Node/GameObj/PlayerProjectile/PlayerProjectile_ChargedMegaBuster1.tscn")
 var proj_chargedmegabuster2 = preload("res://Src/Node/GameObj/PlayerProjectile/PlayerProjectile_ChargedMegaBuster2.tscn")
@@ -105,27 +115,25 @@ var explosion_effect = preload("res://Src/Node/GameObj/Effects/Explosion/Explosi
 var coin_particles = preload("res://Src/Node/GameObj/Effects/Particles/CoinParticles.tscn")
 var vulnerable_effect = preload("res://Src/Node/GameObj/Effects/VulnerableEffect/VulnerableEffect.tscn")
 var slide_dust_effect = preload("res://Src/Node/GameObj/Effects/SlideDust/SlideDust.tscn")
-'''---------------------------------------------------------------------------------'''
+
 
 func _ready():
-	#Set starting location. (By default, or from teleporters, warp zones, etc.)
 	set_starting_location()
 	set_starting_stats() #Hp, for ex.
 	
-	#Connect attack_cooldown_timer's signal
 	area.connect('area_entered', self, '_on_area_entered')
 	attack_cooldown_timer.connect("timeout", self, '_on_attack_cooldown_timer_timeout')
 	invis_timer.connect('timeout', self, '_on_invis_timer_timeout')
 	self.connect('tree_exiting', self, '_on_tree_exiting')
 	player_stats.connect("leveled_up", self, "_on_leveled_up")	
 	
-	#Let's the entire scene know that the player is alive.
 	player_stats.is_died = false
 	
 	update_player_sprite_texture()
 	_update_current_character_palette_state(true)
 	
 	GameHUD.player_weapon_bar.hide()
+
 
 func _process(delta):
 	set_vflip_by_keypress()
@@ -137,6 +145,7 @@ func _process(delta):
 	check_taking_damage()
 	update_platformer_sprite_color_palettes()
 	weapon_process()
+
 
 func _input(event):
 	if event is InputEventKey:
@@ -153,18 +162,19 @@ func _input(event):
 			player_death()
 			GameHUD.update_player_vital_bar(0)
 
-#Check if jump key is holding while in the air.
-#Otherwise, resets velocity y
+
+# Checks whether the jump key is holding while in the air.
+# Otherwise, resets velocity y
 func check_holding_jump_key():
 	if is_cancel_holding_jump_allowed:
 		if !Input.is_action_pressed(jump_hotkey) and pf_bhv.velocity.y < 0 and pf_bhv.on_air_time > 0:
 			pf_bhv.velocity.y = 0
 			is_cancel_holding_jump_allowed = false
 
+
 func set_starting_location():
-	#First, get data from checkpoint manager.
 	var is_default_location = CheckpointManager.saved_player_position == Vector2(0, 0)
-	#Update checkpoint's position if not set.
+	
 	if !CheckpointManager.has_checkpoint():
 		CheckpointManager.update_checkpoint_position(global_position, get_tree().get_current_scene().get_filename(), global_var.current_view)
 	
@@ -173,11 +183,10 @@ func set_starting_location():
 			global_position = CheckpointManager.saved_player_position
 	if STARTING_LOCATION == 2: #Never (Unsafe)
 		global_position = CheckpointManager.saved_player_position
-	
-	#If player died last time, checkpoint will be used
-	#and set current player's position.
 	if player_stats.is_died:
 		global_position = CheckpointManager.current_checkpoint_position
+	
+
 
 func set_starting_stats():
 	#When player enters scene for the first time (Enter level, died last time),
@@ -188,6 +197,7 @@ func set_starting_stats():
 	else:
 		current_hp = player_stats.current_hp
 	GameHUD.update_player_vital_bar(current_hp)
+
 
 func _on_PlatformerBehavior_fell_into_pit() -> void:
 	if Difficulty.difficulty < Difficulty.DIFF_NORMAL:
@@ -214,9 +224,9 @@ func _on_PlatformerBehavior_fell_into_pit() -> void:
 	current_hp = 0
 	is_fell_into_pit = true
 	
-	#Update GUI
 	GameHUD.update_player_vital_bar(current_hp)
 	player_death()
+
 
 func set_vflip_by_keypress():
 	if pf_bhv.walk_left:
@@ -224,14 +234,13 @@ func set_vflip_by_keypress():
 	if pf_bhv.walk_right:
 		platformer_sprite.scale.x = 1
 
+
 func press_attack_check(delta : float):
 	if !pf_bhv.CONTROL_ENABLE or !pf_bhv.INITIAL_STATE:
 		return
 	
-	#Character will start to shoot/attack when the player pressed "action key"
-	#To be able to attack, all of the following conditions must be met:
-	#  -There is a keypress stroke.
-	#  -Attack is not in cooldown and must be ready (Rapid firing is the exception).
+	# TODO: Reduce multiple nested if/else
+	# TODO: Replace magic numbers to something else such as const variables
 	if is_attack_ready:
 		if attack_type == 0:
 			if Input.is_action_just_pressed(attack_hotkey):
@@ -259,7 +268,6 @@ func press_attack_check(delta : float):
 	if curr_weapon_idx != 0:
 		return
 	
-	#Check if releasing attack button or holding either way
 	if not Input.is_action_pressed(attack_hotkey):
 		if not can_spawn_projectile():
 			return
@@ -282,7 +290,6 @@ func press_attack_check(delta : float):
 			attack_hold_time = CHARGE_MEGABUSTER_STARTING_TIME
 			return
 		
-		#Charge actions
 		if mega_buster_charge_lv == 0:
 			if attack_hold_time > CHARGE_MEGABUSTER_STARTING_TIME:
 				mega_buster_charge_lv = 1
@@ -293,25 +300,24 @@ func press_attack_check(delta : float):
 				mega_buster_charge_lv = 2
 				palette_ani_player_changer.play("FullyCharged")
 
+
 func start_launching_attack(packed_scene : PackedScene):
 	var bullet = packed_scene.instance()
-	get_parent().add_child(bullet) #Deploy projectile from player.
+	get_parent().add_child(bullet)
 	
 	bullet.position = shoot_pos.global_position
 	bullet.bullet_behavior.angle_in_degrees = -90 + (90.0 * platformer_sprite.scale.x)
 	bullet.sprite.scale.x = platformer_sprite.scale.x
 	
-	#Calculate damage
 	var total_damage = 0
 	total_damage = DAMAGE_BASE + bullet.DAMAGE_POWER
-	bullet.DAMAGE_POWER = total_damage #Final damage output
+	bullet.DAMAGE_POWER = total_damage
 	
-	#Emit signal
 	emit_signal("launched_attack")
 	
 	return bullet
 
-#Check if the projectile is not above limit
+
 func can_spawn_projectile() -> bool:
 	var size : float = 0
 	
@@ -321,66 +327,53 @@ func can_spawn_projectile() -> bool:
 	
 	return size < PROJECTILE_ON_SCREEN_LIMIT
 
-#OBSOLETED! Will be removed and rewritten to a better one.
-func start_launching_attack_skill() -> void:
-	return
 
 func _on_attack_cooldown_timer_timeout():
-	is_attack_ready = true #Ready to attack again
+	is_attack_ready = true
 
+
+# TODO: Make reader know that this method is able to override
 func check_for_area_collisions():
+	pass 
+
+
+# TODO: Make reader know that this method is able to override
+func _on_area_entered(body):
 	pass
 
-
-#When ANY kind of 'area' collides with player (once),
-#Do anything below here.
-func _on_area_entered(body):
-	pass #CURRENTLY DOING NOTHING
 
 func player_take_damage(damage_amount : int, repel_player : bool = false, repel_position : Vector2 = Vector2(0, 0), repel_power : int = 300, apply_new_invis : bool = false, apply_new_invis_time : float = 0.1):
 	if is_invincible or is_cutscene_mode:
 		return
 	
-	#Subtracting health from damage taken.
 	current_hp -= damage_amount
-	#Repel player to the opposite direction the player is facing.
+	
 	if repel_player:
 		repel_player()
 	
-	#Platformer Sprite plays damage animation.
 	platformer_sprite.is_taking_damage = true
-	
-	#Disables movement and controls.
 	pf_bhv.CONTROL_ENABLE = false
 	taking_damage_timer.start()
 	
-	#Player become invincible after taking damage.
-	#While invincible, player won't be able to take damage,
-	#which is good! But that won't last long...
 	var new_invis_time
 	if apply_new_invis:
-		#Some enemies wanted to touch you for 1 damage, for example.
 		new_invis_time = apply_new_invis_time 
 	else:
-		new_invis_time = self.DEFAULT_INVIS_TIME #Default invis time.
+		new_invis_time = self.DEFAULT_INVIS_TIME
+	
 	is_invincible = true
 	invis_timer.start(new_invis_time)
 	
-	#Plays flashing animation
 	if current_hp > 0:
 		damage_sprite_ani.play("Flashing")
 	
-	#Spawn damage counter
 	spawn_damage_counter(damage_amount)
-	
-	#Spawn vulnerable effect
 	spawn_vulnerable_effect()
 	
-	#Stops sliding if possible (no ceiling collision)
+	# Stops sliding if there is no collision above ceiling
 	if not test_normal_check_collision():
 		stop_sliding(true)
 	
-	#Check for death
 	if current_hp <= 0:
 		player_death()
 	else:
@@ -388,27 +381,27 @@ func player_take_damage(damage_amount : int, repel_player : bool = false, repel_
 		animation_player.play("Invincible")
 	
 	GameHUD.update_player_vital_bar(current_hp)
-	
 	is_taking_damage = true
-	
 	emit_signal("took_damage")
+
 
 func check_taking_damage():
 	if is_taking_damage and not is_sliding:
 		pf_bhv.velocity.x = taking_damage_slide_pos
 
+
 func check_press_jump_or_sliding():
 	if !(pf_bhv.INITIAL_STATE and pf_bhv.CONTROL_ENABLE):
 		return
-	
 	if is_taking_damage:
 		return
 	if not pf_bhv.on_floor:
 		return
+	
 	if is_sliding_key_pressed():
-		#To be able to slide, must be on floor and not sliding.
-		#In addition, the player must not be nearby wall
-		#by current direction the player is facing.
+		# To be able to slide, must be on floor and not sliding.
+		# In addition, the player must not be nearby wall
+		# by current direction the player is facing.
 		if platformer_sprite.scale.x == 1:
 			if not (is_sliding or test_slide_check_collision(Vector2(1, -1))):
 				start_sliding()
@@ -418,10 +411,11 @@ func check_press_jump_or_sliding():
 		return
 	
 	if Input.is_action_just_pressed("game_jump"):
-		#If the player tries to jump while sliding under ceiling,
-		#it would fail.
+		# If the player tries to jump while sliding under ceiling,
+		# it would fail.
 		if !(is_sliding and test_normal_check_collision()):
 			pf_bhv.jump_start()
+
 
 func check_sliding(delta : float):
 	if !(pf_bhv.INITIAL_STATE and pf_bhv.CONTROL_ENABLE):
@@ -433,25 +427,26 @@ func check_sliding(delta : float):
 		if pf_bhv.on_wall:
 			if not test_normal_check_collision():
 				pf_bhv.left_right_key_press_time = 0
-				stop_sliding() #Stop normally
+				stop_sliding()
 		else:
-			stop_sliding(true) #Force stop
+			stop_sliding(true) # Forces stop
 	
 	if is_sliding:
 		slide_direction_x = platformer_sprite.scale.x
 		pf_bhv.velocity.x = SLIDE_SPEED * slide_direction_x
-		pf_bhv.left_right_key_press_time = 30 #Fix tipping toe glitch
+		pf_bhv.left_right_key_press_time = 30 # This fixes tipping toe glitch
 	
-	#Decrease slide remaining
+	# TODO: Add method to decrease slide remaining
 	if slide_remaining > 0:
 		slide_remaining -= 60 * delta
 	elif slide_remaining < 0 and slide_remaining > -10 and pf_bhv.on_floor:
 		stop_sliding()
 
+
 func check_canceling_slide():
 	if is_sliding:
 		if Input.is_action_just_pressed("game_left") and pf_bhv.on_floor:
-			if slide_direction_x == 1: #Right
+			if slide_direction_x == 1:
 				pf_bhv.left_right_key_press_time = 0
 				stop_sliding()
 		if Input.is_action_just_pressed("game_right") and pf_bhv.on_floor:
@@ -460,6 +455,7 @@ func check_canceling_slide():
 				stop_sliding()
 		if pf_bhv.on_air_time > 0:
 			stop_sliding()
+
 
 func change_player_current_hp(var amount : int):
 	current_hp += amount
@@ -470,9 +466,11 @@ func change_player_current_hp(var amount : int):
 		current_hp = max_hp
 	GameHUD.update_player_vital_bar(current_hp)
 
+
 func heal_to_full_hp():
 	current_hp = max_hp
 	GameHUD.update_player_vital_bar(current_hp)
+
 
 func heal(var amount : int):
 	current_hp += abs(amount)
@@ -480,14 +478,16 @@ func heal(var amount : int):
 		current_hp = max_hp
 	GameHUD.fill_player_vital_bar(amount)
 
+
 func recover_ammo(amount : int):
 	GameHUD.fill_player_weapon_bar(amount)
 
-#When the invincible's timer runs out, player will be able to get hurt again.
+
 func _on_invis_timer_timeout():
 	is_invincible = false
 	animation_player.stop()
 	platformer_sprite.visible = true #Due to animation glitch, this will surely fix it.
+
 
 func repel_player():
 	pf_bhv.velocity = Vector2()
@@ -495,6 +495,7 @@ func repel_player():
 		taking_damage_slide_pos = TAKING_DAMAGE_SLIDE_RIGHT
 	else:
 		taking_damage_slide_pos = TAKING_DAMAGE_SLIDE_LEFT
+
 
 func spawn_damage_counter(damage, var spawn_offset : Vector2 = Vector2(0,0)):
 	if !GameSettings.gameplay.damage_popup_player:
@@ -507,6 +508,7 @@ func spawn_damage_counter(damage, var spawn_offset : Vector2 = Vector2(0,0)):
 	dmg_text.global_position += spawn_offset #Spawn offset
 	dmg_text.get_node('Label').add_color_override("font_color", Color("fb3800"))
 
+
 func spawn_vulnerable_effect():
 	if current_hp <= 0:
 		return
@@ -515,19 +517,15 @@ func spawn_vulnerable_effect():
 	get_parent().add_child(eff)
 	eff.global_position = self.global_position
 
-#When the player's health drops below zero, player won't be able to
-#continue their journey.
-#Why? The character can die... but that won't affect
-#the main story. You may get a game over screen or lost 1UP.
+
 func player_death():
 	Audio.stop_all_sfx()
 	Audio.stop_bgm()
 	
-	#Restore hp on scene load. Because we wanted player to restore health
-	#after the player is respawned.
+	# Makes restore hp on scene load because we wanted the character to restore
+	# health after the player is respawned.
 	player_stats.restore_hp_on_load = true
-	
-	player_stats.is_died = true #PLAYER IS DEAD!
+	player_stats.is_died = true
 	
 	if is_fell_into_pit:
 		die()
@@ -538,12 +536,13 @@ func player_death():
 		death_freeze_timer.start()
 		get_tree().set_pause(true)
 
+
 func _on_DeathFreezeTimer_timeout() -> void:
 	die()
 
+
 func die():
 	current_hp = 0
-	#Tell the scene that the player has died
 	emit_signal('player_die')
 	
 	if not is_fell_into_pit:
@@ -553,21 +552,20 @@ func die():
 	
 	#Reset to initial palette, prevents weapon energy palette glitch
 	CURRENT_PALETTE_STATE = 0
+	
 	update_platformer_sprite_color_palettes(true)
-	
-	#Stop everything
-	#Hide player from view and disable process
 	set_player_disappear(true)
-	
 	get_tree().set_pause(false)
 
 
 func _on_tree_exiting():
 	player_stats.current_hp = current_hp
 
+
 func set_control_enable(enabled : bool):
 	pf_bhv.CONTROL_ENABLE = enabled
-	
+
+
 func set_control_enable_from_cutscene(enabled : bool):
 	pf_bhv.CONTROL_ENABLE = enabled
 	self.is_cutscene_mode = enabled
@@ -576,8 +574,7 @@ func set_control_enable_from_cutscene(enabled : bool):
 func _on_leveled_up():
 	heal_to_full_hp()
 
-#Disappear from playable area.
-#Collision detections, kinematic behaviours.
+
 func set_player_disappear(var set : bool) -> void:
 	set_process(!set)
 	pf_bhv.INITIAL_STATE = !set #Platformer's Behaviour.
@@ -589,7 +586,7 @@ func set_player_disappear(var set : bool) -> void:
 	collision_shape.call_deferred("set_disabled", set)
 	area_collision.call_deferred("set_disabled", set)
 
-#Start transition between screens. This is done by event.
+
 func start_screen_transition(normalized_direction : Vector2, duration : float, reset_vel_x : bool, reset_vel_y : bool, start_delay : float, transit_distance : float):
 	var transit_add_pos : Vector2
 	
@@ -629,7 +626,7 @@ func start_screen_transition(normalized_direction : Vector2, duration : float, r
 	invis_timer.paused = true
 	taking_damage_timer.paused = true
 
-#After screen transiting has completed
+
 func _on_TransitionTween_tween_all_completed() -> void:
 	platformer_sprite.animation_paused = false
 	pf_bhv.INITIAL_STATE = true
@@ -637,7 +634,7 @@ func _on_TransitionTween_tween_all_completed() -> void:
 	taking_damage_timer.paused = false
 	palette_ani_player.playback_active = true
 
-#Collision checks goes here.
+
 func _on_PlatformerBehavior_collided(kinematic_collision_2d : KinematicCollision2D) -> void:
 	var collider = kinematic_collision_2d.collider
 	
@@ -651,15 +648,15 @@ func _on_PlatformerBehavior_collided(kinematic_collision_2d : KinematicCollision
 		
 		player_take_damage(collider.contact_damage)
 
-#Plays jumping sound
+# TODO: Remove this method and recheck for dependencies
 func _on_PlatformBehavior_jumped_by_keypress() -> void:
-#	FJ_AudioManager.sfx_character_jump.play()
 	pass
 
 
 func _on_PlatformBehavior_landed() -> void:
 	if not current_hp <= 0 and not is_taking_damage:
 		Audio.play_sfx("landing")
+	
 	is_cancel_holding_jump_allowed = true
 
 #Regains control when timer of being knocked back is out.
@@ -675,6 +672,7 @@ func _on_TakingDamageTimer_timeout() -> void:
 	#Stops flashing animation.
 	damage_sprite_ani.play("StopFlashin")
 
+
 func start_sliding():
 	slide_collision_shape.set_deferred("disabled", false)
 	collision_shape.set_deferred("disabled", true)
@@ -682,19 +680,18 @@ func start_sliding():
 	is_sliding = true
 	slide_remaining = SLIDE_FRAME
 	
-	#Create slide effect
+	# Creates slide effect
 	var inst_slide_effect = slide_dust_effect.instance()
 	get_parent().add_child(inst_slide_effect)
 	inst_slide_effect.global_position = slide_dust_pos.global_position
 	inst_slide_effect.scale.x = platformer_sprite.scale.x
 	
-	#Update player's damage hitbox
+	# Updates player's damage hitbox
 	area_slide_collision.set_disabled(false)
 	area_collision.set_disabled(true)
 
 
 func stop_sliding(var force_stop : bool = false):
-	#If the collision would occur while stopping slide.
 	if test_normal_check_collision() and !force_stop:
 		 return
 	
@@ -703,8 +700,6 @@ func stop_sliding(var force_stop : bool = false):
 	platformer_sprite.is_sliding = false
 	is_sliding = false
 	slide_remaining = -10
-	
-	#Update player's damage hitbox
 	area_slide_collision.set_disabled(true)
 	area_collision.set_disabled(false)
 
@@ -729,6 +724,7 @@ func test_normal_check_collision(vel_rel := Vector2(0, -1)) -> bool:
 	
 	return result
 
+
 func test_slide_check_collision(vel_rel := Vector2(0, -1)) -> bool:
 	var result : bool
 	var last_collision_shape : bool = collision_shape.disabled
@@ -742,6 +738,7 @@ func test_slide_check_collision(vel_rel := Vector2(0, -1)) -> bool:
 	
 	return result
 
+
 func update_platformer_sprite_color_palettes(force_update : bool = false):
 	_update_current_character_palette_state(force_update)
 	
@@ -749,11 +746,10 @@ func update_platformer_sprite_color_palettes(force_update : bool = false):
 	platformer_sprite.palette_sprite.second_sprite.modulate = global_var.current_player_secondary_color
 	platformer_sprite.palette_sprite.outline_sprite.modulate = global_var.current_player_outline_color
 
+
 func _update_current_character_palette_state(force_update : bool = false):
 	if player_character_data_res == null:
 		return
-#	if (!pf_bhv.INITIAL_STATE or !pf_bhv.CONTROL_ENABLE) and !force_update:
-#		return
 	
 	if curr_weapon_idx == 0:
 		if player_character_data_res is CharacterData:
@@ -787,6 +783,7 @@ func _update_current_character_palette_state(force_update : bool = false):
 		global_var.current_player_secondary_color = Color("887000")
 		global_var.current_player_outline_color = Color("000000")
 
+
 func update_player_sprite_texture():
 	if player_character_data_res == null:
 		return
@@ -794,19 +791,24 @@ func update_player_sprite_texture():
 	if player_character_data_res is CharacterData:
 		platformer_sprite.set_texture(player_character_data_res.character_spritesheet)
 
+
 func play_teleport_in_sound():
 	Audio.play_sfx("teleport_in")
+
 
 func play_teleport_out_sound():
 	Audio.play_sfx("teleport_out")
 
+
 func _on_TeleportPlayer_animation_finished(anim_name: String) -> void:
 	GameHUD.player_vital_bar.show()
+
 
 func _on_PlatformBehavior_crushed() -> void:
 	current_hp = 0
 	GameHUD.update_player_vital_bar(0)
 	player_death()
+
 
 func weapon_process():
 	# Switch curr weapon
@@ -824,7 +826,7 @@ func weapon_process():
 		if Input.is_action_pressed("game_tl"):
 			curr_weapon_idx = 0
 		_weapon_switched()
-	
+
 
 func _weapon_switched():
 	Audio.play_sfx("cursor_sw")
@@ -836,10 +838,8 @@ func _weapon_switched():
 	palette_ani_player.play("Init")
 	palette_ani_player_changer.stop()
 	
-	# Make weapon bar visible/invisible
 	GameHUD.player_weapon_bar.visible = curr_weapon_idx != 0
 	
-	# Weapon HUD update
 	if curr_weapon_idx == 0:
 		$WeaponHUD.frame = 0
 	if curr_weapon_idx == 1:

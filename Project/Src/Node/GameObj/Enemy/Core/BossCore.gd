@@ -1,28 +1,13 @@
 # BossCore
+
+# NOTE: This was created but is unintended to make the boss to do everything
+# in the way the code badly optimizes.
+# NOTE2: This script has received feedbacks prior to the boss script by
+# university students and will be refactored to make the code easier to read.
 #
-# BossCore is mainly used as a placeholder for a boss battle.
-# When it spawns, it will usually stop the player's control and
-# won't be able to open up inventory menu or pause screen.
-# The boss can poses before begin filling up health bar (slowly 
-# or instantly depends on the design) and the fight begins as normal.
-#
-# Bosses normally dies just like a regular enemy, only the differences
-# are the health bar may gets hidden and restoring background music's
-# state. When this happens, all active enemies also dies in the process.
-# By design, please note that you should not make any projectile
-# spawned by boss drops anything (experience points are acceptable).
-#
-# Any bosses placed anywhere in the scene permanently dies by default.
-#
-# Steps to begin the fight:
-#   1. Call method - start_show_boss_health_bar()
-#   2. Then call another - start_fill_up_health_bar()
-# These steps can be called through AnimationPlayer or manually
-# through code. It's highly recommended to check out how the boss
-# is created located in DEV_ExampleUsages folder:
-#   res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/EnemyObj/Boss_FreezeMan.tscn
-# where the boss is used at:
-#   res://DEV_ExampleUsages/Ex_LevelCreationTest/MegaMan_Level/Level_Sub2.tscn
+# TODO: Remove magic numbers
+# TODO: Change the boss to not do every single things in one script
+
 
 class_name BossCore extends EnemyCore
 

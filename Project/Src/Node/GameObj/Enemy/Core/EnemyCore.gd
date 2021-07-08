@@ -1,5 +1,16 @@
-# EnemyCore
-# TODO: Remove magic numbers and a ton of NONSENSE CODES
+# Enemy
+
+# NOTE: This was created but is unintended to make the enemy to do everything
+# in the way the code badly optimizes.
+# NOTE2: This script has received feedbacks prior to the enemy script by
+# university students and will be refactored to make the code easier to read.
+#
+# TODO: Remove magic numbers
+# TODO: Refactor the enemy to the base of Entity class (Entity is a class
+#       that has base stats such as HP, Collision damage, etc.)
+# TODO: Change the enemy to not do every single things in one script
+
+
 
 class_name EnemyCore extends KinematicBody2D
 
@@ -349,8 +360,6 @@ func heal(amount_of_hp_to_restore : float):
 	normalize_hp()
 
 
-#Check whether this enemy can die.
-#If its hit points drop below zero, DIE!~
 func check_for_death():
 	Audio.stop_sfx("buster")
 	Audio.stop_sfx("buster_minishot")

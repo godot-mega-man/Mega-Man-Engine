@@ -1,8 +1,5 @@
 # EnemyProjectile
-#
-# This is kept because it'd be pretty heckin annoying to have to copy
-# in everything below for every new EnemyCore object
-# that you want to be a projectile...
+
 
 class_name EnemyProjectile extends EnemyCore
 
