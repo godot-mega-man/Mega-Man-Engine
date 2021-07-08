@@ -13,3 +13,8 @@ git clone https://github.com/godot-mega-man/Mega-Man-Engine.git
 cd Mega-Man-Engine
 git checkout v2.0
 ```
+
+# License
+
+Mega Man and all related content is copyrighted by Capcom Co., Ltd.
+This project and its owner is not affiliated with Capcom in any way.
