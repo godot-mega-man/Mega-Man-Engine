@@ -2,6 +2,8 @@
 
 A platformer 2D game demo showcase for Godot engine.
 
+![mega man logo](Project/Assets/Sprites/megaman_logo.png)
+
 ## Project Installation
 
 **Note: This is compatible only with Godot 3.3 or later.**
