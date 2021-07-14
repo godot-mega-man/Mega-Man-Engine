@@ -2,7 +2,7 @@
 
 A platformer 2D game demo showcase for Godot engine.
 
-![mega man logo](Project/Assets/Sprites/megaman_logo.png)
+![mega man logo](project-splash.png)
 
 ## Project Installation
 
