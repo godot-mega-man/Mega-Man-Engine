@@ -1,6 +1,6 @@
-# ​Mega Man Implementation v2 (Work-In-Progress)
+# ​Mega Man Implementation v2
 
-A platformer 2D game demo showcase made with Godot engine.
+A platformer 2D game demo showcase for Godot engine.
 
 ## Project Installation
 
@@ -14,7 +14,14 @@ cd Mega-Man-Engine
 git checkout v2.0
 ```
 
-# License
+## Disclaimer
 
-Mega Man and all related content is copyrighted by Capcom Co., Ltd.
-This project and its owner is not affiliated with Capcom in any way.
+This software comes bundled with data and graphics extracted from the Mega Man series of video games. Some terminology from the Mega Man franchise is also necessarily used within the software itself. This is all the intellectual property of Capcom, inc. and is protected by various copyrights and trademarks.
+
+The goal of this project is not to create and/or distribute a game, but to learn how to create similar retro games in Godot. So this project, apart from being a possible base engine for future similar projects unrelated to the Mega Man franchise, has mainly educational purposes.
+
+The author believes that the use of this intellectual property for a fan reference is covered by fair use and that the software is significantly impaired without said property included. Any use of this copyrighted property is at your own legal risk.
+
+This software is not affiliated in any way with Capcom, Mega Man or any other game company.
+
+A complete revision history of this software is available from https://github.com/godot-mega-man/Mega-Man-Engine
